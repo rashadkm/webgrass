@@ -1,6 +1,8 @@
 #include "WGrassMenuBar.h"
 #include "GMenuItem.h"
 #include "WGMenuForm.h"
+#include <pugixml.hpp>
+
 WGrassMenuBar::WGrassMenuBar(WContainerWidget *parent)
 :WContainerWidget(parent)
  {

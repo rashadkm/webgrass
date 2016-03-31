@@ -13,7 +13,7 @@
 #include <Wt/WCheckBox>
 #include <Wt/WPushButton>
 
-#include "pugixml/pugixml.hpp"
+#include <pugixml.hpp>
 
 #include <iostream>
 #include "GMenuItem.h"

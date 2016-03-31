@@ -32,7 +32,7 @@ using namespace std;
 
 #include "WGrass.h"
 #include "global.h"
-#include "pugixml/pugixml.hpp"
+#include <pugixml.hpp>
 
 
 

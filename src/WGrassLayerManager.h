@@ -17,7 +17,7 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/filesystem.hpp>
 
-#include "pugixml/pugixml.hpp"
+#include <pugixml.hpp>
 
 using namespace Wt;
 using namespace std;

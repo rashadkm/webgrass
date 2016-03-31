@@ -25,7 +25,7 @@
 #include <boost/algorithm/string.hpp>
 
 
-#include "pugixml/pugixml.hpp"
+#include <pugixml.hpp>
 #include "pstream.h"
 #include "global.h"
 

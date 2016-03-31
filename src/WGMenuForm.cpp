@@ -5,6 +5,8 @@
 #include <Wt/WPushButton>
 #include <Wt/WHBoxLayout>
 
+#include <pugixml.hpp>
+
 #include <iostream>
 
 WGMenuForm::WGMenuForm(std::string cmd,std::string kws)

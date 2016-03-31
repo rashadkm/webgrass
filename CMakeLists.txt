@@ -27,5 +27,5 @@ TARGET_LINK_LIBRARIES(wgrass.wt
 ${Wt_LIBRARY}
 ${Wt_HTTP_LIBRARY}
 ${Wt_EXT_LIBRARY}
-boost_filesystem boost_signals pthread boost_system pugixml pq)
+boost_filesystem boost_signals boost_system pq /usr/lib/x86_64-linux-gnu/libpugixml.so.1 )
 
