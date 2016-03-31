@@ -1,0 +1,11 @@
+License
+see COPYING and GPL.txt
+
+more ReadMe soon
+
+mkdir build
+cd build
+cmake ..
+make
+sudo ./wgrass.wt --http-address=0.0.0.0 --http-port=8080 --docroot .
+

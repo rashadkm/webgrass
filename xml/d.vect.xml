@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="d.vect">
+	<description>
+		Displays user-specified vector map in the active graphics frame.
+	</description>
+	<keywords>
+		display, vector
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="yes" multiple="no">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for direct OGR access.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer_all" />
+		<default>
+			-1
+		</default>
+	</parameter>
+	<parameter name="display" type="string" required="yes" multiple="yes">
+		<description>
+			Display
+		</description>
+		<default>
+			shape
+		</default>
+		<values>
+			<value>
+				<name>shape</name>
+				<description>Display geometry of features</description>
+			</value>
+			<value>
+				<name>cat</name>
+				<description>Display category numbers of features</description>
+			</value>
+			<value>
+				<name>topo</name>
+				<description>Display topology information (nodes, edges)</description>
+			</value>
+			<value>
+				<name>dir</name>
+				<description>Display direction of linear features</description>
+			</value>
+			<value>
+				<name>attr</name>
+				<description>Display selected attribute based on 'attrcolumn'</description>
+			</value>
+			<value>
+				<name>zcoor</name>
+				<description>Display z-coordinate of features (only for 3D vector maps)</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Feature type
+		</description>
+		<default>
+			point,line,boundary,centroid,area,face
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Category values
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="color" type="string" required="no" multiple="no">
+		<label>
+			Line color
+		</label>
+		<description>
+			Either a standard GRASS color, R:G:B triplet, or "none"
+		</description>
+		<gisprompt age="old_color" element="color" prompt="color_none" />
+		<default>
+			black
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="fcolor" type="string" required="no" multiple="no">
+		<label>
+			Area fill color
+		</label>
+		<description>
+			Either a standard GRASS color, R:G:B triplet, or "none"
+		</description>
+		<gisprompt age="old_color" element="color" prompt="color_none" />
+		<default>
+			200:200:200
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="rgb_column" type="string" required="no" multiple="no">
+		<description>
+			Name of color definition column (for use with -a flag)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<default>
+			GRASSRGB
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="zcolor" type="string" required="no" multiple="no">
+		<description>
+			Type of color table (for use with -z flag)
+		</description>
+		<keydesc>
+			<item order="1">style</item>
+		</keydesc>
+		<default>
+			terrain
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="width" type="integer" required="no" multiple="no">
+		<description>
+			Line width
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Lines
+		</guisection>
+	</parameter>
+	<parameter name="wcolumn" type="string" required="no" multiple="no">
+		<description>
+			Name of column for line widths (these values will be scaled by wscale)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Lines
+		</guisection>
+	</parameter>
+	<parameter name="wscale" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for wcolumn
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Lines
+		</guisection>
+	</parameter>
+	<parameter name="icon" type="string" required="no" multiple="no">
+		<description>
+			Point and centroid symbol
+		</description>
+		<default>
+			basic/x
+		</default>
+		<values>
+			<value>
+				<name>basic/marker</name>
+			</value>
+			<value>
+				<name>basic/point</name>
+			</value>
+			<value>
+				<name>basic/cross2</name>
+			</value>
+			<value>
+				<name>basic/x</name>
+			</value>
+			<value>
+				<name>basic/circle</name>
+			</value>
+			<value>
+				<name>basic/arrow1</name>
+			</value>
+			<value>
+				<name>basic/cross1</name>
+			</value>
+			<value>
+				<name>basic/pushpin</name>
+			</value>
+			<value>
+				<name>basic/arrow2</name>
+			</value>
+			<value>
+				<name>basic/box</name>
+			</value>
+			<value>
+				<name>basic/octagon</name>
+			</value>
+			<value>
+				<name>basic/triangle</name>
+			</value>
+			<value>
+				<name>basic/diamond</name>
+			</value>
+			<value>
+				<name>basic/star</name>
+			</value>
+			<value>
+				<name>geology/strike_circle</name>
+			</value>
+			<value>
+				<name>geology/strike_triangle</name>
+			</value>
+			<value>
+				<name>geology/strike_line</name>
+			</value>
+			<value>
+				<name>geology/strike_box</name>
+			</value>
+			<value>
+				<name>extra/pentagon</name>
+			</value>
+			<value>
+				<name>extra/compass</name>
+			</value>
+			<value>
+				<name>extra/fiducial</name>
+			</value>
+			<value>
+				<name>extra/offbox_se</name>
+			</value>
+			<value>
+				<name>extra/adcp</name>
+			</value>
+			<value>
+				<name>extra/dive_flag</name>
+			</value>
+			<value>
+				<name>extra/4pt_star</name>
+			</value>
+			<value>
+				<name>extra/offbox_sw</name>
+			</value>
+			<value>
+				<name>extra/alpha_flag</name>
+			</value>
+			<value>
+				<name>extra/fish</name>
+			</value>
+			<value>
+				<name>extra/target</name>
+			</value>
+			<value>
+				<name>extra/airport</name>
+			</value>
+			<value>
+				<name>extra/offbox_nw</name>
+			</value>
+			<value>
+				<name>extra/n_arrow1</name>
+			</value>
+			<value>
+				<name>extra/n_arrow2</name>
+			</value>
+			<value>
+				<name>extra/ping</name>
+			</value>
+			<value>
+				<name>extra/half-box</name>
+			</value>
+			<value>
+				<name>extra/half-circle</name>
+			</value>
+			<value>
+				<name>extra/ring</name>
+			</value>
+			<value>
+				<name>extra/fancy_compass</name>
+			</value>
+			<value>
+				<name>extra/offbox_ne</name>
+			</value>
+			<value>
+				<name>extra/bridge</name>
+			</value>
+			<value>
+				<name>demo/smrk</name>
+			</value>
+			<value>
+				<name>demo/muchomurka</name>
+			</value>
+		</values>
+		<guisection>
+			Symbols
+		</guisection>
+	</parameter>
+	<parameter name="size" type="float" required="no" multiple="no">
+		<label>
+			Symbol size
+		</label>
+		<description>
+			When used with the size_column option this becomes the scale factor
+		</description>
+		<default>
+			5
+		</default>
+		<guisection>
+			Symbols
+		</guisection>
+	</parameter>
+	<parameter name="size_column" type="string" required="no" multiple="no">
+		<description>
+			Name of numeric column containing symbol size
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Symbols
+		</guisection>
+	</parameter>
+	<parameter name="rot_column" type="string" required="no" multiple="no">
+		<label>
+			Name of numeric column containing symbol rotation angle
+		</label>
+		<description>
+			Measured in degrees CCW from east
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Symbols
+		</guisection>
+	</parameter>
+	<parameter name="llayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Layer number for labels (default: the given layer number)
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="attrcolumn" type="string" required="no" multiple="no">
+		<description>
+			Name of column to be displayed
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="lcolor" type="string" required="no" multiple="no">
+		<label>
+			Label color
+		</label>
+		<description>
+			Either a standard color name or R:G:B triplet
+		</description>
+		<gisprompt age="old_color" element="color" prompt="color" />
+		<default>
+			red
+		</default>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="bgcolor" type="string" required="no" multiple="no">
+		<label>
+			Label background color
+		</label>
+		<description>
+			Either a standard GRASS color, R:G:B triplet, or "none"
+		</description>
+		<gisprompt age="old_color" element="color" prompt="color_none" />
+		<default>
+			none
+		</default>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="bcolor" type="string" required="no" multiple="no">
+		<label>
+			Label border color
+		</label>
+		<description>
+			Either a standard GRASS color, R:G:B triplet, or "none"
+		</description>
+		<gisprompt age="old_color" element="color" prompt="color_none" />
+		<default>
+			none
+		</default>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="lsize" type="integer" required="no" multiple="no">
+		<description>
+			Label size (pixels)
+		</description>
+		<default>
+			8
+		</default>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="font" type="string" required="no" multiple="no">
+		<description>
+			Font name
+		</description>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="encoding" type="string" required="no" multiple="no">
+		<description>
+			Text encoding
+		</description>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="xref" type="string" required="no" multiple="no">
+		<description>
+			Label horizontal justification
+		</description>
+		<default>
+			left
+		</default>
+		<values>
+			<value>
+				<name>left</name>
+			</value>
+			<value>
+				<name>center</name>
+			</value>
+			<value>
+				<name>right</name>
+			</value>
+		</values>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="yref" type="string" required="no" multiple="no">
+		<description>
+			Label vertical justification
+		</description>
+		<default>
+			center
+		</default>
+		<values>
+			<value>
+				<name>top</name>
+			</value>
+			<value>
+				<name>center</name>
+			</value>
+			<value>
+				<name>bottom</name>
+			</value>
+		</values>
+		<guisection>
+			Labels
+		</guisection>
+	</parameter>
+	<parameter name="minreg" type="float" required="no" multiple="no">
+		<description>
+			Minimum region size (average from height and width) when map is displayed
+		</description>
+	</parameter>
+	<parameter name="maxreg" type="float" required="no" multiple="no">
+		<description>
+			Maximum region size (average from height and width) when map is displayed
+		</description>
+	</parameter>
+	<flag name="a">
+		<description>
+			Get colors from map table column (of form RRR:GGG:BBB)
+		</description>
+ 		<guisection>
+			Colors
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Random colors according to category number (or layer number if 'layer=-1' is given)
+		</description>
+ 		<guisection>
+			Colors
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Use values from 'cats' option as feature id
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="z">
+		<description>
+			Colorize polygons according to z height
+		</description>
+ 		<guisection>
+			Colors
+		</guisection>
+	</flag>
+	<flag name="r">
+		<label>
+			Use square root of the value of size_column
+		</label>
+		<description>
+			This makes circle areas proportionate to the size_column values instead of circle radius
+		</description>
+ 		<guisection>
+			Symbols
+		</guisection>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

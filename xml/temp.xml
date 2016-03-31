@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.target">
+	<description>
+		Targets an imagery group to a GRASS location and mapset.
+	</description>
+	<keywords>
+		imagery
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="any" element="group" prompt="group" />
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name of imagery target location
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<description>
+			Name of target mapset
+		</description>
+	</parameter>
+	<flag name="c">
+		<description>
+			Set current location and mapset as target for of imagery group
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

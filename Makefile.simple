@@ -1,0 +1,23 @@
+all: wgrass.wt
+
+wgrass.wt: src/main.o src/global.o src/WGApplication.o src/WGrass.o src/WOpenLayers.o
+	g++ src/main.o src/global.o src/WGApplication.o src/WGrass.o src/WOpenLayers.o -o wgrass.wt \
+		-L/usr/local/lib -lwt -lwthttp -lpugixml -lboost_system -lboost_signals -lpthread
+
+main.o: main.cpp
+	g++ -c src/main.cpp
+
+global.o: global.cpp
+	g++ -c global.cpp
+
+WGApplication.o: WGApplication.cpp
+	g++ -c WGApplication.cpp
+
+WGrass.o: WGrass.cpp
+	g++ -c WGrass.cpp
+
+WOpenLayers.o: WOpenLayers.cpp
+	g++ -c WOpenLayers.cpp
+
+clean:
+	rm -rf *.o wgrass.wt

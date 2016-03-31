@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.list">
+	<description>
+		Lists available GRASS data base files of the user-specified data type.
+	</description>
+	<keywords>
+		general, map management, list
+	</keywords>
+	<parameter name="type" type="string" required="yes" multiple="yes">
+		<description>
+			Data type(s)
+		</description>
+		<keydesc>
+			<item order="1">datatype</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>rast</name>
+				<description>raster map(s)</description>
+			</value>
+			<value>
+				<name>rast3d</name>
+				<description>3D raster map(s)</description>
+			</value>
+			<value>
+				<name>vect</name>
+				<description>vector map(s)</description>
+			</value>
+			<value>
+				<name>oldvect</name>
+				<description>old (GRASS 5.0) vector map(s)</description>
+			</value>
+			<value>
+				<name>asciivect</name>
+				<description>ASCII vector map(s)</description>
+			</value>
+			<value>
+				<name>icon</name>
+				<description>paint icon file(s)</description>
+			</value>
+			<value>
+				<name>labels</name>
+				<description>paint label file(s)</description>
+			</value>
+			<value>
+				<name>sites</name>
+				<description>site list file(s)</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>region definition(s)</description>
+			</value>
+			<value>
+				<name>region3d</name>
+				<description>3D region definition(s)</description>
+			</value>
+			<value>
+				<name>group</name>
+				<description>imagery group(s)</description>
+			</value>
+			<value>
+				<name>view3d</name>
+				<description>3D view parameter(s)</description>
+			</value>
+			<value>
+				<name>all</name>
+				<description>all types</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			'.' for current mapset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+	</parameter>
+	<flag name="f">
+		<description>
+			Verbose listing (also list map titles)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
