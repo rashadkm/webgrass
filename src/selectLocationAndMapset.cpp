@@ -54,7 +54,7 @@ for( directory_iterator iter(directory) ; iter != end ; ++iter )
 cout << directory << endl;
 if ( is_directory( *iter ) )
 {
-directories.push_back(iter->path().leaf() );
+  directories.push_back(iter->path().leaf().string() );
 //if( recurse_into_subdirs ) show_files(*iter) ;
 }
 //else

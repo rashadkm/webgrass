@@ -15,12 +15,14 @@ src/WGMenuForm.cpp
 )
 SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
+#need an actual cmake gdal find package
+include_directories("/usr/include/gdal")
 FIND_PACKAGE( Wt REQUIRED )
 IF (NOT Wt_FOUND)
   MESSAGE (SEND_ERROR "Wt dependency was not found!")
 ENDIF (NOT Wt_FOUND)
 INCLUDE_DIRECTORIES( ${Wt_INCLUDE_DIR} )
-ADD_DEPENDENCIES(wgrass.wt wt wthttp)
+#ADD_DEPENDENCIES(wgrass.wt wt wthttp)
 TARGET_LINK_LIBRARIES(wgrass.wt 
 ${Wt_LIBRARY}
 ${Wt_HTTP_LIBRARY}
