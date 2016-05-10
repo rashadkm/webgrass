@@ -16,7 +16,7 @@ License (>=v2). Read the file COPYING for details.
 
 #include "login.h"
 
-#include "selectLocationAndMapset.h"
+#include "Startup.h"
 WGApplication::WGApplication(const WEnvironment& env)
 	: WApplication(env)
   	{
@@ -31,15 +31,15 @@ std::string mapset;
 
             try {
             	uname = wapp->environment().getCookie("wgrass_login");
-            	location = wapp->environment().getCookie("wgrass_location");
-            	mapset = wapp->environment().getCookie("wgrass_mapset");
+            	location = wapp->environment().getCookie("wgras_location");
+            	mapset = wapp->environment().getCookie("wgras_mapset");
             } catch (exception& e) {  cout << "COOKIE EXCEPTION: " << e.what() << endl; }
 
             if (uname.empty())  {
                new Login(root());
             }
             else if(location.empty() || mapset.empty()) {
-                new selectLocationAndMapset(uname, root());
+                new Startup(uname, root());
                 wapp->setTitle("Select Location and Mapset");
             }
             else {

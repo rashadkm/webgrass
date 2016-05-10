@@ -88,7 +88,7 @@ ulayout->addWidget(prjlabel,3,0);
 cmbProject = new WComboBox();
 
 
-PGconn *conn =  ConnectDB("vrgeo-admin");
+PGconn *conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
 
 
 
@@ -190,7 +190,7 @@ new WText("<br/> <br/>",d->contents());
       //return;
     }
 
-conn =  ConnectDB("vrgeo-admin");
+conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
 
 
 string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() +  "'";
@@ -269,7 +269,7 @@ WApplication::instance()->setCookie("wgrass_login", "", 0);
 
 void Login::checkLogin() {
 
-PGconn *conn =  ConnectDB("vrgeo-admin");
+PGconn *conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
 
 
 string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() + "' AND passwd=md5('" + passwd->text().toUTF8() + "')";
@@ -279,16 +279,16 @@ string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() + "
 
 
 
-    if(PQntuples(res)==0) {
-       WApplication::instance()->doJavaScript("alert('Invalid username/password')");
-        return;
-    }
+    // if(PQntuples(res)==0) {
+    //    WApplication::instance()->doJavaScript("alert('Invalid username/password')");
+    //     return;
+    // }
 
-    else {
+    // else {
 	      WApplication::instance()->setCookie("wgrass_login", uname->text().narrow(), 60*60*24*24);	
 
       WApplication::instance()->redirect("/");
-}
+//}
 
 
     }

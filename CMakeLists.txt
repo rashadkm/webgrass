@@ -7,7 +7,7 @@ src/WOpenLayers.cpp
 src/global.cpp
 src/main.cpp
 src/login.cpp
-src/selectLocationAndMapset.cpp
+src/Startup.cpp
 src/WGrassLayerManager.cpp
 src/WGrassMenuBar.cpp
 src/GMenuItem.cpp
