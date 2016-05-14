@@ -50,16 +50,19 @@ void show_files( const fs::path & full_path, vector<string>&directories, bool is
 void showMapsets(WString location);
 void locationUploaded();
 void updateLocationAndMapsets(string wgrass_login);
-void comboChanged(WString thisi);
-void combo1Changed(WString thisee);
+void comboChanged(WString loc_string);
+void combo1Changed(WString map_string);
+bool checkExistance(std::string directory, std::string cont);
 
 private:
 
 WSelectionBox *mapset;
 WSelectionBox *location;
 WSelectionBox *cb1;
-string k;
-string l;
+string m_location;
+string m_mapset;
+string m_GrassDataDirectory;
+string m_GrassMapsetDirectory;
 
 WAnimation anim;
 WContainerWidget *unameWidget;

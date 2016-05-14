@@ -52,33 +52,45 @@ using namespace boost::filesystem;
 
 void Startup::show_files( const path & directory, vector<string>&directories, bool recurse_into_subdirs = true )
 {
-if( exists( directory ) )
-{
-directory_iterator end ;
-for( directory_iterator iter(directory) ; iter != end ; ++iter )
-{
-cout << directory << endl;
-if ( is_directory( *iter ) )
-{
-  directories.push_back(iter->path().leaf().string() );
+	if( exists( directory ) )
+	{
+		directory_iterator end ;
 
+		for( directory_iterator iter(directory) ; iter != end ; ++iter )
+			{
+			cout << directory << endl;
+			if ( is_directory( *iter ) )
+				{
+				  directories.push_back(iter->path().leaf().string() );
+
+				}
+
+			}
+	}
 }
 
+bool Startup::checkExistance(std::string directory, std::string cont) 
+{ 	
+	//cout<<"fff"<<endl;
+	string f = cont+"/"+directory;
+	cout<<f<<endl;
+	return boost::filesystem::exists( f ); 
 }
-}
-}
 
 
 
 
 
 
-
-Startup::Startup(std::string wgrass_login,WContainerWidget *parent=0)
+Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
 :WContainerWidget(parent)
 {
 
 anim = WAnimation();
+
+m_GrassDataDirectory = "/home/mayank/webgrassdata";
+m_GrassMapsetDirectory = "/home/mayank/webgrassdata/newLocation";
+
 
 
 
@@ -111,20 +123,35 @@ grid->addWidget(new WText("GIS Data Directory    "),0,1);
 
 Wt::WSelectionBox *datadir = new Wt::WSelectionBox();
 datadir->resize(200,25);
-datadir->addItem("/home/mayank/webgrassdata");   
+datadir->addItem(m_GrassDataDirectory);   
 grid->addWidget(datadir,0,2);
 
 
 
 
-const fs::path fi= "/home/mayank/webgrassdata";
+const fs::path fi= m_GrassDataDirectory;
 vector<string> dir;
 show_files(fi,dir,true);
 Wt::WSelectionBox *cb = new Wt::WSelectionBox();
 cb->resize(200,240);
-cb->addItem(dir[0]);
-cb->addItem(dir[1]);
-cb->addItem(dir[2]);
+
+
+for(vector<string>::iterator it = dir.begin();it!=dir.end();++it)
+{
+	bool isValidLocation = checkExistance(*it, m_GrassDataDirectory);
+	cout<<isValidLocation<<endl;
+	if (isValidLocation) 
+		{ cb->addItem(*it); } 
+}
+ 
+
+
+// bool isValidLocation = checkExistance(dir[0], m_GrassDataDirectory);
+// if (isValidLocation) 
+// 	{ cb->addItem(dir[0]); } 
+// cb->addItem(dir[1]);
+// cb->addItem(dir[2]);
+
 cb->setCurrentIndex(1); 
 
 
@@ -149,14 +176,21 @@ groupBox->resize(200,300);
 
 
 
-const fs::path fii= "/home/mayank/webgrassdata/newLocation";
+const fs::path fii= m_GrassMapsetDirectory;
 vector<string> dir2;
 show_files(fii,dir2,true);
 Wt::WSelectionBox *cb1 = new Wt::WSelectionBox(mainContainer);
 cb1->resize(200,240);
-cb1->addItem(dir2[1]);
-cb1->addItem(dir2[0]);
-cb1->addItem(dir2[2]);
+
+for(vector<string>::iterator it2 = dir2.begin();it2!=dir2.end();++it2)
+{
+	bool isValidLocation = checkExistance(*it2, m_GrassMapsetDirectory);
+	cout<<isValidLocation<<endl;
+	if (isValidLocation) 
+		{ cb1->addItem(*it2); } 
+}
+
+
 cb1->setCurrentIndex(0);
 
 
@@ -193,7 +227,7 @@ mapset = new WSelectionBox();
 
 WPushButton *startWGrass = new WPushButton("Start webGRASS >>");
 startWGrass->clicked().connect(this , &Startup::startWebGrass);
-grid->addWidget(new WText(k),3,1);
+
 startWGrass->resize(150,30);
 grid->addWidget(startWGrass,3,2);
 grid->addWidget(new WText("  "),1,3);
@@ -209,27 +243,27 @@ grid->setColumnStretch(0, 1);
 
 }
 
-void Startup::comboChanged(WString thisi){
+void Startup::comboChanged(WString loc_string){
 	
-	cout<<thisi.narrow()<<endl;
-	k=thisi.narrow();
+	cout<<loc_string.narrow()<<endl;
+	m_location =loc_string.narrow();
 }
 
-void Startup::combo1Changed(WString thisee){
+void Startup::combo1Changed(WString map_string){
 	
-	cout<<thisee.narrow()<<endl;
-	l=thisee.narrow();
+	cout<<map_string.narrow()<<endl;
+	m_mapset =map_string.narrow();
 }
 
 
 
 void Startup::startWebGrass() {
 
-	cout<<k<<endl;
-	cout<<l<<endl;
+	cout<<m_location<<endl;
+	cout<<m_mapset<<endl;
 
- WApplication::instance()->setCookie("wgrass_location", k, 60*60*24*24);
- WApplication::instance()->setCookie("wgrass_mapset", l, 60*60*24*24);	
+ WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24);
+ WApplication::instance()->setCookie("wgrass_mapset", m_mapset , 60*60*24*24);	
 
  WApplication::instance()->redirect("/");
 }
