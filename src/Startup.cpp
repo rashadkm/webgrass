@@ -71,14 +71,26 @@ void Startup::show_files( const path & directory, vector<string>&directories, bo
 
 bool Startup::checkExistance(std::string directory, std::string cont) 
 { 	
-	//cout<<"fff"<<endl;
+	cout<<"fff"<<endl;
 	string f = cont+"/"+directory;
 	cout<<f<<endl;
 	return boost::filesystem::exists( f ); 
 }
 
 
+void Startup::makeSelectionBox(WSelectionBox *box, vector<string> dir, string di)
+{
 
+		for(vector<string>::iterator it = dir.begin();it!=dir.end();++it)
+		{
+			bool isValidLocation = checkExistance(*it, di);
+			cout<<isValidLocation<<endl;
+			if (isValidLocation) 
+				{ box->addItem(*it); } 
+		}
+
+		//box->setCurrentIndex(0); 
+}
 
 
 
@@ -89,7 +101,7 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
 anim = WAnimation();
 
 m_GrassDataDirectory = "/home/mayank/webgrassdata";
-m_GrassMapsetDirectory = "/home/mayank/webgrassdata/newLocation";
+m_GrassMapsetDirectory = "/home/mayank/webgrassdata/testLocation";
 
 
 
@@ -132,30 +144,12 @@ grid->addWidget(datadir,0,2);
 const fs::path fi= m_GrassDataDirectory;
 vector<string> dir;
 show_files(fi,dir,true);
-Wt::WSelectionBox *cb = new Wt::WSelectionBox();
-cb->resize(200,240);
+WtSelectionBoxLocation = new Wt::WSelectionBox();
+WtSelectionBoxLocation->resize(200,240);
+makeSelectionBox(WtSelectionBoxLocation,dir,m_GrassDataDirectory);
+WtSelectionBoxLocation->sactivated().connect(this, &Startup::locationChanged);
 
 
-for(vector<string>::iterator it = dir.begin();it!=dir.end();++it)
-{
-	bool isValidLocation = checkExistance(*it, m_GrassDataDirectory);
-	cout<<isValidLocation<<endl;
-	if (isValidLocation) 
-		{ cb->addItem(*it); } 
-}
- 
-
-
-// bool isValidLocation = checkExistance(dir[0], m_GrassDataDirectory);
-// if (isValidLocation) 
-// 	{ cb->addItem(dir[0]); } 
-// cb->addItem(dir[1]);
-// cb->addItem(dir[2]);
-
-cb->setCurrentIndex(1); 
-
-
-cb->sactivated().connect(this, &Startup::comboChanged);
 
 
 Wt::WPushButton *button3 = new Wt::WPushButton("New");
@@ -166,9 +160,7 @@ Wt::WPushButton *button5 = new Wt::WPushButton("Delete");
 
 Wt::WGroupBox *groupBox = new Wt::WGroupBox("Project Location");
 groupBox->setWidth(200);
-groupBox->addWidget(cb);
-
-
+groupBox->addWidget(WtSelectionBoxLocation);
 groupBox->addWidget(button3);
 groupBox->addWidget(button4);
 groupBox->addWidget(button5);
@@ -176,25 +168,17 @@ groupBox->resize(200,300);
 
 
 
+
+
 const fs::path fii= m_GrassMapsetDirectory;
 vector<string> dir2;
 show_files(fii,dir2,true);
-Wt::WSelectionBox *cb1 = new Wt::WSelectionBox(mainContainer);
-cb1->resize(200,240);
-
-for(vector<string>::iterator it2 = dir2.begin();it2!=dir2.end();++it2)
-{
-	bool isValidLocation = checkExistance(*it2, m_GrassMapsetDirectory);
-	cout<<isValidLocation<<endl;
-	if (isValidLocation) 
-		{ cb1->addItem(*it2); } 
-}
+WtSelectionBoxMapset = new Wt::WSelectionBox(mainContainer);
+WtSelectionBoxMapset->resize(200,240);
+makeSelectionBox(WtSelectionBoxMapset,dir2,m_GrassMapsetDirectory);
+WtSelectionBoxMapset->sactivated().connect(this, &Startup::mapsetChanged);
 
 
-cb1->setCurrentIndex(0);
-
-
-cb1->sactivated().connect(this, &Startup::combo1Changed);
 
 Wt::WPushButton *button = new Wt::WPushButton("New");
 Wt::WPushButton *button1 = new Wt::WPushButton("Rename");
@@ -202,7 +186,7 @@ Wt::WPushButton *button2 = new Wt::WPushButton("Delete");
 
 Wt::WGroupBox *groupBox2 = new Wt::WGroupBox("Accessile Mapsets");
 groupBox2->setWidth(200);
-groupBox2->addWidget(cb1);
+groupBox2->addWidget(WtSelectionBoxMapset);
 groupBox2->addWidget(button);
 groupBox2->addWidget(button1);
 groupBox2->addWidget(button2);
@@ -243,16 +227,34 @@ grid->setColumnStretch(0, 1);
 
 }
 
-void Startup::comboChanged(WString loc_string){
+
+
+
+
+void Startup::locationChanged(WString loc_string){
 	
 	cout<<loc_string.narrow()<<endl;
 	m_location =loc_string.narrow();
+	WtSelectionBoxMapset->clear();
+
+	vector<string> directories;
+	string hh=m_GrassDataDirectory;
+	string gg=hh+(string)"/";
+	string jj=gg+m_location;
+
+	const fs::path fii= gg + m_location;
+
+	show_files(fii,directories,true );
+	makeSelectionBox(WtSelectionBoxMapset,directories,jj);
+
 }
 
-void Startup::combo1Changed(WString map_string){
+
+
+void Startup::mapsetChanged(WString map_string){
 	
 	cout<<map_string.narrow()<<endl;
-	m_mapset =map_string.narrow();
+	m_mapset = map_string.narrow();
 }
 
 

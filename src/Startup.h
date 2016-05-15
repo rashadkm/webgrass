@@ -50,15 +50,17 @@ void show_files( const fs::path & full_path, vector<string>&directories, bool is
 void showMapsets(WString location);
 void locationUploaded();
 void updateLocationAndMapsets(string wgrass_login);
-void comboChanged(WString loc_string);
-void combo1Changed(WString map_string);
+void locationChanged(WString loc_string);
+void mapsetChanged(WString map_string);
+void makeSelectionBox(WSelectionBox *box, vector<string> dir, string di);
 bool checkExistance(std::string directory, std::string cont);
 
 private:
 
 WSelectionBox *mapset;
 WSelectionBox *location;
-WSelectionBox *cb1;
+WSelectionBox *WtSelectionBoxMapset;
+WSelectionBox *WtSelectionBoxLocation;
 string m_location;
 string m_mapset;
 string m_GrassDataDirectory;
