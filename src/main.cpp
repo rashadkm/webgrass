@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-
+	
   return WRun(argc, argv, &createApplication);
 
 
