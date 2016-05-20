@@ -9,8 +9,8 @@ License (>=v2). Read the file COPYING for details.
 #include <Wt/WEnvironment>
 #include <Wt/WLabel>
 #include <Wt/WRandom>
-
-#include "WGrass.h"
+#include <Wt/WBootstrapTheme>
+#include "MainUI.h"
 
 #include "WGApplication.h"
 
@@ -21,6 +21,11 @@ WGApplication::WGApplication(const WEnvironment& env)
 	: WApplication(env)
   	{
     	setCssTheme("polished");
+      setTheme(new WBootstrapTheme());
+
+      addMetaHeader("viewport", "width = device-width, initial-scale = 1");
+
+      root()->addStyleClass("container-fluid");
 
    
 
@@ -31,8 +36,8 @@ std::string mapset;
 
             try {
             	uname = wapp->environment().getCookie("wgrass_login");
-            	location = wapp->environment().getCookie("wgras_location");
-            	mapset = wapp->environment().getCookie("wgras_mapset");
+            	location = wapp->environment().getCookie("wgrass_location");
+            	mapset = wapp->environment().getCookie("wgrass_mapset");
             } catch (exception& e) {  cout << "COOKIE EXCEPTION: " << e.what() << endl; }
 
             if (uname.empty())  {
@@ -43,7 +48,7 @@ std::string mapset;
                 wapp->setTitle("Select Location and Mapset");
             }
             else {
-               new WGrass(root());
+               new MainUI(root());
 
             }
 }

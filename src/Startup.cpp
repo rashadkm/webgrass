@@ -267,6 +267,14 @@ void Startup::startWebGrass() {
  WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24); // setting the cookies
  WApplication::instance()->setCookie("wgrass_mapset", m_mapset , 60*60*24*24);	
 
+ // std::ofstream grassrc;
+ //  grassrc.open ("./grassrc7");
+ //  grassrc << "GISDBASE: " + base_path << endl;
+ //  grassrc << "LOCATION_NAME: " + slocation << endl;
+ //  grassrc << "MAPSET: " + smapset << endl;
+ //  grassrc << "GRASS_GUI: text" << endl;
+ //  grassrc << "MONITOR: PNG" << endl;
+ //  grassrc.close();
  WApplication::instance()->redirect("/");
 }
 
