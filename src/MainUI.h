@@ -20,7 +20,10 @@
 #include "WOpenLayers.h"
 
 #include <boost/assign/list_of.hpp> 
-
+#include <Wt/WMessageBox>
+#include <Wt/WPopupMenu>
+#include <Wt/WPushButton>
+#include <Wt/WText>
 
 #include <Wt/WWidget>
 #include <Wt/WSuggestionPopup>

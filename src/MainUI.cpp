@@ -11,6 +11,10 @@
 #include <Wt/WTabWidget>
 #include <Wt/WVBoxLayout>
 #include <Wt/WNavigationBar>
+#include <Wt/WMenuItem>
+#include <Wt/WMessageBox>
+#include <Wt/WPopupMenu>
+
 
 using namespace Wt;
 
