@@ -50,7 +50,8 @@ using namespace std;
 
 using namespace boost::filesystem; 
 
-void Startup::show_files( const path & directory, vector<string>&directories, bool recurse_into_subdirs = true )// for returning the files in a directory
+/* for returning the files in a directory */
+void Startup::showFiles( const path & directory, vector<string>&directories, bool recurse_into_subdirs = true )
 {
 	if( exists( directory ) )
 	{
@@ -69,7 +70,9 @@ void Startup::show_files( const path & directory, vector<string>&directories, bo
 	}
 }
 
-bool Startup::checkExistance(std::string directory, std::string cont) // checking whether given directory exists or not 
+
+/* checking whether given directory exists or not */
+bool Startup::checkExistance(std::string directory, std::string cont) 
 { 	
 	
 	string f = cont+"/"+directory;
@@ -78,7 +81,8 @@ bool Startup::checkExistance(std::string directory, std::string cont) // checkin
 }
 
 
-void Startup::makeSelectionBox(WSelectionBox *box, vector<string> dir, string di)// initial construction of the mapset and Location wizard
+/* initial construction of the mapset and Location wizard */
+void Startup::makeSelectionBox(WSelectionBox *box, vector<string> dir, string di)
 {
 
 		for(vector<string>::iterator it = dir.begin();it!=dir.end();++it)
@@ -100,8 +104,11 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
 
 anim = WAnimation();
 
-m_GrassDataDirectory = "/home/mayank/webgrassdata"; // GRASS GIS database library
-m_GrassMapsetDirectory = "/home/mayank/webgrassdata/testLocation"; // GRASS GIS initial location directory
+/* GRASS GIS database library */
+m_GrassDataDirectory = "/home/mayank/webgrassdata";
+
+/*GRASS GIS initial location directory */
+m_GrassMapsetDirectory = "/home/mayank/webgrassdata/testLocation"; 
 
 
 
@@ -109,7 +116,8 @@ m_GrassMapsetDirectory = "/home/mayank/webgrassdata/testLocation"; // GRASS GIS 
 WContainerWidget *mainContainer = new WContainerWidget(parent);
 mainContainer->resize(1000,600);
 
-Wt::WVBoxLayout *vbox = new Wt::WVBoxLayout(); // vbox to divide the layout in vertical direction
+/* vbox to divide the layout in vertical direction */
+Wt::WVBoxLayout *vbox = new Wt::WVBoxLayout(); 
 
 mainContainer->setLayout(vbox);
 
@@ -117,23 +125,28 @@ mainContainer->setLayout(vbox);
 
 location = new WSelectionBox(); 
 
-Wt::WImage *image = new Wt::WImage(Wt::WLink("http://grassmac.wdfiles.com/local--files/start/startup_banner.png")); // image of GRASS GIS
+/* image of GRASS GIS */
+Wt::WImage *image = new Wt::WImage(Wt::WLink("http://grassmac.wdfiles.com/local--files/start/startup_banner.png")); 
 image->resize(50,200);
 image->setWidth(5);
 vbox->addWidget(image,0.20);
 
 
-Wt::WGridLayout *grid = new Wt::WGridLayout(); // layout with the use of grid. grid uses coordinates 
+/* layout with the use of grid. grid uses coordinates */
+Wt::WGridLayout *grid = new Wt::WGridLayout(); 
 vbox->addLayout(grid);
 
-grid->addWidget(new WText("                                   "),0,0); // spacing for better layout
+
+/* spacing for better layout */
+grid->addWidget(new WText("                                   "),0,0); 
 
 
 grid->addWidget(new WText("GIS Data Directory    "),0,1);
 
 
 
-Wt::WSelectionBox *datadir = new Wt::WSelectionBox(); // selection box for GRASS GIS database directory
+/* selection box for GRASS GIS database directory */
+Wt::WSelectionBox *datadir = new Wt::WSelectionBox(); 
 datadir->resize(200,25);
 datadir->addItem(m_GrassDataDirectory);   
 grid->addWidget(datadir,0,2);
@@ -143,11 +156,14 @@ grid->addWidget(datadir,0,2);
 
 const fs::path fi= m_GrassDataDirectory;
 vector<string> dir;
-show_files(fi,dir,true);
-WtSelectionBoxLocation = new Wt::WSelectionBox(); // selection box GRASS location
+showFiles(fi,dir,true);
+
+/* selection box GRASS location */
+WtSelectionBoxLocation = new Wt::WSelectionBox(); 
 WtSelectionBoxLocation->resize(200,240);
 makeSelectionBox(WtSelectionBoxLocation,dir,m_GrassDataDirectory);
-WtSelectionBoxLocation->sactivated().connect(this, &Startup::locationChanged); // capturing the click
+/* capturing the click */
+WtSelectionBoxLocation->sactivated().connect(this, &Startup::locationChanged); 
 
 
 
@@ -157,8 +173,8 @@ Wt::WPushButton *button4 = new Wt::WPushButton("Rename");
 Wt::WPushButton *button5 = new Wt::WPushButton("Delete");
 
 
-
-Wt::WGroupBox *groupBox = new Wt::WGroupBox("Project Location");  // grouping of the combo box
+/* grouping of the combo box */
+Wt::WGroupBox *groupBox = new Wt::WGroupBox("Project Location");  
 groupBox->setWidth(200);
 groupBox->addWidget(WtSelectionBoxLocation);
 //groupBox->addWidget(button3);
@@ -172,8 +188,10 @@ groupBox->resize(200,300);
 
 const fs::path fii= m_GrassMapsetDirectory;
 vector<string> dir2;
-show_files(fii,dir2,true);
-WtSelectionBoxMapset = new Wt::WSelectionBox(mainContainer); // selection box GRASS mapset
+showFiles(fii,dir2,true);
+
+/* selection box GRASS mapset */
+WtSelectionBoxMapset = new Wt::WSelectionBox(mainContainer); 
 WtSelectionBoxMapset->resize(200,240);
 makeSelectionBox(WtSelectionBoxMapset,dir2,m_GrassMapsetDirectory);
 WtSelectionBoxMapset->sactivated().connect(this, &Startup::mapsetChanged);
@@ -230,8 +248,8 @@ grid->setColumnStretch(0, 1);
 
 
 
-
-void Startup::locationChanged(WString loc_string){ // dynamic updation of mapset when location changed and m_location variable
+/* dynamic updation of mapset when location changed and m_location variable */
+void Startup::locationChanged(WString loc_string){ 
 	
 	cout<<loc_string.narrow()<<endl;
 	m_location =loc_string.narrow();
@@ -244,14 +262,14 @@ void Startup::locationChanged(WString loc_string){ // dynamic updation of mapset
 
 	const fs::path fii= gg + m_location;
 
-	show_files(fii,directories,true );
+	showFiles(fii,directories,true );
 	makeSelectionBox(WtSelectionBoxMapset,directories,jj);
 
 }
 
 
-
-void Startup::mapsetChanged(WString map_string){  // dynamic updation of the m_mapset variable
+/* dynamic updation of the m_mapset variable */
+void Startup::mapsetChanged(WString map_string){  
 	
 	cout<<map_string.narrow()<<endl;
 	m_mapset = map_string.narrow();
@@ -264,7 +282,8 @@ void Startup::startWebGrass() {
 	cout<<m_location<<endl;
 	cout<<m_mapset<<endl;
 
- WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24); // setting the cookies
+ /* setting the cookies */
+ WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24); 
  WApplication::instance()->setCookie("wgrass_mapset", m_mapset , 60*60*24*24);	
 
  // std::ofstream grassrc;
