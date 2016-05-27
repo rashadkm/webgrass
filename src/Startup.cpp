@@ -161,9 +161,9 @@ Wt::WPushButton *button5 = new Wt::WPushButton("Delete");
 Wt::WGroupBox *groupBox = new Wt::WGroupBox("Project Location");  // grouping of the combo box
 groupBox->setWidth(200);
 groupBox->addWidget(WtSelectionBoxLocation);
-groupBox->addWidget(button3);
-groupBox->addWidget(button4);
-groupBox->addWidget(button5);
+//groupBox->addWidget(button3);
+//groupBox->addWidget(button4);
+//groupBox->addWidget(button5);
 groupBox->resize(200,300);
 
 
@@ -187,9 +187,9 @@ Wt::WPushButton *button2 = new Wt::WPushButton("Delete");
 Wt::WGroupBox *groupBox2 = new Wt::WGroupBox("Accessile Mapsets");
 groupBox2->setWidth(200);
 groupBox2->addWidget(WtSelectionBoxMapset);
-groupBox2->addWidget(button);
-groupBox2->addWidget(button1);
-groupBox2->addWidget(button2);
+//groupBox2->addWidget(button);
+//groupBox2->addWidget(button1);
+//groupBox2->addWidget(button2);
 groupBox2->resize(200,300);
 
 grid->addWidget(new WText("Choose Project Location and Mapset"),1,1);

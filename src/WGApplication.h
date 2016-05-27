@@ -17,6 +17,7 @@ using namespace std;
 class WGApplication: public WApplication {
  public:
   	WGApplication(const WEnvironment& env);
+ void handlePathChanged(string loc_string);
 
 };
 
