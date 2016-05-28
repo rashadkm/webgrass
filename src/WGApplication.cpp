@@ -32,7 +32,7 @@ WGApplication::WGApplication(const WEnvironment& env)
 
   internalPathChanged().connect(this, &WGApplication::handlePathChanged);
 
-  WApplication::instance()->setInternalPath("/start", true);
+  WApplication::instance()->setInternalPath("/grass", true);
  
 }
 

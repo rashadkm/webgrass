@@ -3,14 +3,22 @@
 //#define _WGRASS_H_
 
 
-
-
 #include <Wt/WCheckBox>
 #include <Wt/WLabel>
 #include <Wt/WRandom>
-#include<Wt/WTimer>
+#include <Wt/WTimer>
 #include <Wt/WContainerWidget>
 #include <Wt/WNavigationBar>
+
+#include <Wt/WStackedWidget>
+#include <Wt/WMenu>
+#include <Wt/WMenuItem>
+#include <Wt/Ext/Button>
+#include <Wt/Ext/Menu>
+#include <Wt/Ext/MenuItem>
+#include <Wt/Ext/ComboBox>
+#include <Wt/WCheckBox>
+
 
 
 #include <map>
@@ -31,6 +39,12 @@
 #include <Wt/WStandardItemModel>
 #include <Wt/WTextArea>
 
+#include <pugixml.hpp>
+
+#include <iostream>
+#include "GMenuItem.h"
+
+
 #include <Wt/Ext/ToolBar>
 
 using namespace std;
@@ -46,11 +60,13 @@ class MainUI : public WContainerWidget
         
     private:
         WPopupMenu *ssm ;
+        WPopupMenu *menuToolBar;
         WPopupMenu *sm ;
         WMenuItem *mi ;
         WMenu *m ;
         WNavigationBar *n;
         WContainerWidget *mainContainer;
+        GMenuItem *mnuItem;
 
 
 };

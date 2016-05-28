@@ -62,17 +62,80 @@ using namespace std;
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
 
-	createUI(parent);
-	
+      createUI(parent);
+      
 }
 MainUI::~MainUI() { }
 
 
 void MainUI::createUI(WContainerWidget *parent) { 
 
-			WContainerWidget *mainContainer = new WContainerWidget(parent);
+                  WContainerWidget *mainContainer = new WContainerWidget(parent);
 
-			//setTheme(new WBootstrapTheme());
+      menuToolBar = new WPopupMenu();
+      menuToolBar->addItem("Mewafea");
+
+      pugi::xml_document doc;
+
+    pugi::xml_parse_result tos = doc.load_file("/home/mayank/Dropbox/Github/webgrass/menu-xml/menudata.xml");
+
+    std::cout << "Load result: " << tos.description() << std::endl;
+    pugi::xml_node menudata = doc.child("menudata");
+
+      std::string label,help,handler,shortcut,keywords,command;
+
+   for (pugi::xml_node menubar = menudata.child("menubar"); menubar; menubar = menubar.next_sibling("menubar")) 
+   {
+      for (pugi::xml_node menu = menubar.child("menu"); menu; menu = menu.next_sibling("menu")) 
+      {
+            label = menu.child_value("label"); //FILE
+         //Wt::WMenu *LayerMenu = new Wt::WMenu();
+         menuToolBar->addItem(label);
+
+
+
+            for (pugi::xml_node items = menu.child("items"); items; items = items.next_sibling("items")) 
+            {
+               for (pugi::xml_node nitem = items.child("menu"); nitem; nitem = nitem.next_sibling("menu")) 
+               {
+                     label = nitem.child_value("label"); //WORKSPACE
+                  //Wt::WMenu *subMenu1 = new Wt::WMenu();
+                  //LayerMenu->addItem(label,subMenu1);
+                  for (pugi::xml_node xitem = nitem.child("items"); xitem; xitem = xitem.next_sibling("items")) 
+                  {
+                     for (pugi::xml_node menuitem = xitem.child("menuitem"); menuitem; menuitem = menuitem.next_sibling("menuitem")) 
+                     {
+                        label = menuitem.child_value("label");
+                        help = menuitem.child_value("help");
+                           handler = menuitem.child_value("handler");
+                           shortcut = menuitem.child_value("shortcut");
+                        keywords = menuitem.child_value("keywords");
+                        command = menuitem.child_value("command");
+                 
+                        //mnuItem = new GMenuItem(label,command,keywords);
+
+
+
+
+                                     
+                        //subMenu1->addItem(mnuItem);
+
+                     }
+                  }
+               }
+
+            for (pugi::xml_node imenu = items.child("menuitem"); imenu; imenu = imenu.next_sibling("menuitem")) 
+            {
+               label = imenu.child_value("label"); //GEORECTIFY
+               //LayerMenu->addItem(label);
+
+            }
+
+         }
+      }
+   }
+
+                  //setTheme(new WBootstrapTheme());
 
             //addMetaHeader("viewport", "width = device-width, initial-scale = 1");
 
@@ -87,10 +150,10 @@ void MainUI::createUI(WContainerWidget *parent) {
 #ifdef SUBMENU_TEST
             mi = new WMenuItem("Menu Item 12");
             mi->addStyleClass("dropdown-submenu");
-            mi->setMenu(ssm);
+            mi->setMenu(menuToolBar);
             sm->addItem(mi);
 #else
-            sm->addMenu("Menu Item 12", ssm);
+            sm->addMenu("Menu Item 12", menuToolBar);
 #endif
 
             sm->addItem("Menu Item 13");
