@@ -78,7 +78,7 @@ void MainUI::createUI(WContainerWidget *parent) {
       pugi::xml_document doc;
 
       /* input file of menudata*/
-      const std::string MENUDATA_XML_FILE = WApplication::instance()->docRoot() + "/menu-xml/menudata2.xml";
+      const std::string MENUDATA_XML_FILE = WApplication::instance()->docRoot() + "/menu-xml/menudata.xml";
       pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
 
       std::cout << "Load result: " << tos.description() << std::endl;
