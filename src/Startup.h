@@ -46,7 +46,7 @@ public:
   Startup(std::string wgrass_login, WContainerWidget *parent);
 
 void startWebGrass();
-void show_files( const fs::path & full_path, vector<string>&directories, bool isDir );
+void showFiles( const fs::path & full_path, vector<string>&directories, bool isDir );
 void showMapsets(WString location);
 void locationUploaded();
 void updateLocationAndMapsets(string wgrass_login);
