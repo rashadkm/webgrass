@@ -1,0 +1,27 @@
+.mainContainer {    
+    margin:0 auto; /* this will center the page */
+    border: 1px solid green;
+    background-color: #c4ffb4;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 100vh; 
+}
+
+.startup-selectionbox {
+/*    background-color: #65dae8; */
+/*    height: 60vh; */
+    text-align: left;
+    padding: 3px;    
+}
+
+.start-button {
+  width:200px;
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+  margin-right: 10px;  
+  float: right;
+}
