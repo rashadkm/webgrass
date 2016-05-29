@@ -77,8 +77,10 @@ void MainUI::createUI(WContainerWidget *parent) {
       
       pugi::xml_document doc;
 
+
+
       /* input file of menudata*/
-      pugi::xml_parse_result tos = doc.load_file("/home/mayank/Dropbox/Github/webgrass/menu-xml/menudata2.xml");
+      pugi::xml_parse_result tos = doc.load_file("../menu-xml/menudata2.xml");
 
       std::cout << "Load result: " << tos.description() << std::endl;
 
