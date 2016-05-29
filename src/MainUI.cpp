@@ -72,96 +72,87 @@ void MainUI::createUI(WContainerWidget *parent) {
 
                   WContainerWidget *mainContainer = new WContainerWidget(parent);
 
-      menuToolBar = new WPopupMenu();
-      menuToolBar->addItem("Mewafea");
+    
+      File = new WPopupMenu();
+      Settings = new WPopupMenu();
+      Raster = new WPopupMenu();
+      Vector = new WPopupMenu();
+      Imagery = new WPopupMenu();
+      Volumes = new WPopupMenu();
+      Database = new WPopupMenu();
+      Temporal = new WPopupMenu();
+      Help = new WPopupMenu();
+      
 
       pugi::xml_document doc;
 
-    pugi::xml_parse_result tos = doc.load_file("/home/mayank/Dropbox/Github/webgrass/menu-xml/menudata.xml");
+      pugi::xml_parse_result tos = doc.load_file("/home/mayank/Dropbox/Github/webgrass/menu-xml/menudata2.xml");
 
-    std::cout << "Load result: " << tos.description() << std::endl;
-    pugi::xml_node menudata = doc.child("menudata");
+      std::cout << "Load result: " << tos.description() << std::endl;
+      pugi::xml_node menudata = doc.child("menudata");
 
-      std::string label,help,handler,shortcut,keywords,command;
+      std::string label,help,handler,shortcut,keywords,command,label2,label3;
 
-   for (pugi::xml_node menubar = menudata.child("menubar"); menubar; menubar = menubar.next_sibling("menubar")) 
-   {
-      for (pugi::xml_node menu = menubar.child("menu"); menu; menu = menu.next_sibling("menu")) 
+
+      for (pugi::xml_node menubar = menudata.child("menubar"); menubar; menubar = menubar.next_sibling("menubar")) 
       {
-            label = menu.child_value("label"); //FILE
-         //Wt::WMenu *LayerMenu = new Wt::WMenu();
-         menuToolBar->addItem(label);
+         for (pugi::xml_node menu = menubar.child("menu"); menu; menu = menu.next_sibling("menu")) 
+         {
+               label = menu.child_value("label"); 
 
-
-
-            for (pugi::xml_node items = menu.child("items"); items; items = items.next_sibling("items")) 
-            {
-               for (pugi::xml_node nitem = items.child("menu"); nitem; nitem = nitem.next_sibling("menu")) 
+               for (pugi::xml_node items = menu.child("items"); items; items = items.next_sibling("items")) 
                {
-                     label = nitem.child_value("label"); //WORKSPACE
-                  //Wt::WMenu *subMenu1 = new Wt::WMenu();
-                  //LayerMenu->addItem(label,subMenu1);
-                  for (pugi::xml_node xitem = nitem.child("items"); xitem; xitem = xitem.next_sibling("items")) 
+                  for (pugi::xml_node nitem = items.child("menu"); nitem; nitem = nitem.next_sibling("menu")) 
                   {
-                     for (pugi::xml_node menuitem = xitem.child("menuitem"); menuitem; menuitem = menuitem.next_sibling("menuitem")) 
+                     label2 = nitem.child_value("label");
+                     file1 = new WPopupMenu();
+                     for (pugi::xml_node xitem = nitem.child("items"); xitem; xitem = xitem.next_sibling("items"))
                      {
-                        label = menuitem.child_value("label");
-                        help = menuitem.child_value("help");
-                           handler = menuitem.child_value("handler");
-                           shortcut = menuitem.child_value("shortcut");
-                        keywords = menuitem.child_value("keywords");
-                        command = menuitem.child_value("command");
-                 
-                        //mnuItem = new GMenuItem(label,command,keywords);
-
-
-
-
-                                     
-                        //subMenu1->addItem(mnuItem);
-
+                        for (pugi::xml_node menuitem = xitem.child("menuitem"); menuitem; menuitem = menuitem.next_sibling("menuitem"))
+                        {
+                           label3 = menuitem.child_value("label");
+                           file1->addItem(label3);
+                        }
                      }
+                     if(label=="File")
+                        File->addMenu(label2,file1);
+                     else if(label=="Settings")
+                        Settings->addMenu(label2,file1);
+                     else if(label=="Raster")
+                        Raster->addMenu(label2,file1);
+                     else if(label=="Vector")
+                        Vector->addMenu(label2,file1);
+                     else if(label=="Imagery")
+                        Imagery->addMenu(label2,file1);
+                     else if(label=="Volumes")
+                        Volumes->addMenu(label2,file1);
+                     else if(label=="Database")
+                        Database->addMenu(label2,file1);
+                     else if(label=="Temporal")
+                        Temporal->addMenu(label2,file1);
+                     else if(label=="Help")
+                        Help->addMenu(label2,file1);
+
+                     
                   }
                }
-
-            for (pugi::xml_node imenu = items.child("menuitem"); imenu; imenu = imenu.next_sibling("menuitem")) 
-            {
-               label = imenu.child_value("label"); //GEORECTIFY
-               //LayerMenu->addItem(label);
-
-            }
+               
 
          }
       }
-   }
 
-                  //setTheme(new WBootstrapTheme());
-
-            //addMetaHeader("viewport", "width = device-width, initial-scale = 1");
-
-            //root()->addStyleClass("container-fluid");
-
-            ssm = new WPopupMenu();
-            ssm->addItem("Menu Item 121");
-
-            sm = new WPopupMenu();
-            sm->addItem("Menu Item 11");
-#define SUBMENU_TEST
-#ifdef SUBMENU_TEST
-            mi = new WMenuItem("Menu Item 12");
-            mi->addStyleClass("dropdown-submenu");
-            mi->setMenu(menuToolBar);
-            sm->addItem(mi);
-#else
-            sm->addMenu("Menu Item 12", menuToolBar);
-#endif
-
-            sm->addItem("Menu Item 13");
 
             m = new WMenu();
-            m->addMenu("Test 1", sm);
-            m->addItem("Test 2");
-            m->addItem("Test 3");
+            m->addMenu("File", File);
+            m->addMenu("Settings", Settings);
+            m->addMenu("Raster", Raster);
+            m->addMenu("Vector", Vector);
+            m->addMenu("Imagery", Imagery);
+            m->addMenu("Volumes", Volumes);
+            m->addMenu("Database", Database);
+            m->addMenu("Temporal", Temporal);
+            m->addMenu("Help", Help);
+            
 
             //n = new WNavigationBar(mainContainer);
             Wt::WNavigationBar *n = new Wt::WNavigationBar(mainContainer);

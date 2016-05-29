@@ -61,6 +61,16 @@ class MainUI : public WContainerWidget
     private:
         WPopupMenu *ssm ;
         WPopupMenu *menuToolBar;
+        WPopupMenu *File;
+        WPopupMenu *Settings;
+        WPopupMenu *Raster;
+        WPopupMenu *Vector;
+        WPopupMenu *Imagery;
+        WPopupMenu *Volumes;
+        WPopupMenu *Database;
+        WPopupMenu *Temporal;
+        WPopupMenu *Help;
+        WPopupMenu *file1;
         WPopupMenu *sm ;
         WMenuItem *mi ;
         WMenu *m ;
