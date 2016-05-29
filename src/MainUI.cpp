@@ -72,87 +72,76 @@ void MainUI::createUI(WContainerWidget *parent) {
 
                   WContainerWidget *mainContainer = new WContainerWidget(parent);
 
-    
-      File = new WPopupMenu();
-      Settings = new WPopupMenu();
-      Raster = new WPopupMenu();
-      Vector = new WPopupMenu();
-      Imagery = new WPopupMenu();
-      Volumes = new WPopupMenu();
-      Database = new WPopupMenu();
-      Temporal = new WPopupMenu();
-      Help = new WPopupMenu();
+      /*top menu */
+      m = new WMenu(); 
       
-
       pugi::xml_document doc;
 
+      /* input file of menudata*/
       pugi::xml_parse_result tos = doc.load_file("/home/mayank/Dropbox/Github/webgrass/menu-xml/menudata2.xml");
 
       std::cout << "Load result: " << tos.description() << std::endl;
+
+      /* iteration over menudata but since only one is there so */
       pugi::xml_node menudata = doc.child("menudata");
 
       std::string label,help,handler,shortcut,keywords,command,label2,label3;
 
+      /* iteration over menubar but since only one is there so */
+      pugi::xml_node menubar = menudata.child("menubar");
+      
 
-      for (pugi::xml_node menubar = menudata.child("menubar"); menubar; menubar = menubar.next_sibling("menubar")) 
-      {
+
+         /* iteration over fisrt occurane of menu */
          for (pugi::xml_node menu = menubar.child("menu"); menu; menu = menu.next_sibling("menu")) 
-         {
+         { 
+               std::string firstLevel_label = menu.child_value("label");
+               /* first menu creation */
+               WPopupMenu *firstLevel = new WPopupMenu();
+               m->addMenu(firstLevel_label, firstLevel);
                label = menu.child_value("label"); 
-
+              
+               /* iteration over first occurance of items */
                for (pugi::xml_node items = menu.child("items"); items; items = items.next_sibling("items")) 
                {
+
+                  /* iteration over second occurane of menu */
                   for (pugi::xml_node nitem = items.child("menu"); nitem; nitem = nitem.next_sibling("menu")) 
                   {
+                     std::string nextLevel_label = nitem.child_value("label");
+                     /* submenu creation */
+                     WPopupMenu *nextLevel = new WPopupMenu();
+                     firstLevel->addMenu(nextLevel_label, nextLevel);
                      label2 = nitem.child_value("label");
-                     file1 = new WPopupMenu();
+
+                      /* iteration over second occurance of items */
                      for (pugi::xml_node xitem = nitem.child("items"); xitem; xitem = xitem.next_sibling("items"))
                      {
+
+                         /* iteration over internal occurance of menuitem */
                         for (pugi::xml_node menuitem = xitem.child("menuitem"); menuitem; menuitem = menuitem.next_sibling("menuitem"))
                         {
                            label3 = menuitem.child_value("label");
-                           file1->addItem(label3);
+                           nextLevel->addItem(label3);
                         }
                      }
-                     if(label=="File")
-                        File->addMenu(label2,file1);
-                     else if(label=="Settings")
-                        Settings->addMenu(label2,file1);
-                     else if(label=="Raster")
-                        Raster->addMenu(label2,file1);
-                     else if(label=="Vector")
-                        Vector->addMenu(label2,file1);
-                     else if(label=="Imagery")
-                        Imagery->addMenu(label2,file1);
-                     else if(label=="Volumes")
-                        Volumes->addMenu(label2,file1);
-                     else if(label=="Database")
-                        Database->addMenu(label2,file1);
-                     else if(label=="Temporal")
-                        Temporal->addMenu(label2,file1);
-                     else if(label=="Help")
-                        Help->addMenu(label2,file1);
 
                      
                   }
+
+                  /* iteration over outer occurance of menuitem */
+                  for (pugi::xml_node nmitem = items.child("menuitem"); nmitem; nmitem = nmitem.next_sibling("menuitem"))  
+                  {
+                      std::string nextLevelItem_label = nmitem.child_value("label");     
+                     firstLevel->addItem(nextLevelItem_label);
+                  }
+
+
                }
                
 
          }
-      }
-
-
-            m = new WMenu();
-            m->addMenu("File", File);
-            m->addMenu("Settings", Settings);
-            m->addMenu("Raster", Raster);
-            m->addMenu("Vector", Vector);
-            m->addMenu("Imagery", Imagery);
-            m->addMenu("Volumes", Volumes);
-            m->addMenu("Database", Database);
-            m->addMenu("Temporal", Temporal);
-            m->addMenu("Help", Help);
-            
+      
 
             //n = new WNavigationBar(mainContainer);
             Wt::WNavigationBar *n = new Wt::WNavigationBar(mainContainer);
