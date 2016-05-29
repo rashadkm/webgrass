@@ -14,21 +14,16 @@ License (>=v2). Read the file COPYING for details.
 
 #include "WGApplication.h"
 
-#include "login.h"
-
 #include "Startup.h"
 
 
 WGApplication::WGApplication(const WEnvironment& env)
   : WApplication(env)
 {
-  /* setCssTheme("polished"); */
+ 
   setTheme(new WBootstrapTheme());
 
   addMetaHeader("viewport", "width = device-width, initial-scale = 1");
- 
-  root()->addStyleClass("container-fluid");
-
 
   internalPathChanged().connect(this, &WGApplication::handlePathChanged);
 
@@ -49,7 +44,7 @@ void WGApplication::handlePathChanged(string loc_string)
            mapset     = this->environment().getCookie("wgrass_mapset");
          }
          catch (exception& e) {
-           cout << "COOKIE EXCEPTION: " << e.what() << endl;
+	   //           cout << "COOKIE EXCEPTION: " << e.what() << endl;
          }
 
          if(current_path == "/grass")
@@ -59,7 +54,7 @@ void WGApplication::handlePathChanged(string loc_string)
              setTitle("GRASS GIS UI");
            }
          else {
-           root()->clear();
+	   root()->clear();
            Startup* startup = new Startup(uname, root());
            setTitle("Select Location and Mapset");
          }
@@ -78,6 +73,9 @@ WApplication *createApplication(const WEnvironment& env)
   WGApplication *app = new WGApplication(env);
 
   app->setTwoPhaseRenderingThreshold(0);
+
+  
+
 
   return app;
 }

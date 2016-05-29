@@ -1,41 +1,37 @@
-#include <Wt/WApplication>
-#include <Wt/WPaintedWidget>
+#include <stdlib.h>
+#include <fstream>
+#include <iostream>
+
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/filesystem.hpp>
+
 #include <Wt/WContainerWidget>
-#include <Wt/WPainter>
-#include <Wt/WTable>
-#include <Wt/WEnvironment>
-
-
-
-#include <Wt/WFileUpload>
 #include <Wt/WHBoxLayout>
 #include <Wt/WVBoxLayout>
 #include <Wt/WBorderLayout>
 #include <Wt/WPushButton>
 #include <Wt/WGridLayout>
-
-#include <Wt/Http/Request>
+#include <Wt/WGroupBox>
+#include <Wt/WVBoxLayout>
+#include <Wt/WHBoxLayout>
+#include <Wt/WImage>
 #include <Wt/WCheckBox>
 #include <Wt/WLineEdit>
-#include <Wt/WDialog>
-#include <Wt/WSlider>
 #include <Wt/WText>
+#include <Wt/WLabel>
+#include <Wt/WSelectionBox>
 
 using namespace Wt;
 
-#include <stdlib.h>
-#include <fstream>
-#include <iostream>
-
-#include <Wt/WLabel>
-#include <Wt/WRandom>
-#include <Wt/WComboBox>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/filesystem.hpp>
+#include "login.h"
+#include "global.h"
 
 
 using namespace std;
+
+//using namespace boost::filesystem; 
+
 
 namespace fs = boost::filesystem;
 
@@ -64,9 +60,8 @@ WSelectionBox *WtSelectionBoxLocation;
 string m_location;
 string m_mapset;
 string m_GrassDataDirectory;
-string m_GrassMapsetDirectory;
 
-WAnimation anim;
+
 WContainerWidget *unameWidget;
 string base_path;
 WFileUpload *lupload;
