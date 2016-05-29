@@ -9,68 +9,75 @@ License (>=v2). Read the file COPYING for details.
 #include <Wt/WEnvironment>
 #include <Wt/WLabel>
 #include <Wt/WRandom>
-
-#include "WGrass.h"
+#include <Wt/WBootstrapTheme>
+#include "MainUI.h"
 
 #include "WGApplication.h"
 
 #include "login.h"
 
 #include "Startup.h"
+
+
 WGApplication::WGApplication(const WEnvironment& env)
-	: WApplication(env)
-  	{
-    	setCssTheme("polished");
+  : WApplication(env)
+{
+  /* setCssTheme("polished"); */
+  setTheme(new WBootstrapTheme());
 
-   
+  addMetaHeader("viewport", "width = device-width, initial-scale = 1");
+ 
+  root()->addStyleClass("container-fluid");
 
-   WApplication *wapp = WApplication::instance();
-std::string uname;
-std::string location;
-std::string mapset;
 
-            try {
-            	uname = wapp->environment().getCookie("wgrass_login");
-            	location = wapp->environment().getCookie("wgras_location");
-            	mapset = wapp->environment().getCookie("wgras_mapset");
-            } catch (exception& e) {  cout << "COOKIE EXCEPTION: " << e.what() << endl; }
+  internalPathChanged().connect(this, &WGApplication::handlePathChanged);
 
-            if (uname.empty())  {
-               new Login(root());
-            }
-            else if(location.empty() || mapset.empty()) {
-                new Startup(uname, root());
-                wapp->setTitle("Select Location and Mapset");
-            }
-            else {
-               new WGrass(root());
-
-            }
+  WApplication::instance()->setInternalPath("/grass", true);
+ 
 }
 
 
 
-    /*! \brief 
-    Creates a WApplication instance and return it
-	*/
+void WGApplication::handlePathChanged(string loc_string)
+{
+  std::string current_path = internalPath();
+  std::string uname, location, mapset;
+
+         try {
+           uname      = this->environment().getCookie("wgrass_login");
+           location   = this->environment().getCookie("wgrass_location");
+           mapset     = this->environment().getCookie("wgrass_mapset");
+         }
+         catch (exception& e) {
+           cout << "COOKIE EXCEPTION: " << e.what() << endl;
+         }
+
+         if(current_path == "/grass")
+           {
+             root()->clear();
+             MainUI * page_entry = new MainUI(root());
+             setTitle("GRASS GIS UI");
+           }
+         else {
+           root()->clear();
+           Startup* startup = new Startup(uname, root());
+           setTitle("Select Location and Mapset");
+         }
+ 
+}
+
+
+
+/*! \brief 
+  Creates a WApplication instance and return it
+*/
 
 WApplication *createApplication(const WEnvironment& env)
 {
 
-
-
-  WApplication *app = new WGApplication(env);
-
+  WGApplication *app = new WGApplication(env);
 
   app->setTwoPhaseRenderingThreshold(0);
-    /*! \brief 
-    Sets the application title.
-    */
-  app->setTitle("GRASS GIS Web UI");
-
-  app->useStyleSheet("styles.css");
-
-  //app->useStyleSheet("ows.css");
 
   return app;
 }

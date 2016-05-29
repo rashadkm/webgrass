@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
 PROJECT (WebGRASS)
 ADD_EXECUTABLE(wgrass.wt
-src/WGrass.cpp
+src/MainUI.cpp
 src/WGApplication.cpp
 src/WOpenLayers.cpp
 src/global.cpp
