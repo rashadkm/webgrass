@@ -1,31 +1,58 @@
-CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
-PROJECT (WebGRASS)
-ADD_EXECUTABLE(wgrass.wt
+cmake_minimum_required (VERSION 2.8)
+
+project (WebGRASS)
+
+add_executable(wgrass.wt
 src/MainUI.cpp
 src/WGApplication.cpp
-src/WOpenLayers.cpp
-src/global.cpp
 src/main.cpp
-src/login.cpp
+
 src/Startup.cpp
-src/WGrassLayerManager.cpp
-src/WGrassMenuBar.cpp
-src/GMenuItem.cpp
-src/WGMenuForm.cpp
+
 )
-SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+# src/WGrassLayerManager.cpp
+# src/WGrassMenuBar.cpp
+# src/GMenuItem.cpp
+# src/WGMenuForm.cpp
+#src/WOpenLayers.cpp
+#src/login.cpp
+#src/global.cpp
 
-#need an actual cmake gdal find package
-include_directories("/usr/include/gdal")
-FIND_PACKAGE( Wt REQUIRED )
-IF (NOT Wt_FOUND)
-  MESSAGE (SEND_ERROR "Wt dependency was not found!")
-ENDIF (NOT Wt_FOUND)
-INCLUDE_DIRECTORIES( ${Wt_INCLUDE_DIR} )
-#ADD_DEPENDENCIES(wgrass.wt wt wthttp)
-TARGET_LINK_LIBRARIES(wgrass.wt 
-${Wt_LIBRARY}
-${Wt_HTTP_LIBRARY}
-${Wt_EXT_LIBRARY}
-boost_filesystem boost_signals boost_system pq /usr/lib/x86_64-linux-gnu/libpugixml.so.1 )
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
+set( GRASS_DATA_DIR "$ENV{HOME}/grassdata" CACHE PATH "Location of grassdata directory. Default is $HOME/grassdata")
+
+find_package( Wt REQUIRED )
+if (NOT Wt_FOUND)
+  message (FATAL_ERROR "Wt dependency was not found!")
+endif (NOT Wt_FOUND)
+include_directories( ${Wt_INCLUDE_DIR} )
+
+find_package( Boost REQUIRED
+  QUIET
+  1.35.0
+  COMPONENTS filesystem signals system
+  )
+include_directories( ${Boost_INCLUDE_DIRS} )
+
+
+find_path(PUGIXML_INCLUDE_DIR NAMES pugixml.hpp)
+find_library(PUGIXML_LIBRARY NAMES pugixml)
+
+target_link_libraries(wgrass.wt
+  ${Wt_LIBRARY} ${Wt_HTTP_LIBRARY}
+  ${Boost_LIBRARIES}
+  ${PUGIXML_LIBRARY}
+ )
+
+configure_file(
+  ${CMAKE_SOURCE_DIR}/wgrassconfig.h.in
+  ${CMAKE_BINARY_DIR}/wgrassconfig.h @ONLY
+  )
+
+include_directories( ${CMAKE_BINARY_DIR} )
+
+message(STATUS "GRASS_DATA_DIR=${GRASS_DATA_DIR}")
+#aptitude install libwt-dev libwthttp-dev libwtdbo-dev libwtdbosqlite-dev
+#aptitude install libboost-system-dev libboost-singals-dev libboost-filesystem-dev
+#aptitude install libpugixml-dev
