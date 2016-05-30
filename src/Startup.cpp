@@ -1,41 +1,13 @@
+#include <Wt/WApplication>
+
 #include "Startup.h"
-
-/* for returning the files in a directory */
-void Startup::showFiles( const fs::path & directory, vector<string>&directories, bool recurse_into_subdirs = true )
-{
-  if( fs::exists( directory ) )    {
-    fs::directory_iterator end ;
-    for( fs::directory_iterator iter(directory) ; iter != end ; ++iter ) {
-      if ( fs::is_directory( *iter ) )  {
-	  directories.push_back(iter->path().leaf().string() );	  
-	}
-      }
-  }
-}
-
-/* checking whether given directory exists or not */
-bool Startup::checkExistance(std::string directory, std::string path)  {
-  return boost::filesystem::exists( path + "/" + directory ); 
-}
-
-
-/* initial construction of the mapset and Location wizard */
-void Startup::makeSelectionBox(WSelectionBox *box, vector<string> dir, string di) {
-  for(vector<string>::iterator it = dir.begin();it!=dir.end();++it)  {
-    bool isValidLocation = checkExistance(*it, di);
-    if (isValidLocation) {
-      box->addItem(*it);
-    } 
-  }
-}
 
 Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   :WContainerWidget(parent) {
 
     WApplication::instance()->useStyleSheet("style.css");
-    
+
   /* GRASS GIS database library */
-  m_GrassDataDirectory = "/home/mayank/webgrassdata";
 
   setStyleClass("mainContainer");
 
@@ -47,42 +19,34 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
 
   addWidget(image);
 
-
-  /* layout with the use of grid. grid uses coordinates */    
+  /* layout with the use of grid. grid uses coordinates */
   WContainerWidget *selectionBoxContainer = new WContainerWidget();
   Wt::WHBoxLayout *selectionBoxContainerLayout = new Wt::WHBoxLayout();
   selectionBoxContainer->setLayout(selectionBoxContainerLayout);
 
   addWidget(new WBreak());
-  
+
   addWidget(new WText("GRASS GIS data directory"));
-  
+
   Wt::WSelectionBox *datadir = new Wt::WSelectionBox();
-  
-  datadir->resize(200, 25);
-  
-  datadir->addItem(m_GrassDataDirectory);
+
+  datadir->resize(400, 30);
+  datadir->addItem(GRASS_DATA_DIR);
   addWidget(datadir);
-    
-  const fs::path fi= m_GrassDataDirectory;
-  vector<string> dir;
-  showFiles(fi,dir,true);
- 
+
   Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout();
-  WtSelectionBoxLocation = new Wt::WSelectionBox(); 
+  WtSelectionBoxLocation = new Wt::WSelectionBox();
   //  WtSelectionBoxLocation->setStyleClass("startup-selectionbox");
   WtSelectionBoxLocation->resize(200,300);
-  makeSelectionBox(WtSelectionBoxLocation, dir, m_GrassDataDirectory);
+  makeSelectionBox(WtSelectionBoxLocation, "");
   selectionBoxContainerLayout->addWidget(WtSelectionBoxLocation);
   addWidget(selectionBoxContainer);
-  
-  /* capturing the click */
-  WtSelectionBoxLocation->sactivated().connect(this, &Startup::locationChanged); 
+  WtSelectionBoxLocation->activated().connect(this, &Startup::locationChanged);
 
-    
-  WtSelectionBoxMapset = new Wt::WSelectionBox(); 
-  WtSelectionBoxMapset->sactivated().connect(this, &Startup::mapsetChanged);
+  WtSelectionBoxMapset = new Wt::WSelectionBox();
+  WtSelectionBoxMapset->activated().connect(this, &Startup::mapsetChanged);
   selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset);
+  WtSelectionBoxLocation->setCurrentIndex(-1);
 
 
   //  Wt::WGroupBox *groupBox2 = new Wt::WGroupBox("Accessile Mapsets");
@@ -93,45 +57,28 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   startWGrass->setStyleClass("start-button");
   startWGrass->clicked().connect(this , &Startup::startWebGrass);
   addWidget(startWGrass);
-  
-}
 
+}
 
 /* dynamic updation of mapset when location changed and m_location variable */
-void Startup::locationChanged(WString loc_string){ 
-       
-  m_location = loc_string.narrow();
-  
+void Startup::locationChanged( int index ) {
   WtSelectionBoxMapset->clear();
-  vector<string> directories;
-  string hh=m_GrassDataDirectory;
-  string gg=hh+(string)"/";
-  string jj=gg+m_location;
-
-  const fs::path fii= gg + m_location;
-
-  showFiles(fii,directories,true );
-  makeSelectionBox(WtSelectionBoxMapset,directories,jj);
+  m_location = WtSelectionBoxLocation->itemText(index).narrow();
+  makeSelectionBox(WtSelectionBoxMapset, m_location);
 
 }
-
 
 /* dynamic updation of the m_mapset variable */
-void Startup::mapsetChanged(WString map_string){  
-	
-  //  cout<<map_string.narrow()<<endl;
-  m_mapset = map_string.narrow();
+void Startup::mapsetChanged( int index ) {
+    m_mapset = WtSelectionBoxMapset->itemText(index).narrow();
 }
-
 
 
 void Startup::startWebGrass() {
 
-  //  cout<<m_location<<endl;   cout<<m_mapset<<endl;
-
   /* setting the cookies */
-  WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24); 
-  WApplication::instance()->setCookie("wgrass_mapset", m_mapset , 60*60*24*24);	
+  WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24);
+  WApplication::instance()->setCookie("wgrass_mapset", m_mapset , 60*60*24*24);
 
   // std::ofstream grassrc;
   //  grassrc.open ("./grassrc7");
@@ -145,10 +92,33 @@ void Startup::startWebGrass() {
 }
 
 
+/* for returning the files in a directory */
+void Startup::getFileList( vector<string>& dirlist, std::string subdir, bool recurse_into_subdirs ) {
+  const fs::path basedir = std::string(GRASS_DATA_DIR) + "/" + subdir;
+  if( fs::exists( basedir ) )  {
+    fs::directory_iterator end ;
+    for( fs::directory_iterator iter(basedir) ; iter != end ; ++iter ) {
+      if ( fs::is_directory( *iter ) )  {
+       dirlist.push_back(iter->path().leaf().string() );
+      }
+    }
+  }
+}
 
+/* checking whether given directory exists or not */
+bool Startup::checkExistance(std::string parent, std::string dir)  {
+  const fs::path directory = std::string(GRASS_DATA_DIR) + "/" + parent + "/" + dir;
+  return boost::filesystem::exists( directory );
+}
 
-
-
-
-
-
+/* initial construction of the mapset and Location wizard */
+void Startup::makeSelectionBox(WSelectionBox *box, std::string dir) {
+  std::vector<string> dirlist;
+  getFileList(dirlist, dir, false);
+  for( vector<string>::iterator it = dirlist.begin(); it!=dirlist.end(); ++it ) {
+  bool isValidLocation = checkExistance(dir, *it);
+    if (isValidLocation) {
+      box->addItem(*it);
+    }
+  }
+}
