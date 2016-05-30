@@ -1,156 +1,83 @@
-#include <Wt/WApplication>
-#include <Wt/WBreak>
-#include <Wt/WContainerWidget>
-#include <Wt/WLineEdit>
-#include <Wt/WPushButton>
-#include <Wt/WText>
-#include <Wt/WBorderLayout>
-#include <Wt/WGridLayout>
-#include <Wt/WHBoxLayout>
-#include <Wt/WFileUpload>
-#include <Wt/WTabWidget>
-#include <Wt/WVBoxLayout>
-#include <Wt/WNavigationBar>
-#include <Wt/WMenuItem>
-#include <Wt/WMessageBox>
-#include <Wt/WPopupMenu>
 
-
-using namespace Wt;
-
-
-#include <string>
-#include <stdlib.h>
-#include <vector>
-#include <map>
-#include <algorithm>
-
-using namespace std;
-
-
-#include "MainUI.h"
-#include "global.h"
+#include <iostream>
 #include <pugixml.hpp>
 
+#include <Wt/WApplication>
 
-
-#include <boost/assign/list_of.hpp> 
-#include <boost/bind.hpp>  
-
-
-#include <boost/asio.hpp> 
-#include <boost/assign/list_of.hpp> 
-#include <boost/array.hpp> 
-#include <boost/any.hpp>
-#include <boost/algorithm/string.hpp>
-
-
-#if defined(BOOST_POSIX_API) 
-#   include <sys/wait.h> 
-#endif 
-
-//namespace bp = boost::process; 
-
-#define INLINE_JAVASCRIPT(...) #__VA_ARGS__
-
-#include "pstream.h"
-#include "WGrassLayerManager.h"
-
-#include "WGrassMenuBar.h"
-
-
+#include "MainUI.h"
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
 
       createUI(parent);
-      
+
 }
 MainUI::~MainUI() { }
 
 
-void MainUI::createUI(WContainerWidget *parent) { 
+void MainUI::createUI(Wt::WContainerWidget *parent) {
 
-                  WContainerWidget *mainContainer = new WContainerWidget(parent);
+  Wt::WMenu *menu =  new Wt::WMenu();
 
-      /*top menu */
-      m = new WMenu(); 
-      
-      pugi::xml_document doc;
+  pugi::xml_document doc;
 
-      /* input file of menudata*/
-      const std::string MENUDATA_XML_FILE = WApplication::instance()->docRoot() + "/menu-xml/menudata.xml";
-      pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
+  /* input file of menudata*/
+  const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/menu-xml/menudata.xml";
+  pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
 
-      std::cout << "Load result: " << tos.description() << std::endl;
+  std::cout << "Load result: " << tos.description() << std::endl;
 
-      /* iteration over menudata but since only one is there so */
-      pugi::xml_node menudata = doc.child("menudata");
+  /* iteration over menudata but since only one is there so */
+  pugi::xml_node menudata_node = doc.child("menudata");
+  /* iteration over menubar but since only one is there so */
+  pugi::xml_node menubar_node = menudata_node.child("menubar");
 
-      std::string label,help,handler,shortcut,keywords,command,label2,label3;
-
-      /* iteration over menubar but since only one is there so */
-      pugi::xml_node menubar = menudata.child("menubar");
-      
+  /* iteration over fisrt occurane of menu */
+  pugi::xml_node menu_node = menubar_node.child("menu");
+  while( menu_node ) {
 
 
-         /* iteration over fisrt occurane of menu */
-         for (pugi::xml_node menu = menubar.child("menu"); menu; menu = menu.next_sibling("menu")) 
-         { 
-               std::string firstLevel_label = menu.child_value("label");
-               /* first menu creation */
-               WPopupMenu *firstLevel = new WPopupMenu();
-               m->addMenu(firstLevel_label, firstLevel);
-               label = menu.child_value("label"); 
-              
-               /* iteration over first occurance of items */
-               for (pugi::xml_node items = menu.child("items"); items; items = items.next_sibling("items")) 
-               {
+    /* first menu creation */
+    Wt::WPopupMenu *firstLevel = new Wt::WPopupMenu();
+    menu->addMenu(menu_node.child_value("label"), firstLevel);
+    /* iteration over first occurance of items */
+    pugi::xml_node menu_items_node = menu_node.child("items");
+    while( menu_items_node ) {
+       /* iteration over second occurane of menu */
+       pugi::xml_node menu_items_menu_node = menu_items_node.child("menu");
+       while( menu_items_menu_node ) {
+          /* submenu creation */
+          Wt::WPopupMenu *nextLevel = new Wt::WPopupMenu();
+          firstLevel->addMenu(menu_items_menu_node.child_value("label"), nextLevel);
+          /* iteration over second occurance of items */
+          pugi::xml_node menu_items_menu_items_node = menu_items_menu_node.child("items");
+          while ( menu_items_menu_items_node ) {
+             /* iteration over internal occurance of menuitem */
+             pugi::xml_node menu_items_menu_items_menuitem_node = menu_items_menu_items_node.child("menuitem");
+             while( menu_items_menu_items_menuitem_node ) {
+                nextLevel->addItem(menu_items_menu_items_menuitem_node.child_value("label"));
+                menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
+             }
+             menu_items_menu_items_node = menu_items_menu_items_node.next_sibling("items");
+          }
+          menu_items_menu_node = menu_items_menu_node.next_sibling("menu");
+       }
 
-                  /* iteration over second occurane of menu */
-                  for (pugi::xml_node nitem = items.child("menu"); nitem; nitem = nitem.next_sibling("menu")) 
-                  {
-                     std::string nextLevel_label = nitem.child_value("label");
-                     /* submenu creation */
-                     WPopupMenu *nextLevel = new WPopupMenu();
-                     firstLevel->addMenu(nextLevel_label, nextLevel);
-                     label2 = nitem.child_value("label");
+       /* iteration over outer occurance of menuitem */
+       pugi::xml_node menu_items_menuitem_node = menu_items_node.child("menuitem");
+       while ( menu_items_menuitem_node ) {
+          firstLevel->addItem(menu_items_menuitem_node.child_value("label"));
+          menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
+       }
 
-                      /* iteration over second occurance of items */
-                     for (pugi::xml_node xitem = nitem.child("items"); xitem; xitem = xitem.next_sibling("items"))
-                     {
+       menu_items_node = menu_items_node.next_sibling("items");
 
-                         /* iteration over internal occurance of menuitem */
-                        for (pugi::xml_node menuitem = xitem.child("menuitem"); menuitem; menuitem = menuitem.next_sibling("menuitem"))
-                        {
-                           label3 = menuitem.child_value("label");
-                           nextLevel->addItem(label3);
-                        }
-                     }
+       menu_node = menu_node.next_sibling("menu");
+    }
+  }
 
-                     
-                  }
-
-                  /* iteration over outer occurance of menuitem */
-                  for (pugi::xml_node nmitem = items.child("menuitem"); nmitem; nmitem = nmitem.next_sibling("menuitem"))  
-                  {
-                      std::string nextLevelItem_label = nmitem.child_value("label");     
-                     firstLevel->addItem(nextLevelItem_label);
-                  }
-
-
-               }
-               
-
-         }
-      
-
-            //n = new WNavigationBar(mainContainer);
-            Wt::WNavigationBar *n = new Wt::WNavigationBar(mainContainer);
-
-            n->setResponsive(true);
-            n->addMenu(m);
+  Wt::WNavigationBar *naivgationbar = new Wt::WNavigationBar();
+  naivgationbar->setResponsive(true);
+  naivgationbar->addMenu(menu);
+  addWidget(naivgationbar);
 
 }
-
-
-
