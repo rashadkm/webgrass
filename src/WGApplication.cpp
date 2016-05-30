@@ -6,79 +6,63 @@ License (>=v2). Read the file COPYING for details.
 */
 
 #include <Wt/WApplication>
-#include <Wt/WEnvironment>
 #include <Wt/WLabel>
 #include <Wt/WRandom>
 #include <Wt/WBootstrapTheme>
-#include "MainUI.h"
 
 #include "WGApplication.h"
-
+#include "MainUI.h"
 #include "Startup.h"
 
 
-WGApplication::WGApplication(const WEnvironment& env)
-  : WApplication(env)
-{
- 
-  setTheme(new WBootstrapTheme());
+WGApplication::WGApplication(const Wt::WEnvironment& env)
+: Wt::WApplication(env) {
 
-  addMetaHeader("viewport", "width = device-width, initial-scale = 1");
+setTheme(new Wt::WBootstrapTheme());
 
-  internalPathChanged().connect(this, &WGApplication::handlePathChanged);
+addMetaHeader("viewport", "width = device-width, initial-scale = 1");
 
-  WApplication::instance()->setInternalPath("/start", true);
- 
+internalPathChanged().connect(this, &WGApplication::handlePathChanged);
+
+Wt::WApplication::instance()->setInternalPath("/start", true);
+
 }
 
+void WGApplication::handlePathChanged(std::string loc_string) {
 
+ std::string current_path = internalPath();
+ std::string uname, location, mapset;
 
-void WGApplication::handlePathChanged(string loc_string)
-{
-  std::string current_path = internalPath();
-  std::string uname, location, mapset;
-
-         try {
-           uname      = this->environment().getCookie("wgrass_login");
-           location   = this->environment().getCookie("wgrass_location");
-           mapset     = this->environment().getCookie("wgrass_mapset");
+try {
+uname      = this->environment().getCookie("wgrass_login");
+location   = this->environment().getCookie("wgrass_location");
+mapset     = this->environment().getCookie("wgrass_mapset");
          }
-         catch (exception& e) {
+catch (exception& e) {
 	   //           cout << "COOKIE EXCEPTION: " << e.what() << endl;
          }
 
-         if(current_path == "/grass")
+if(current_path == "/grass")
            {
-             root()->clear();
+root()->clear();
              MainUI * page_entry = new MainUI(root());
-             setTitle("GRASS GIS UI");
-           }
-         else {
-	   root()->clear();
-           Startup* startup = new Startup(uname, root());
-           setTitle("Select Location and Mapset");
-         }
- 
+setTitle("GRASS GIS UI");
+}
+else {
+root()->clear();
+Startup* startup = new Startup(uname, root());
+setTitle("Select Location and Mapset");
+}
+
 }
 
 
-
-/*! \brief 
+/*! \brief
   Creates a WApplication instance and return it
 */
-
-WApplication *createApplication(const WEnvironment& env)
-{
+WGApplication *createApplication(const Wt::WEnvironment& env) {
 
   WGApplication *app = new WGApplication(env);
-
   app->setTwoPhaseRenderingThreshold(0);
-
-  
-
-
   return app;
 }
-
-
-

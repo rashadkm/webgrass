@@ -8,19 +8,11 @@ License (>=v2). Read the file COPYING for details.
 #include <Wt/WApplication>
 #include <Wt/WEnvironment>
 
-
-#include <iostream>
-
-using namespace Wt;
-using namespace std;
-
-class WGApplication: public WApplication {
+class WGApplication: public Wt::WApplication {
  public:
-  	WGApplication(const WEnvironment& env);
- void handlePathChanged(string loc_string);
+  WGApplication(const Wt::WEnvironment& env);
+  void handlePathChanged(std::string loc_string);
 
 };
 
-WApplication *createApplication(const WEnvironment& env);
-
-
+WGApplication *createApplication(const Wt::WEnvironment& env);

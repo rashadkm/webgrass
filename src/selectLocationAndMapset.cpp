@@ -29,7 +29,6 @@ using namespace Wt;
 #include <iostream>
 
 #include "login.h"
-#include "global.h"
 
 
 #include <Wt/WLabel>
@@ -43,7 +42,7 @@ using namespace Wt;
 
 using namespace std;
 
-using namespace boost::filesystem; 
+using namespace boost::filesystem;
 void selectLocationAndMapset::show_files( const path & directory, vector<string>&directories, bool recurse_into_subdirs = true )
 {
 if( exists( directory ) )
@@ -81,7 +80,7 @@ for(vector<string>::iterator it = directories.begin();it!=directories.end();++it
 selectLocationAndMapset::selectLocationAndMapset(std::string wgrass_login,WContainerWidget *parent=0)
 :WContainerWidget(parent)
 {
-  //setTitle("VRGeo Login"); 
+  //setTitle("VRGeo Login");
 
 //useStyleSheet("styles.css");
 anim = WAnimation();
@@ -151,7 +150,7 @@ base_path = wgrass_login;
 const fs::path full_path ="./" + base_path;
 show_files(full_path,directories,true );
 for(vector<string>::iterator it = directories.begin();it!=directories.end();++it) {
- 
+
 location->addItem(*it);
 if(it == directories.begin())
 {
@@ -168,7 +167,7 @@ void selectLocationAndMapset::startWebGrass() {
 string slocation = location->currentText().narrow();
 string smapset = mapset->currentText().narrow();
  WApplication::instance()->setCookie("wgrass_location", location->currentText().narrow(), 60*60*24*24);
- WApplication::instance()->setCookie("wgrass_mapset", mapset->currentText().narrow(), 60*60*24*24);	
+ WApplication::instance()->setCookie("wgrass_mapset", mapset->currentText().narrow(), 60*60*24*24);
 
 
  std::ofstream grassrc;
@@ -181,12 +180,3 @@ string smapset = mapset->currentText().narrow();
   grassrc.close();
  WApplication::instance()->redirect("/");
 }
-
-
-
-
-
-
-
-
-

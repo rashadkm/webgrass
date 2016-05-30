@@ -31,27 +31,27 @@ using namespace std;
 
 
 #include "WGrass.h"
-#include "global.h"
+
 #include <pugixml.hpp>
 
 
 
-#include <boost/assign/list_of.hpp> 
-#include <boost/bind.hpp>  
+#include <boost/assign/list_of.hpp>
+#include <boost/bind.hpp>
 
 
-#include <boost/asio.hpp> 
-#include <boost/assign/list_of.hpp> 
-#include <boost/array.hpp> 
+#include <boost/asio.hpp>
+#include <boost/assign/list_of.hpp>
+#include <boost/array.hpp>
 #include <boost/any.hpp>
 #include <boost/algorithm/string.hpp>
 
 
-#if defined(BOOST_POSIX_API) 
-#   include <sys/wait.h> 
-#endif 
+#if defined(BOOST_POSIX_API)
+#   include <sys/wait.h>
+#endif
 
-//namespace bp = boost::process; 
+//namespace bp = boost::process;
 
 #define INLINE_JAVASCRIPT(...) #__VA_ARGS__
 
@@ -65,13 +65,13 @@ WGrass::WGrass(WContainerWidget *parent)
 :WContainerWidget(parent) {
 
 	createUI(parent);
-	
+
 }
 WGrass::~WGrass() { }
 
 
 
-void WGrass::createUI(WContainerWidget *parent) { 
+void WGrass::createUI(WContainerWidget *parent) {
 
 
 	parent->setStyleClass("maindiv");
@@ -101,10 +101,10 @@ void WGrass::createUI(WContainerWidget *parent) {
    hbox->addWidget(oMap);
 
 	WGridLayout *layout = new WGridLayout(MapsAndLayerTree);
-   layout->addLayout(hbox, 0, 1);   
+   layout->addLayout(hbox, 0, 1);
    layout->setRowStretch(1, 1);
    layout->setColumnStretch(1, 1);
-   layout->addWidget(ltree, 0, 0);   
+   layout->addWidget(ltree, 0, 0);
    layout->setColumnResizable(0);
 
 
@@ -129,7 +129,7 @@ void WGrass::createUI(WContainerWidget *parent) {
     putenv((char *)"GRASS_PNG_READ=TRUE");
 
 
-	
+
 }
 
 
@@ -160,7 +160,7 @@ void WGrass::dataUploaded() {
 
 			//uploadedInfo->setText(basename);
 
-		
+
 		}
 
 
@@ -198,7 +198,7 @@ void WGrass::simplePopup(WContainerWidget *parent)
 	 return function(suggestion) {
 	   if (!suggestion)
 	     return value;
-	   
+
 	   var i, il,
 	     names = suggestion.split(';'),
 	     val = value.toUpperCase(),

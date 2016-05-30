@@ -28,8 +28,6 @@ using namespace Wt;
 #include <iostream>
 
 #include "login.h"
-#include "global.h"
-
 
 #include <Wt/WLabel>
 #include <Wt/WRandom>
@@ -45,7 +43,7 @@ using namespace std;
 Login::Login(WContainerWidget *parent=0)
 :WContainerWidget(parent)
 {
-  //setTitle("VRGeo Login"); 
+  //setTitle("VRGeo Login");
 
 //useStyleSheet("styles.css");
 anim = WAnimation();
@@ -141,30 +139,30 @@ d = new WDialog();
 new WBreak(d->contents());
 
 new WText("Full name <br/>",d->contents());
-fname = new WLineEdit(d->contents());  
-fname->setTextSize(30);  
+fname = new WLineEdit(d->contents());
+fname->setTextSize(30);
 
 new WText("<br/>Username <br/>",d->contents());
-UserName = new WLineEdit(d->contents());  
-UserName->setTextSize(30); 
+UserName = new WLineEdit(d->contents());
+UserName->setTextSize(30);
 
 new WText("<br/>Password <br/>",d->contents());
-passwd1 = new WLineEdit(d->contents());  
-passwd1->setTextSize(30); 
+passwd1 = new WLineEdit(d->contents());
+passwd1->setTextSize(30);
 passwd1->setEchoMode(WLineEdit::Password);
 
 new WText("<br/>Retype Password <br/>",d->contents());
-passwd2 = new WLineEdit(d->contents());  
-passwd2->setTextSize(30); 
+passwd2 = new WLineEdit(d->contents());
+passwd2->setTextSize(30);
 passwd2->setEchoMode(WLineEdit::Password);
 
 new WText("<br/>Email <br/>",d->contents());
-email = new WLineEdit(d->contents());  
-email->setTextSize(30); 
+email = new WLineEdit(d->contents());
+email->setTextSize(30);
 
 new WText("<br/>Company <br/>",d->contents());
-company = new WLineEdit(d->contents());  
-company->setTextSize(30); 
+company = new WLineEdit(d->contents());
+company->setTextSize(30);
 
 WText *error = new WText("",d->contents());
 
@@ -196,7 +194,7 @@ conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
 string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() +  "'";
     PGresult *res = PQexec(conn, query.c_str());
 
- 
+
 
 
 
@@ -206,7 +204,7 @@ string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() +  
         }
     else {
 
-    if( (fname->text()=="") || (passwd1->text().toUTF8()=="") || 
+    if( (fname->text()=="") || (passwd1->text().toUTF8()=="") ||
         (UserName->text().narrow() == "") || (email->text().narrow() == "")
       ||(company->text().narrow()== "")) {
            // WApplication::instance()->doJavaScript("alert('All fields are required. Please do registration again')");
@@ -224,14 +222,14 @@ string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() +  
         string query =  "INSERT INTO users (name,uname,passwd,email,company) VALUES('" +
                 fname->text().narrow() + "','" + UserName->text().narrow() + "',md5('" + passwd1->text().toUTF8() + "'),'" +
                 email->text().narrow() + "','" + company->text().narrow() + "')";
-         
+
 
 
     res = PQexec(conn, query.c_str());
 
 if (PQresultStatus(res) != PGRES_COMMAND_OK)
     {
-        
+
         PQclear(res);
         CloseConn(conn);
 //WApplication::instance()->doJavaScript("alert('Thank')");
@@ -275,7 +273,7 @@ PGconn *conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
 string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() + "' AND passwd=md5('" + passwd->text().toUTF8() + "')";
     PGresult *res = PQexec(conn, query.c_str());
 
- 
+
 
 
 
@@ -285,16 +283,10 @@ string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() + "
     // }
 
     // else {
-	      WApplication::instance()->setCookie("wgrass_login", uname->text().narrow(), 60*60*24*24);	
+	      WApplication::instance()->setCookie("wgrass_login", uname->text().narrow(), 60*60*24*24);
 
       WApplication::instance()->redirect("/");
 //}
 
 
     }
-
-
-
-
-
-

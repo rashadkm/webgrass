@@ -1,4 +1,3 @@
-#include "global.h"
 #include "WGrassLayerManager.h"
 #include <Wt/WRandom>
 #include <Wt/WRadioButton>
@@ -6,7 +5,7 @@
 
 using namespace std;
 
-WGrassLayerManager::WGrassLayerManager() 
+WGrassLayerManager::WGrassLayerManager()
 {
 
 resize(250,480);
@@ -61,13 +60,13 @@ void VRLayerTree::createStateLayersTree(string state) {
         stateLayers->appendRow(district);
         adminlist.push_back(dist);
     }
-    
+
 }
 
 void VRLayerTree::LoadData(vector<string>& dirs, string path, bool isDir)
 {
 
-   
+
 
     show_files(path, dirs,isDir ) ;
 
@@ -89,7 +88,7 @@ void VRLayerTree::show_files( const fs::path & full_path, vector<string>& direct
 
   if ( fs::is_directory( full_path ) )
   {
-  
+
     fs::directory_iterator end_iter;
     for ( fs::directory_iterator dir_itr( full_path );
           dir_itr != end_iter;
@@ -105,11 +104,11 @@ void VRLayerTree::show_files( const fs::path & full_path, vector<string>& direct
 
             string fullname = dir_itr->path().filename();
 
- fs::path path1(fullname.c_str()); 
-  
-string result1 = fs::basename (path1); 
+ fs::path path1(fullname.c_str());
+
+string result1 = fs::basename (path1);
         directories.push_back(result1);
-//std::cout << "\nFound: " << result1 << "\n"; 
+//std::cout << "\nFound: " << result1 << "\n";
 
         }
 
@@ -124,13 +123,13 @@ string result1 = fs::basename (path1);
   }
   else // must be a file
   {
-    //std::cout << "\nFound: " << full_path.file_string() << "\n";    
+    //std::cout << "\nFound: " << full_path.file_string() << "\n";
   }
 
 }
 
 
- 
+
 */
 
 WStandardItemModel* WGrassLayerManager::GetModel()const {
@@ -152,7 +151,7 @@ result->setCheckable(true);
 
  void VRLayerTree::showPopup(const WModelIndex& item, const WMouseEvent& event) {
     if (event.button() == WMouseEvent::RightButton) {
- 
+
       if (!isSelected(item))
 	select(item);
 
@@ -168,7 +167,7 @@ result->setCheckable(true);
       popup_->addItem("Open attribute table");
       popup_->addItem("Properties");
 
-      
+
 
       popup_->aboutToHide().connect(this, &VRLayerTree::popupAction);
       popup_->popup(event);
@@ -191,7 +190,7 @@ result->setCheckable(true);
 	else if(text == "Remove Layer")
 		RemoveLayer();
 
-	else if(text == "Zoom to layer extent") 
+	else if(text == "Zoom to layer extent")
         ZoomToAll();
 
     else if(text == "Open attribute table")
@@ -312,9 +311,9 @@ VRPostGisLayer *clayer = *it;
 
 if(
     (lname == "Google Streets")     ||
-    (lname == "Google Physical")    || 
-    (lname == "Google Hybrid")      || 
-    (lname == "Google Satellite")   || 
+    (lname == "Google Physical")    ||
+    (lname == "Google Hybrid")      ||
+    (lname == "Google Satellite")   ||
     (lname == "Bing Maps")          ||
     (lname == "OpenStreetMap"))
 {
@@ -325,8 +324,8 @@ SetGoogleAdded(false);
       strm <<"var lyr = map.getLayersByName(\"" + lname + "\");if(lyr[0]!=undefined){map.removeLayer(lyr[0]);}";
       WApplication::instance()->doJavaScript(strm.str());
 
-   
-            
+
+
         } //end if
 
 
@@ -336,9 +335,9 @@ SetGoogleAdded(false);
 	for (int col = 0; col < model->columnCount(); ++col) {
 	  WStandardItem *layer =  model->item(row, col);
 
-		if (layer->text().narrow() == lname ) 
+		if (layer->text().narrow() == lname )
             model->removeRow(row);
-            
+
         }
 
    }
@@ -374,20 +373,20 @@ void VRLayerTree::ZoomToAll() {
             }
             else{
                 VRGmlLayer *lyr = GetGmlLayerByName(lname);
-              //  if(lyr!=NULL) 
-                    //extent = lyr->getExtent();    
+              //  if(lyr!=NULL)
+                    //extent = lyr->getExtent();
             }
         }
         }
-    
+
     //cout << extent << endl;
 
     if(!extent.empty())
         WApplication::instance()->doJavaScript(extent);
-             
+
 
     }
- 
+
 }
 
 
@@ -447,7 +446,7 @@ VRPostGisLayer* VRLayerTree::GetEditLayerByName(string name) {
   //      VRMessageBox::info((*layerIt)->GetLayerName());
         if( (*layerIt)->GetLayerName() == name)
             return (*layerIt);
-       
+
     }
     return NULL;
 }
@@ -458,7 +457,7 @@ VRGmlLayer* VRLayerTree::GetGmlLayerByName(string name) {
     for(vector<VRGmlLayer *>::iterator layerIt = gmlLayerList.begin(); layerIt!=gmlLayerList.end();++layerIt)  {
         if( (*layerIt)->GetLayerName() == name)
             return (*layerIt);
-       
+
     }
     return NULL;
 }
@@ -468,7 +467,7 @@ VRGPXLayer* VRLayerTree::GetBaseLayerByName(string name) {
     for(vector<VRGPXLayer *>::iterator layerIt = baseLayerList.begin(); layerIt!=baseLayerList.end();++layerIt)  {
         if( (*layerIt)->GetLayerName() == name)
             return (*layerIt);
-       
+
     }
     return NULL;
 }
@@ -600,7 +599,7 @@ pugi::xml_node trkpt,time,ele;
 
  for (int row = 0; row < csvOriginal->rowCount(); ++row) {
 
-trkpt =trkseg.append_child("trkpt"); 
+trkpt =trkseg.append_child("trkpt");
 if(reverse==false) {
 trkpt.append_attribute("lat") = csvOriginal->item(row, 0)->text().narrow().c_str();
 trkpt.append_attribute("lon") = csvOriginal->item(row, 2)->text().narrow().c_str();
@@ -629,7 +628,7 @@ std::transform(fname.begin(), fname.end(), fname.begin(), ::tolower);
 string gpx_filename= "GPX/" + fname + ".gpx";
 
 
-        
+
 doc.save_file(gpx_filename.c_str(),"", pugi::format_default & ~pugi::format_indent) ;
 
     VRGPXLayer * tlog =new VRGPXLayer(fname,"GPX");

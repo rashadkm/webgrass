@@ -5,6 +5,8 @@ License (>=v2). Read the file COPYING for details.
 @author Mohammed Rashad K.M <rashadkm {at} gmail {dot} com>
 */
 #include "global.h"
+
+/*
 using namespace std;
 
 void Tokenize(const string& str,vector<string>& tokens,  const string& delimiters)
@@ -30,7 +32,7 @@ void Tokenize(const string& str,vector<string>& tokens,  const string& delimiter
 void CloseConn(PGconn *conn)
 {
     PQfinish(conn);
-   
+
 }
 
 PGconn *ConnectDB(string db)
@@ -54,8 +56,4 @@ string conn_string = "user=postgres password=postgres dbname=" + db + " hostaddr
   return conn;
 }
 
-
-
-
- 
-
+*/

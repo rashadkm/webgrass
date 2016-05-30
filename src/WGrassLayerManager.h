@@ -9,10 +9,6 @@
 
 
 
-#include "global.h"
-
-
-
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/filesystem.hpp>
@@ -29,7 +25,7 @@ namespace fs = boost::filesystem;
 
 
 class WGrassLayerManager : public WTreeView {
-  
+
   private:
 
     WStandardItemModel *model;
@@ -40,23 +36,23 @@ class WGrassLayerManager : public WTreeView {
 
 
 
-  
+
     string layername_;
 
-    
+
 
     vector<string> baselist;
 
-    
+
   public:
 
-    /*! \brief 
+    /*! \brief
     Constructor - Creates the LayerTree
     Arguments - VROpenLayers instance used to activate OpenLayers controls.
     */
     WGrassLayerManager();
 
-    /*! \brief 
+    /*! \brief
     Default Destructor.
     */
    ~WGrassLayerManager();
@@ -128,12 +124,12 @@ class WGrassLayerManager : public WTreeView {
     void NewGMLLayer();
 
     void LoadGPXLayer();
-    
+
     void LoadTrackLog();
 
     void ToggleLayerVisibility(string lname);
-    
-    void SetCurrentLayer(string lname);  
+
+    void SetCurrentLayer(string lname);
 
     void LoadGmlLayer();
 
@@ -142,11 +138,11 @@ class WGrassLayerManager : public WTreeView {
 	void getFieldNames(string);
 
 	vector<string> getFieldMap();
-    
+
 	void setFieldMap(vector<string>);
 
    WStandardItem *baseLayers,*adminLayers,*stateLayers, *prjLayers;
-    
+
    WStandardItem* baseItem(WString item);
 
    void createAdminBoundaryTree();
@@ -154,17 +150,17 @@ class WGrassLayerManager : public WTreeView {
    void createStateLayersTree(string);
 
    void show_files( const fs::path&, vector<string>&,bool );
-    
+
    void LoadData(vector<string>&,string,bool);
 
    WStandardItem *prevLyr;
-    
+
    string getLayerType(string);
-    
+
    void addGmlLayer(string);
 */
 
-  
+
 };
 
 #endif

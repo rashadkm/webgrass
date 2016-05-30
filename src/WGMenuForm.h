@@ -17,17 +17,16 @@
 #include <sstream>
 #include <fstream>
 
-#include <boost/assign/list_of.hpp> 
-#include <boost/bind.hpp>  
-#include <boost/asio.hpp> 
-#include <boost/array.hpp> 
+#include <boost/assign/list_of.hpp>
+#include <boost/bind.hpp>
+#include <boost/asio.hpp>
+#include <boost/array.hpp>
 #include <boost/any.hpp>
 #include <boost/algorithm/string.hpp>
 
 
 #include <pugixml.hpp>
-#include "pstream.h"
-#include "global.h"
+
 
 using namespace Wt;
 using namespace std;
