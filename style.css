@@ -10,18 +10,65 @@
 }
 
 .startup-selectionbox {
-/*    background-color: #65dae8; */
-/*    height: 60vh; */
+
+/*    height: auto;
+
+    width: auto;*/
     text-align: left;
-    padding: 3px;    
+ 
+    max-width: 100%;
+  height: auto;
+  width: auto\9; 
 }
 
+.groupbox {
+/*    background-color: #65dae8; */
+    height: auto;
+    width: auto;
+    /*width: 80%;*/
+    text-align: left;
+    /*max-width: 50%;*/
+ /*   padding: 3px; */   
+}
 .start-button {
   width:200px;
+  bottom: 100%;
   display:inline-block;
   overflow: auto;
   white-space: nowrap;
   margin:0px auto;
   margin-right: 10px;  
+  margin-top: 10px;
   float: right;
+  max-width: 100%;
+  height: auto;
+  width: auto\9; 
+}
+
+.button {
+  width:200px;
+  /*bottom: 500px;*/
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+  margin-right: 10px;  
+  /*float: right;*/
+}
+.banner {
+    margin:0 auto; 
+    margin-left: 2.6%;
+    margin-right: 0.1%;
+/*   padding-left: 3%;
+   padding-right: 2%;*/
+    max-width: 100%;
+  height: auto;
+  width: auto\9; /* IE8 */
+
+}
+.dir{
+  margin:0 auto; 
+  max-width: 100%;
+  height: auto;
+  width: auto\9; 
 }

@@ -3,9 +3,32 @@ see COPYING and GPL.txt
 
 more ReadMe soon
 
+
+Things needed are- boost and wt
+
+These are the dependencies which will be required beforehand. Install them one by one before compiling
+
+libwt-dev - C++ library and application server for web applications [development]
+libwtdbo-dev - Wt::Dbo ORM library for Wt [development]
+libwtdbofirebird-dev - Firebird backend for Wt::Dbo [development]
+libwtdbomysql-dev - MySQL/MariaDB backend for Wt::Dbo [development]
+libwtdbopostgres-dev - PostgreSQL backend for Wt::Dbo [development]
+libwtdbosqlite-dev - sqlite3 backend for Wt::Dbo [development]
+libwtext-dev - additional widgets for Wt, based on ExtJS 2.0.x [development]
+libwtfcgi-dev - FastCGI connector library for Wt [development]
+libwthttp-dev - HTTP(S) connector library for Wt [development]
+libwttest-dev - test connector library for Wt [development]
+libpugixml-dev
+
+
+
+COMPILATION-
+
+in the webgrass folder https://github.com/rashadkm/webgrass
+
 mkdir build
 cd build
 cmake ..
 make
-sudo ./wgrass.wt --http-address=0.0.0.0 --http-port=8080 --docroot .
+sudo ./wgrass.wt --http-address=0.0.0.0 --http-port=8080 --docroot ../
 

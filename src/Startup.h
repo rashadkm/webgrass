@@ -51,6 +51,6 @@ private:
   WContainerWidget *unameWidget;
 
   string m_location;
- string m_mapset;
+  string m_mapset;
 
 };
