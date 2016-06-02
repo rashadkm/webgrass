@@ -7,7 +7,6 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
 
     WApplication::instance()->useStyleSheet("style.css");
 
-  /* GRASS GIS database library */
 
   setStyleClass("mainContainer");
 
@@ -17,107 +16,113 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   Wt::WImage *image = new Wt::WImage(Wt::WLink("http://grassmac.wdfiles.com/local--files/start/startup_banner.png"));
   image->setStyleClass("banner");
 
+
+
   addWidget(image);
+
+
 
   addWidget(new WBreak());
 
-  addWidget(new WText("GRASS GIS data directory"));
+  Wt::WText *text = new Wt::WText("GRASS GIS data directory");
+  text->setMargin(20, Wt::Bottom);
+  text->setMargin(10, Wt::Right);
+  text->setStyleClass("text");
+  addWidget(text);
 
   Wt::WSelectionBox *datadir = new Wt::WSelectionBox();
 
   datadir->resize(400, 30);
   datadir->addItem(GRASS_DATA_DIR);
   datadir->setStyleClass("dir");
+  datadir->setMargin(20, Wt::Bottom);
   addWidget(datadir);
 
-  /* layout with the use of grid. grid uses coordinates */
+
+  /* Name of boxes in hbox */
+  Wt::WContainerWidget *textContainer = new Wt::WContainerWidget();
+  textContainer->setStyleClass("text");
+  Wt::WHBoxLayout *hbox1 = new Wt::WHBoxLayout();
+  textContainer->setLayout(hbox1);
+
+  Wt::WText *item = new Wt::WText("Project Location");
+  item->setStyleClass("text");
+  hbox1->addWidget(item);
+  
+  item = new Wt::WText("Project Mapsets");
+  item->setStyleClass("text");
+  hbox1->addWidget(item);
+  textContainer->setMargin(-20, Wt::Bottom);
+  addWidget(textContainer);
+
+
+    /* Location Box and Selection Box in a hbox */
   WContainerWidget *selectionBoxContainer = new WContainerWidget();
   Wt::WHBoxLayout *selectionBoxContainerLayout = new Wt::WHBoxLayout();
   selectionBoxContainer->setLayout(selectionBoxContainerLayout);
-
-  
-
-  WContainerWidget *optionLocationContainer = new WContainerWidget();
-  Wt::WVBoxLayout *optionLocationContainerLayout = new Wt::WVBoxLayout();
-  optionLocationContainer->setLayout(optionLocationContainerLayout);
-
-  Wt::WPushButton *button = new Wt::WPushButton("New");
-  button->setStyleClass("button");
-  Wt::WPushButton *button1 = new Wt::WPushButton("Rename");
-  Wt::WPushButton *button2 = new Wt::WPushButton("Delete");
-
-  optionLocationContainerLayout->addWidget(button);
-  optionLocationContainerLayout->addWidget(button1);
-  optionLocationContainerLayout->addWidget(button2);
-  optionLocationContainer->resize(10, 10);
-  //addWidget(optionLocationContainer);
-
-  //Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout();
+  Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout();
   WtSelectionBoxLocation = new Wt::WSelectionBox();
+
+
+  /* Location Selection box */
   WtSelectionBoxLocation->setStyleClass("startup-selectionbox");
-  
-  //WtSelectionBoxLocation->resize(200,300);
+  WtSelectionBoxLocation->resize(200,300);
   makeSelectionBox(WtSelectionBoxLocation, "");
-  WtSelectionBoxLocation->activated().connect(this, &Startup::locationChanged);
-  //WtSelectionBoxLocation->setStyleClass("startup-selectionbox");
-
-  Wt::WGroupBox *groupBox = new Wt::WGroupBox("Project Location");  
-
-  WContainerWidget *group1Container = new WContainerWidget();
-  group1Container->setStyleClass("groupbox");
-  Wt::WHBoxLayout *group1ContainerLayout = new Wt::WHBoxLayout();
-  group1Container->setLayout(group1ContainerLayout);
-
-  group1ContainerLayout->addWidget(WtSelectionBoxLocation);
-  group1ContainerLayout->addWidget(optionLocationContainer);
-  groupBox->addWidget(group1Container);
-  selectionBoxContainerLayout->addWidget(groupBox);
+  selectionBoxContainerLayout->addWidget(WtSelectionBoxLocation);
   addWidget(selectionBoxContainer);
+  WtSelectionBoxLocation->activated().connect(this, &Startup::locationChanged);
 
+  /* Mapset Selection box*/
+  WtSelectionBoxMapset = new Wt::WSelectionBox();
+  WtSelectionBoxMapset->activated().connect(this, &Startup::mapsetChanged);
+  selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset);
+  WtSelectionBoxLocation->setCurrentIndex(-1);
 
+  /* Options for Mapset*/
   WContainerWidget *optionMapsetContainer = new WContainerWidget();
-  Wt::WVBoxLayout *optionMapsetContainerLayout = new Wt::WVBoxLayout();
+  Wt::WHBoxLayout *optionMapsetContainerLayout = new Wt::WHBoxLayout();
   optionMapsetContainer->setLayout(optionMapsetContainerLayout);
+  optionMapsetContainer->setStyleClass("button1");
 
   Wt::WPushButton *button3 = new Wt::WPushButton("New");
+  button3->setStyleClass("start-button");
   Wt::WPushButton *button4 = new Wt::WPushButton("Rename");
+  button4->setStyleClass("start-button");
   Wt::WPushButton *button5 = new Wt::WPushButton("Delete");
+  button5->setStyleClass("start-button");
 
   optionMapsetContainerLayout->addWidget(button3);
   optionMapsetContainerLayout->addWidget(button4);
   optionMapsetContainerLayout->addWidget(button5);
-  optionMapsetContainer->resize(10, 10);
- //groupBox->addWidget(WtSelectionBoxLocation);
-  //groupBox->addWidget(optionLocationContainer);
 
-  //selectionBoxContainerLayout->addWidget(groupBox);
-  //selectionBoxContainerLayout->addWidget(optionLocationContainer);
-  //groupBox->addWidget(selectionBoxContainer);
-  
-  
+    /* Options for Location*/
+  WContainerWidget *optionLocationContainer = new WContainerWidget();
+  Wt::WHBoxLayout *optionLocationContainerLayout = new Wt::WHBoxLayout();
+  optionLocationContainer->setLayout(optionLocationContainerLayout);
 
-  WtSelectionBoxMapset = new Wt::WSelectionBox();
-  WtSelectionBoxMapset->setStyleClass("startup-selectionbox");
-  WtSelectionBoxMapset->activated().connect(this, &Startup::mapsetChanged);
-  Wt::WGroupBox *group2Box = new Wt::WGroupBox("Project Mapset");  
+  Wt::WPushButton *button = new Wt::WPushButton("New");
+  button->setStyleClass("start-button");
+  Wt::WPushButton *button1 = new Wt::WPushButton("Rename");
+  button1->setStyleClass("start-button");
+  Wt::WPushButton *button2 = new Wt::WPushButton("Delete");
+  button2->setStyleClass("start-button");
 
-  WContainerWidget *group2Container = new WContainerWidget();
-  Wt::WHBoxLayout *group2ContainerLayout = new Wt::WHBoxLayout();
-  group2Container->setStyleClass("groupbox");
-  group2Container->setLayout(group2ContainerLayout);
+  optionLocationContainerLayout->addWidget(button);
+  optionLocationContainerLayout->addWidget(button1);
+  optionLocationContainerLayout->addWidget(button2);
 
-  group2ContainerLayout->addWidget(WtSelectionBoxMapset);
-  group2ContainerLayout->addWidget(optionMapsetContainer);
-  group2Box->addWidget(group2Container);
-  selectionBoxContainerLayout->addWidget(group2Box);
-  
-  //selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset);
-
-  WtSelectionBoxLocation->setCurrentIndex(-1);
+    /* Options in a hbox*/
+  Wt::WContainerWidget *options = new Wt::WContainerWidget();
+  Wt::WHBoxLayout *hbox2 = new Wt::WHBoxLayout();
+  options->setLayout(hbox2);
 
 
-  //  Wt::WGroupBox *groupBox2 = new Wt::WGroupBox("Accessile Mapsets");
-  //  grid->addWidget(new WText("Choose Project Location and Mapset"),1,0);
+  hbox2->addWidget(optionLocationContainer);
+  hbox2->addWidget(optionMapsetContainer);
+  options->setMargin(-30, Wt::Top);
+  options->setMargin(30, Wt::Bottom);
+  addWidget(options);
+
 
   WPushButton *startWGrass = new WPushButton("Start webGRASS >>");
 
@@ -131,8 +136,6 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
 void Startup::locationChanged( int index ) {
   WtSelectionBoxMapset->clear();
   m_location = WtSelectionBoxLocation->itemText(index).narrow();
-  //WtSelectionBoxMapset->setStyleClass("startup-selectionbox");
-  //WtSelectionBoxLocation->setStyleClass("startup-selectionbox");
   makeSelectionBox(WtSelectionBoxMapset, m_location);
 
 }
@@ -188,7 +191,6 @@ void Startup::makeSelectionBox(WSelectionBox *box, std::string dir) {
   bool isValidLocation = checkExistance(dir, *it);
     if (isValidLocation) {
       box->addItem(*it);
-      //box->setStyleClass("startup-selectionbox");
     }
   }
 }
