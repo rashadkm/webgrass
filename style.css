@@ -55,3 +55,249 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+
+
+.mapdisplay{
+  background:url(./icons/grass/monitor-create.png);
+  text-indent:-999px;
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.mapdisplay:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.create{
+  background:url(./icons/grass/create.png);
+  text-indent:-999px;
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.create:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.open{
+  background:url(./icons/grass/open.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.open:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.save{
+  background:url(./icons/grass/save.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.save:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.layeropen{
+  background:url(./icons/grass/layer-open.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.layeropen:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.addraster{
+  background:url(./icons/grass/layer-raster-add.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.addraster:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.addvarraster{
+  background:url(./icons/grass/layer-raster-more.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.addvarraster:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.addvector{
+  background:url(./icons/grass/layer-vector-add.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.addvector:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.addvarvector{
+  background:url(./icons/grass/layer-vector-more.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.addvarvector:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.overlay{
+  background:url(./icons/grass/layer-more.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.overlay:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.addgroup{
+  background:url(./icons/grass/layer-group-add.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.addgroup:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.removelayer{
+  background:url(./icons/grass/layer-remove.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.removelayer:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.edit{
+  background:url(./icons/grass/edit.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.edit:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.table{
+  background:url(./icons/grass/table.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.table:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.import{
+  background:url(./icons/grass/layer-import.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.import:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.calculator{
+  background:url(./icons/grass/calculator.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.calculator:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.georectify{
+  background:url(./icons/grass/georectify.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.georectify:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.modeler{
+  background:url(./icons/grass/modeler-main.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.modeler:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.composer{
+  background:url(./icons/grass/print-compose.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.composer:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.scriptload{
+  background:url(./icons/grass/script-load.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.scriptload:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.guisettings{
+  background:url(./icons/grass/settings.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.guisettings:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.manual{
+  background:url(./icons/grass/help.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.manual:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
