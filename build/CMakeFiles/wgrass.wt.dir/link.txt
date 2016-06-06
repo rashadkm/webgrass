@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/wgrass.wt.dir/src/MainUI.cpp.o CMakeFiles/wgrass.wt.dir/src/WGApplication.cpp.o CMakeFiles/wgrass.wt.dir/src/main.cpp.o CMakeFiles/wgrass.wt.dir/src/Startup.cpp.o  -o wgrass.wt -rdynamic -lwt -lwthttp -lboost_filesystem -lboost_signals -lboost_system -lpugixml 
