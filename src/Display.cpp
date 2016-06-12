@@ -1,11 +1,3 @@
-#include <Wt/WApplication>
-#include <Wt/WContainerWidget>
-#include <Wt/WPopupMenu>
-#include <Wt/WPushButton>
-#include <Wt/WText>
-#include <Wt/WToolBar>
-
-
 
 #include "Display.h"
 

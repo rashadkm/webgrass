@@ -1,12 +1,3 @@
-#include <Wt/WApplication>
-#include <Wt/WBreak>
-#include <Wt/WContainerWidget>
-#include <Wt/WMenuItem>
-#include <Wt/WMessageBox>
-#include <Wt/WPopupMenu>
-#include <Wt/WPushButton>
-#include <Wt/WText>
-#include <Wt/WToolBar>
 
 #include "Toolbar.h"
 
