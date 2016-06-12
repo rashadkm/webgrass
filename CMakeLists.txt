@@ -6,7 +6,9 @@ add_executable(wgrass.wt
 src/MainUI.cpp
 src/WGApplication.cpp
 src/main.cpp
-
+src/LayerManager.cpp
+src/Display.cpp
+src/Toolbar.cpp
 src/Startup.cpp
 
 )

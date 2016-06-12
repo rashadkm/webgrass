@@ -1,7 +1,7 @@
 all: wgrass.wt
 
-wgrass.wt: src/main.o src/global.o src/WGApplication.o src/MainUI.o src/WOpenLayers.o
-	g++ src/main.o src/global.o src/WGApplication.o src/MainUI.o src/WOpenLayers.o -o wgrass.wt \
+wgrass.wt: src/main.o src/global.o src/WGApplication.o src/MainUI.o src/LayerManager.o src/Display.o src/Toolbar.o src/WOpenLayers.o
+	g++ src/main.o src/global.o src/WGApplication.o src/MainUI.o src/LayerManager.o src/Display.o src/Toolbar.o src/WOpenLayers.o -o wgrass.wt \
 		-L/usr/local/lib -lwt -lwthttp -lpugixml -lboost_system -lboost_signals -lpthread
 
 main.o: main.cpp
@@ -15,6 +15,15 @@ WGApplication.o: WGApplication.cpp
 
 MainUI.o: MainUI.cpp
 	g++ -c MainUI.cpp
+
+LayerManager.o: LayerManager.cpp
+	g++ -c LayerManager.cpp
+
+Display.o: Display.cpp
+	g++ -c Display.cpp
+
+Toolbar.o: Toolbar.cpp
+	g++ -c Toolbar.cpp
 
 WOpenLayers.o: WOpenLayers.cpp
 	g++ -c WOpenLayers.cpp

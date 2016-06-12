@@ -8,6 +8,11 @@
     margin-top: 5px;
     height: 100vh; 
 }
+.displayContainer {    
+ 
+    border: 1px solid gray;
+    background-color: #F0F0F0 ;
+}
 
 .startup-selectionbox {
 /*    background-color: #65dae8; */
@@ -16,6 +21,17 @@
     padding-bottom: 0px;    
 }
 
+.layertree {
+/*    background-color: #65dae8; */
+/*    height: 60vh; */
+    text-align: left;
+/*    padding-bottom: 0px;  */  
+    width:500px;
+    height: 1000px; 
+    max-width: 100%;
+    height: auto;
+    width: auto\9; 
+}
 
 
 .start-button {
@@ -54,6 +70,7 @@
 
   text-transform: uppercase;
   font-weight: bold;
+
 }
 
 
@@ -299,5 +316,184 @@
   /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
 }
 .manual:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.displaymap{
+  background:url(./icons/grass/show.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.displaymap:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.redraw{
+  background:url(./icons/grass/layer-redraw.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.redraw:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.erase{
+  background:url(./icons/grass/erase.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.erase:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.pointer{
+  background:url(./icons/grass/pointer.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.pointer:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.info{
+  background:url(./icons/grass/info.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.info:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.pan{
+  background:url(./icons/grass/pan.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.pan:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.zoom-in{
+  background:url(./icons/grass/zoom-in.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.zoom-in:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.zoom-out{
+  background:url(./icons/grass/zoom-out.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.zoom-out:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.zoom-extent{
+  background:url(./icons/grass/zoom-extent.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.zoom-extent:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.zoom-last{
+  background:url(./icons/grass/zoom-last.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.zoom-last:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.zoom-more{
+  background:url(./icons/grass/zoom-more.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.zoom-more:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.analyze{
+  background:url(./icons/grass/layer-raster-analyze.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.analyze:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.addelements{
+  background:url(./icons/grass/overlay-add.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.addelements:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.mapexport{
+  background:url(./icons/grass/map-export.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.mapexport:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.print{
+  background:url(./icons/grass/print.png);
+  text-indent:-999px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+.print:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
