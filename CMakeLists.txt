@@ -10,6 +10,8 @@ src/LayerManager.cpp
 src/Display.cpp
 src/Toolbar.cpp
 src/Startup.cpp
+src/MenuItem.cpp
+src/Module.cpp
 
 )
 # src/WGrassLayerManager.cpp

@@ -34,16 +34,16 @@ LayerManager::LayerManager(WContainerWidget *parent=0)
   selectionBoxContainer->addWidget(new WBreak());
 
 
-  cb2 = new Wt::WCheckBox("Map 2",selectionBoxContainer);
-  // Wt::WPushButton *button1 = new Wt::WPushButton(selectionBoxContainer);
-  // button1->setMenu(popup);
-  selectionBoxContainer->addWidget(new WBreak());
+  // cb2 = new Wt::WCheckBox("Map 2",selectionBoxContainer);
+  // // Wt::WPushButton *button1 = new Wt::WPushButton(selectionBoxContainer);
+  // // button1->setMenu(popup);
+  // selectionBoxContainer->addWidget(new WBreak());
 
 
-  cb = new Wt::WCheckBox("Map 3",selectionBoxContainer);
-  // Wt::WPushButton *button2 = new Wt::WPushButton(selectionBoxContainer);
-  // button2->setMenu(popup);
-  selectionBoxContainer->addWidget(new WBreak());
+  // cb = new Wt::WCheckBox("Map 3",selectionBoxContainer);
+  // // Wt::WPushButton *button2 = new Wt::WPushButton(selectionBoxContainer);
+  // // button2->setMenu(popup);
+  // selectionBoxContainer->addWidget(new WBreak());
 
 
 

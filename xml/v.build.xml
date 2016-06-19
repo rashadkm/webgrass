@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.build">
+	<label>
+		Creates topology for vector map.
+	</label>
+	<description>
+		Optionally also checks for topological errors.
+	</description>
+	<keywords>
+		vector, topology, geometry
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="error" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map where erroneous vector features are written to
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Errors
+		</guisection>
+	</parameter>
+	<parameter name="option" type="string" required="yes" multiple="yes">
+		<description>
+			Build topology or dump topology or indices to standard output
+		</description>
+		<default>
+			build
+		</default>
+		<values>
+			<value>
+				<name>build</name>
+				<description>build topology</description>
+			</value>
+			<value>
+				<name>dump</name>
+				<description>write topology to stdout</description>
+			</value>
+			<value>
+				<name>sdump</name>
+				<description>write spatial index to stdout</description>
+			</value>
+			<value>
+				<name>cdump</name>
+				<description>write category index to stdout</description>
+			</value>
+			<value>
+				<name>fdump</name>
+				<description>write feature index to stdout (OGR simple-feature-based formats only)</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="e">
+		<label>
+			Extensive checks for topological errors
+		</label>
+		<description>
+			Perform in-depth checks for topological errors when building topology
+		</description>
+ 		<guisection>
+			Errors
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

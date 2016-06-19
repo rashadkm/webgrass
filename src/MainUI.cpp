@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <pugixml.hpp>
+#include <cstring>
 
 #include <Wt/WContainerWidget>
 #include <Wt/WPopupMenu>
@@ -8,11 +9,15 @@
 #include <Wt/WText>
 #include <Wt/WToolBar>
 #include <Wt/WApplication>
+#include <Wt/WDialog>
+#include <Wt/WLabel>
 
 #include "MainUI.h"
 #include "LayerManager.h"
 #include "Display.h"
 #include "Toolbar.h"
+#include "MenuItem.h"
+#include "Module.h"
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
       //root()->clear();
@@ -54,7 +59,7 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
        pugi::xml_node menu_items_menu_node = menu_items_node.child("menu");
        while( menu_items_menu_node ) {
           /* submenu creation */
-          Wt::WPopupMenu *nextLevel = new Wt::WPopupMenu();
+          MenuItem *nextLevel = new MenuItem();
           firstLevel->addMenu(menu_items_menu_node.child_value("label"), nextLevel);
           /* iteration over second occurance of items */
           pugi::xml_node menu_items_menu_items_node = menu_items_menu_node.child("items");
@@ -62,7 +67,31 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
              /* iteration over internal occurance of menuitem */
              pugi::xml_node menu_items_menu_items_menuitem_node = menu_items_menu_items_node.child("menuitem");
              while( menu_items_menu_items_menuitem_node ) {
-                nextLevel->addItem(menu_items_menu_items_menuitem_node.child_value("label"));
+                //string* tt="haha";
+                //nextLevel->addItem(menu_items_menu_items_menuitem_node.child_value("label"));
+                //nextLevel::m_grassModuleName = menu_items_menu_items_menuitem_node.child_value("command");
+              void *vague_pointer;
+              string j=menu_items_menu_items_menuitem_node.child_value("command");
+              char *ptr=new char (j.length()+1);
+              strcpy(ptr,j.c_str()); 
+              //string j = menu_items_menu_items_menuitem_node.child_value("command");
+              int i=0;
+              while(*(ptr+i)!='\0')
+              {
+                cout<<*(ptr+i);
+                i++;
+              }
+              cout<<endl;
+              //vague_pointer= &j;
+              vague_pointer= static_cast<void*>(ptr);
+              //cout<<*vague_pointer<<endl;
+              //Wt::WMenuItem *item = new Wt::WMenuItem(menu_items_menu_items_menuitem_node.child_value("label"));
+              Wt::WMenuItem *item = nextLevel->addItem(menu_items_menu_items_menuitem_node.child_value("label"));
+              item->setData(vague_pointer);
+              item->triggered().connect(this, &MainUI::click);
+              //nextLevel->addMenu(item)->triggered().connect(this, &MainUI::click);
+
+              //->triggered().connect(this, &MainUI::click);
                 menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
              }
              menu_items_menu_items_node = menu_items_menu_items_node.next_sibling("items");
@@ -126,4 +155,44 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   hbox1->addWidget(displaymanager,1);
   textContainer->setMargin(-10, Wt::Left);
   addWidget(textContainer);
+}
+
+void MainUI::click(Wt::WMenuItem* dd) {
+
+  char *item1 = static_cast<char*>(dd->data());
+   int i=0;  
+   string s="";
+   s.clear();
+   while(*(item1+i)!='\0')
+              {
+                s.push_back(*(item1+i));
+                i++;
+              }
+ cout<<s<<endl;
+cout<<dd->data();
+if(dd->text()=="Digitize vector map using Tcl/Tk digitizer")
+{
+  std::string module = "v.digit";
+  cout<<module<<endl;
+}
+//cout<<nextLevel::m_grassModuleName<<endl;
+showDialog(s);
+
+}
+void MainUI::showDialog(std::string module)
+{
+    Wt::WDialog *dialog = new Wt::WDialog(module);
+    cout<<module<<endl;
+    cout<<"saer"<<endl;
+    Wt::WLabel *label = new Wt::WLabel("Cell location (A1..Z999)");
+  //Wt::WContainerWidget *layercontainer = new Wt::WContainerWidget(dialog->contents());
+
+  // LayerManager* layermanager = new LayerManager(layercontainer);
+  //   Wt::WContainerWidget *displaycontainer = new Wt::WContainerWidget();
+  // Display* displaymanager = new Display(displaycontainer);
+  Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
+  Module* mod = new Module(mo,module);
+  dialog->rejectWhenEscapePressed();
+    dialog->show();
+
 }
