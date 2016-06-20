@@ -18,13 +18,15 @@ License (>=v2). Read the file COPYING for details.
 WGApplication::WGApplication(const Wt::WEnvironment& env)
 : Wt::WApplication(env) {
 
-setTheme(new Wt::WBootstrapTheme());
-
-addMetaHeader("viewport", "width = device-width, initial-scale = 1");
-
-internalPathChanged().connect(this, &WGApplication::handlePathChanged);
-
-Wt::WApplication::instance()->setInternalPath("/start", true);
+  setTheme(new Wt::WBootstrapTheme());
+ 
+  addMetaHeader("viewport", "width = device-width, initial-scale = 1");
+  
+  internalPathChanged().connect(this, &WGApplication::handlePathChanged);
+  
+  Wt::WApplication::instance()->setInternalPath("/start", true);
+  
+  WApplication::instance()->useStyleSheet("style.css");
 
 }
 
