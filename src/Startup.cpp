@@ -5,9 +5,6 @@
 Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   :WContainerWidget(parent) {
 
-    WApplication::instance()->useStyleSheet("style.css");
-
-
   setStyleClass("mainContainer");
 
   /* image of GRASS GIS */
