@@ -4,9 +4,6 @@
 Toolbar::Toolbar(WContainerWidget *parent=0)
   :WContainerWidget(parent) {
 
-    WApplication::instance()->useStyleSheet("style.css");
-
-
   WContainerWidget *selectionBoxContainer = new WContainerWidget();
 
   Wt::WToolBar *toolBar = new Wt::WToolBar();

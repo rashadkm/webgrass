@@ -4,8 +4,6 @@
 Display::Display(WContainerWidget *parent=0)
   :WContainerWidget(parent) {
 
-    WApplication::instance()->useStyleSheet("style.css");
-
 
   addWidget(new WBreak());
 
