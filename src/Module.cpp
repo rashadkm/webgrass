@@ -1,16 +1,16 @@
 #include <pugixml.hpp>
 #include "Module.h"
 
-Module::Module(WContainerWidget *parent=0,std::string mod=0)
+Module::Module(std::string moduleName, WContainerWidget *parent)
   :WContainerWidget(parent) {
 
     pugi::xml_document doc;
 
   /* input file of menudata*/
-  const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/xml/v.buffer.xml";
+  const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/xml/" + moduleName  + ".xml";
   pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
 
-  std::cout << "Load result: " << tos.description() << std::endl;
+  //  std::cout << "Load result: " << tos.description() << std::endl;
 
   pugi::xml_node task_node = doc.child("task");
   pugi::xml_node ff_node = task_node.child("description");
@@ -18,27 +18,26 @@ Module::Module(WContainerWidget *parent=0,std::string mod=0)
   std::vector<std::string> str1;
   int i=0;
   while(para_node){
-  cout<<para_node.child_value("label")<<endl;
-  cout<<para_node.attribute("required").value()<<endl;
-  string jj = para_node.attribute("required").value();
+    //  cout<<para_node.child_value("label")<<endl;
+    //  cout<<para_node.attribute("required").value()<<endl;
+    std::string jj = para_node.attribute("required").value();
   
   if(jj=="yes")
-  { cout<<"i am here"<<endl;
+  { 
     pugi::xml_node require_node = para_node.child("description");
     str1.push_back(require_node.child_value());
-    cout<<require_node.child_value()<<endl;
-    cout<<str1[i]<<endl;
+    //cout<<require_node.child_value()<<endl;
+    //cout<<str1[i]<<endl;
     i++;
   }
   para_node = para_node.next_sibling("parameter");
 }
   
-  string k = "nono";
-  cout<<ff_node.child_value()<<endl;
-  cout<<mod<<endl;
+  //  std::string k = "nono";
+  //  cout<<ff_node.child_value()<<endl;
+  //  cout<<mod<<endl;
 
 
-WApplication::instance()->useStyleSheet("style.css");
 Wt::WContainerWidget *container = new Wt::WContainerWidget();
 
 Wt::WText *text1 = new Wt::WText(ff_node.child_value(), container);
