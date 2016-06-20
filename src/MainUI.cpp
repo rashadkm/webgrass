@@ -164,7 +164,7 @@ void MainUI::showDialog(std::string module)
   Wt::WLabel *label = new Wt::WLabel("Cell location (A1..Z999)");
 
   Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
-  Module* mod = new Module(mo,module);
+  Module* mod = new Module(module, mo);
   dialog->rejectWhenEscapePressed();
   dialog->show();
 
