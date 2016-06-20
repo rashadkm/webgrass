@@ -74,7 +74,7 @@ Toolbar::Toolbar(WContainerWidget *parent=0)
   edit->setToolTip("edit selected vector map");
 
   Wt::WPushButton *table = new Wt::WPushButton();
-  table->setStyleClass("table");
+  //table->setStyleClass("table");
   table->setMargin(3, Wt::Right);
   table->setToolTip("show attribute data for selected vector map");
 

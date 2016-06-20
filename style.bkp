@@ -60,7 +60,6 @@
   width: auto\9; /* IE8 */
 
 }
-
 .dir{
   margin:0 auto; 
   max-width: 100%;
@@ -220,20 +219,17 @@
 .edit:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-/*
 .table{
   background:url(./icons/grass/table.png);
   text-indent:-999px;
   background-repeat: no-repeat;
   width: 20px;
   height: 30px;
-  
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
 }
 .table:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-*/
-
 .import{
   background:url(./icons/grass/layer-import.png);
   text-indent:-999px;
@@ -289,19 +285,17 @@
 .composer:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-/*
 .scriptload{
   background:url(./icons/grass/script-load.png);
   text-indent:-999px;
   background-repeat: no-repeat;
   width: 20px;
   height: 30px;
+  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
 }
-
 .scriptload:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-*/
 .guisettings{
   background:url(./icons/grass/settings.png);
   text-indent:-999px;
