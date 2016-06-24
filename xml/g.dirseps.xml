@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.dirseps">
+	<label>
+		Internal GRASS utility for converting directory separator characters.
+	</label>
+	<description>
+		Converts any directory separator characters in the input string to or from native host format, and writes the changed path to standard output. Useful in scripts for Windows compatibility.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="path" type="string" required="no" multiple="no">
+		<description>
+			Path to be converted (read from stdin if not specified)
+		</description>
+	</parameter>
+	<flag name="h">
+		<description>
+			Convert directory separators to native host format
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Convert directory separators to GRASS internal format
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.dirseps">
+	<label>
+		Internal GRASS utility for converting directory separator characters.
+	</label>
+	<description>
+		Converts any directory separator characters in the input string to or from native host format, and writes the changed path to standard output. Useful in scripts for Windows compatibility.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="path" type="string" required="no" multiple="no">
+		<description>
+			Path to be converted (read from stdin if not specified)
+		</description>
+	</parameter>
+	<flag name="h">
+		<description>
+			Convert directory separators to native host format
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Convert directory separators to GRASS internal format
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.dirseps">
+	<label>
+		Internal GRASS utility for converting directory separator characters.
+	</label>
+	<description>
+		Converts any directory separator characters in the input string to or from native host format, and writes the changed path to standard output. Useful in scripts for Windows compatibility.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="path" type="string" required="no" multiple="no">
+		<description>
+			Path to be converted (read from stdin if not specified)
+		</description>
+	</parameter>
+	<flag name="h">
+		<description>
+			Convert directory separators to native host format
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Convert directory separators to GRASS internal format
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.dirseps">
+	<label>
+		Internal GRASS utility for converting directory separator characters.
+	</label>
+	<description>
+		Converts any directory separator characters in the input string to or from native host format, and writes the changed path to standard output. Useful in scripts for Windows compatibility.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="path" type="string" required="no" multiple="no">
+		<description>
+			Path to be converted (read from stdin if not specified)
+		</description>
+	</parameter>
+	<flag name="h">
+		<description>
+			Convert directory separators to native host format
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Convert directory separators to GRASS internal format
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

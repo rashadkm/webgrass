@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.support">
+	<description>
+		Updates vector map metadata.
+	</description>
+	<keywords>
+		vector, metadata
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="organization" type="string" required="no" multiple="no">
+		<description>
+			Organization where vector map was created
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="date" type="string" required="no" multiple="no">
+		<description>
+			Date of vector map digitization (e.g., "15 Mar 2007")
+		</description>
+		<keydesc>
+			<item order="1">datestring</item>
+		</keydesc>
+	</parameter>
+	<parameter name="person" type="string" required="no" multiple="no">
+		<description>
+			Person who created vector map
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="map_name" type="string" required="no" multiple="no">
+		<description>
+			Vector map title
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="map_date" type="string" required="no" multiple="no">
+		<description>
+			Date when the source map was originally produced
+		</description>
+		<keydesc>
+			<item order="1">datestring</item>
+		</keydesc>
+	</parameter>
+	<parameter name="scale" type="integer" required="no" multiple="no">
+		<description>
+			Vector map scale number (e.g., 24000)
+		</description>
+	</parameter>
+	<parameter name="zone" type="integer" required="no" multiple="no">
+		<description>
+			Vector map projection zone
+		</description>
+	</parameter>
+	<parameter name="threshold" type="float" required="no" multiple="no">
+		<description>
+			Vector map digitizing threshold number (e.g., 0.5)
+		</description>
+	</parameter>
+	<parameter name="comment" type="string" required="no" multiple="no">
+		<description>
+			Text to append to the comment line of the map's metadata file
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="cmdhist" type="string" required="no" multiple="no">
+		<description>
+			Command line to store into vector map history file (used for vector scripts)
+		</description>
+		<keydesc>
+			<item order="1">command</item>
+		</keydesc>
+	</parameter>
+	<flag name="r">
+		<description>
+			Replace comment instead of appending it
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

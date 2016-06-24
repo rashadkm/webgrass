@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.mask">
+	<description>
+		Creates a MASK for limiting raster operation.
+	</description>
+	<keywords>
+		raster, mask
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to use as mask
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="maskcats" type="string" required="no" multiple="no">
+		<label>
+			Raster values to use for mask
+		</label>
+		<description>
+			Format: 1 2 3 thru 7 *
+		</description>
+		<default>
+			*
+		</default>
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="no">
+		<label>
+			Name of vector map to use as mask
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name (vector)
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Category values (vector)
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword (vector)
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Create inverse mask
+		</description>
+ 		<guisection>
+			Create
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Remove existing mask (overrides other options)
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.gwflow">
+	<description>
+		Numerical calculation program for transient, confined groundwater flow in three dimensions.
+	</description>
+	<keywords>
+		raster3d, groundwater flow, voxel, hydrology
+	</keywords>
+	<parameter name="phead" type="string" required="yes" multiple="no">
+		<description>
+			Input 3D raster map with initial piezometric heads in [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="status" type="string" required="yes" multiple="no">
+		<description>
+			Input 3D raster map providing the status for each cell, = 0 - inactive, 1 - active, 2 - dirichlet
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="hc_x" type="string" required="yes" multiple="no">
+		<description>
+			Input 3D raster map with the x-part of the hydraulic conductivity tensor in [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="hc_y" type="string" required="yes" multiple="no">
+		<description>
+			Input 3D raster map with the y-part of the hydraulic conductivity tensor in [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="hc_z" type="string" required="yes" multiple="no">
+		<description>
+			Input 3D raster map with the z-part of the hydraulic conductivity tensor in [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="sink" type="string" required="no" multiple="no">
+		<description>
+			Input 3D raster map with sources and sinks in [m^3/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="yield" type="string" required="yes" multiple="no">
+		<description>
+			Specific yield [1/m] input 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="recharge" type="string" required="no" multiple="no">
+		<description>
+			Recharge input 3D raster map in m^3/s
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Output 3D raster map storing the piezometric head result of the numerical calculation
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="velocity_x" type="string" required="no" multiple="no">
+		<description>
+			Output 3D raster map storing the groundwater filter velocity vector part in x direction [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="velocity_y" type="string" required="no" multiple="no">
+		<description>
+			Output 3D raster map storing the groundwater filter velocity vector part in y direction [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="velocity_z" type="string" required="no" multiple="no">
+		<description>
+			Output 3D raster map storing the groundwater filter velocity vector part in z direction [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="budget" type="string" required="no" multiple="no">
+		<description>
+			Output 3D raster map storing the groundwater budget for each cell [m^3/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="dtime" type="float" required="yes" multiple="no">
+		<description>
+			The calculation time in seconds
+		</description>
+		<default>
+			86400
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="maxit" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of iteration used to solve the linear equation system
+		</description>
+		<default>
+			10000
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="error" type="float" required="no" multiple="no">
+		<description>
+			Error break criteria for iterative solver
+		</description>
+		<default>
+			0.000001
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="solver" type="string" required="no" multiple="no">
+		<description>
+			The type of solver which should solve the symmetric linear equation system
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			cg
+		</default>
+		<values>
+			<value>
+				<name>cg</name>
+			</value>
+			<value>
+				<name>pcg</name>
+			</value>
+			<value>
+				<name>cholesky</name>
+			</value>
+		</values>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<flag name="m">
+		<description>
+			Use 3D raster mask (if exists)
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Use a full filled quadratic linear equation system, default is a sparse linear equation system.
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

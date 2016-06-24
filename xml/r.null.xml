@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.null">
+	<description>
+		Manages NULL-values of given raster map.
+	</description>
+	<keywords>
+		raster, null data
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map for which to edit null values
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="setnull" type="string" required="no" multiple="yes">
+		<description>
+			List of cell values to be set to NULL
+		</description>
+		<keydesc>
+			<item order="1">val[-val]</item>
+		</keydesc>
+		<guisection>
+			Modify
+		</guisection>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			The value to replace the null value by
+		</description>
+		<guisection>
+			Modify
+		</guisection>
+	</parameter>
+	<flag name="f">
+		<description>
+			Only do the work if the map is floating-point
+		</description>
+ 		<guisection>
+			Check
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Only do the work if the map is integer
+		</description>
+ 		<guisection>
+			Check
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Only do the work if the map doesn't have a NULL-value bitmap file
+		</description>
+ 		<guisection>
+			Check
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Create NULL-value bitmap file validating all data cells
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Remove NULL-value bitmap file
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

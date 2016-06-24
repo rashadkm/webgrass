@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.eb.hsebal01">
+	<description>
+		Computes sensible heat flux iteration SEBAL 01.
+	</description>
+	<keywords>
+		imagery, energy balance, soil moisture, evaporative fraction, SEBAL
+	</keywords>
+	<parameter name="netradiation" type="string" required="yes" multiple="no">
+		<description>
+			Name of instantaneous net radiation raster map [W/m2]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="soilheatflux" type="string" required="yes" multiple="no">
+		<description>
+			Name of instantaneous soil heat flux raster map [W/m2]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="aerodynresistance" type="string" required="yes" multiple="no">
+		<description>
+			Name of aerodynamic resistance to heat momentum raster map [s/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="temperaturemeansealevel" type="string" required="yes" multiple="no">
+		<description>
+			Name of altitude corrected surface temperature raster map [K]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="frictionvelocitystar" type="float" required="yes" multiple="no">
+		<description>
+			Value of the height independent friction velocity (u*) [m/s]
+		</description>
+		<gisprompt age="old" element="value" />
+		<default>
+			0.32407
+		</default>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="vapourpressureactual" type="float" required="yes" multiple="no">
+		<description>
+			Value of the actual vapour pressure (e_act) [KPa]
+		</description>
+		<default>
+			1.511
+		</default>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="row_wet_pixel" type="float" required="no" multiple="no">
+		<description>
+			Row value of the wet pixel
+		</description>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="column_wet_pixel" type="float" required="no" multiple="no">
+		<description>
+			Column value of the wet pixel
+		</description>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="row_dry_pixel" type="float" required="no" multiple="no">
+		<description>
+			Row value of the dry pixel
+		</description>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="column_dry_pixel" type="float" required="no" multiple="no">
+		<description>
+			Column value of the dry pixel
+		</description>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output sensible heat flux raster map [W/m2]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="a">
+		<description>
+			Automatic wet/dry pixel (careful!)
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Dry/Wet pixels coordinates are in image projection, not row/col
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

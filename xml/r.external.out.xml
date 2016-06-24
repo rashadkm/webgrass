@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.external.out">
+	<description>
+		Defines raster output format utilizing GDAL library.
+	</description>
+	<keywords>
+		raster, export, output, external
+	</keywords>
+	<parameter name="directory" type="string" required="yes" multiple="no">
+		<description>
+			Name of output directory
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+	</parameter>
+	<parameter name="extension" type="string" required="no" multiple="no">
+		<description>
+			Extension for output files
+		</description>
+	</parameter>
+	<parameter name="format" type="string" required="yes" multiple="no">
+		<description>
+			Format of output files
+		</description>
+		<values>
+			<value>
+				<name>VRT</name>
+			</value>
+			<value>
+				<name>GTiff</name>
+			</value>
+			<value>
+				<name>NITF</name>
+			</value>
+			<value>
+				<name>HFA</name>
+			</value>
+			<value>
+				<name>ELAS</name>
+			</value>
+			<value>
+				<name>AAIGrid</name>
+			</value>
+			<value>
+				<name>DTED</name>
+			</value>
+			<value>
+				<name>PNG</name>
+			</value>
+			<value>
+				<name>JPEG</name>
+			</value>
+			<value>
+				<name>MEM</name>
+			</value>
+			<value>
+				<name>GIF</name>
+			</value>
+			<value>
+				<name>XPM</name>
+			</value>
+			<value>
+				<name>BMP</name>
+			</value>
+			<value>
+				<name>PCIDSK</name>
+			</value>
+			<value>
+				<name>PCRaster</name>
+			</value>
+			<value>
+				<name>ILWIS</name>
+			</value>
+			<value>
+				<name>SGI</name>
+			</value>
+			<value>
+				<name>SRTMHGT</name>
+			</value>
+			<value>
+				<name>Leveller</name>
+			</value>
+			<value>
+				<name>Terragen</name>
+			</value>
+			<value>
+				<name>GMT</name>
+			</value>
+			<value>
+				<name>netCDF</name>
+			</value>
+			<value>
+				<name>HDF4Image</name>
+			</value>
+			<value>
+				<name>ISIS2</name>
+			</value>
+			<value>
+				<name>ERS</name>
+			</value>
+			<value>
+				<name>FIT</name>
+			</value>
+			<value>
+				<name>JPEG2000</name>
+			</value>
+			<value>
+				<name>RMF</name>
+			</value>
+			<value>
+				<name>WMS</name>
+			</value>
+			<value>
+				<name>RST</name>
+			</value>
+			<value>
+				<name>INGR</name>
+			</value>
+			<value>
+				<name>GSAG</name>
+			</value>
+			<value>
+				<name>GSBG</name>
+			</value>
+			<value>
+				<name>GS7BG</name>
+			</value>
+			<value>
+				<name>R</name>
+			</value>
+			<value>
+				<name>PNM</name>
+			</value>
+			<value>
+				<name>ENVI</name>
+			</value>
+			<value>
+				<name>EHdr</name>
+			</value>
+			<value>
+				<name>PAux</name>
+			</value>
+			<value>
+				<name>MFF</name>
+			</value>
+			<value>
+				<name>MFF2</name>
+			</value>
+			<value>
+				<name>BT</name>
+			</value>
+			<value>
+				<name>LAN</name>
+			</value>
+			<value>
+				<name>IDA</name>
+			</value>
+			<value>
+				<name>LCP</name>
+			</value>
+			<value>
+				<name>GTX</name>
+			</value>
+			<value>
+				<name>NTv2</name>
+			</value>
+			<value>
+				<name>CTable2</name>
+			</value>
+			<value>
+				<name>KRO</name>
+			</value>
+			<value>
+				<name>ARG</name>
+			</value>
+			<value>
+				<name>USGSDEM</name>
+			</value>
+			<value>
+				<name>ADRG</name>
+			</value>
+			<value>
+				<name>BLX</name>
+			</value>
+			<value>
+				<name>Rasterlite</name>
+			</value>
+			<value>
+				<name>EPSILON</name>
+			</value>
+			<value>
+				<name>PostGISRaster</name>
+			</value>
+			<value>
+				<name>SAGA</name>
+			</value>
+			<value>
+				<name>KMLSUPEROVERLAY</name>
+			</value>
+			<value>
+				<name>XYZ</name>
+			</value>
+			<value>
+				<name>HF2</name>
+			</value>
+			<value>
+				<name>PDF</name>
+			</value>
+			<value>
+				<name>WEBP</name>
+			</value>
+			<value>
+				<name>ZMap</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="options" type="string" required="no" multiple="yes">
+		<description>
+			Creation options
+		</description>
+	</parameter>
+	<flag name="f">
+		<suppress_required/>
+		<description>
+			List supported formats and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="r">
+		<suppress_required/>
+		<description>
+			Cease using GDAL and revert to native output
+		</description>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print current status
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

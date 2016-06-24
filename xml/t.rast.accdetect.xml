@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.accdetect">
+	<description>
+		Detects accumulation patterns in temporally accumulated space time raster datasets created by t.rast.accumulate.
+	</description>
+	<keywords>
+		temporal, accumulation, raster, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="minimum" type="string" required="no" multiple="no">
+		<description>
+			Input space time raster dataset that specifies the minimum values to detect the accumulation pattern
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="maximum" type="string" required="no" multiple="no">
+		<description>
+			Input space time raster dataset that specifies the maximum values to detect the accumulation pattern
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="occurrence" type="string" required="yes" multiple="no">
+		<description>
+			The output space time raster dataset that stores the occurrence of the the accumulation pattern using the provided data range
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="indicator" type="string" required="no" multiple="no">
+		<description>
+			The output space time raster dataset that stores the indication of the start, intermediate and end of the specified data range
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="start" type="string" required="yes" multiple="no">
+		<description>
+			The temporal starting point to begin the accumulation, eg '2001-01-01'
+		</description>
+	</parameter>
+	<parameter name="stop" type="string" required="no" multiple="no">
+		<description>
+			The temporal date to stop the accumulation, eg '2009-01-01'
+		</description>
+	</parameter>
+	<parameter name="cycle" type="string" required="yes" multiple="no">
+		<description>
+			The temporal cycle to restart the accumulation, eg '12 months'
+		</description>
+	</parameter>
+	<parameter name="offset" type="string" required="no" multiple="no">
+		<description>
+			The temporal offset to the begin of the next cycle, eg '6 months'
+		</description>
+	</parameter>
+	<parameter name="basename" type="string" required="yes" multiple="no">
+		<label>
+			Basename of the new generated output maps
+		</label>
+		<description>
+			A numerical suffix separated by an underscore will be attached to create a unique identifier
+		</description>
+		<gisprompt />
+	</parameter>
+	<parameter name="range" type="float" required="no" multiple="no">
+		<description>
+			The minimum and maximum value of the occurrence of accumulated values, these values will be used if the min/max space time raster datasets are not specified
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="staend" type="integer" required="no" multiple="no">
+		<description>
+			The user defined values that indicate start, intermediate and end status in the indicator output space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">start</item>
+			<item order="2">intermediate</item>
+			<item order="3">end</item>
+		</keydesc>
+		<default>
+			1,2,3
+		</default>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register empty maps in the output space time raster dataset, otherwise they will be deleted
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Reverse time direction in cyclic accumulation
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

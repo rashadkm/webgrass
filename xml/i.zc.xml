@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.zc">
+	<description>
+		Zero-crossing "edge detection" raster function for image processing.
+	</description>
+	<keywords>
+		imagery, edges
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Zero crossing raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="width" type="integer" required="no" multiple="no">
+		<description>
+			x-y extent of the Gaussian filter
+		</description>
+		<default>
+			9
+		</default>
+	</parameter>
+	<parameter name="threshold" type="float" required="no" multiple="no">
+		<description>
+			Sensitivity of Gaussian filter
+		</description>
+		<default>
+			10
+		</default>
+	</parameter>
+	<parameter name="orientations" type="integer" required="no" multiple="no">
+		<description>
+			Number of azimuth directions categorized
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.import">
+	<description>
+		Imports vector data into a GRASS vector map using OGR library and reprojects on the fly.
+	</description>
+	<keywords>
+		vector, import, projection
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of OGR datasource to be imported
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="bin" prompt="file" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="yes">
+		<description>
+			OGR layer name. If not given, all available layers are imported
+		</description>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map (default: input)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="extent" type="string" required="no" multiple="no">
+		<description>
+			Output vector map extent
+		</description>
+		<default>
+			input
+		</default>
+		<values>
+			<value>
+				<name>input</name>
+				<description>extent of input map</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>extent of current region</description>
+			</value>
+		</values>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="encoding" type="string" required="no" multiple="no">
+		<label>
+			Encoding value for attribute data
+		</label>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="snap" type="float" required="no" multiple="no">
+		<label>
+			Snapping threshold for boundaries (map units)
+		</label>
+		<description>
+			'-1' for no snap
+		</description>
+		<default>
+			1e-13
+		</default>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="epsg" type="integer" required="no" multiple="no">
+		<description>
+			EPSG projection code
+		</description>
+		<values>
+			<value>
+				<name>1-1000000</name>
+			</value>
+		</values>
+		<guisection>
+			Input SRS
+		</guisection>
+	</parameter>
+	<parameter name="datum_trans" type="integer" required="no" multiple="no">
+		<label>
+			Index number of datum transform parameters
+		</label>
+		<description>
+			-1 to list available datum transform parameters
+		</description>
+		<values>
+			<value>
+				<name>-1-100</name>
+			</value>
+		</values>
+		<guisection>
+			Input SRS
+		</guisection>
+	</parameter>
+	<flag name="f">
+		<suppress_required/>
+		<description>
+			List supported OGR formats and exit
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			List available OGR layers in data source and exit
+		</description>
+	</flag>
+	<flag name="o">
+		<label>
+			Override projection check (use current location's projection)
+		</label>
+		<description>
+			Assume that the dataset has same projection as the current location
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.to.rast3elev">
+	<description>
+		Creates a 3D volume map based on 2D elevation and value raster maps.
+	</description>
+	<keywords>
+		raster, conversion, raster3d, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Name of input raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="elevation" type="string" required="yes" multiple="yes">
+		<description>
+			Name of input elevation raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="upper" type="float" required="no" multiple="no">
+		<description>
+			The value to fill the upper cells, default is null
+		</description>
+	</parameter>
+	<parameter name="lower" type="float" required="no" multiple="no">
+		<description>
+			The value to fill the lower cells, default is null
+		</description>
+	</parameter>
+	<parameter name="tilesize" type="integer" required="no" multiple="no">
+		<description>
+			The maximum tile size in kilo bytes. Default is 32KB.
+		</description>
+		<default>
+			32
+		</default>
+	</parameter>
+	<flag name="u">
+		<description>
+			Use the input map values to fill the upper cells
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			Use the input map values to fill the lower cells
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Use 3D raster mask (if exists) with input map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

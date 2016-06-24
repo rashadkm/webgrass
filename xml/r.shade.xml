@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.shade">
+	<description>
+		Drapes a color raster over an shaded relief or aspect map.
+	</description>
+	<keywords>
+		raster, elevation, relief, hillshade, visualization
+	</keywords>
+	<parameter name="shade" type="string" required="yes" multiple="no">
+		<description>
+			Name of shaded relief or aspect raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="color" type="string" required="yes" multiple="no">
+		<label>
+			Name of raster to drape over relief raster map
+		</label>
+		<description>
+			Typically, this raster is elevation or other colorful raster
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of shaded raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="brighten" type="integer" required="no" multiple="no">
+		<description>
+			Percent to brighten
+		</description>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>-99-99</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="bgcolor" type="string" required="no" multiple="no">
+		<label>
+			Color to use instead of NULL values
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Use colors from color tables for NULL values
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-option key="bgcolor"/>
+			<rule-flag key="c"/>
+		</rule>
+	</rules>
+</task>

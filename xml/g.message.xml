@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.message">
+	<label>
+		Prints a message, warning, progress info, or fatal error in the GRASS way.
+	</label>
+	<description>
+		This module should be used in scripts for messages served to user.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="message" type="string" required="yes" multiple="no">
+		<label>
+			Text of the message to be printed
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=2
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+	</parameter>
+	<parameter name="debug" type="integer" required="no" multiple="no">
+		<description>
+			Level to use for debug messages
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>0-5</name>
+			</value>
+		</values>
+		<guisection>
+			Level
+		</guisection>
+	</parameter>
+	<flag name="w">
+		<description>
+			Print message as warning
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print message as fatal error
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Print message as debug message
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print message as progress info
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="i">
+		<label>
+			Print message in all modes except of quiet mode
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=1
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="v">
+		<label>
+			Print message only in verbose mode
+		</label>
+		<description>
+			Message is printed only on GRASS_VERBOSE&gt;=3
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.message">
+	<label>
+		Prints a message, warning, progress info, or fatal error in the GRASS way.
+	</label>
+	<description>
+		This module should be used in scripts for messages served to user.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="message" type="string" required="yes" multiple="no">
+		<label>
+			Text of the message to be printed
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=2
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+	</parameter>
+	<parameter name="debug" type="integer" required="no" multiple="no">
+		<description>
+			Level to use for debug messages
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>0-5</name>
+			</value>
+		</values>
+		<guisection>
+			Level
+		</guisection>
+	</parameter>
+	<flag name="w">
+		<description>
+			Print message as warning
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print message as fatal error
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Print message as debug message
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print message as progress info
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="i">
+		<label>
+			Print message in all modes except of quiet mode
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=1
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="v">
+		<label>
+			Print message only in verbose mode
+		</label>
+		<description>
+			Message is printed only on GRASS_VERBOSE&gt;=3
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.message">
+	<label>
+		Prints a message, warning, progress info, or fatal error in the GRASS way.
+	</label>
+	<description>
+		This module should be used in scripts for messages served to user.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="message" type="string" required="yes" multiple="no">
+		<label>
+			Text of the message to be printed
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=2
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+	</parameter>
+	<parameter name="debug" type="integer" required="no" multiple="no">
+		<description>
+			Level to use for debug messages
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>0-5</name>
+			</value>
+		</values>
+		<guisection>
+			Level
+		</guisection>
+	</parameter>
+	<flag name="w">
+		<description>
+			Print message as warning
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print message as fatal error
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Print message as debug message
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print message as progress info
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="i">
+		<label>
+			Print message in all modes except of quiet mode
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=1
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="v">
+		<label>
+			Print message only in verbose mode
+		</label>
+		<description>
+			Message is printed only on GRASS_VERBOSE&gt;=3
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.message">
+	<label>
+		Prints a message, warning, progress info, or fatal error in the GRASS way.
+	</label>
+	<description>
+		This module should be used in scripts for messages served to user.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="message" type="string" required="yes" multiple="no">
+		<label>
+			Text of the message to be printed
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=2
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+	</parameter>
+	<parameter name="debug" type="integer" required="no" multiple="no">
+		<description>
+			Level to use for debug messages
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>0-5</name>
+			</value>
+		</values>
+		<guisection>
+			Level
+		</guisection>
+	</parameter>
+	<flag name="w">
+		<description>
+			Print message as warning
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print message as fatal error
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Print message as debug message
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print message as progress info
+		</description>
+ 		<guisection>
+			Type
+		</guisection>
+	</flag>
+	<flag name="i">
+		<label>
+			Print message in all modes except of quiet mode
+		</label>
+		<description>
+			Message is printed on GRASS_VERBOSE&gt;=1
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="v">
+		<label>
+			Print message only in verbose mode
+		</label>
+		<description>
+			Message is printed only on GRASS_VERBOSE&gt;=3
+		</description>
+ 		<guisection>
+			Level
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

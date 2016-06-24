@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findfile">
+	<description>
+		Searches for GRASS data base files and sets variables for the shell.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an existing map
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Name of a mapset (default: search path)
+		</label>
+		<description>
+			'.' for current mapset
+		</description>
+	</parameter>
+	<flag name="n">
+		<description>
+			Do not add quotes
+		</description>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available elements and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findfile">
+	<description>
+		Searches for GRASS data base files and sets variables for the shell.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an existing map
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Name of a mapset (default: search path)
+		</label>
+		<description>
+			'.' for current mapset
+		</description>
+	</parameter>
+	<flag name="n">
+		<description>
+			Do not add quotes
+		</description>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available elements and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findfile">
+	<description>
+		Searches for GRASS data base files and sets variables for the shell.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an existing map
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Name of a mapset (default: search path)
+		</label>
+		<description>
+			'.' for current mapset
+		</description>
+	</parameter>
+	<flag name="n">
+		<description>
+			Do not add quotes
+		</description>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available elements and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findfile">
+	<description>
+		Searches for GRASS data base files and sets variables for the shell.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an existing map
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Name of a mapset (default: search path)
+		</label>
+		<description>
+			'.' for current mapset
+		</description>
+	</parameter>
+	<flag name="n">
+		<description>
+			Do not add quotes
+		</description>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available elements and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

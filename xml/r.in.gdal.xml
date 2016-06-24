@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.gdal">
+	<description>
+		Imports raster data into a GRASS raster map using GDAL library.
+	</description>
+	<keywords>
+		raster, import
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster file to be imported
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="band" type="integer" required="no" multiple="yes">
+		<description>
+			Band(s) to select (default is all bands)
+		</description>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<label>
+			Maximum memory to be used (in MB)
+		</label>
+		<description>
+			Cache size for raster rows
+		</description>
+		<default>
+			300
+		</default>
+		<values>
+			<value>
+				<name>0-2047</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="target" type="string" required="no" multiple="no">
+		<label>
+			Name of GCPs target location
+		</label>
+		<description>
+			Name of location to create or to read projection from for GCPs transformation
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title for resultant raster map
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="offset" type="integer" required="no" multiple="no">
+		<description>
+			The offset will be added to the band number while output raster map name creation
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name for new location to create
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="table" type="string" required="no" multiple="no">
+		<label>
+			File prefix for raster attribute tables
+		</label>
+		<description>
+			The band number and ".csv" will be appended to the file prefix
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+	</parameter>
+	<flag name="o">
+		<description>
+			Override projection (use location's projection)
+		</description>
+	</flag>
+	<flag name="j">
+		<suppress_required/>
+		<description>
+			Perform projection check only and exit
+		</description>
+	</flag>
+	<flag name="e">
+		<label>
+			Extend region extents based on new dataset
+		</label>
+		<description>
+			Also updates the default region if in the PERMANENT mapset
+		</description>
+	</flag>
+	<flag name="f">
+		<suppress_required/>
+		<description>
+			List supported formats and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Force Lat/Lon maps to fit into geographic coordinates (90N,S; 180E,W)
+		</description>
+	</flag>
+	<flag name="k">
+		<description>
+			Keep band numbers instead of using band color names
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Create the location specified by the "location" parameter and exit. Do not import the raster file.
+		</description>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print number of bands and exit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="requires">
+			<rule-flag key="j"/>
+			<rule-option key="input"/>
+		</rule>
+		<rule type="requires">
+			<rule-flag key="p"/>
+			<rule-option key="input"/>
+		</rule>
+	</rules>
+</task>

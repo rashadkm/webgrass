@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.surf.bspline">
+	<description>
+		Performs bicubic or bilinear spline interpolation with Tykhonov regularization.
+	</description>
+	<keywords>
+		vector, surface, interpolation, LIDAR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector point map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of the attribute column with values to be used for approximation
+		</label>
+		<description>
+			If not given and input is 3D vector map then z-coordinates are used.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="sparse_input" type="string" required="no" multiple="no">
+		<label>
+			Name of input vector map with sparse points
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="raster_output" type="string" required="no" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="mask" type="string" required="no" multiple="no">
+		<label>
+			Raster map to use for masking (applies to raster output only)
+		</label>
+		<description>
+			Only cells that are not NULL and not zero are interpolated
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="ew_step" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the east-west direction
+		</description>
+		<default>
+			4
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="ns_step" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the north-south direction
+		</description>
+		<default>
+			4
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Spline interpolation algorithm
+		</description>
+		<default>
+			bilinear
+		</default>
+		<values>
+			<value>
+				<name>bilinear</name>
+				<description>Bilinear interpolation</description>
+			</value>
+			<value>
+				<name>bicubic</name>
+				<description>Bicubic interpolation</description>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="lambda_i" type="float" required="no" multiple="no">
+		<description>
+			Tykhonov regularization parameter (affects smoothing)
+		</description>
+		<default>
+			0.01
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="solver" type="string" required="no" multiple="no">
+		<description>
+			The type of solver which should solve the symmetric linear equation system
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			cholesky
+		</default>
+		<values>
+			<value>
+				<name>cholesky</name>
+			</value>
+			<value>
+				<name>cg</name>
+			</value>
+		</values>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="maxit" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of iteration used to solve the linear equation system
+		</description>
+		<default>
+			10000
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="error" type="float" required="no" multiple="no">
+		<description>
+			Error break criteria for iterative solver
+		</description>
+		<default>
+			0.000001
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<label>
+			Maximum memory to be used (in MB)
+		</label>
+		<description>
+			Cache size for raster rows
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<flag name="c">
+		<description>
+			Find the best Tykhonov regularizing parameter using a "leave-one-out" cross validation method
+		</description>
+	</flag>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

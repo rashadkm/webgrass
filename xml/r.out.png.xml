@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.png">
+	<description>
+		Export a GRASS raster map as a non-georeferenced PNG image.
+	</description>
+	<keywords>
+		raster, export, PNG
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for new PNG file (use '-' for stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="compression" type="integer" required="no" multiple="no">
+		<label>
+			Compression level of PNG file
+		</label>
+		<description>
+			(0 = none, 1 = fastest, 9 = best)
+		</description>
+		<default>
+			6
+		</default>
+		<values>
+			<value>
+				<name>0-9</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="t">
+		<description>
+			Make NULL cells transparent
+		</description>
+	</flag>
+	<flag name="w">
+		<description>
+			Output world file
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast3d.mapcalc">
+	<description>
+		Performs r3.mapcalc expressions on maps of sampled space time 3D raster datasets.
+	</description>
+	<keywords>
+		temporal, algebra, raster3d, voxel, time
+	</keywords>
+	<parameter name="inputs" type="string" required="yes" multiple="yes">
+		<description>
+			Name of the input space time raster3d datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="str3ds" prompt="str3ds" />
+	</parameter>
+	<parameter name="expression" type="string" required="yes" multiple="no">
+		<description>
+			r3.mapcalc expression applied to each time step of the sampled data
+		</description>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="yes">
+		<description>
+			The method to be used for sampling the input dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			during,overlap,contain,equal
+		</default>
+		<values>
+			<value>
+				<name>start</name>
+			</value>
+			<value>
+				<name>during</name>
+			</value>
+			<value>
+				<name>overlap</name>
+			</value>
+			<value>
+				<name>contain</name>
+			</value>
+			<value>
+				<name>equal</name>
+			</value>
+			<value>
+				<name>follows</name>
+			</value>
+			<value>
+				<name>precedes</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time raster3d dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="str3ds" prompt="str3ds" />
+	</parameter>
+	<parameter name="basename" type="string" required="yes" multiple="no">
+		<label>
+			Basename of the new generated output maps
+		</label>
+		<description>
+			A numerical suffix separated by an underscore will be attached to create a unique identifier
+		</description>
+		<gisprompt />
+	</parameter>
+	<parameter name="nprocs" type="integer" required="no" multiple="no">
+		<description>
+			Number of r3.mapcalc processes to run in parallel
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register Null maps
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Check spatial overlap
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

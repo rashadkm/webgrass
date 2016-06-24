@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.tplot">
+	<description>
+		Plots the values of temporal datasets.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="stvds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time vector datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time raster datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Categories of vectores features
+		</label>
+		<description>
+			To use only with stvds
+		</description>
+	</parameter>
+	<parameter name="attr" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute
+		</label>
+		<description>
+			Name of attribute which represent data for plotting
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output file
+		</label>
+		<description>
+			Add extension to specify format (.png, .pdf, .svg)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="size" type="string" required="no" multiple="no">
+		<label>
+			The size for output image
+		</label>
+		<description>
+			It works only with output parameter
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.tplot">
+	<description>
+		Plots the values of temporal datasets.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="stvds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time vector datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time raster datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Categories of vectores features
+		</label>
+		<description>
+			To use only with stvds
+		</description>
+	</parameter>
+	<parameter name="attr" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute
+		</label>
+		<description>
+			Name of attribute which represent data for plotting
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output file
+		</label>
+		<description>
+			Add extension to specify format (.png, .pdf, .svg)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="size" type="string" required="no" multiple="no">
+		<label>
+			The size for output image
+		</label>
+		<description>
+			It works only with output parameter
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.tplot">
+	<description>
+		Plots the values of temporal datasets.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="stvds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time vector datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time raster datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Categories of vectores features
+		</label>
+		<description>
+			To use only with stvds
+		</description>
+	</parameter>
+	<parameter name="attr" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute
+		</label>
+		<description>
+			Name of attribute which represent data for plotting
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output file
+		</label>
+		<description>
+			Add extension to specify format (.png, .pdf, .svg)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="size" type="string" required="no" multiple="no">
+		<label>
+			The size for output image
+		</label>
+		<description>
+			It works only with output parameter
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.tplot">
+	<description>
+		Plots the values of temporal datasets.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="stvds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time vector datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time raster datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Categories of vectores features
+		</label>
+		<description>
+			To use only with stvds
+		</description>
+	</parameter>
+	<parameter name="attr" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute
+		</label>
+		<description>
+			Name of attribute which represent data for plotting
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output file
+		</label>
+		<description>
+			Add extension to specify format (.png, .pdf, .svg)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="size" type="string" required="no" multiple="no">
+		<label>
+			The size for output image
+		</label>
+		<description>
+			It works only with output parameter
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

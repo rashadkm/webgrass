@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast3d.list">
+	<description>
+		Lists registered maps of a space time raster3d dataset.
+	</description>
+	<keywords>
+		temporal, map management, list, raster3d, voxel, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster3d dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="str3ds" prompt="str3ds" />
+	</parameter>
+	<parameter name="order" type="string" required="no" multiple="yes">
+		<description>
+			Order the space time dataset by category
+		</description>
+		<default>
+			start_time
+		</default>
+		<values>
+			<value>
+				<name>id</name>
+			</value>
+			<value>
+				<name>name</name>
+			</value>
+			<value>
+				<name>creator</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+			<value>
+				<name>temporal_type</name>
+			</value>
+			<value>
+				<name>creation_time</name>
+			</value>
+			<value>
+				<name>start_time</name>
+			</value>
+			<value>
+				<name>end_time</name>
+			</value>
+			<value>
+				<name>north</name>
+			</value>
+			<value>
+				<name>south</name>
+			</value>
+			<value>
+				<name>west</name>
+			</value>
+			<value>
+				<name>east</name>
+			</value>
+			<value>
+				<name>nsres</name>
+			</value>
+			<value>
+				<name>tbres</name>
+			</value>
+			<value>
+				<name>ewres</name>
+			</value>
+			<value>
+				<name>cols</name>
+			</value>
+			<value>
+				<name>rows</name>
+			</value>
+			<value>
+				<name>depths</name>
+			</value>
+			<value>
+				<name>number_of_cells</name>
+			</value>
+			<value>
+				<name>min</name>
+			</value>
+			<value>
+				<name>max</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<description>
+			Columns to be printed to stdout
+		</description>
+		<default>
+			name,mapset,start_time,end_time
+		</default>
+		<values>
+			<value>
+				<name>id</name>
+			</value>
+			<value>
+				<name>name</name>
+			</value>
+			<value>
+				<name>creator</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+			<value>
+				<name>temporal_type</name>
+			</value>
+			<value>
+				<name>creation_time</name>
+			</value>
+			<value>
+				<name>start_time</name>
+			</value>
+			<value>
+				<name>end_time</name>
+			</value>
+			<value>
+				<name>north</name>
+			</value>
+			<value>
+				<name>south</name>
+			</value>
+			<value>
+				<name>west</name>
+			</value>
+			<value>
+				<name>east</name>
+			</value>
+			<value>
+				<name>nsres</name>
+			</value>
+			<value>
+				<name>tbres</name>
+			</value>
+			<value>
+				<name>ewres</name>
+			</value>
+			<value>
+				<name>cols</name>
+			</value>
+			<value>
+				<name>rows</name>
+			</value>
+			<value>
+				<name>depths</name>
+			</value>
+			<value>
+				<name>number_of_cells</name>
+			</value>
+			<value>
+				<name>min</name>
+			</value>
+			<value>
+				<name>max</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Method used for data listing
+		</description>
+		<default>
+			cols
+		</default>
+		<values>
+			<value>
+				<name>cols</name>
+			</value>
+			<value>
+				<name>comma</name>
+			</value>
+			<value>
+				<name>delta</name>
+			</value>
+			<value>
+				<name>deltagaps</name>
+			</value>
+			<value>
+				<name>gran</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator character between the output columns
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="s">
+		<description>
+			Suppress printing of column names
+		</description>
+ 		<guisection>
+			Formatting
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

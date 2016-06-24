@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.db.connect">
+	<description>
+		Prints/sets DB connection for a vector map to attribute table.
+	</description>
+	<keywords>
+		vector, attribute table, database, layer
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<description>
+			Name of database driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="database" type="string" required="no" multiple="no">
+		<description>
+			Name of database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="table" type="string" required="no" multiple="no">
+		<description>
+			Name of attribute table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbtable" prompt="dbtable" />
+	</parameter>
+	<parameter name="key" type="string" required="no" multiple="no">
+		<label>
+			Name of key column
+		</label>
+		<description>
+			Must refer to an integer column
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			cat
+		</default>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Format: layer number[/layer name]
+		</description>
+		<gisprompt age="new" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator for shell script style output
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print all map connection parameters and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<label>
+			Print all map connection parameters in shell script style and exit
+		</label>
+		<description>
+			Format: layer[/layer name] table key database driver
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Print types/names of table columns for specified layer and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Overwrite connection parameter for certain layer
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Delete connection for certain layer (not the table)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

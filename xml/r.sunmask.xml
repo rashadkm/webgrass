@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sunmask">
+	<label>
+		Calculates cast shadow areas from sun position and elevation raster map.
+	</label>
+	<description>
+		Either exact sun position (A) is specified, or date/time to calculate the sun position (B) by r.sunmask itself.
+	</description>
+	<keywords>
+		raster, solar, sun position, shadow
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="altitude" type="float" required="no" multiple="no">
+		<description>
+			Altitude of the sun in degrees above the horizon (A)
+		</description>
+		<values>
+			<value>
+				<name>0-89.999</name>
+			</value>
+		</values>
+		<guisection>
+			Position
+		</guisection>
+	</parameter>
+	<parameter name="azimuth" type="float" required="no" multiple="no">
+		<description>
+			Azimuth of the sun in degrees from north (A)
+		</description>
+		<values>
+			<value>
+				<name>0-360</name>
+			</value>
+		</values>
+		<guisection>
+			Position
+		</guisection>
+	</parameter>
+	<parameter name="year" type="integer" required="no" multiple="no">
+		<description>
+			Year (B)
+		</description>
+		<values>
+			<value>
+				<name>1950-2050</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="month" type="integer" required="no" multiple="no">
+		<description>
+			Month (B)
+		</description>
+		<values>
+			<value>
+				<name>0-12</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="day" type="integer" required="no" multiple="no">
+		<description>
+			Day (B)
+		</description>
+		<values>
+			<value>
+				<name>0-31</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="hour" type="integer" required="no" multiple="no">
+		<description>
+			Hour (B)
+		</description>
+		<values>
+			<value>
+				<name>0-24</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="minute" type="integer" required="no" multiple="no">
+		<description>
+			Minutes (B)
+		</description>
+		<values>
+			<value>
+				<name>0-60</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="second" type="integer" required="no" multiple="no">
+		<description>
+			Seconds (B)
+		</description>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>0-60</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="timezone" type="integer" required="no" multiple="no">
+		<label>
+			Timezone
+		</label>
+		<description>
+			East positive, offset from GMT, also use to adjust daylight savings
+		</description>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="east" type="string" required="no" multiple="no">
+		<label>
+			Easting coordinate (point of interest)
+		</label>
+		<description>
+			Default: map center
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Position
+		</guisection>
+	</parameter>
+	<parameter name="north" type="string" required="no" multiple="no">
+		<label>
+			Northing coordinate (point of interest)
+		</label>
+		<description>
+			Default: map center
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Position
+		</guisection>
+	</parameter>
+	<flag name="z">
+		<description>
+			Do not ignore zero elevation
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Calculate sun position only and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print the sun position output in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

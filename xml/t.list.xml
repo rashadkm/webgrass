@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.list">
+	<description>
+		Lists space time datasets and maps registered in the temporal database.
+	</description>
+	<keywords>
+		temporal, map management, list, time
+	</keywords>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the space time dataset or map, default is strds
+		</description>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>raster</name>
+			</value>
+			<value>
+				<name>raster_3d</name>
+			</value>
+			<value>
+				<name>vector</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="temporaltype" type="string" required="no" multiple="yes">
+		<description>
+			The temporal type of the space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			absolute,relative
+		</default>
+		<values>
+			<value>
+				<name>absolute</name>
+			</value>
+			<value>
+				<name>relative</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="order" type="string" required="no" multiple="yes">
+		<label>
+			Sort the space time dataset by category
+		</label>
+		<description>
+			Columns number_of_maps and granularity only available for space time datasets
+		</description>
+		<default>
+			id
+		</default>
+		<values>
+			<value>
+				<name>id</name>
+			</value>
+			<value>
+				<name>name</name>
+			</value>
+			<value>
+				<name>creator</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+			<value>
+				<name>number_of_maps</name>
+			</value>
+			<value>
+				<name>creation_time</name>
+			</value>
+			<value>
+				<name>start_time</name>
+			</value>
+			<value>
+				<name>end_time</name>
+			</value>
+			<value>
+				<name>interval</name>
+			</value>
+			<value>
+				<name>north</name>
+			</value>
+			<value>
+				<name>south</name>
+			</value>
+			<value>
+				<name>west</name>
+			</value>
+			<value>
+				<name>east</name>
+			</value>
+			<value>
+				<name>granularity</name>
+			</value>
+		</values>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<label>
+			Columns to be printed to stdout
+		</label>
+		<description>
+			Columns number_of_maps and granularity only available for space time datasets
+		</description>
+		<default>
+			id
+		</default>
+		<values>
+			<value>
+				<name>id</name>
+			</value>
+			<value>
+				<name>name</name>
+			</value>
+			<value>
+				<name>creator</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+			<value>
+				<name>number_of_maps</name>
+			</value>
+			<value>
+				<name>creation_time</name>
+			</value>
+			<value>
+				<name>start_time</name>
+			</value>
+			<value>
+				<name>end_time</name>
+			</value>
+			<value>
+				<name>north</name>
+			</value>
+			<value>
+				<name>south</name>
+			</value>
+			<value>
+				<name>west</name>
+			</value>
+			<value>
+				<name>east</name>
+			</value>
+			<value>
+				<name>granularity</name>
+			</value>
+			<value>
+				<name>all</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator character between the output columns
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Print the column names as first row
+		</description>
+ 		<guisection>
+			Formatting
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

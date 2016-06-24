@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.out.ogr">
+	<description>
+		Exports attribute tables into various formats.
+	</description>
+	<keywords>
+		database, export, attribute table
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			GRASS table name
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Output table file name or DB connection string
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="format" type="string" required="yes" multiple="no">
+		<description>
+			Table format
+		</description>
+		<default>
+			CSV
+		</default>
+		<values>
+			<value>
+				<name>CSV</name>
+			</value>
+			<value>
+				<name>DBF</name>
+			</value>
+			<value>
+				<name>GML</name>
+			</value>
+			<value>
+				<name>MySQL</name>
+			</value>
+			<value>
+				<name>PostgreSQL</name>
+			</value>
+			<value>
+				<name>SQLite</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="table" type="string" required="no" multiple="no">
+		<description>
+			Name for output table (default: input name)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

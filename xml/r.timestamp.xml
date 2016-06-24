@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.timestamp">
+	<label>
+		Modifies a timestamp for a raster map.
+	</label>
+	<description>
+		Print/add/remove a timestamp for a raster map.
+	</description>
+	<keywords>
+		raster, metadata, timestamp, time
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="date" type="string" required="no" multiple="no">
+		<label>
+			Datetime, datetime1/datetime2, or 'none' to remove
+		</label>
+		<description>
+			Format: '15 jan 1994' (absolute) or '2 years' (relative)
+		</description>
+		<keydesc>
+			<item order="1">timestamp</item>
+		</keydesc>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

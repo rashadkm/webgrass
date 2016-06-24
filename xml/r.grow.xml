@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.grow">
+	<description>
+		Generates a raster map layer with contiguous areas grown by one cell.
+	</description>
+	<keywords>
+		raster, distance, proximity
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="radius" type="float" required="no" multiple="no">
+		<description>
+			Radius of buffer in raster cells
+		</description>
+		<default>
+			1.01
+		</default>
+	</parameter>
+	<parameter name="metric" type="string" required="no" multiple="no">
+		<description>
+			Metric
+		</description>
+		<default>
+			euclidean
+		</default>
+		<values>
+			<value>
+				<name>euclidean</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>manhattan</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="old" type="integer" required="no" multiple="no">
+		<description>
+			Value to write for input cells which are non-NULL (-1 =&gt; NULL)
+		</description>
+	</parameter>
+	<parameter name="new" type="integer" required="no" multiple="no">
+		<description>
+			Value to write for "grown" cells
+		</description>
+	</parameter>
+	<flag name="m">
+		<description>
+			Radius is in map units rather than cells
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

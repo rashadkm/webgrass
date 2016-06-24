@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.evapo.pt">
+	<description>
+		Computes evapotranspiration calculation Priestley and Taylor formulation, 1972.
+	</description>
+	<keywords>
+		imagery, evapotranspiration
+	</keywords>
+	<parameter name="net_radiation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input net radiation raster map [W/m2]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="soil_heatflux" type="string" required="yes" multiple="no">
+		<description>
+			Name of input soil heat flux raster map [W/m2]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="air_temperature" type="string" required="yes" multiple="no">
+		<description>
+			Name of input air temperature raster map [K]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="atmospheric_pressure" type="string" required="yes" multiple="no">
+		<description>
+			Name of input atmospheric pressure raster map [millibars]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="priestley_taylor_coeff" type="float" required="yes" multiple="no">
+		<description>
+			Priestley-Taylor coefficient
+		</description>
+		<default>
+			1.26
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of output evapotranspiration raster map [mm/d]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="z">
+		<description>
+			Set negative ETa to zero
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

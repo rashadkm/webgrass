@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.surf.random">
+	<description>
+		Produces a raster surface map of uniform random deviates with defined range.
+	</description>
+	<keywords>
+		raster, surface, random
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="min" type="integer" required="no" multiple="no">
+		<description>
+			Minimum random value
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="max" type="integer" required="no" multiple="no">
+		<description>
+			Maximum random value
+		</description>
+		<default>
+			100
+		</default>
+	</parameter>
+	<flag name="i">
+		<description>
+			Create an integer raster map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

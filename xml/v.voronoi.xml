@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.voronoi">
+	<description>
+		Creates a Voronoi diagram in current region from an input vector map containing points or centroids.
+	</description>
+	<keywords>
+		vector, geometry, triangulation, skeleton
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector point map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer_all" prompt="layer" />
+		<default>
+			-1
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="smoothness" type="float" required="no" multiple="no">
+		<label>
+			Factor for output smoothness
+		</label>
+		<description>
+			Applies to input areas only. Smaller values produce smoother output but can cause numerical instability.
+		</description>
+		<default>
+			0.25
+		</default>
+	</parameter>
+	<parameter name="thin" type="float" required="no" multiple="no">
+		<label>
+			Maximum dangle length of skeletons
+		</label>
+		<description>
+			Applies only to skeleton extraction. Default = -1 will extract the center line.
+		</description>
+		<default>
+			-1
+		</default>
+	</parameter>
+	<flag name="a">
+		<description>
+			Create Voronoi diagram for input areas
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Extract skeletons for input areas
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			Output tessellation as a graph (lines), not areas
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not create attribute table
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

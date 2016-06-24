@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.topmodel">
+	<description>
+		Simulates TOPMODEL which is a physically based hydrologic model.
+	</description>
+	<keywords>
+		raster, hydrology, model
+	</keywords>
+	<parameter name="parameters" type="string" required="yes" multiple="no">
+		<description>
+			Name of input TOPMODEL parameters file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="topidxstats" type="string" required="yes" multiple="no">
+		<description>
+			Name of input topographic index statistics file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input rainfall and potential evapotranspiration data file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="timestep" type="integer" required="no" multiple="no">
+		<label>
+			Time step
+		</label>
+		<description>
+			Generate output for this time step
+		</description>
+	</parameter>
+	<parameter name="topidxclass" type="integer" required="no" multiple="no">
+		<label>
+			Topographic index class
+		</label>
+		<description>
+			Generate output for this topographic index class
+		</description>
+	</parameter>
+	<parameter name="topidx" type="string" required="no" multiple="no">
+		<label>
+			Name of input topographic index raster map
+		</label>
+		<description>
+			Must be clipped to the catchment boundary. Used for generating outtopidxstats
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Preprocess
+		</guisection>
+	</parameter>
+	<parameter name="ntopidxclasses" type="integer" required="no" multiple="no">
+		<label>
+			Number of topographic index classes
+		</label>
+		<description>
+			Used for generating outtopidxstats
+		</description>
+		<default>
+			30
+		</default>
+		<guisection>
+			Preprocess
+		</guisection>
+	</parameter>
+	<parameter name="outtopidxstats" type="string" required="no" multiple="no">
+		<label>
+			Name for output topographic index statistics file
+		</label>
+		<description>
+			Requires topidx and ntopidxclasses
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+		<guisection>
+			Preprocess
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Preprocess only and stop after generating outtopidxstats
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

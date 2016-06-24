@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.aster.toar">
+	<description>
+		Calculates Top of Atmosphere Radiance/Reflectance/Brightness Temperature from ASTER DN.
+
+	</description>
+	<keywords>
+		imagery, radiometric conversion, Terra-ASTER, radiance, reflectance, brightness temperature
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Names of ASTER DN layers (15 layers)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dayofyear" type="float" required="yes" multiple="no">
+		<description>
+			Day of Year of satellite overpass [0-366]
+		</description>
+		<gisprompt age="value" />
+	</parameter>
+	<parameter name="sun_elevation" type="float" required="yes" multiple="no">
+		<description>
+			Sun elevation angle (degrees, &lt; 90.0)
+		</description>
+		<gisprompt age="value" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Base name of the output layers (will add .x)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="r">
+		<description>
+			Output is radiance (W/m2)
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			VNIR is High Gain
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			SWIR is High Gain
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			VNIR is Low Gain 1
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			SWIR is Low Gain 1
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			SWIR is Low Gain 2
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

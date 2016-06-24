@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.search.modules">
+	<description>
+		Search in GRASS modules using keywords
+	</description>
+	<keywords>
+		general, modules, search
+	</keywords>
+	<parameter name="keyword" type="string" required="yes" multiple="yes">
+		<description>
+			Keyword to be searched
+		</description>
+	</parameter>
+	<flag name="a">
+		<description>
+			Display only modules where all keywords are available (AND), default: OR
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Search in manual pages too (can be slow)
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Use colorized (more readable) output to terminal
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Shell script format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			JSON format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.search.modules">
+	<description>
+		Search in GRASS modules using keywords
+	</description>
+	<keywords>
+		general, modules, search
+	</keywords>
+	<parameter name="keyword" type="string" required="yes" multiple="yes">
+		<description>
+			Keyword to be searched
+		</description>
+	</parameter>
+	<flag name="a">
+		<description>
+			Display only modules where all keywords are available (AND), default: OR
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Search in manual pages too (can be slow)
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Use colorized (more readable) output to terminal
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Shell script format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			JSON format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.search.modules">
+	<description>
+		Search in GRASS modules using keywords
+	</description>
+	<keywords>
+		general, modules, search
+	</keywords>
+	<parameter name="keyword" type="string" required="yes" multiple="yes">
+		<description>
+			Keyword to be searched
+		</description>
+	</parameter>
+	<flag name="a">
+		<description>
+			Display only modules where all keywords are available (AND), default: OR
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Search in manual pages too (can be slow)
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Use colorized (more readable) output to terminal
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Shell script format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			JSON format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.search.modules">
+	<description>
+		Search in GRASS modules using keywords
+	</description>
+	<keywords>
+		general, modules, search
+	</keywords>
+	<parameter name="keyword" type="string" required="yes" multiple="yes">
+		<description>
+			Keyword to be searched
+		</description>
+	</parameter>
+	<flag name="a">
+		<description>
+			Display only modules where all keywords are available (AND), default: OR
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Search in manual pages too (can be slow)
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Use colorized (more readable) output to terminal
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Shell script format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			JSON format
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

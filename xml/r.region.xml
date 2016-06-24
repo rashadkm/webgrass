@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.region">
+	<description>
+		Sets the boundary definitions for a raster map.
+	</description>
+	<keywords>
+		raster, metadata
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map to change
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Set region from named region
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Set region to match this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Set region to match this vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="n" type="string" required="no" multiple="no">
+		<description>
+			Value for the northern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="s" type="string" required="no" multiple="no">
+		<description>
+			Value for the southern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="e" type="string" required="no" multiple="no">
+		<description>
+			Value for the eastern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="w" type="string" required="no" multiple="no">
+		<description>
+			Value for the western edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="align" type="string" required="no" multiple="no">
+		<description>
+			Raster map to align to
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Set from current region
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Set from default region
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

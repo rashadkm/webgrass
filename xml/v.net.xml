@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.net">
+	<description>
+		Performs network maintenance.
+	</description>
+	<keywords>
+		vector, network, network maintenance
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<label>
+			Name of input vector line map (arcs)
+		</label>
+		<description>
+			Required for operation 'nodes', 'connect', 'report' and 'nreport'
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Arcs
+		</guisection>
+	</parameter>
+	<parameter name="points" type="string" required="no" multiple="no">
+		<label>
+			Name of input vector point map (nodes)
+		</label>
+		<description>
+			Required for operation 'connect' and 'arcs'
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Nodes
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<values>
+			<value>
+				<name>nodes</name>
+				<description>new point is placed on each node (line end) if doesn't exist</description>
+			</value>
+			<value>
+				<name>connect</name>
+				<description>connect still unconnected points to vector network by inserting new line(s)</description>
+			</value>
+			<value>
+				<name>arcs</name>
+				<description>new line is created from start point to end point</description>
+			</value>
+			<value>
+				<name>report</name>
+				<description>print to standard output {line_category start_point_category end_point_category}</description>
+			</value>
+			<value>
+				<name>nreport</name>
+				<description>print to standard output {point_category line_category[,line_category...]}</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="arc_layer" type="string" required="no" multiple="no">
+		<label>
+			Arc layer
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="new" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Arcs
+		</guisection>
+	</parameter>
+	<parameter name="node_layer" type="string" required="no" multiple="no">
+		<label>
+			Node layer
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="new" element="layer" prompt="layer" />
+		<default>
+			2
+		</default>
+		<guisection>
+			Nodes
+		</guisection>
+	</parameter>
+	<parameter name="threshold" type="float" required="no" multiple="no">
+		<label>
+			Threshold
+		</label>
+		<description>
+			Required for operation 'connect'. Connect points in given threshold.
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<label>
+			Name of input file
+		</label>
+		<description>
+			Required for operation 'arcs' ('-' for standard input)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<flag name="c">
+		<label>
+			Assign unique categories to new points
+		</label>
+		<description>
+			For operation 'nodes'
+		</description>
+ 		<guisection>
+			Nodes
+		</guisection>
+	</flag>
+	<flag name="s">
+		<label>
+			Snap points to network
+		</label>
+		<description>
+			For operation 'connect'. By default, a new line from the point to the network is created.
+		</description>
+ 		<guisection>
+			Nodes
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

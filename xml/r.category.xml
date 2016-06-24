@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.category">
+	<description>
+		Manages category values and labels associated with user-specified raster map layers.
+	</description>
+	<keywords>
+		raster, category
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="yes">
+		<label>
+			Category values
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="values" type="float" required="no" multiple="yes">
+		<label>
+			Comma separated value list
+		</label>
+		<description>
+			Example: 1.4,3.8,13
+		</description>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			tab
+		</default>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Raster map from which to copy category table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="rules" type="string" required="no" multiple="no">
+		<description>
+			File containing category label rules (or "-" to read from stdin)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<label>
+			Default label or format string for dynamic labeling
+		</label>
+		<description>
+			Used when no explicit label exists for the category
+		</description>
+	</parameter>
+	<parameter name="coefficients" type="float" required="no" multiple="no">
+		<label>
+			Dynamic label coefficients
+		</label>
+		<description>
+			Two pairs of category multiplier and offsets, for $1 and $2
+		</description>
+		<keydesc>
+			<item order="1">mult1</item>
+			<item order="2">offset1</item>
+			<item order="3">mult2</item>
+			<item order="4">offset2</item>
+		</keydesc>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

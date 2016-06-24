@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.connect">
+	<description>
+		Prints/sets general temporal GIS database connection for current mapset.
+	</description>
+	<keywords>
+		database, attribute table, connection settings
+	</keywords>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<description>
+			Name of database driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+		</values>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="database" type="string" required="no" multiple="no">
+		<description>
+			Name of database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/tgis/sqlite.db
+		</default>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print current connection parameters and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Check connection parameters, set if uninitialized, and exit
+		</description>
+ 		<guisection>
+			Set
+		</guisection>
+	</flag>
+	<flag name="d">
+		<label>
+			Set from default settings and exit
+		</label>
+		<description>
+			Overwrite current settings if initialized
+		</description>
+ 		<guisection>
+			Set
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print current connection parameter in shell style and exit
+		</description>
+ 		<guisection>
+			Set
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

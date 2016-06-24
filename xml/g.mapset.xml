@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapset">
+	<label>
+		Changes/reports current mapset.
+	</label>
+	<description>
+		Optionally create new mapset or list available mapsets in given location.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="no">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name of mapset where to switch
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="mapset" prompt="mapset" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<label>
+			Location name
+		</label>
+		<description>
+			Location name (not location path)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="location" prompt="location" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="dbase" type="string" required="no" multiple="no">
+		<label>
+			GRASS GIS database directory
+		</label>
+		<description>
+			Default: path to the current GRASS GIS database
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<gisprompt age="old" element="dbase" prompt="dbase" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Create mapset if it doesn't exist
+		</description>
+ 		<guisection>
+			Create
+		</guisection>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available mapsets and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print current mapset and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapset">
+	<label>
+		Changes/reports current mapset.
+	</label>
+	<description>
+		Optionally create new mapset or list available mapsets in given location.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="no">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name of mapset where to switch
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="mapset" prompt="mapset" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<label>
+			Location name
+		</label>
+		<description>
+			Location name (not location path)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="location" prompt="location" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="dbase" type="string" required="no" multiple="no">
+		<label>
+			GRASS GIS database directory
+		</label>
+		<description>
+			Default: path to the current GRASS GIS database
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<gisprompt age="old" element="dbase" prompt="dbase" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Create mapset if it doesn't exist
+		</description>
+ 		<guisection>
+			Create
+		</guisection>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available mapsets and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print current mapset and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapset">
+	<label>
+		Changes/reports current mapset.
+	</label>
+	<description>
+		Optionally create new mapset or list available mapsets in given location.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="no">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name of mapset where to switch
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="mapset" prompt="mapset" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<label>
+			Location name
+		</label>
+		<description>
+			Location name (not location path)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="location" prompt="location" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="dbase" type="string" required="no" multiple="no">
+		<label>
+			GRASS GIS database directory
+		</label>
+		<description>
+			Default: path to the current GRASS GIS database
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<gisprompt age="old" element="dbase" prompt="dbase" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Create mapset if it doesn't exist
+		</description>
+ 		<guisection>
+			Create
+		</guisection>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available mapsets and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print current mapset and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapset">
+	<label>
+		Changes/reports current mapset.
+	</label>
+	<description>
+		Optionally create new mapset or list available mapsets in given location.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="no">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name of mapset where to switch
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="mapset" prompt="mapset" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<label>
+			Location name
+		</label>
+		<description>
+			Location name (not location path)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="location" prompt="location" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<parameter name="dbase" type="string" required="no" multiple="no">
+		<label>
+			GRASS GIS database directory
+		</label>
+		<description>
+			Default: path to the current GRASS GIS database
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<gisprompt age="old" element="dbase" prompt="dbase" />
+		<guisection>
+			Mapset
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Create mapset if it doesn't exist
+		</description>
+ 		<guisection>
+			Create
+		</guisection>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available mapsets and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print current mapset and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

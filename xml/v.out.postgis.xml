@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.postgis">
+	<description>
+		Exports a vector map layer to PostGIS feature table.
+	</description>
+	<keywords>
+		vector, export, PostGIS, simple features, topology, 3D
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Input feature type
+		</description>
+		<default>
+			auto
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+			<value>
+				<name>auto</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Name for output PostGIS datasource
+		</label>
+		<description>
+			Starts with 'PG' prefix, eg. 'PG:dbname=grass'
+		</description>
+	</parameter>
+	<parameter name="output_layer" type="string" required="no" multiple="no">
+		<label>
+			Name for output PostGIS layer
+		</label>
+		<description>
+			If not specified, input name is used
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="output_link" type="string" required="no" multiple="no">
+		<label>
+			Name for output vector map defined as a link to the PostGIS feature table
+		</label>
+		<description>
+			If not specified, the vector link is not created. The link can be also manually created by 'v.external' module.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="options" type="string" required="no" multiple="yes">
+		<label>
+			Creation options
+		</label>
+		<description>
+			Examples:
+		'FID=cat': define feature id column 'cat'
+		'GEOMETRY_NAME=wkb_geometry': define geometry column 'wkb_geometry'
+		'SPATIAL_INDEX=NO': do not create spatial index on geometry column
+		</description>
+		<keydesc>
+			<item order="1">key=value</item>
+		</keydesc>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<flag name="t">
+		<description>
+			Do not export attribute table
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Export PostGIS topology instead of simple features
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="2">
+		<label>
+			Force 2D output even if input is 3D 
+		</label>
+		<description>
+			Useful if input is 3D but all z coordinates are identical
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

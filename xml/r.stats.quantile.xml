@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.stats.quantile">
+	<description>
+		Compute category quantiles using two passes.
+	</description>
+	<keywords>
+		raster, statistics
+	</keywords>
+	<parameter name="base" type="string" required="yes" multiple="no">
+		<description>
+			Name of base raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cover" type="string" required="yes" multiple="no">
+		<description>
+			Name of cover raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="quantiles" type="integer" required="no" multiple="no">
+		<description>
+			Number of quantiles
+		</description>
+	</parameter>
+	<parameter name="percentiles" type="float" required="no" multiple="yes">
+		<description>
+			List of percentiles
+		</description>
+		<default>
+			50
+		</default>
+	</parameter>
+	<parameter name="bins" type="integer" required="no" multiple="no">
+		<description>
+			Number of bins to use
+		</description>
+		<default>
+			1000
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="yes">
+		<description>
+			Resultant raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="r">
+		<description>
+			Create reclass map with statistics as category labels
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Do not create output maps; just print statistics
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

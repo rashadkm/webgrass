@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.eb.eta">
+	<description>
+		Actual evapotranspiration for diurnal period (Bastiaanssen, 1995).
+	</description>
+	<keywords>
+		imagery, energy balance, actual evapotranspiration, SEBAL
+	</keywords>
+	<parameter name="netradiationdiurnal" type="string" required="yes" multiple="no">
+		<description>
+			Name of the diurnal net radiation map [W/m2]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<default>
+			rnetday
+		</default>
+	</parameter>
+	<parameter name="evaporativefraction" type="string" required="yes" multiple="no">
+		<description>
+			Name of the evaporative fraction map [-]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<default>
+			evapfr
+		</default>
+	</parameter>
+	<parameter name="temperature" type="string" required="yes" multiple="no">
+		<description>
+			Name of the surface skin temperature [K]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<default>
+			tempk
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output actual evapotranspiration layer [mm/d]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

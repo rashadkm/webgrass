@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.outlier">
+	<description>
+		Removes outliers from vector point data.
+	</description>
+	<keywords>
+		vector, statistics, extract, select, filter
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="outlier" type="string" required="yes" multiple="no">
+		<description>
+			Name of output outlier vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="qgis" type="string" required="no" multiple="no">
+		<description>
+			Name of vector map for visualization in QGIS
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="ew_step" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the east-west direction
+		</description>
+		<default>
+			10
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="ns_step" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the north-south direction
+		</description>
+		<default>
+			10
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="lambda" type="float" required="no" multiple="no">
+		<description>
+			Tykhonov regularization weight
+		</description>
+		<default>
+			0.1
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="threshold" type="float" required="no" multiple="no">
+		<description>
+			Threshold for the outliers
+		</description>
+		<default>
+			50
+		</default>
+	</parameter>
+	<parameter name="filter" type="string" required="no" multiple="no">
+		<description>
+			Filtering option
+		</description>
+		<default>
+			both
+		</default>
+		<values>
+			<value>
+				<name>both</name>
+			</value>
+			<value>
+				<name>positive</name>
+			</value>
+			<value>
+				<name>negative</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

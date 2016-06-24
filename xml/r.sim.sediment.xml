@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sim.sediment">
+	<description>
+		Sediment transport and erosion/deposition simulation using path sampling method (SIMWE).
+	</description>
+	<keywords>
+		raster, hydrology, soil, sediment flow, erosion, deposition, model
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="water_depth" type="string" required="yes" multiple="no">
+		<description>
+			Name of water depth raster map [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dx" type="string" required="yes" multiple="no">
+		<description>
+			Name of x-derivatives raster map [m/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dy" type="string" required="yes" multiple="no">
+		<description>
+			Name of y-derivatives raster map [m/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="detachment_coeff" type="string" required="yes" multiple="no">
+		<description>
+			Name of detachment capacity coefficient raster map [s/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="transport_coeff" type="string" required="yes" multiple="no">
+		<description>
+			Name of transport capacity coefficient raster map [s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="shear_stress" type="string" required="yes" multiple="no">
+		<description>
+			Name of critical shear stress raster map [Pa]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="man" type="string" required="no" multiple="no">
+		<description>
+			Name of Manning's n raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="man_value" type="float" required="no" multiple="no">
+		<description>
+			Manning's n unique value
+		</description>
+		<default>
+			0.1
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="observation" type="string" required="no" multiple="no">
+		<label>
+			Name of sampling locations vector points map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="transport_capacity" type="string" required="no" multiple="no">
+		<description>
+			Name for output transport capacity raster map [kg/ms]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="tlimit_erosion_deposition" type="string" required="no" multiple="no">
+		<description>
+			Name for output transport limited erosion-deposition raster map [kg/m2s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="sediment_concentration" type="string" required="no" multiple="no">
+		<description>
+			Name for output sediment concentration raster map [particle/m3]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="sediment_flux" type="string" required="no" multiple="no">
+		<description>
+			Name for output sediment flux raster map [kg/ms]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="erosion_deposition" type="string" required="no" multiple="no">
+		<description>
+			Name for output erosion-deposition raster map [kg/m2s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="logfile" type="string" required="no" multiple="no">
+		<description>
+			Name for sampling points output text file. For each observation vector point the time series of sediment transport is stored.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="walkers_output" type="string" required="no" multiple="no">
+		<description>
+			Base name of the output walkers vector points map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="nwalkers" type="integer" required="no" multiple="no">
+		<description>
+			Number of walkers
+		</description>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="niterations" type="integer" required="no" multiple="no">
+		<description>
+			Time used for iterations [minutes]
+		</description>
+		<default>
+			10
+		</default>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="output_step" type="integer" required="no" multiple="no">
+		<description>
+			Time interval for creating output maps [minutes]
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<parameter name="diffusion_coeff" type="float" required="no" multiple="no">
+		<description>
+			Water diffusion constant
+		</description>
+		<default>
+			0.8
+		</default>
+		<guisection>
+			Parameters
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

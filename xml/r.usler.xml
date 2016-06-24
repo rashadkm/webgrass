@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.usler">
+	<description>
+		Computes USLE R factor, Rainfall erosivity index.
+	</description>
+	<keywords>
+		raster, hydrology, rainfall, soil, erosion
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of annual precipitation raster map [mm/year]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output USLE R raster map [MJ.mm/ha.hr.year]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Name of USLE R equation
+		</description>
+		<default>
+			morgan
+		</default>
+		<values>
+			<value>
+				<name>roose</name>
+				<description>Roosle (1975)</description>
+			</value>
+			<value>
+				<name>morgan</name>
+				<description>Morgan (1974)</description>
+			</value>
+			<value>
+				<name>foster</name>
+				<description>Foster (1981)</description>
+			</value>
+			<value>
+				<name>elswaify</name>
+				<description>El-Swaify (1985)</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

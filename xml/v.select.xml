@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.select">
+	<description>
+		Selects features from vector map (A) by features from other vector map (B).
+	</description>
+	<keywords>
+		vector, geometry, spatial query
+	</keywords>
+	<parameter name="ainput" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Input vector map from which to select features (A)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="alayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number (vector map A)
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="atype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map A)
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point,line,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="binput" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Query vector map (B)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="blayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number (vector map B)
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="btype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map B)
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point,line,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="operator" type="string" required="yes" multiple="no">
+		<label>
+			Operator defines required relation between features
+		</label>
+		<description>
+			A feature is written to output if the result of operation 'ainput operator binput' is true. An input feature is considered to be true, if category of given layer is defined.
+		</description>
+		<default>
+			overlap
+		</default>
+		<values>
+			<value>
+				<name>overlap</name>
+				<description>features partially or completely overlap</description>
+			</value>
+			<value>
+				<name>equals</name>
+				<description>features are spatially equals (using GEOS)</description>
+			</value>
+			<value>
+				<name>disjoint</name>
+				<description>features do not spatially intersect (using GEOS)</description>
+			</value>
+			<value>
+				<name>intersects</name>
+				<description>features spatially intersect (using GEOS)</description>
+			</value>
+			<value>
+				<name>touches</name>
+				<description>features spatially touches (using GEOS)</description>
+			</value>
+			<value>
+				<name>crosses</name>
+				<description>features spatially crosses (using GEOS)</description>
+			</value>
+			<value>
+				<name>within</name>
+				<description>feature A is completely inside feature B (using GEOS)</description>
+			</value>
+			<value>
+				<name>contains</name>
+				<description>feature B is completely inside feature A (using GEOS)</description>
+			</value>
+			<value>
+				<name>overlaps</name>
+				<description>features spatially overlap (using GEOS)</description>
+			</value>
+			<value>
+				<name>relate</name>
+				<description>feature A is spatially related to feature B (using GEOS, requires 'relate' option)</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="relate" type="string" required="no" multiple="no">
+		<description>
+			Intersection Matrix Pattern used for 'relate' operator
+		</description>
+	</parameter>
+	<flag name="t">
+		<description>
+			Do not create attribute table
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Do not skip features without category
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Reverse selection
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.info">
+	<description>
+		Lists information about space time datasets and maps.
+	</description>
+	<keywords>
+		temporal, metadata, extent, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of an existing space time dataset or map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>raster</name>
+			</value>
+			<value>
+				<name>raster_3d</name>
+			</value>
+			<value>
+				<name>vector</name>
+			</value>
+		</values>
+		<guisection>
+			Required
+		</guisection>
+		<guidependency>
+			input
+		</guidependency>
+	</parameter>
+	<flag name="g">
+		<description>
+			Print in shell script style
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Print history information in human readable shell style for space time datasets
+		</description>
+	</flag>
+	<flag name="s">
+		<suppress_required/>
+		<description>
+			Print information about the temporal DBMI interface and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.gensig">
+	<description>
+		Generates statistics for i.maxlik from raster map.
+	</description>
+	<keywords>
+		imagery, classification, supervised classification, Maximum Likelihood Classification, MLC, signatures
+	</keywords>
+	<parameter name="trainingmap" type="string" required="yes" multiple="no">
+		<description>
+			Ground truth training map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="signaturefile" type="string" required="yes" multiple="no">
+		<description>
+			Name for output file containing result signatures
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="sig" prompt="sigfile" />
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

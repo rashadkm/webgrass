@@ -7,7 +7,7 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
     pugi::xml_document doc;
 
-  /* input file of menudata*/
+ 
   const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/xml/v.buffer.xml";
   pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
 
@@ -20,39 +20,37 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
   std::vector<std::string> str1;
   int i=0;
   while(para_node){
-                      //  cout<<para_node.child_value("label")<<endl;
-                      //  cout<<para_node.attribute("required").value()<<endl;
+                      /*first iterating over the required box*/
                        std::string jj = para_node.attribute("required").value();
                         
                         if(jj=="yes")
                         { 
-                          pugi::xml_node require_node = para_node.child("label");
-                          //std::cout<<"ff0"<<require_node.child_value()<<"fvfv";
+                          pugi::xml_node require_node = para_node.child("label"); /*if label is available*/
+                       
                           std::string nu=require_node.child_value();
 
                                     if(nu.empty())
-                                       { pugi::xml_node require_node = para_node.child("description");
+                                       { pugi::xml_node require_node = para_node.child("description"); /*else description*/
                                           str1.push_back(require_node.child_value());
-                                          std::cout<<require_node.child_value()<<std::endl;
-                                          std::cout<<str1[i]<<std::endl;
+                                          // std::cout<<require_node.child_value()<<std::endl;
+                                          // std::cout<<str1[i]<<std::endl;
                                           i++;
                                       }
                                       else{
                                            str1.push_back(require_node.child_value());
-                                          std::cout<<require_node.child_value()<<std::endl;
-                                          std::cout<<str1[i]<<std::endl;
+                                          // std::cout<<require_node.child_value()<<std::endl;
+                                          // std::cout<<str1[i]<<std::endl;
                                           i++;
                                       }
                         }
                         else{
-                            std::cout<<para_node.child_value("guisection")<<std::endl;
-                            pugi::xml_node guisection_node = para_node.child("guisection");
+                            //std::cout<<para_node.child_value("guisection")<<std::endl;
+                            pugi::xml_node guisection_node = para_node.child("guisection"); /*iteration over the guisection*/
                             std::string someName=guisection_node.child_value();
                             boost::algorithm::trim_right(someName);
                             boost::algorithm::trim_left(someName);
-                            std::cout<<"ss"<<someName<<"dd";
+                            
                             if (std::find(name.begin(), name.end(), someName) == name.end()) {
-                              // someName not in name, add it
                               name.push_back(someName);
                             }
                         }
@@ -63,33 +61,25 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
   pugi::xml_node flag_node = task_node.child("flag");
   while(flag_node){
 
-                    pugi::xml_node flagguisection_node = flag_node.child("guisection");
-                    std::string nu=flagguisection_node.child_value();
-                    if(!nu.empty())
-                    {
-                        std::string someName=flagguisection_node.child_value();
-                        boost::algorithm::trim_right(someName);
-                        boost::algorithm::trim_left(someName);
-                        std::cout<<"ss"<<someName<<"dd";
-                        if (std::find(name.begin(), name.end(), someName) == name.end()) {
-                          // someName not in name, add it
-                          name.push_back(someName);
-                        }
-                    }
-                   
-                    flag_node = flag_node.next_sibling("flag");
-  }
-  
-//   for (std::vector<std::string>::const_iterator i = name.begin(); i != name.end(); ++i)
-//     { std::cout<<"hoo";
-//       std::cout<<"hpp";
+                      pugi::xml_node flagguisection_node = flag_node.child("guisection");/* guisection in flags */
+                      std::string nu=flagguisection_node.child_value();
+                      if(!nu.empty())
+                      {
+                          std::string someName=flagguisection_node.child_value();
+                          boost::algorithm::trim_right(someName);
+                          boost::algorithm::trim_left(someName);
 
-//       std::cout << *i ;
-//       std::cout<<"hihi";
-// }
-  // std::string k = "nono";
-  //  cout<<taskdescription_node.child_value()<<endl;
-  // std::cout<<name<<std::endl;
+                          if (std::find(name.begin(), name.end(), someName) == name.end()) {
+                       
+                            name.push_back(someName);
+                          }
+                      }
+                     
+                      flag_node = flag_node.next_sibling("flag");
+                  }
+  
+
+ 
 
 
 Wt::WContainerWidget *container = new Wt::WContainerWidget();
@@ -102,31 +92,24 @@ Wt::WContainerWidget *container1 = new Wt::WContainerWidget();
 Wt::WText *text2 =
     new Wt::WText(str1[0], container1);
 Wt::WComboBox *cb = new Wt::WComboBox(container1);
-cb->addItem("Map1");
-cb->addItem("Map2");
-cb->addItem("Map3");
+
 
 container1->addWidget(new WBreak());
 Wt::WText *text3 =
     new Wt::WText(str1[1], container1);
 Wt::WComboBox *cb1 = new Wt::WComboBox(container1);
-cb1->addItem("Output1");
-cb1->addItem("Output2");
-cb1->addItem("Output3");
 
-// container1->setId("kmk");
-// std::cout<<container1<<"kmkmk";
+// container1->setId("kmk"); /*for setting id*/
 
-// Wt::WString cell = Wt::WString("Item ({1}, {2})").arg("row").arg("column");
-// Wt::WText *clcl = new Wt::WText("Item 1");
+
+
 
 Wt::WTabWidget *tabW = new Wt::WTabWidget(container);
 
-// tabW->addTab(cb,
-//        k, Wt::WTabWidget::PreLoading);
+
 tabW->addTab(container1,
        "Required", Wt::WTabWidget::PreLoading);
-//tabW->addTab(new Wt::WTextArea(str1[0]),k, Wt::WTabWidget::PreLoading);
+
 
 for (std::vector<std::string>::const_iterator h = name.begin(); h != name.end(); ++h)
 {
@@ -137,13 +120,6 @@ tabW->addTab(new Wt::WTextArea("The contents of the tabs are pre-loaded in"
 }
 
 
-// tabW->addTab(new Wt::WTextArea("The contents of the tabs are pre-loaded in"
-//              " the browser to ensure swift switching."),
-//        "Test", Wt::WTabWidget::PreLoading);
-// tabW->addTab(new Wt::WTextArea("You could change any other style attribute of the"
-//              " tab widget by modifying the style class."
-//              " The style class 'trhead' is applied to this tab."),
-//        "Distance", Wt::WTabWidget::PreLoading)->setStyleClass("trhead");
 
 
 
@@ -155,7 +131,7 @@ tab->setCloseable(true);
 
 tabW->setStyleClass("tabwidget");
 addWidget(container);
-// std::cout<<container->findById("kmk");
+// std::cout<<container->findById("kmk"); /*calling with id*/
 
 }
 

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.atcorr">
+	<label>
+		Performs atmospheric correction using the 6S algorithm.
+	</label>
+	<description>
+		6S - Second Simulation of Satellite Signal in the Solar Spectrum.
+	</description>
+	<keywords>
+		imagery, atmospheric correction
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="range" type="integer" required="no" multiple="no">
+		<description>
+			Input range
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+		<default>
+			0,255
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			Name of input elevation raster map (in m)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="visibility" type="string" required="no" multiple="no">
+		<description>
+			Name of input visibility raster map (in km)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="parameters" type="string" required="yes" multiple="no">
+		<description>
+			Name of input text file with 6S parameters
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="rescale" type="integer" required="no" multiple="no">
+		<description>
+			Rescale output raster map
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+		<default>
+			0,255
+		</default>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Output raster map as integer
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Input raster map converted to reflectance (default is radiance)
+		</description>
+ 		<guisection>
+			Input
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Input from ETM+ image taken after July 1, 2000
+		</description>
+ 		<guisection>
+			Input
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Input from ETM+ image taken before July 1, 2000
+		</description>
+ 		<guisection>
+			Input
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

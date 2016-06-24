@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.lrs.label">
+	<description>
+		Creates stationing from input lines, and linear reference system.
+	</description>
+	<keywords>
+		vector, linear reference system, network
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Input vector map containing lines
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Output vector map where stationing will be written
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="llayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Line layer
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="rsdriver" type="string" required="no" multiple="no">
+		<description>
+			Driver name for reference system table
+		</description>
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="rsdatabase" type="string" required="no" multiple="no">
+		<description>
+			Database name for reference system table
+		</description>
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+	</parameter>
+	<parameter name="rstable" type="string" required="yes" multiple="no">
+		<description>
+			Name of the reference system table
+		</description>
+	</parameter>
+	<parameter name="labels" type="string" required="no" multiple="no">
+		<description>
+			Label file
+		</description>
+		<gisprompt age="new" element="paint/labels" prompt="Labels" />
+	</parameter>
+	<parameter name="offset" type="string" required="no" multiple="yes">
+		<description>
+			PM left, MP right, stationing left, stationing right offset
+		</description>
+		<default>
+			50,100,25,25
+		</default>
+	</parameter>
+	<parameter name="xoffset" type="float" required="no" multiple="no">
+		<description>
+			Offset label in label x-direction in map units
+		</description>
+		<default>
+			25
+		</default>
+	</parameter>
+	<parameter name="yoffset" type="float" required="no" multiple="no">
+		<description>
+			Offset label in label y-direction in map units
+		</description>
+		<default>
+			5
+		</default>
+	</parameter>
+	<parameter name="reference" type="string" required="no" multiple="no">
+		<description>
+			Reference position
+		</description>
+		<default>
+			center
+		</default>
+		<values>
+			<value>
+				<name>center</name>
+			</value>
+			<value>
+				<name>left</name>
+			</value>
+			<value>
+				<name>right</name>
+			</value>
+			<value>
+				<name>upper</name>
+			</value>
+			<value>
+				<name>lower</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="font" type="string" required="no" multiple="no">
+		<description>
+			Font
+		</description>
+		<default>
+			standard
+		</default>
+	</parameter>
+	<parameter name="size" type="integer" required="no" multiple="no">
+		<description>
+			Label size (in map-units)
+		</description>
+		<default>
+			100
+		</default>
+		<values>
+			<value>
+				<name>1-1000</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="color" type="string" required="no" multiple="no">
+		<label>
+			Text color
+		</label>
+		<description>
+			Either a standard color name or R:G:B triplet
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color" prompt="color" />
+		<default>
+			black
+		</default>
+	</parameter>
+	<parameter name="width" type="integer" required="no" multiple="no">
+		<label>
+			Line width of text
+		</label>
+		<description>
+			Only for d.label output
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>1-100</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="highlight_color" type="string" required="no" multiple="no">
+		<label>
+			Highlight color for text
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+		<default>
+			none
+		</default>
+	</parameter>
+	<parameter name="highlight_width" type="integer" required="no" multiple="no">
+		<label>
+			Line width of highlight color
+		</label>
+		<description>
+			Only for d.label output
+		</description>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="bgcolor" type="string" required="no" multiple="no">
+		<label>
+			Background color
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+		<default>
+			none
+		</default>
+	</parameter>
+	<parameter name="border" type="string" required="no" multiple="no">
+		<label>
+			Border color
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+		<default>
+			none
+		</default>
+	</parameter>
+	<parameter name="opaque" type="string" required="no" multiple="no">
+		<label>
+			Opaque to vector
+		</label>
+		<description>
+			Only relevant if background color is selected
+		</description>
+		<default>
+			yes
+		</default>
+		<values>
+			<value>
+				<name>yes</name>
+			</value>
+			<value>
+				<name>no</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

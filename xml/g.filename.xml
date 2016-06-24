@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.filename">
+	<description>
+		Prints GRASS data base file names.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of a database file
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<description>
+			Name of a mapset (default: current)
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.filename">
+	<description>
+		Prints GRASS data base file names.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of a database file
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<description>
+			Name of a mapset (default: current)
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.filename">
+	<description>
+		Prints GRASS data base file names.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of a database file
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<description>
+			Name of a mapset (default: current)
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.filename">
+	<description>
+		Prints GRASS data base file names.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="element" type="string" required="yes" multiple="no">
+		<description>
+			Name of an element
+		</description>
+	</parameter>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of a database file
+		</description>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<description>
+			Name of a mapset (default: current)
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

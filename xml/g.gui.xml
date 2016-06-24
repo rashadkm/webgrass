@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui">
+	<label>
+		Launches a GRASS graphical user interface (GUI) session.
+	</label>
+	<description>
+		Optionally updates default user interface settings.
+	</description>
+	<keywords>
+		general, GUI, user interface
+	</keywords>
+	<parameter name="ui" type="string" required="no" multiple="no">
+		<description>
+			User interface
+		</description>
+		<default>
+			wxpython
+		</default>
+		<values>
+			<value>
+				<name>wxpython</name>
+				<description>wxPython based GUI (wxGUI)</description>
+			</value>
+			<value>
+				<name>text</name>
+				<description>command line interface only</description>
+			</value>
+			<value>
+				<name>gtext</name>
+				<description>command line interface with GUI startup screen</description>
+			</value>
+		</values>
+		<guisection>
+			Type
+		</guisection>
+	</parameter>
+	<parameter name="workspace" type="string" required="no" multiple="no">
+		<description>
+			Name of workspace file to load on start-up (valid only for wxGUI)
+		</description>
+		<keydesc>
+			<item order="1">name.gxw</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<flag name="d">
+		<description>
+			Update default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not launch GUI after updating the default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui">
+	<label>
+		Launches a GRASS graphical user interface (GUI) session.
+	</label>
+	<description>
+		Optionally updates default user interface settings.
+	</description>
+	<keywords>
+		general, GUI, user interface
+	</keywords>
+	<parameter name="ui" type="string" required="no" multiple="no">
+		<description>
+			User interface
+		</description>
+		<default>
+			wxpython
+		</default>
+		<values>
+			<value>
+				<name>wxpython</name>
+				<description>wxPython based GUI (wxGUI)</description>
+			</value>
+			<value>
+				<name>text</name>
+				<description>command line interface only</description>
+			</value>
+			<value>
+				<name>gtext</name>
+				<description>command line interface with GUI startup screen</description>
+			</value>
+		</values>
+		<guisection>
+			Type
+		</guisection>
+	</parameter>
+	<parameter name="workspace" type="string" required="no" multiple="no">
+		<description>
+			Name of workspace file to load on start-up (valid only for wxGUI)
+		</description>
+		<keydesc>
+			<item order="1">name.gxw</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<flag name="d">
+		<description>
+			Update default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not launch GUI after updating the default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui">
+	<label>
+		Launches a GRASS graphical user interface (GUI) session.
+	</label>
+	<description>
+		Optionally updates default user interface settings.
+	</description>
+	<keywords>
+		general, GUI, user interface
+	</keywords>
+	<parameter name="ui" type="string" required="no" multiple="no">
+		<description>
+			User interface
+		</description>
+		<default>
+			wxpython
+		</default>
+		<values>
+			<value>
+				<name>wxpython</name>
+				<description>wxPython based GUI (wxGUI)</description>
+			</value>
+			<value>
+				<name>text</name>
+				<description>command line interface only</description>
+			</value>
+			<value>
+				<name>gtext</name>
+				<description>command line interface with GUI startup screen</description>
+			</value>
+		</values>
+		<guisection>
+			Type
+		</guisection>
+	</parameter>
+	<parameter name="workspace" type="string" required="no" multiple="no">
+		<description>
+			Name of workspace file to load on start-up (valid only for wxGUI)
+		</description>
+		<keydesc>
+			<item order="1">name.gxw</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<flag name="d">
+		<description>
+			Update default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not launch GUI after updating the default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui">
+	<label>
+		Launches a GRASS graphical user interface (GUI) session.
+	</label>
+	<description>
+		Optionally updates default user interface settings.
+	</description>
+	<keywords>
+		general, GUI, user interface
+	</keywords>
+	<parameter name="ui" type="string" required="no" multiple="no">
+		<description>
+			User interface
+		</description>
+		<default>
+			wxpython
+		</default>
+		<values>
+			<value>
+				<name>wxpython</name>
+				<description>wxPython based GUI (wxGUI)</description>
+			</value>
+			<value>
+				<name>text</name>
+				<description>command line interface only</description>
+			</value>
+			<value>
+				<name>gtext</name>
+				<description>command line interface with GUI startup screen</description>
+			</value>
+		</values>
+		<guisection>
+			Type
+		</guisection>
+	</parameter>
+	<parameter name="workspace" type="string" required="no" multiple="no">
+		<description>
+			Name of workspace file to load on start-up (valid only for wxGUI)
+		</description>
+		<keydesc>
+			<item order="1">name.gxw</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<flag name="d">
+		<description>
+			Update default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not launch GUI after updating the default user interface settings
+		</description>
+ 		<guisection>
+			Default
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.external.out">
+	<description>
+		Defines vector output format.
+	</description>
+	<keywords>
+		vector, export, output, external, OGR, PostGIS
+	</keywords>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name of output directory or OGR or PostGIS data source
+		</label>
+		<description>
+			Examples:
+		ESRI Shapefile: directory containing a shapefile
+		MapInfo File: directory containing a mapinfo file
+		PostGIS database: connection string, eg. 'PG:dbname=db user=grass'
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Format for output vector data
+		</description>
+		<default>
+			ESRI_Shapefile
+		</default>
+		<values>
+			<value>
+				<name>BNA</name>
+			</value>
+			<value>
+				<name>CSV</name>
+			</value>
+			<value>
+				<name>CouchDB</name>
+			</value>
+			<value>
+				<name>DGN</name>
+			</value>
+			<value>
+				<name>DXF</name>
+			</value>
+			<value>
+				<name>ESRI_Shapefile</name>
+			</value>
+			<value>
+				<name>ElasticSearch</name>
+			</value>
+			<value>
+				<name>GFT</name>
+			</value>
+			<value>
+				<name>GME</name>
+			</value>
+			<value>
+				<name>GML</name>
+			</value>
+			<value>
+				<name>GMT</name>
+			</value>
+			<value>
+				<name>GPKG</name>
+			</value>
+			<value>
+				<name>GPSBabel</name>
+			</value>
+			<value>
+				<name>GPSTrackMaker</name>
+			</value>
+			<value>
+				<name>GPX</name>
+			</value>
+			<value>
+				<name>GeoJSON</name>
+			</value>
+			<value>
+				<name>GeoRSS</name>
+			</value>
+			<value>
+				<name>Geoconcept</name>
+			</value>
+			<value>
+				<name>Interlis_1</name>
+			</value>
+			<value>
+				<name>Interlis_2</name>
+			</value>
+			<value>
+				<name>KML</name>
+			</value>
+			<value>
+				<name>LIBKML</name>
+			</value>
+			<value>
+				<name>MSSQLSpatial</name>
+			</value>
+			<value>
+				<name>MapInfo_File</name>
+			</value>
+			<value>
+				<name>Memory</name>
+			</value>
+			<value>
+				<name>MySQL</name>
+			</value>
+			<value>
+				<name>ODBC</name>
+			</value>
+			<value>
+				<name>ODS</name>
+			</value>
+			<value>
+				<name>PCIDSK</name>
+			</value>
+			<value>
+				<name>PDF</name>
+			</value>
+			<value>
+				<name>PGDump</name>
+			</value>
+			<value>
+				<name>PostgreSQL</name>
+			</value>
+			<value>
+				<name>S57</name>
+			</value>
+			<value>
+				<name>SQLite</name>
+			</value>
+			<value>
+				<name>TIGER</name>
+			</value>
+			<value>
+				<name>WAsP</name>
+			</value>
+			<value>
+				<name>XLSX</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="options" type="string" required="no" multiple="yes">
+		<label>
+			Creation options
+		</label>
+		<description>
+			Examples:
+		'SHPT=POINTZ': create 3D point Shapefile data
+		'GEOM_TYPE=geography': use geography PostGIS data
+		'SCHEMA=grass': create new PostGIS tables in 'grass' schema
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="loadsettings" type="string" required="no" multiple="no">
+		<description>
+			Name of input file to read settings from
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="savesettings" type="string" required="no" multiple="no">
+		<description>
+			Name for output file where to save current settings
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="f">
+		<suppress_required/>
+		<description>
+			List supported formats and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="r">
+		<suppress_required/>
+		<description>
+			Cease using OGR/PostGIS, revert to native output and exit
+		</description>
+ 		<guisection>
+			Native
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print current status
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<suppress_required/>
+		<description>
+			Print current status in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

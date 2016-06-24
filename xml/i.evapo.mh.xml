@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.evapo.mh">
+	<description>
+		Computes evapotranspiration calculation modified or original Hargreaves formulation, 2001.
+	</description>
+	<keywords>
+		imagery, evapotranspiration
+	</keywords>
+	<parameter name="netradiation_diurnal" type="string" required="yes" multiple="no">
+		<description>
+			Name of input diurnal net radiation raster map [W/m2/d]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="average_temperature" type="string" required="yes" multiple="no">
+		<description>
+			Name of input average air temperature raster map [C]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="minimum_temperature" type="string" required="yes" multiple="no">
+		<description>
+			Name of input minimum air temperature raster map [C]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="maximum_temperature" type="string" required="yes" multiple="no">
+		<description>
+			Name of input maximum air temperature raster map [C]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="precipitation" type="string" required="no" multiple="no">
+		<label>
+			Name of precipitation raster map [mm/month]
+		</label>
+		<description>
+			Disabled for original Hargreaves (1985)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map [mm/d]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="z">
+		<description>
+			Set negative ETa to zero
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Use original Hargreaves (1985)
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Use Hargreaves-Samani (1985)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

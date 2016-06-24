@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.viewshed">
+	<label>
+		Computes the viewshed of a point on an elevation raster map.
+	</label>
+	<description>
+		Default format: NULL (invisible), vertical angle wrt viewpoint (visible).
+	</description>
+	<keywords>
+		raster, viewshed, line of sight
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="yes" multiple="no">
+		<description>
+			Coordinates of viewing position
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="observer_elevation" type="float" required="no" multiple="no">
+		<description>
+			Viewing elevation above the ground
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			1.75
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="target_elevation" type="float" required="no" multiple="no">
+		<description>
+			Offset for target elevation above the ground
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="max_distance" type="float" required="no" multiple="no">
+		<description>
+			Maximum visibility radius. By default infinity (-1)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			-1
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="refraction_coeff" type="float" required="no" multiple="no">
+		<description>
+			Refraction coefficient
+		</description>
+		<default>
+			0.14286
+		</default>
+		<values>
+			<value>
+				<name>0.0-1.0</name>
+			</value>
+		</values>
+		<guisection>
+			Refraction
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Amount of memory to use in MB
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			500
+		</default>
+	</parameter>
+	<parameter name="directory" type="string" required="no" multiple="no">
+		<description>
+			Directory to hold temporary files (they can be large)
+		</description>
+	</parameter>
+	<flag name="c">
+		<description>
+			Consider the curvature of the earth (current ellipsoid)
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Consider the effect of atmospheric refraction
+		</description>
+ 		<guisection>
+			Refraction
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Output format is invisible = 0, visible = 1
+		</description>
+ 		<guisection>
+			Output format
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Output format is invisible = NULL, else current elev - viewpoint_elev
+		</description>
+ 		<guisection>
+			Output format
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

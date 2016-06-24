@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.version">
+	<label>
+		Displays GRASS GIS version info.
+	</label>
+	<description>
+		Optionally also prints build or copyright information.
+	</description>
+	<keywords>
+		general, support, citing, copyright, version, license
+	</keywords>
+	<flag name="c">
+		<description>
+			Print also the copyright message
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print also the build information
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Print also the GIS library revision number and date
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="e">
+		<label>
+			Print also extended info for additional libraries
+		</label>
+		<description>
+			GDAL/OGR, PROJ.4, GEOS
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print info in shell script style (including SVN revision number)
+		</description>
+ 		<guisection>
+			Shell
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.version">
+	<label>
+		Displays GRASS GIS version info.
+	</label>
+	<description>
+		Optionally also prints build or copyright information.
+	</description>
+	<keywords>
+		general, support, citing, copyright, version, license
+	</keywords>
+	<flag name="c">
+		<description>
+			Print also the copyright message
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print also the build information
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Print also the GIS library revision number and date
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="e">
+		<label>
+			Print also extended info for additional libraries
+		</label>
+		<description>
+			GDAL/OGR, PROJ.4, GEOS
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print info in shell script style (including SVN revision number)
+		</description>
+ 		<guisection>
+			Shell
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.version">
+	<label>
+		Displays GRASS GIS version info.
+	</label>
+	<description>
+		Optionally also prints build or copyright information.
+	</description>
+	<keywords>
+		general, support, citing, copyright, version, license
+	</keywords>
+	<flag name="c">
+		<description>
+			Print also the copyright message
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print also the build information
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Print also the GIS library revision number and date
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="e">
+		<label>
+			Print also extended info for additional libraries
+		</label>
+		<description>
+			GDAL/OGR, PROJ.4, GEOS
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print info in shell script style (including SVN revision number)
+		</description>
+ 		<guisection>
+			Shell
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.version">
+	<label>
+		Displays GRASS GIS version info.
+	</label>
+	<description>
+		Optionally also prints build or copyright information.
+	</description>
+	<keywords>
+		general, support, citing, copyright, version, license
+	</keywords>
+	<flag name="c">
+		<description>
+			Print also the copyright message
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print also the build information
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Print also the GIS library revision number and date
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="e">
+		<label>
+			Print also extended info for additional libraries
+		</label>
+		<description>
+			GDAL/OGR, PROJ.4, GEOS
+		</description>
+ 		<guisection>
+			Additional info
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print info in shell script style (including SVN revision number)
+		</description>
+ 		<guisection>
+			Shell
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

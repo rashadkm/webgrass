@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.grow.distance">
+	<description>
+		Generates a raster map containing distances to nearest raster features.
+	</description>
+	<keywords>
+		raster, distance, proximity
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="distance" type="string" required="no" multiple="no">
+		<description>
+			Name for distance output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="value" type="string" required="no" multiple="no">
+		<description>
+			Name for value output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="metric" type="string" required="no" multiple="no">
+		<description>
+			Metric
+		</description>
+		<default>
+			euclidean
+		</default>
+		<values>
+			<value>
+				<name>euclidean</name>
+			</value>
+			<value>
+				<name>squared</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>manhattan</name>
+			</value>
+			<value>
+				<name>geodesic</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="m">
+		<description>
+			Output distances in meters instead of map units
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

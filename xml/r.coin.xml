@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.coin">
+	<description>
+		Tabulates the mutual occurrence (coincidence) of categories for two raster map layers.
+	</description>
+	<keywords>
+		raster, statistics
+	</keywords>
+	<parameter name="first" type="string" required="yes" multiple="no">
+		<description>
+			Name of first input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="second" type="string" required="yes" multiple="no">
+		<description>
+			Name of second input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="units" type="string" required="yes" multiple="no">
+		<label>
+			Unit of measure
+		</label>
+		<description>
+			c(ells), p(ercent), x(percent of category [column]), y(percent of category [row]), a(cres), h(ectares), k(square kilometers), m(square miles)
+		</description>
+		<values>
+			<value>
+				<name>c</name>
+			</value>
+			<value>
+				<name>p</name>
+			</value>
+			<value>
+				<name>x</name>
+			</value>
+			<value>
+				<name>y</name>
+			</value>
+			<value>
+				<name>a</name>
+			</value>
+			<value>
+				<name>h</name>
+			</value>
+			<value>
+				<name>k</name>
+			</value>
+			<value>
+				<name>m</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="w">
+		<description>
+			Wide report, 132 columns (default: 80)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

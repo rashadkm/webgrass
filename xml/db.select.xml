@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.select">
+	<label>
+		Selects data from attribute table.
+	</label>
+	<description>
+		Performs SQL query statement(s).
+	</description>
+	<keywords>
+		database, attribute table, SQL
+	</keywords>
+	<parameter name="sql" type="string" required="no" multiple="no">
+		<label>
+			SQL select statement
+		</label>
+		<description>
+			For example: 'select * from rybniky where kapri = 'hodne'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Query
+		</guisection>
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<label>
+			Name of file containing SQL select statement(s)
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Query
+		</guisection>
+	</parameter>
+	<parameter name="table" type="string" required="no" multiple="no">
+		<description>
+			Name of table to query
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbtable" prompt="dbtable" />
+		<guisection>
+			Query
+		</guisection>
+	</parameter>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<description>
+			Name of database driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="database" type="string" required="no" multiple="no">
+		<description>
+			Name of database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="vertical_separator" type="string" required="no" multiple="no">
+		<label>
+			Vertical record separator (requires -v flag)
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file (if omitted or "-" output to stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Do not include column names in output
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Describe query only (don't run it)
+		</description>
+ 		<guisection>
+			Query
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Vertical output (instead of horizontal)
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Only test query, do not execute
+		</description>
+ 		<guisection>
+			Query
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

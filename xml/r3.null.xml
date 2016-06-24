@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.null">
+	<description>
+		Explicitly create the 3D NULL-value bitmap file.
+	</description>
+	<keywords>
+		raster3d, null data, voxel
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			3D raster map for which to modify null values
+		</description>
+		<gisprompt age="old" element="grid3" prompt="3d-raster" />
+	</parameter>
+	<parameter name="setnull" type="string" required="no" multiple="yes">
+		<description>
+			List of cell values to be set to NULL
+		</description>
+		<keydesc>
+			<item order="1">val[-val]</item>
+		</keydesc>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			The value to replace the null value by
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

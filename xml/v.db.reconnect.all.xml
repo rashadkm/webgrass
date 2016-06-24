@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.db.reconnect.all">
+	<description>
+		Reconnects attribute tables for all vector maps from the current mapset to a new database.
+	</description>
+	<keywords>
+		vector, attribute table, database
+	</keywords>
+	<parameter name="old_database" type="string" required="no" multiple="no">
+		<description>
+			Name of source database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+	</parameter>
+	<parameter name="old_schema" type="string" required="no" multiple="no">
+		<label>
+			Name of source database schema
+		</label>
+		<description>
+			Do not use this option if schemas are not supported by driver/database server
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="new_driver" type="string" required="no" multiple="no">
+		<description>
+			Name for target driver
+		</description>
+	</parameter>
+	<parameter name="new_database" type="string" required="no" multiple="no">
+		<description>
+			Name for target database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+	</parameter>
+	<parameter name="new_schema" type="string" required="no" multiple="no">
+		<label>
+			Name for target database schema
+		</label>
+		<description>
+			Do not use this option if schemas are not supported by driver/database server
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<flag name="c">
+		<description>
+			Copy attribute tables to the target database if not exist
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Delete attribute tables from the source database
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

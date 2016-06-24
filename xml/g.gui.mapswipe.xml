@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.mapswipe">
+	<description>
+		Interactively compares two maps by swiping a visibility bar.
+	</description>
+	<keywords>
+		general, GUI, display
+	</keywords>
+	<parameter name="first" type="string" required="no" multiple="no">
+		<description>
+			First (top/right) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="second" type="string" required="no" multiple="no">
+		<description>
+			Second (bottom/left) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="mode" type="string" required="no" multiple="no">
+		<description>
+			View mode
+		</description>
+		<default>
+			swipe
+		</default>
+		<values>
+			<value>
+				<name>swipe</name>
+				<description>swiping the upper map layer to show the map layer below </description>
+			</value>
+			<value>
+				<name>mirror</name>
+				<description>synchronized maps side by side</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.mapswipe">
+	<description>
+		Interactively compares two maps by swiping a visibility bar.
+	</description>
+	<keywords>
+		general, GUI, display
+	</keywords>
+	<parameter name="first" type="string" required="no" multiple="no">
+		<description>
+			First (top/right) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="second" type="string" required="no" multiple="no">
+		<description>
+			Second (bottom/left) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="mode" type="string" required="no" multiple="no">
+		<description>
+			View mode
+		</description>
+		<default>
+			swipe
+		</default>
+		<values>
+			<value>
+				<name>swipe</name>
+				<description>swiping the upper map layer to show the map layer below </description>
+			</value>
+			<value>
+				<name>mirror</name>
+				<description>synchronized maps side by side</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.mapswipe">
+	<description>
+		Interactively compares two maps by swiping a visibility bar.
+	</description>
+	<keywords>
+		general, GUI, display
+	</keywords>
+	<parameter name="first" type="string" required="no" multiple="no">
+		<description>
+			First (top/right) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="second" type="string" required="no" multiple="no">
+		<description>
+			Second (bottom/left) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="mode" type="string" required="no" multiple="no">
+		<description>
+			View mode
+		</description>
+		<default>
+			swipe
+		</default>
+		<values>
+			<value>
+				<name>swipe</name>
+				<description>swiping the upper map layer to show the map layer below </description>
+			</value>
+			<value>
+				<name>mirror</name>
+				<description>synchronized maps side by side</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.mapswipe">
+	<description>
+		Interactively compares two maps by swiping a visibility bar.
+	</description>
+	<keywords>
+		general, GUI, display
+	</keywords>
+	<parameter name="first" type="string" required="no" multiple="no">
+		<description>
+			First (top/right) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="second" type="string" required="no" multiple="no">
+		<description>
+			Second (bottom/left) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="mode" type="string" required="no" multiple="no">
+		<description>
+			View mode
+		</description>
+		<default>
+			swipe
+		</default>
+		<values>
+			<value>
+				<name>swipe</name>
+				<description>swiping the upper map layer to show the map layer below </description>
+			</value>
+			<value>
+				<name>mirror</name>
+				<description>synchronized maps side by side</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

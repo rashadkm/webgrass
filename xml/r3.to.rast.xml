@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.to.rast">
+	<description>
+		Converts 3D raster maps to 2D raster maps
+	</description>
+	<keywords>
+		raster3d, conversion, raster, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			3D raster map(s) to be converted to 2D raster slices
+		</description>
+		<gisprompt age="old" element="grid3" prompt="3d-raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Basename for resultant raster slice maps
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="m">
+		<description>
+			Use 3D raster mask (if exists) with input map
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Use the same resolution as the input 3D raster map for the 2D output maps, independent of the current region settings
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

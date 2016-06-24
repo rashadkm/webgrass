@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.spectral">
+	<description>
+		Displays spectral response at user specified locations in group or images.
+	</description>
+	<keywords>
+		imagery, querying, raster, multispectral
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="coordinates" type="float" required="yes" multiple="yes">
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output image
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Graphics format for output file
+		</description>
+		<default>
+			png
+		</default>
+		<values>
+			<value>
+				<name>png</name>
+			</value>
+			<value>
+				<name>eps</name>
+			</value>
+			<value>
+				<name>svg</name>
+			</value>
+		</values>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Show sampling coordinates instead of numbering in the legend
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Use gnuplot for display
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

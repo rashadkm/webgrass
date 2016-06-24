@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.out.vtk">
+	<description>
+		Exports space time raster dataset as VTK time series.
+	</description>
+	<keywords>
+		temporal, export, raster, VTK, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="directory" type="string" required="yes" multiple="no">
+		<description>
+			Path to the export directory
+		</description>
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Value to represent no data cell
+		</description>
+		<default>
+			-99999.99
+		</default>
+	</parameter>
+	<flag name="p">
+		<description>
+			Create VTK point data instead of VTK cell data (if no elevation map is given)
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Correct the coordinates to fit the VTK-OpenGL precision
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Export files using the space time dataset granularity for equidistant time between maps, where statement will be ignored
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

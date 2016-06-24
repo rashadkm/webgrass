@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.colors">
+	<description>
+		Creates/modifies the color table associated with a vector map.
+	</description>
+	<keywords>
+		vector, color table
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="use" type="string" required="yes" multiple="no">
+		<description>
+			Source values
+		</description>
+		<default>
+			cat
+		</default>
+		<values>
+			<value>
+				<name>attr</name>
+				<description>read values from attribute table (requires &lt;column&gt; option)</description>
+			</value>
+			<value>
+				<name>cat</name>
+				<description>use category values</description>
+			</value>
+			<value>
+				<name>z</name>
+				<description>use z coordinate (3D points or centroids only)</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of column containing numeric data
+		</label>
+		<description>
+			Required for use=attr
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="range" type="float" required="no" multiple="no">
+		<label>
+			Manually set range (refers to 'column' option)
+		</label>
+		<description>
+			Ignored when 'rules' given
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="color" type="string" required="no" multiple="no">
+		<description>
+			Name of color table
+		</description>
+		<keydesc>
+			<item order="1">style</item>
+		</keydesc>
+		<gisprompt age="old" element="colortable" prompt="colortable" />
+		<values>
+			<value>
+				<name>aspect</name>
+				<description>aspect oriented grey colors</description>
+			</value>
+			<value>
+				<name>aspectcolr</name>
+				<description>aspect oriented rainbow colors</description>
+			</value>
+			<value>
+				<name>bcyr</name>
+				<description>blue through cyan through yellow to red</description>
+			</value>
+			<value>
+				<name>bgyr</name>
+				<description>blue through green through yellow to red</description>
+			</value>
+			<value>
+				<name>blues</name>
+				<description>white to blue</description>
+			</value>
+			<value>
+				<name>byg</name>
+				<description>blue through yellow to green</description>
+			</value>
+			<value>
+				<name>byr</name>
+				<description>blue through yellow to red</description>
+			</value>
+			<value>
+				<name>celsius</name>
+				<description>blue to red for degree Celsius temperature</description>
+			</value>
+			<value>
+				<name>corine</name>
+				<description>EU Corine land cover colors</description>
+			</value>
+			<value>
+				<name>curvature</name>
+				<description>for terrain curvatures (from v.surf.rst and r.slope.aspect)</description>
+			</value>
+			<value>
+				<name>differences</name>
+				<description>differences oriented colors</description>
+			</value>
+			<value>
+				<name>elevation</name>
+				<description>maps relative ranges of raster values to elevation color ramp</description>
+			</value>
+			<value>
+				<name>etopo2</name>
+				<description>colors for ETOPO2 worldwide bathymetry/topography</description>
+			</value>
+			<value>
+				<name>evi</name>
+				<description>enhanced vegetative index colors</description>
+			</value>
+			<value>
+				<name>fahrenheit</name>
+				<description>blue to red for Fahrenheit temperature</description>
+			</value>
+			<value>
+				<name>gdd</name>
+				<description>accumulated growing degree days</description>
+			</value>
+			<value>
+				<name>greens</name>
+				<description>white to green</description>
+			</value>
+			<value>
+				<name>grey</name>
+				<description>grey scale</description>
+			</value>
+			<value>
+				<name>grey.eq</name>
+				<description>histogram-equalized grey scale</description>
+			</value>
+			<value>
+				<name>grey.log</name>
+				<description>histogram logarithmic transformed grey scale</description>
+			</value>
+			<value>
+				<name>grey1.0</name>
+				<description>grey scale for raster values between 0.0-1.0</description>
+			</value>
+			<value>
+				<name>grey255</name>
+				<description>grey scale for raster values between 0-255</description>
+			</value>
+			<value>
+				<name>gyr</name>
+				<description>green through yellow to red</description>
+			</value>
+			<value>
+				<name>haxby</name>
+				<description>relative colors for bathymetry or topography</description>
+			</value>
+			<value>
+				<name>kelvin</name>
+				<description>blue to red for temperature in Kelvin scale</description>
+			</value>
+			<value>
+				<name>ndvi</name>
+				<description>Normalized Difference Vegetation Index colors</description>
+			</value>
+			<value>
+				<name>ndwi</name>
+				<description>Normalized Difference Water Index colors</description>
+			</value>
+			<value>
+				<name>oranges</name>
+				<description>white to orange</description>
+			</value>
+			<value>
+				<name>population</name>
+				<description>color table covering human population classification breaks</description>
+			</value>
+			<value>
+				<name>population_dens</name>
+				<description>color table covering human population density classification breaks</description>
+			</value>
+			<value>
+				<name>precipitation</name>
+				<description>precipitation color table (0..2000mm)</description>
+			</value>
+			<value>
+				<name>precipitation_daily</name>
+				<description>precipitation color table (0..1000mm)</description>
+			</value>
+			<value>
+				<name>precipitation_monthly</name>
+				<description>precipitation color table (0..1000mm)</description>
+			</value>
+			<value>
+				<name>rainbow</name>
+				<description>rainbow color table</description>
+			</value>
+			<value>
+				<name>ramp</name>
+				<description>color ramp</description>
+			</value>
+			<value>
+				<name>random</name>
+				<description>random color table</description>
+			</value>
+			<value>
+				<name>reds</name>
+				<description>white to red</description>
+			</value>
+			<value>
+				<name>rstcurv</name>
+				<description>terrain curvature (from r.resamp.rst)</description>
+			</value>
+			<value>
+				<name>ryb</name>
+				<description>red through yellow to blue</description>
+			</value>
+			<value>
+				<name>ryg</name>
+				<description>red through yellow to green</description>
+			</value>
+			<value>
+				<name>sepia</name>
+				<description>yellowish-brown through to white</description>
+			</value>
+			<value>
+				<name>slope</name>
+				<description>r.slope.aspect-type slope colors for raster values 0-90</description>
+			</value>
+			<value>
+				<name>srtm</name>
+				<description>color palette for Shuttle Radar Topography Mission elevation</description>
+			</value>
+			<value>
+				<name>srtm_plus</name>
+				<description>color palette for Shuttle Radar Topography Mission elevation (with seafloor colors)</description>
+			</value>
+			<value>
+				<name>terrain</name>
+				<description>global elevation color table covering -11000 to +8850m</description>
+			</value>
+			<value>
+				<name>wave</name>
+				<description>color wave</description>
+			</value>
+		</values>
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Raster map from which to copy color table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			3D raster map from which to copy color table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="rules" type="string" required="no" multiple="no">
+		<label>
+			Path to rules file
+		</label>
+		<description>
+			"-" to read rules from stdin
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Define
+		</guisection>
+	</parameter>
+	<parameter name="rgb_column" type="string" required="no" multiple="no">
+		<label>
+			Name of color column to populate RGB values
+		</label>
+		<description>
+			If not given writes color table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<flag name="r">
+		<description>
+			Remove existing color table
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Only write new color table if it does not already exist
+		</description>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available rules then exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Invert colors
+		</description>
+ 		<guisection>
+			Define
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Logarithmic scaling
+		</description>
+ 		<guisection>
+			Define
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Logarithmic-absolute scaling
+		</description>
+ 		<guisection>
+			Define
+		</guisection>
+	</flag>
+	<flag name="c">
+		<label>
+			Convert color rules from RGB values to color table
+		</label>
+		<description>
+			Option 'rgb_column' with valid RGB values required
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

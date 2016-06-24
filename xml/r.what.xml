@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.what">
+	<description>
+		Queries raster maps on their category values and category labels.
+	</description>
+	<keywords>
+		raster, querying, position
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="yes">
+		<description>
+			Name of existing raster map(s) to query
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates for query
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+		<guisection>
+			Query
+		</guisection>
+	</parameter>
+	<parameter name="points" type="string" required="no" multiple="no">
+		<label>
+			Name of vector points map for query
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Query
+		</guisection>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file (if omitted or "-" output to stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<parameter name="cache" type="integer" required="no" multiple="no">
+		<description>
+			Size of point cache
+		</description>
+		<default>
+			500
+		</default>
+		<guisection>
+			Advanced
+		</guisection>
+	</parameter>
+	<flag name="n">
+		<description>
+			Output header row
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Show the category labels of the grid cell(s)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Output color values as RRR:GGG:BBB
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Output integer category values, not cell values
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Turn on cache reporting
+		</description>
+ 		<guisection>
+			Advanced
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.neighbors">
+	<description>
+		Makes each voxel value a function of the values assigned to the voxels around it, and stores new voxel values in an output 3D raster map
+	</description>
+	<keywords>
+		raster3d, algebra, voxel, statistics, aggregation, neighbor, focal statistics, filter
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Aggregate operation
+		</description>
+		<values>
+			<value>
+				<name>average</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>mode</name>
+			</value>
+			<value>
+				<name>minimum</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>range</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>count</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>diversity</name>
+			</value>
+			<value>
+				<name>interspersion</name>
+			</value>
+			<value>
+				<name>quart1</name>
+			</value>
+			<value>
+				<name>quart3</name>
+			</value>
+			<value>
+				<name>perc90</name>
+			</value>
+			<value>
+				<name>quantile</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="quantile" type="float" required="no" multiple="no">
+		<description>
+			Quantile to calculate for method=quantile
+		</description>
+		<values>
+			<value>
+				<name>0.0-1.0</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="window" type="integer" required="yes" multiple="no">
+		<description>
+			The size of the window in x, y and z direction, values must be odd integer numbers, eg: 3,3,3
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+			<item order="3">z</item>
+		</keydesc>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

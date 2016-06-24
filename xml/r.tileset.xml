@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.tileset">
+	<description>
+		Produces tilings of the source projection for use in the destination region and projection.
+	</description>
+	<keywords>
+		raster, tiling
+	</keywords>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Name of region to use instead of current region for bounds and resolution
+		</description>
+	</parameter>
+	<parameter name="sourceproj" type="string" required="yes" multiple="no">
+		<description>
+			Source projection
+		</description>
+	</parameter>
+	<parameter name="sourcescale" type="string" required="no" multiple="no">
+		<description>
+			Conversion factor from units to meters in source projection
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="destproj" type="string" required="no" multiple="no">
+		<description>
+			Destination projection, defaults to this location's projection
+		</description>
+	</parameter>
+	<parameter name="destscale" type="string" required="no" multiple="no">
+		<description>
+			Conversion factor from units to meters in source projection
+		</description>
+	</parameter>
+	<parameter name="maxcols" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of columns for a tile in the source projection
+		</description>
+		<default>
+			1024
+		</default>
+	</parameter>
+	<parameter name="maxrows" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of rows for a tile in the source projection
+		</description>
+		<default>
+			1024
+		</default>
+	</parameter>
+	<parameter name="overlap" type="integer" required="no" multiple="no">
+		<description>
+			Number of cells tiles should overlap in each direction
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Output field separator
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+	</parameter>
+	<flag name="g">
+		<description>
+			Produces shell script output
+		</description>
+	</flag>
+	<flag name="w">
+		<description>
+			Produces web map server query string output
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

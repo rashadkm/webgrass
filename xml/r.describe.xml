@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.describe">
+	<description>
+		Prints terse list of category values found in a raster map layer.
+	</description>
+	<keywords>
+		raster, metadata
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+	</parameter>
+	<parameter name="nsteps" type="integer" required="no" multiple="no">
+		<description>
+			Number of quantization steps
+		</description>
+		<default>
+			255
+		</default>
+	</parameter>
+	<flag name="1">
+		<description>
+			Print the output one value per line
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Only print the range of the data
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Suppress reporting of any NULLs
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Use the current region
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Read floating-point map as integer
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

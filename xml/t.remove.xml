@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.remove">
+	<description>
+		Removes space time datasets from temporal database.
+	</description>
+	<keywords>
+		temporal, map management, remove, time
+	</keywords>
+	<parameter name="inputs" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the space time dataset, default is strds
+		</description>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+		</values>
+		<guisection>
+			Input
+		</guisection>
+		<guidependency>
+			inputs
+		</guidependency>
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Input file with dataset names, one per line
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<flag name="r">
+		<description>
+			Remove all registered maps from the temporal and also from the spatial database
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Force recursive removing
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.aggregate.ds">
+	<description>
+		Aggregates data of an existing space time raster dataset using the time intervals of a second space time dataset.
+	</description>
+	<keywords>
+		temporal, aggregation, raster, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="sample" type="string" required="yes" multiple="no">
+		<description>
+			Time intervals from this space time dataset (raster, vector or raster3d) are used for aggregation computation
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the aggregation space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="basename" type="string" required="yes" multiple="no">
+		<label>
+			Basename of the new generated output maps
+		</label>
+		<description>
+			A numerical suffix separated by an underscore will be attached to create a unique identifier
+		</description>
+		<gisprompt />
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Aggregate operation to be performed on the raster maps
+		</description>
+		<default>
+			average
+		</default>
+		<values>
+			<value>
+				<name>average</name>
+			</value>
+			<value>
+				<name>count</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>mode</name>
+			</value>
+			<value>
+				<name>minimum</name>
+			</value>
+			<value>
+				<name>min_raster</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>max_raster</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+			<value>
+				<name>range</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>diversity</name>
+			</value>
+			<value>
+				<name>slope</name>
+			</value>
+			<value>
+				<name>offset</name>
+			</value>
+			<value>
+				<name>detcoeff</name>
+			</value>
+			<value>
+				<name>quart1</name>
+			</value>
+			<value>
+				<name>quart3</name>
+			</value>
+			<value>
+				<name>perc90</name>
+			</value>
+			<value>
+				<name>quantile</name>
+			</value>
+			<value>
+				<name>skewness</name>
+			</value>
+			<value>
+				<name>kurtosis</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="offset" type="integer" required="no" multiple="no">
+		<description>
+			Offset that is used to create the output map ids, output map id is generated as: basename_ (count + offset)
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="nprocs" type="integer" required="no" multiple="no">
+		<description>
+			Number of r.mapcalc processes to run in parallel
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="sampling" type="string" required="no" multiple="yes">
+		<description>
+			The method to be used for sampling the input dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			contains
+		</default>
+		<values>
+			<value>
+				<name>equal</name>
+			</value>
+			<value>
+				<name>overlaps</name>
+			</value>
+			<value>
+				<name>overlapped</name>
+			</value>
+			<value>
+				<name>starts</name>
+			</value>
+			<value>
+				<name>started</name>
+			</value>
+			<value>
+				<name>finishes</name>
+			</value>
+			<value>
+				<name>finished</name>
+			</value>
+			<value>
+				<name>during</name>
+			</value>
+			<value>
+				<name>contains</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register Null maps
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Use start time - truncated according to granularity - as suffix (overrides offset option)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

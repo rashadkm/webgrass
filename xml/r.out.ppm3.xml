@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.ppm3">
+	<description>
+		Converts 3 GRASS raster layers (R,G,B) to a PPM image file.
+	</description>
+	<keywords>
+		raster, export
+	</keywords>
+	<parameter name="red" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map to be used for &lt;red&gt;
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="green" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map to be used for &lt;green&gt;
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="blue" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map to be used for &lt;blue&gt;
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for new PPM file. (use '-' for stdout)
+		</description>
+	</parameter>
+	<flag name="c">
+		<description>
+			Add comments to describe the region
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
