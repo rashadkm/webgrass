@@ -86,7 +86,16 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
        /* iteration over outer occurance of menuitem */
        pugi::xml_node menu_items_menuitem_node = menu_items_node.child("menuitem");
        while ( menu_items_menuitem_node ) {
-          firstLevel->addItem(menu_items_menuitem_node.child_value("label"));
+          void *vague_pointer2;
+              string j2=menu_items_menuitem_node.child_value("command");
+              char *ptr2=new char (j2.length()+1);
+              strcpy(ptr2,j2.c_str()); 
+              vague_pointer2= static_cast<void*>(ptr2);
+
+              Wt::WMenuItem *item2 = firstLevel->addItem(menu_items_menuitem_node.child_value("label"));
+              item2->setData(vague_pointer2);
+              item2->triggered().connect(this, &MainUI::click);
+          //firstLevel->addItem(menu_items_menuitem_node.child_value("label"));
           menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
        }
 
