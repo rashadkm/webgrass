@@ -129,7 +129,7 @@ Wt::WMenuItem *tab
        "Attribute");
 tab->setCloseable(true);
 
-tabW->setStyleClass("tabwidget");
+tabW->setStyleClass("wgrass-module-tab");
 addWidget(container);
 // std::cout<<container->findById("kmk"); /*calling with id*/
 

@@ -10,14 +10,14 @@
     height: 100vh; 
 }
 
-.startup-selectionbox {
+.wgrass-startup-selectionbox {
 /*    background-color: #65dae8; */
 /*    height: 60vh; */
     text-align: left;
     padding-bottom: 0px;    
 }
 
-.banner {
+.wgrass-startup-banner {
   margin:0 auto;
   margin-left: 2.6%;
   margin-right: 0.1%;
@@ -26,18 +26,31 @@
   width: auto\9; /* IE8 */
 }
 
-.dir{
+.wgrass-data-dir {
   margin:0 auto; 
   max-width: 100%;
   height: auto;
   width: auto\9; 
 }
-.text{
+.wgrass-text-label {
   text-transform: uppercase;
   font-weight: bold;
 }
 
-.tabwidget{
+.wgrass-start-button {
+  width:200px;
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+  margin-right: 10px;  
+  float: right;
+  max-width: 100%;
+  height: auto;
+  width: auto\9; 
+}
+
+.wgrass-module-tab {
     margin:0 auto; /* this will center the page */
     margin-bottom: 5px;
     margin-top: 5px;

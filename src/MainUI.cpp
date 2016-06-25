@@ -19,12 +19,10 @@
 #include "Module.h"
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
-      //root()->clear();
-      createUI(parent);
-
+  createUI(parent);
 }
-MainUI::~MainUI() { }
 
+MainUI::~MainUI() { }
 
 void MainUI::createUI(Wt::WContainerWidget *parent) {
 
@@ -33,10 +31,10 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   pugi::xml_document doc;
 
   /* input file of menudata*/
-  const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/menu-xml/menudata2.xml";
+  const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/menu-xml/menudata.xml";
   pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
 
-  std::cout << "Load result: " << tos.description() << std::endl;
+  ///std::cout << "Load result: " << tos.description() << std::endl;
 
   /* iteration over menudata but since only one is there so */
   pugi::xml_node menudata_node = doc.child("menudata");
@@ -46,8 +44,6 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   /* iteration over fisrt occurane of menu */
   pugi::xml_node menu_node = menubar_node.child("menu");
   while( menu_node ) {
-
-
     /* first menu creation */
     Wt::WPopupMenu *firstLevel = new Wt::WPopupMenu();
     menu->addMenu(menu_node.child_value("label"), firstLevel);
