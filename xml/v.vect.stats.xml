@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.vect.stats">
+	<description>
+		Count points in areas, calculate statistics from point attributes.
+	</description>
+	<keywords>
+		vector, attribute table, database, univariate statistics, zonal statistics
+	</keywords>
+	<parameter name="points" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Name of existing vector map with points
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="areas" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Name of existing vector map with areas
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<label>
+			Feature type
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="points_layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number for points map
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="areas_layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number for area map
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Method for aggregate statistics
+		</description>
+		<values>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>average</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>mode</name>
+			</value>
+			<value>
+				<name>minimum</name>
+			</value>
+			<value>
+				<name>min_cat</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>max_cat</name>
+			</value>
+			<value>
+				<name>range</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>diversity</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="points_column" type="string" required="no" multiple="no">
+		<label>
+			Column name of points map to use for statistics
+		</label>
+		<description>
+			Column of points map must be numeric
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="count_column" type="string" required="no" multiple="no">
+		<label>
+			Column name to upload points count
+		</label>
+		<description>
+			Column to hold points count, must be of type integer, will be created if not existing
+		</description>
+	</parameter>
+	<parameter name="stats_column" type="string" required="no" multiple="no">
+		<label>
+			Column name to upload statistics
+		</label>
+		<description>
+			Column to hold statistics, must be of type double, will be created if not existing
+		</description>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+	</parameter>
+	<flag name="p">
+		<label>
+			Print output to stdout, do not update attribute table
+		</label>
+		<description>
+			First column is always area category
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

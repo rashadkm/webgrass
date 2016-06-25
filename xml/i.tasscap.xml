@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.tasscap">
+	<description>
+		Performs Tasseled Cap (Kauth Thomas) transformation.
+	</description>
+	<keywords>
+		imagery, transformation, Landsat, MODIS, Tasseled Cap transformation
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			For Landsat4-7: bands 1, 2, 3, 4, 5, 7; for Landsat8: bands 2, 3, 4, 5, 6, 7; for MODIS: bands 1, 2, 3, 4, 5, 6, 7
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Name for output basename raster map(s)
+		</label>
+		<description>
+			Name for output basename raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="sensor" type="string" required="yes" multiple="no">
+		<description>
+			Satellite sensor
+		</description>
+		<values>
+			<value>
+				<name>landsat4_tm</name>
+				<description>Use transformation rules for Landsat 4 TM</description>
+			</value>
+			<value>
+				<name>landsat5_tm</name>
+				<description>Use transformation rules for Landsat 5 TM</description>
+			</value>
+			<value>
+				<name>landsat7_etm</name>
+				<description>Use transformation rules for Landsat 7 ETM</description>
+			</value>
+			<value>
+				<name>landsat8_oli</name>
+				<description>Use transformation rules for Landsat 8 OLI</description>
+			</value>
+			<value>
+				<name>modis</name>
+				<description>Use transformation rules for MODIS</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

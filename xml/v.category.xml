@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.category">
+	<description>
+		Attaches, deletes or reports vector categories to map geometry.
+	</description>
+	<keywords>
+		vector, category, layer
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="yes">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point,line,centroid,face
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="ids" type="string" required="no" multiple="no">
+		<label>
+			Feature ids (by default all features are processed)
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="option" type="string" required="yes" multiple="no">
+		<description>
+			Action to be done
+		</description>
+		<values>
+			<value>
+				<name>add</name>
+				<description>add a category to features without category in the given layer</description>
+			</value>
+			<value>
+				<name>del</name>
+				<description>delete category (cat=-1 to delete all categories of given layer)</description>
+			</value>
+			<value>
+				<name>chlayer</name>
+				<description>change layer number (e.g. layer=3,1 changes layer 3 to layer 1)</description>
+			</value>
+			<value>
+				<name>sum</name>
+				<description>add the value specified by cat option to the current category value</description>
+			</value>
+			<value>
+				<name>report</name>
+				<description>print report (statistics), in shell style: layer type count min max</description>
+			</value>
+			<value>
+				<name>print</name>
+				<description>print category values, layers are separated by '|', more cats in the same layer are separated by '/'</description>
+			</value>
+			<value>
+				<name>layers</name>
+				<description>print only layer numbers</description>
+			</value>
+			<value>
+				<name>transfer</name>
+				<description>copy values from one layer to another (e.g. layer=1,2,3 copies values from layer 1 to layer 2 and 3)</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="cat" type="integer" required="no" multiple="no">
+		<description>
+			Category value
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="step" type="integer" required="no" multiple="no">
+		<description>
+			Category increment
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="g">
+		<label>
+			Shell script style, currently only for report
+		</label>
+		<description>
+			Format: layer type count min max
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not copy attribute table(s)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

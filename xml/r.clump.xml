@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.clump">
+	<description>
+		Recategorizes data in a raster map by grouping cells that form physically discrete areas into unique categories.
+	</description>
+	<keywords>
+		raster, statistics, reclass, clumps
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title for output raster map
+		</description>
+	</parameter>
+	<flag name="d">
+		<label>
+			Clump also diagonal cells
+		</label>
+		<description>
+			Clumps are also traced along diagonal neighboring cells
+		</description>
+	</flag>
+	<flag name="g">
+		<label>
+			Print only the number of clumps in shell script style
+		</label>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

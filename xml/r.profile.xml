@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.profile">
+	<description>
+		Outputs the raster map layer values lying on user-defined line(s).
+	</description>
+	<keywords>
+		raster, profile
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name of file for output (use output=- for stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+		<default>
+			-
+		</default>
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="yes">
+		<description>
+			Profile coordinate pairs
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<label>
+			Name of input file containing coordinate pairs
+		</label>
+		<description>
+			Use instead of the 'coordinates' option. "-" reads from stdin.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="resolution" type="float" required="no" multiple="no">
+		<description>
+			Resolution along profile (default = current region resolution)
+		</description>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<label>
+			Units
+		</label>
+		<description>
+			If units are not specified, current location units are used. Meters are used by default in geographic (latlon) locations.
+		</description>
+		<values>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>miles</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="g">
+		<description>
+			Output easting and northing in first two columns of four column output
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Output RRR:GGG:BBB color values for each profile point
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.rectify">
+	<description>
+		Rectifies an image by computing a coordinate transformation for each pixel in the image based on the control points.
+	</description>
+	<keywords>
+		imagery, rectify
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="extension" type="string" required="yes" multiple="no">
+		<description>
+			Output raster map(s) suffix
+		</description>
+	</parameter>
+	<parameter name="order" type="integer" required="yes" multiple="no">
+		<description>
+			Rectification polynomial order (1-3)
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>1-3</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="resolution" type="float" required="no" multiple="no">
+		<description>
+			Target resolution (ignored if -c flag used)
+		</description>
+	</parameter>
+	<parameter name="memory" type="float" required="no" multiple="no">
+		<description>
+			Amount of memory to use in MB
+		</description>
+		<keydesc>
+			<item order="1">memory in MB</item>
+		</keydesc>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Interpolation method to use
+		</description>
+		<default>
+			nearest
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+			</value>
+			<value>
+				<name>linear</name>
+			</value>
+			<value>
+				<name>cubic</name>
+			</value>
+			<value>
+				<name>lanczos</name>
+			</value>
+			<value>
+				<name>linear_f</name>
+			</value>
+			<value>
+				<name>cubic_f</name>
+			</value>
+			<value>
+				<name>lanczos_f</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="c">
+		<description>
+			Use current region settings in target location (def.=calculate smallest area)
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Rectify all raster maps in group
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Use thin plate spline
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

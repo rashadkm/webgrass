@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.external">
+	<description>
+		Creates a new pseudo-vector map as a link to an OGR-supported layer or a PostGIS feature table.
+	</description>
+	<keywords>
+		vector, import, external, OGR, PostGIS
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input OGR or PostGIS data source
+		</label>
+		<description>
+			Examples:
+		ESRI Shapefile: directory containing a shapefile
+		MapInfo File: directory containing a mapinfo file
+		PostGIS database: connection string, eg. 'PG:dbname=db user=grass'
+		</description>
+	</parameter>
+	<parameter name="layer" type="string" required="yes" multiple="no">
+		<label>
+			Name of OGR layer or PostGIS feature table to be linked
+		</label>
+		<description>
+			Examples:
+		ESRI Shapefile: shapefile name
+		MapInfo File: mapinfo file name
+		PostGIS database: table name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output GRASS vector map (default: input layer)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="f">
+		<suppress_required/>
+		<description>
+			List supported formats and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available layers in data source and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<label>
+			List available layers including feature type in data source and exit
+		</label>
+		<suppress_required/>
+		<description>
+			Format: layer name,type,projection check,geometry
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.bin">
+	<description>
+		Exports a GRASS raster to a binary array.
+	</description>
+	<keywords>
+		raster, export
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output binary map (use output=- for stdout)
+		</description>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Value to write out for null
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="bytes" type="integer" required="no" multiple="no">
+		<description>
+			Number of bytes per cell
+		</description>
+		<values>
+			<value>
+				<name>1</name>
+			</value>
+			<value>
+				<name>2</name>
+			</value>
+			<value>
+				<name>4</name>
+			</value>
+			<value>
+				<name>8</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="order" type="string" required="no" multiple="no">
+		<description>
+			Output byte order
+		</description>
+		<default>
+			native
+		</default>
+		<values>
+			<value>
+				<name>big</name>
+			</value>
+			<value>
+				<name>little</name>
+			</value>
+			<value>
+				<name>native</name>
+			</value>
+			<value>
+				<name>swap</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="i">
+		<description>
+			Generate integer output
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Generate floating-point output
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Export array with GMT compatible header
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Generate BIL world and header files
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Byte swap output
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.info">
+	<description>
+		Outputs basic information about a user-specified 3D raster map layer.
+	</description>
+	<keywords>
+		raster3d, metadata, voxel, extent
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<flag name="g">
+		<description>
+			Print raster3d information in shell style
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Print range in shell style only
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Print raster history instead of info
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

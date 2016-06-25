@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.ortho.camera">
+	<description>
+		Select and modify the imagery group camera reference file.
+	</description>
+	<keywords>
+		imagery, orthorectify
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Name of imagery group for ortho-rectification
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="camera" type="string" required="yes" multiple="no">
+		<label>
+			Name of camera reference file
+		</label>
+		<description>
+			Name of input file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="camera" prompt="file" />
+	</parameter>
+	<parameter name="name" type="string" required="no" multiple="no">
+		<label>
+			Camera name
+		</label>
+	</parameter>
+	<parameter name="id" type="string" required="no" multiple="no">
+		<label>
+			Camera id
+		</label>
+	</parameter>
+	<parameter name="clf" type="float" required="no" multiple="no">
+		<label>
+			Calibrated focal length
+		</label>
+	</parameter>
+	<parameter name="pp" type="float" required="no" multiple="no">
+		<label>
+			Principal point coordinates
+		</label>
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="fid" type="float" required="no" multiple="yes">
+		<label>
+			Fiducial coordinates
+		</label>
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

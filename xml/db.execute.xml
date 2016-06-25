@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.execute">
+	<label>
+		Executes any SQL statement.
+	</label>
+	<description>
+		For SELECT statements use 'db.select'.
+	</description>
+	<keywords>
+		database, attribute table, SQL
+	</keywords>
+	<parameter name="sql" type="string" required="no" multiple="no">
+		<label>
+			SQL statement
+		</label>
+		<description>
+			Example: update rybniky set kapri = 'hodne' where kapri = 'malo'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			SQL
+		</guisection>
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<label>
+			Name of file containing SQL statement(s)
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			SQL
+		</guisection>
+	</parameter>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<description>
+			Name of database driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="database" type="string" required="no" multiple="no">
+		<description>
+			Name of database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="schema" type="string" required="no" multiple="no">
+		<label>
+			Database schema
+		</label>
+		<description>
+			Do not use this option if schemas are not supported by driver/database server
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Ignore SQL errors and continue
+		</description>
+ 		<guisection>
+			Errors
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

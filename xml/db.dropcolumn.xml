@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.dropcolumn">
+	<description>
+		Drops a column from selected attribute table.
+	</description>
+	<keywords>
+		database, attribute table
+	</keywords>
+	<parameter name="table" type="string" required="yes" multiple="no">
+		<description>
+			Name of attribute table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbtable" prompt="dbtable" />
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Name of attribute column
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<flag name="f">
+		<description>
+			Force removal (required for actual deletion of files)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

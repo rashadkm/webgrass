@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.terraflow">
+	<label>
+		Performs flow computation for massive grids.
+	</label>
+	<description>
+		Float version.
+	</description>
+	<keywords>
+		raster, hydrology, flow, accumulation, sink
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="filled" type="string" required="yes" multiple="no">
+		<description>
+			Name for output filled (flooded) elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="direction" type="string" required="yes" multiple="no">
+		<description>
+			Name for output flow direction raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="swatershed" type="string" required="yes" multiple="no">
+		<description>
+			Name for output sink-watershed raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="accumulation" type="string" required="yes" multiple="no">
+		<description>
+			Name for output flow accumulation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="tci" type="string" required="yes" multiple="no">
+		<description>
+			Name for output topographic convergence index (tci) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="d8cut" type="float" required="no" multiple="no">
+		<label>
+			Routing using SFD (D8) direction
+		</label>
+		<description>
+			If flow accumulation is larger than this value it is routed using SFD (D8) direction (meaningfull only for MFD flow). If no answer is given it defaults to infinity.
+		</description>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Maximum memory to be used (in MB)
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="directory" type="string" required="no" multiple="no">
+		<description>
+			Directory to hold temporary files (they can be large)
+		</description>
+	</parameter>
+	<parameter name="stats" type="string" required="no" multiple="no">
+		<description>
+			Name of file containing runtime statistics
+		</description>
+	</parameter>
+	<flag name="s">
+		<label>
+			SFD (D8) flow (default is MFD)
+		</label>
+		<description>
+			SFD: single flow direction, MFD: multiple flow direction
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.biomass">
+	<description>
+		Computes biomass growth, precursor of crop yield calculation.
+	</description>
+	<keywords>
+		imagery, biomass, FPAR, yield
+	</keywords>
+	<parameter name="fpar" type="string" required="yes" multiple="no">
+		<description>
+			Name of fPAR raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="lightuse_efficiency" type="string" required="yes" multiple="no">
+		<description>
+			Name of light use efficiency raster map (UZB:cotton=1.9)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="latitude" type="string" required="yes" multiple="no">
+		<description>
+			Name of degree latitude raster map [dd.ddd]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dayofyear" type="string" required="yes" multiple="no">
+		<description>
+			Name of Day of Year raster map [1-366]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="transmissivity_singleway" type="string" required="yes" multiple="no">
+		<description>
+			Name of single-way transmissivity raster map [0.0-1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="water_availability" type="string" required="yes" multiple="no">
+		<description>
+			Value of water availability raster map [0.0-1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output daily biomass growth raster map [kg/ha/d]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.external">
+	<description>
+		Links GDAL supported raster data as a pseudo GRASS raster map.
+	</description>
+	<keywords>
+		raster, import, external
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Name of raster file to be linked
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="source" type="string" required="no" multiple="no">
+		<description>
+			Name of non-file GDAL data source
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="band" type="integer" required="no" multiple="no">
+		<description>
+			Band to select (default is all bands)
+		</description>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title for resultant raster map
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<flag name="f">
+		<suppress_required/>
+		<description>
+			List supported formats and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="o">
+		<label>
+			Override projection check (use current location's projection)
+		</label>
+		<description>
+			Assume that the dataset has same projection as the current location
+		</description>
+	</flag>
+	<flag name="e">
+		<label>
+			Extend region extents based on new dataset
+		</label>
+		<description>
+			Also updates the default region if in the PERMANENT mapset
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Flip horizontally
+		</description>
+	</flag>
+	<flag name="v">
+		<description>
+			Flip vertically
+		</description>
+	</flag>
+	<flag name="t">
+		<label>
+			List available bands including band type in dataset and exit
+		</label>
+		<suppress_required/>
+		<description>
+			Format: band number,type,projection check
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

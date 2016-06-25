@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.transform">
+	<description>
+		Performs an affine transformation (shift, scale and rotate) on vector map.
+	</description>
+	<keywords>
+		vector, transformation, geometry, GCP
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer_all" prompt="layer" />
+		<default>
+			-1
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="xshift" type="float" required="no" multiple="no">
+		<description>
+			Shifting value for x coordinates
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="yshift" type="float" required="no" multiple="no">
+		<description>
+			Shifting value for y coordinates
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="zshift" type="float" required="no" multiple="no">
+		<description>
+			Shifting value for z coordinates
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="xscale" type="float" required="no" multiple="no">
+		<description>
+			Scaling factor for x coordinates
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="yscale" type="float" required="no" multiple="no">
+		<description>
+			Scaling factor for y coordinates
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Scaling factor for z coordinates
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="zrotation" type="float" required="no" multiple="no">
+		<description>
+			Rotation around z axis in degrees (counter-clockwise)
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<label>
+			Name of attribute column(s) used as transformation parameters
+		</label>
+		<description>
+			Format: parameter:column, e.g. xshift:xs,yshift:ys,zrot:zr
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Custom
+		</guisection>
+	</parameter>
+	<flag name="t">
+		<description>
+			Shift all z values to bottom=0
+		</description>
+	</flag>
+	<flag name="w">
+		<description>
+			Swap coordinates x, y and then apply other parameters
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

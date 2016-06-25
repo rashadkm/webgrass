@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.vtk">
+	<description>
+		Converts raster maps into the VTK-ASCII format.
+	</description>
+	<keywords>
+		raster, export, VTK
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Raster map(s) to be converted to VTK-ASCII data format
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for VTK-ASCII output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Value to represent no data cell
+		</description>
+		<default>
+			-99999.99
+		</default>
+	</parameter>
+	<parameter name="z" type="float" required="no" multiple="no">
+		<description>
+			Constant elevation (if no elevation map is specified)
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="rgbmaps" type="string" required="no" multiple="yes">
+		<description>
+			Three (r,g,b) raster maps to create RGB values [redmap,greenmap,bluemap]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="vectormaps" type="string" required="no" multiple="yes">
+		<description>
+			Three (x,y,z) raster maps to create vector values [xmap,ymap,zmap]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for elevation
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="precision" type="integer" required="no" multiple="no">
+		<description>
+			Number of significant digits (floating point only)
+		</description>
+		<default>
+			12
+		</default>
+		<values>
+			<value>
+				<name>0-20</name>
+			</value>
+		</values>
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Create VTK point data instead of VTK cell data (if no elevation map is given)
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Use structured grid for elevation (not recommended)
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Use polydata-trianglestrips for elevation grid creation
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Use polydata-vertices for elevation grid creation (to use with vtkDelauny2D)
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Scale factor affects the origin (if no elevation map is given)
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Correct the coordinates to match the VTK-OpenGL precision
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

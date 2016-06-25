@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.out.v5d">
+	<description>
+		Exports GRASS 3D raster map to 3-dimensional Vis5D file.
+	</description>
+	<keywords>
+		raster3d, export, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			3D raster map to be converted to Vis5D (V5D) file
+		</description>
+		<gisprompt age="old" element="grid3" prompt="3d-raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for V5D output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="m">
+		<description>
+			Use map coordinates instead of xyz coordinates
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

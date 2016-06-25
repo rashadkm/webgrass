@@ -1,0 +1,1688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.region">
+	<description>
+		Manages the boundary definitions for the geographic region.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Set current region from named region
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Set region to match raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			Set region to match 3D raster map(s) (both 2D and 3D values)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Set region to match vector map(s)
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="n" type="string" required="no" multiple="no">
+		<description>
+			Value for the northern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="s" type="string" required="no" multiple="no">
+		<description>
+			Value for the southern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="e" type="string" required="no" multiple="no">
+		<description>
+			Value for the eastern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="w" type="string" required="no" multiple="no">
+		<description>
+			Value for the western edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="t" type="string" required="no" multiple="no">
+		<description>
+			Value for the top edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="b" type="string" required="no" multiple="no">
+		<description>
+			Value for the bottom edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Number of rows in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="cols" type="integer" required="no" multiple="no">
+		<description>
+			Number of columns in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res" type="string" required="no" multiple="no">
+		<description>
+			2D grid resolution (north-south and east-west)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res3" type="string" required="no" multiple="no">
+		<description>
+			3D grid resolution (north-south, east-west and top-bottom)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="nsres" type="string" required="no" multiple="no">
+		<description>
+			North-south 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="ewres" type="string" required="no" multiple="no">
+		<description>
+			East-west 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="tbres" type="string" required="no" multiple="no">
+		<description>
+			Top-bottom 3D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="zoom" type="string" required="no" multiple="no">
+		<description>
+			Shrink region until it meets non-NULL data from this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="align" type="string" required="no" multiple="no">
+		<description>
+			Adjust region cells to cleanly align with this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="save" type="string" required="no" multiple="no">
+		<description>
+			Save current region settings in named region file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="windows" prompt="region" />
+		<guisection>
+			Effects
+		</guisection>
+	</parameter>
+	<flag name="d">
+		<description>
+			Set from default region
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="s">
+		<label>
+			Save as default region
+		</label>
+		<description>
+			Only possible from the PERMANENT mapset
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print the current region
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Print the current region in lat/long using the current ellipsoid/datum
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print the current region extent
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Print the current region map center coordinates
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Print the current region in GMT style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print the current region in WMS style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Print region resolution in meters (geodesic)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="n">
+		<label>
+			Print the convergence angle (degrees CCW)
+		</label>
+		<description>
+			The difference between the projection's grid north and true north, measured at the center coordinates of the current region.
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="3">
+		<description>
+			Print also 3D settings
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print the maximum bounding box in lat/long on WGS84
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Align region to resolution (default = align to bounds, works only for 2D resolution)
+		</description>
+ 		<guisection>
+			Bounds
+		</guisection>
+	</flag>
+	<flag name="u">
+		<description>
+			Do not update the current region
+		</description>
+ 		<guisection>
+			Effects
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-flag key="d"/>
+			<rule-flag key="s"/>
+			<rule-flag key="p"/>
+			<rule-flag key="l"/>
+			<rule-flag key="e"/>
+			<rule-flag key="c"/>
+			<rule-flag key="t"/>
+			<rule-flag key="w"/>
+			<rule-flag key="m"/>
+			<rule-flag key="n"/>
+			<rule-flag key="3"/>
+			<rule-flag key="b"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+			<rule-flag key="u"/>
+			<rule-option key="region"/>
+			<rule-option key="raster"/>
+			<rule-option key="raster_3d"/>
+			<rule-option key="vector"/>
+			<rule-option key="n"/>
+			<rule-option key="s"/>
+			<rule-option key="e"/>
+			<rule-option key="w"/>
+			<rule-option key="t"/>
+			<rule-option key="b"/>
+			<rule-option key="rows"/>
+			<rule-option key="cols"/>
+			<rule-option key="res"/>
+			<rule-option key="res3"/>
+			<rule-option key="nsres"/>
+			<rule-option key="ewres"/>
+			<rule-option key="tbres"/>
+			<rule-option key="zoom"/>
+			<rule-option key="align"/>
+			<rule-option key="save"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.region">
+	<description>
+		Manages the boundary definitions for the geographic region.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Set current region from named region
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Set region to match raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			Set region to match 3D raster map(s) (both 2D and 3D values)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Set region to match vector map(s)
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="n" type="string" required="no" multiple="no">
+		<description>
+			Value for the northern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="s" type="string" required="no" multiple="no">
+		<description>
+			Value for the southern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="e" type="string" required="no" multiple="no">
+		<description>
+			Value for the eastern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="w" type="string" required="no" multiple="no">
+		<description>
+			Value for the western edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="t" type="string" required="no" multiple="no">
+		<description>
+			Value for the top edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="b" type="string" required="no" multiple="no">
+		<description>
+			Value for the bottom edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Number of rows in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="cols" type="integer" required="no" multiple="no">
+		<description>
+			Number of columns in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res" type="string" required="no" multiple="no">
+		<description>
+			2D grid resolution (north-south and east-west)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res3" type="string" required="no" multiple="no">
+		<description>
+			3D grid resolution (north-south, east-west and top-bottom)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="nsres" type="string" required="no" multiple="no">
+		<description>
+			North-south 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="ewres" type="string" required="no" multiple="no">
+		<description>
+			East-west 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="tbres" type="string" required="no" multiple="no">
+		<description>
+			Top-bottom 3D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="zoom" type="string" required="no" multiple="no">
+		<description>
+			Shrink region until it meets non-NULL data from this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="align" type="string" required="no" multiple="no">
+		<description>
+			Adjust region cells to cleanly align with this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="save" type="string" required="no" multiple="no">
+		<description>
+			Save current region settings in named region file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="windows" prompt="region" />
+		<guisection>
+			Effects
+		</guisection>
+	</parameter>
+	<flag name="d">
+		<description>
+			Set from default region
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="s">
+		<label>
+			Save as default region
+		</label>
+		<description>
+			Only possible from the PERMANENT mapset
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print the current region
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Print the current region in lat/long using the current ellipsoid/datum
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print the current region extent
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Print the current region map center coordinates
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Print the current region in GMT style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print the current region in WMS style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Print region resolution in meters (geodesic)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="n">
+		<label>
+			Print the convergence angle (degrees CCW)
+		</label>
+		<description>
+			The difference between the projection's grid north and true north, measured at the center coordinates of the current region.
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="3">
+		<description>
+			Print also 3D settings
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print the maximum bounding box in lat/long on WGS84
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Align region to resolution (default = align to bounds, works only for 2D resolution)
+		</description>
+ 		<guisection>
+			Bounds
+		</guisection>
+	</flag>
+	<flag name="u">
+		<description>
+			Do not update the current region
+		</description>
+ 		<guisection>
+			Effects
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-flag key="d"/>
+			<rule-flag key="s"/>
+			<rule-flag key="p"/>
+			<rule-flag key="l"/>
+			<rule-flag key="e"/>
+			<rule-flag key="c"/>
+			<rule-flag key="t"/>
+			<rule-flag key="w"/>
+			<rule-flag key="m"/>
+			<rule-flag key="n"/>
+			<rule-flag key="3"/>
+			<rule-flag key="b"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+			<rule-flag key="u"/>
+			<rule-option key="region"/>
+			<rule-option key="raster"/>
+			<rule-option key="raster_3d"/>
+			<rule-option key="vector"/>
+			<rule-option key="n"/>
+			<rule-option key="s"/>
+			<rule-option key="e"/>
+			<rule-option key="w"/>
+			<rule-option key="t"/>
+			<rule-option key="b"/>
+			<rule-option key="rows"/>
+			<rule-option key="cols"/>
+			<rule-option key="res"/>
+			<rule-option key="res3"/>
+			<rule-option key="nsres"/>
+			<rule-option key="ewres"/>
+			<rule-option key="tbres"/>
+			<rule-option key="zoom"/>
+			<rule-option key="align"/>
+			<rule-option key="save"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.region">
+	<description>
+		Manages the boundary definitions for the geographic region.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Set current region from named region
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Set region to match raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			Set region to match 3D raster map(s) (both 2D and 3D values)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Set region to match vector map(s)
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="n" type="string" required="no" multiple="no">
+		<description>
+			Value for the northern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="s" type="string" required="no" multiple="no">
+		<description>
+			Value for the southern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="e" type="string" required="no" multiple="no">
+		<description>
+			Value for the eastern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="w" type="string" required="no" multiple="no">
+		<description>
+			Value for the western edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="t" type="string" required="no" multiple="no">
+		<description>
+			Value for the top edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="b" type="string" required="no" multiple="no">
+		<description>
+			Value for the bottom edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Number of rows in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="cols" type="integer" required="no" multiple="no">
+		<description>
+			Number of columns in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res" type="string" required="no" multiple="no">
+		<description>
+			2D grid resolution (north-south and east-west)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res3" type="string" required="no" multiple="no">
+		<description>
+			3D grid resolution (north-south, east-west and top-bottom)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="nsres" type="string" required="no" multiple="no">
+		<description>
+			North-south 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="ewres" type="string" required="no" multiple="no">
+		<description>
+			East-west 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="tbres" type="string" required="no" multiple="no">
+		<description>
+			Top-bottom 3D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="zoom" type="string" required="no" multiple="no">
+		<description>
+			Shrink region until it meets non-NULL data from this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="align" type="string" required="no" multiple="no">
+		<description>
+			Adjust region cells to cleanly align with this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="save" type="string" required="no" multiple="no">
+		<description>
+			Save current region settings in named region file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="windows" prompt="region" />
+		<guisection>
+			Effects
+		</guisection>
+	</parameter>
+	<flag name="d">
+		<description>
+			Set from default region
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="s">
+		<label>
+			Save as default region
+		</label>
+		<description>
+			Only possible from the PERMANENT mapset
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print the current region
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Print the current region in lat/long using the current ellipsoid/datum
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print the current region extent
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Print the current region map center coordinates
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Print the current region in GMT style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print the current region in WMS style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Print region resolution in meters (geodesic)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="n">
+		<label>
+			Print the convergence angle (degrees CCW)
+		</label>
+		<description>
+			The difference between the projection's grid north and true north, measured at the center coordinates of the current region.
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="3">
+		<description>
+			Print also 3D settings
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print the maximum bounding box in lat/long on WGS84
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Align region to resolution (default = align to bounds, works only for 2D resolution)
+		</description>
+ 		<guisection>
+			Bounds
+		</guisection>
+	</flag>
+	<flag name="u">
+		<description>
+			Do not update the current region
+		</description>
+ 		<guisection>
+			Effects
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-flag key="d"/>
+			<rule-flag key="s"/>
+			<rule-flag key="p"/>
+			<rule-flag key="l"/>
+			<rule-flag key="e"/>
+			<rule-flag key="c"/>
+			<rule-flag key="t"/>
+			<rule-flag key="w"/>
+			<rule-flag key="m"/>
+			<rule-flag key="n"/>
+			<rule-flag key="3"/>
+			<rule-flag key="b"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+			<rule-flag key="u"/>
+			<rule-option key="region"/>
+			<rule-option key="raster"/>
+			<rule-option key="raster_3d"/>
+			<rule-option key="vector"/>
+			<rule-option key="n"/>
+			<rule-option key="s"/>
+			<rule-option key="e"/>
+			<rule-option key="w"/>
+			<rule-option key="t"/>
+			<rule-option key="b"/>
+			<rule-option key="rows"/>
+			<rule-option key="cols"/>
+			<rule-option key="res"/>
+			<rule-option key="res3"/>
+			<rule-option key="nsres"/>
+			<rule-option key="ewres"/>
+			<rule-option key="tbres"/>
+			<rule-option key="zoom"/>
+			<rule-option key="align"/>
+			<rule-option key="save"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.region">
+	<description>
+		Manages the boundary definitions for the geographic region.
+	</description>
+	<keywords>
+		general, settings
+	</keywords>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Set current region from named region
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Set region to match raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			Set region to match 3D raster map(s) (both 2D and 3D values)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Set region to match vector map(s)
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Existing
+		</guisection>
+	</parameter>
+	<parameter name="n" type="string" required="no" multiple="no">
+		<description>
+			Value for the northern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="s" type="string" required="no" multiple="no">
+		<description>
+			Value for the southern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="e" type="string" required="no" multiple="no">
+		<description>
+			Value for the eastern edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="w" type="string" required="no" multiple="no">
+		<description>
+			Value for the western edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="t" type="string" required="no" multiple="no">
+		<description>
+			Value for the top edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="b" type="string" required="no" multiple="no">
+		<description>
+			Value for the bottom edge
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Number of rows in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="cols" type="integer" required="no" multiple="no">
+		<description>
+			Number of columns in the new region
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res" type="string" required="no" multiple="no">
+		<description>
+			2D grid resolution (north-south and east-west)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="res3" type="string" required="no" multiple="no">
+		<description>
+			3D grid resolution (north-south, east-west and top-bottom)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="nsres" type="string" required="no" multiple="no">
+		<description>
+			North-south 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="ewres" type="string" required="no" multiple="no">
+		<description>
+			East-west 2D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="tbres" type="string" required="no" multiple="no">
+		<description>
+			Top-bottom 3D grid resolution
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			Resolution
+		</guisection>
+	</parameter>
+	<parameter name="zoom" type="string" required="no" multiple="no">
+		<description>
+			Shrink region until it meets non-NULL data from this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="align" type="string" required="no" multiple="no">
+		<description>
+			Adjust region cells to cleanly align with this raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="save" type="string" required="no" multiple="no">
+		<description>
+			Save current region settings in named region file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="windows" prompt="region" />
+		<guisection>
+			Effects
+		</guisection>
+	</parameter>
+	<flag name="d">
+		<description>
+			Set from default region
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="s">
+		<label>
+			Save as default region
+		</label>
+		<description>
+			Only possible from the PERMANENT mapset
+		</description>
+ 		<guisection>
+			Existing
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print the current region
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Print the current region in lat/long using the current ellipsoid/datum
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Print the current region extent
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Print the current region map center coordinates
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Print the current region in GMT style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print the current region in WMS style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Print region resolution in meters (geodesic)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="n">
+		<label>
+			Print the convergence angle (degrees CCW)
+		</label>
+		<description>
+			The difference between the projection's grid north and true north, measured at the center coordinates of the current region.
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="3">
+		<description>
+			Print also 3D settings
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Print the maximum bounding box in lat/long on WGS84
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Align region to resolution (default = align to bounds, works only for 2D resolution)
+		</description>
+ 		<guisection>
+			Bounds
+		</guisection>
+	</flag>
+	<flag name="u">
+		<description>
+			Do not update the current region
+		</description>
+ 		<guisection>
+			Effects
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-flag key="d"/>
+			<rule-flag key="s"/>
+			<rule-flag key="p"/>
+			<rule-flag key="l"/>
+			<rule-flag key="e"/>
+			<rule-flag key="c"/>
+			<rule-flag key="t"/>
+			<rule-flag key="w"/>
+			<rule-flag key="m"/>
+			<rule-flag key="n"/>
+			<rule-flag key="3"/>
+			<rule-flag key="b"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+			<rule-flag key="u"/>
+			<rule-option key="region"/>
+			<rule-option key="raster"/>
+			<rule-option key="raster_3d"/>
+			<rule-option key="vector"/>
+			<rule-option key="n"/>
+			<rule-option key="s"/>
+			<rule-option key="e"/>
+			<rule-option key="w"/>
+			<rule-option key="t"/>
+			<rule-option key="b"/>
+			<rule-option key="rows"/>
+			<rule-option key="cols"/>
+			<rule-option key="res"/>
+			<rule-option key="res3"/>
+			<rule-option key="nsres"/>
+			<rule-option key="ewres"/>
+			<rule-option key="tbres"/>
+			<rule-option key="zoom"/>
+			<rule-option key="align"/>
+			<rule-option key="save"/>
+		</rule>
+	</rules>
+</task>

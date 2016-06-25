@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.walk">
+	<description>
+		Creates a raster map showing the anisotropic cumulative cost of moving between different geographic locations on an input raster map whose cell category values represent cost.
+	</description>
+	<keywords>
+		raster, cost surface, cumulative costs, cost allocation
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="friction" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map containing friction costs
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map to contain walking costs
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="outdir" type="string" required="no" multiple="no">
+		<description>
+			Name for output raster map to contain movement directions
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Optional outputs
+		</guisection>
+	</parameter>
+	<parameter name="start_points" type="string" required="no" multiple="no">
+		<label>
+			Name of starting vector points map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="stop_points" type="string" required="no" multiple="no">
+		<label>
+			Name of stopping vector points map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Stop
+		</guisection>
+	</parameter>
+	<parameter name="start_raster" type="string" required="no" multiple="no">
+		<description>
+			Name of starting raster points map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="start_coordinates" type="float" required="no" multiple="yes">
+		<description>
+			Coordinates of starting point(s) (E,N)
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="stop_coordinates" type="float" required="no" multiple="yes">
+		<description>
+			Coordinates of stopping point(s) (E,N)
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+		<guisection>
+			Stop
+		</guisection>
+	</parameter>
+	<parameter name="max_cost" type="integer" required="no" multiple="no">
+		<description>
+			Maximum cumulative cost
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="null_cost" type="float" required="no" multiple="no">
+		<description>
+			Cost assigned to null cells. By default, null cells are excluded
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<guisection>
+			NULL cells
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Maximum memory to be used in MB
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="walk_coeff" type="string" required="no" multiple="no">
+		<description>
+			Coefficients for walking energy formula parameters a,b,c,d
+		</description>
+		<keydesc>
+			<item order="1">a</item>
+			<item order="2">b</item>
+			<item order="3">c</item>
+			<item order="4">d</item>
+		</keydesc>
+		<default>
+			0.72,6.0,1.9998,-1.9998
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="lambda" type="float" required="no" multiple="no">
+		<description>
+			Lambda coefficients for combining walking energy and friction cost
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="slope_factor" type="float" required="no" multiple="no">
+		<description>
+			Slope factor determines travel energy cost per height step
+		</description>
+		<default>
+			-0.2125
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="k">
+		<description>
+			Use the 'Knight's move'; slower, but more accurate
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Keep null values in output raster map
+		</description>
+ 		<guisection>
+			NULL cells
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Start with values in raster map
+		</description>
+ 		<guisection>
+			Start
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Print info about disk space and memory requirements and exit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

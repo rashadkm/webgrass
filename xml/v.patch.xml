@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.patch">
+	<description>
+		Creates a new vector map by combining other vector maps.
+	</description>
+	<keywords>
+		vector, geometry
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<label>
+			Name of input vector map(s)
+		</label>
+		<description>
+			Or data source(s) for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="bbox" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map where bounding boxes of input vector maps are written to
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="a">
+		<description>
+			Append files to existing file (overwriting existing files must be activated)
+		</description>
+	</flag>
+	<flag name="e">
+		<label>
+			Copy also attribute table
+		</label>
+		<description>
+			Only the table of layer 1 is currently supported
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

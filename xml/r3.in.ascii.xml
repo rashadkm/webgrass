@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.in.ascii">
+	<description>
+		Converts a 3D ASCII raster text file into a (binary) 3D raster map.
+	</description>
+	<keywords>
+		raster3d, import, voxel, conversion, ASCII
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input file to be imported
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value data cell (use 'none' if no such value)
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Data type used in the output raster3d map
+		</description>
+		<default>
+			default
+		</default>
+		<values>
+			<value>
+				<name>default</name>
+			</value>
+			<value>
+				<name>double</name>
+			</value>
+			<value>
+				<name>float</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="precision" type="string" required="no" multiple="no">
+		<description>
+			Number of digits used as mantissa in the internal map storage, 0 -23 for float, 0 - 52 for double, max or default
+		</description>
+		<default>
+			default
+		</default>
+	</parameter>
+	<parameter name="compression" type="string" required="no" multiple="no">
+		<description>
+			The compression method used in the output raster3d map
+		</description>
+		<default>
+			default
+		</default>
+		<values>
+			<value>
+				<name>default</name>
+			</value>
+			<value>
+				<name>zip</name>
+			</value>
+			<value>
+				<name>none</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="tiledimension" type="string" required="no" multiple="no">
+		<description>
+			The dimensions of the tiles used in the output raster3d map (XxYxZ or default: 16x16x8)
+		</description>
+		<keydesc>
+			<item order="1">XxYxZ</item>
+		</keydesc>
+		<default>
+			default
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

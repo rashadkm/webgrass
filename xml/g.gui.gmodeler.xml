@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.gmodeler">
+	<label>
+		Graphical Modeler.
+	</label>
+	<description>
+		Allows interactively creating, editing and managing models.
+	</description>
+	<keywords>
+		general, GUI, graphical modeler, workflow
+	</keywords>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Name of model file to be loaded
+		</description>
+		<keydesc>
+			<item order="1">name.gxm</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Model
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.gmodeler">
+	<label>
+		Graphical Modeler.
+	</label>
+	<description>
+		Allows interactively creating, editing and managing models.
+	</description>
+	<keywords>
+		general, GUI, graphical modeler, workflow
+	</keywords>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Name of model file to be loaded
+		</description>
+		<keydesc>
+			<item order="1">name.gxm</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Model
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.gmodeler">
+	<label>
+		Graphical Modeler.
+	</label>
+	<description>
+		Allows interactively creating, editing and managing models.
+	</description>
+	<keywords>
+		general, GUI, graphical modeler, workflow
+	</keywords>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Name of model file to be loaded
+		</description>
+		<keydesc>
+			<item order="1">name.gxm</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Model
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.gmodeler">
+	<label>
+		Graphical Modeler.
+	</label>
+	<description>
+		Allows interactively creating, editing and managing models.
+	</description>
+	<keywords>
+		general, GUI, graphical modeler, workflow
+	</keywords>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Name of model file to be loaded
+		</description>
+		<keydesc>
+			<item order="1">name.gxm</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Model
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.iclass">
+	<label>
+		Tool for supervised classification of imagery data.
+	</label>
+	<description>
+		Generates spectral signatures for an image by allowing the user to outline regions of interest.
+	</description>
+	<keywords>
+		general, GUI, classification, supervised classification, signatures
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="map" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to load
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="trainingmap" type="string" required="no" multiple="no">
+		<label>
+			Ground truth training map to load
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="m">
+		<description>
+			Maximize window
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.iclass">
+	<label>
+		Tool for supervised classification of imagery data.
+	</label>
+	<description>
+		Generates spectral signatures for an image by allowing the user to outline regions of interest.
+	</description>
+	<keywords>
+		general, GUI, classification, supervised classification, signatures
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="map" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to load
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="trainingmap" type="string" required="no" multiple="no">
+		<label>
+			Ground truth training map to load
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="m">
+		<description>
+			Maximize window
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.iclass">
+	<label>
+		Tool for supervised classification of imagery data.
+	</label>
+	<description>
+		Generates spectral signatures for an image by allowing the user to outline regions of interest.
+	</description>
+	<keywords>
+		general, GUI, classification, supervised classification, signatures
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="map" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to load
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="trainingmap" type="string" required="no" multiple="no">
+		<label>
+			Ground truth training map to load
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="m">
+		<description>
+			Maximize window
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.iclass">
+	<label>
+		Tool for supervised classification of imagery data.
+	</label>
+	<description>
+		Generates spectral signatures for an image by allowing the user to outline regions of interest.
+	</description>
+	<keywords>
+		general, GUI, classification, supervised classification, signatures
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="no" multiple="no">
+		<description>
+			Name of input imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="map" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to load
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="trainingmap" type="string" required="no" multiple="no">
+		<label>
+			Ground truth training map to load
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="m">
+		<description>
+			Maximize window
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

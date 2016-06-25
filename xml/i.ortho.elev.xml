@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.ortho.elev">
+	<description>
+		Select or modify the target elevation model.
+	</description>
+	<keywords>
+		imagery, orthorectify
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of imagery group for ortho-rectification
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			Name of elevation map to use for ortho-rectification
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="l">
+		<description>
+			List available raster maps in target mapset and exit
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Print currently selected elevation map and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

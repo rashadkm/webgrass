@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.in.ogr">
+	<description>
+		Imports attribute tables in various formats.
+	</description>
+	<keywords>
+		database, import, attribute table
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Table file to be imported or DB connection string
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="bin" prompt="file" />
+	</parameter>
+	<parameter name="db_table" type="string" required="no" multiple="no">
+		<description>
+			Name of table from given DB to be imported
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output table
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="dbtable" prompt="dbtable" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="key" type="string" required="no" multiple="no">
+		<description>
+			Name for auto-generated unique key column
+		</description>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="encoding" type="string" required="no" multiple="no">
+		<label>
+			Encoding value for attribute data
+		</label>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

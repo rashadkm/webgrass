@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.rescale">
+	<description>
+		Rescales the range of category values in a raster map layer.
+	</description>
+	<keywords>
+		raster, rescale
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			The name of the raster map to be rescaled
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="from" type="integer" required="no" multiple="no">
+		<description>
+			The input data range to be rescaled (default: full range of input map)
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			The resulting raster map name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="to" type="integer" required="yes" multiple="no">
+		<description>
+			The output data range
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title for new raster map
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

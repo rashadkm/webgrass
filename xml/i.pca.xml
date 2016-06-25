@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.pca">
+	<description>
+		Principal components analysis (PCA) for image processing.
+	</description>
+	<keywords>
+		imagery, transformation, PCA, principal components analysis
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Name of two or more input raster maps or imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Name for output basename raster map(s)
+		</label>
+		<description>
+			A numerical suffix will be added for each component map
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="rescale" type="integer" required="no" multiple="no">
+		<label>
+			Rescaling range for output maps
+		</label>
+		<description>
+			For no rescaling use 0,0
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+		<default>
+			0,255
+		</default>
+		<guisection>
+			Rescale
+		</guisection>
+	</parameter>
+	<parameter name="percent" type="integer" required="no" multiple="no">
+		<label>
+			Cumulative percent importance for filtering
+		</label>
+		<default>
+			99
+		</default>
+		<values>
+			<value>
+				<name>50-99</name>
+			</value>
+		</values>
+		<guisection>
+			Filter
+		</guisection>
+	</parameter>
+	<flag name="n">
+		<label>
+			Normalize (center and scale) input maps
+		</label>
+		<description>
+			Default: center only
+		</description>
+	</flag>
+	<flag name="f">
+		<label>
+			Output will be filtered input bands
+		</label>
+		<description>
+			Apply inverse PCA after PCA
+		</description>
+ 		<guisection>
+			Filter
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

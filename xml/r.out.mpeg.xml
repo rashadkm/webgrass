@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.mpeg">
+	<description>
+		Converts raster map series to MPEG movie.
+	</description>
+	<keywords>
+		raster, export, animation
+	</keywords>
+	<parameter name="view1" type="string" required="yes" multiple="yes">
+		<description>
+			Name of input raster map(s) for view no.1
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Views
+		</guisection>
+	</parameter>
+	<parameter name="view2" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s) for view no.2
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Views
+		</guisection>
+	</parameter>
+	<parameter name="view3" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s) for view no.3
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Views
+		</guisection>
+	</parameter>
+	<parameter name="view4" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s) for view no.4
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Views
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="quality" type="integer" required="no" multiple="no">
+		<description>
+			Quality factor (1 = highest quality, lowest compression)
+		</description>
+		<default>
+			3
+		</default>
+		<values>
+			<value>
+				<name>1-5</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<label>
+			Convert on the fly, uses less disk space
+		</label>
+		<description>
+			Requires r.out.ppm with stdout option
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

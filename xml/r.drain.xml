@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.drain">
+	<description>
+		Traces a flow through an elevation model or cost surface on a raster map.
+	</description>
+	<keywords>
+		raster, hydrology, cost surface
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation or cost surface raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="direction" type="string" required="no" multiple="no">
+		<description>
+			Name of input movement direction map associated with the cost surface
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Cost surface
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="drain" type="string" required="no" multiple="no">
+		<label>
+			Name for output drain vector map
+		</label>
+		<description>
+			Recommended for cost surface made using knight's move
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="start_coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates of starting point(s) (E,N)
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="start_points" type="string" required="no" multiple="yes">
+		<label>
+			Name of starting vector points map(s)
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Copy input cell values on output
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Accumulate input values along the path
+		</description>
+ 		<guisection>
+			Path settings
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Count cell numbers along the path
+		</description>
+ 		<guisection>
+			Path settings
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			The input raster map is a cost surface (direction surface must also be specified)
+		</description>
+ 		<guisection>
+			Cost surface
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

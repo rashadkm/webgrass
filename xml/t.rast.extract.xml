@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.extract">
+	<description>
+		Extracts a subset of a space time raster datasets.
+	</description>
+	<keywords>
+		temporal, extract, raster, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="expression" type="string" required="no" multiple="no">
+		<description>
+			r.mapcalc expression assigned to all extracted raster maps
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="basename" type="string" required="no" multiple="no">
+		<label>
+			Basename of the new generated output maps
+		</label>
+		<description>
+			A numerical suffix separated by an underscore will be attached to create a unique identifier
+		</description>
+		<gisprompt />
+	</parameter>
+	<parameter name="nprocs" type="integer" required="no" multiple="no">
+		<description>
+			Number of r.mapcalc processes to run in parallel
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register Null maps
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

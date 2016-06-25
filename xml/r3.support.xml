@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.support">
+	<description>
+		Allows creation and/or modification of 3D raster map layer support files.
+	</description>
+	<keywords>
+		raster3d, metadata, voxel
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Text to use for map title
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="history" type="string" required="no" multiple="no">
+		<description>
+			Text to append to the next line of the map's metadata file
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="unit" type="string" required="no" multiple="no">
+		<description>
+			The map data unit
+		</description>
+	</parameter>
+	<parameter name="vunit" type="string" required="no" multiple="no">
+		<description>
+			The vertical unit of the map
+		</description>
+	</parameter>
+	<parameter name="source1" type="string" required="no" multiple="no">
+		<description>
+			Text to use for data source, line 1
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="source2" type="string" required="no" multiple="no">
+		<description>
+			Text to use for data source, line 2
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="description" type="string" required="no" multiple="no">
+		<description>
+			Text to use for data description or keyword(s)
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Raster map from which to copy category table
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="loadhistory" type="string" required="no" multiple="no">
+		<description>
+			Text file from which to load history
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="savehistory" type="string" required="no" multiple="no">
+		<description>
+			Text file in which to save history
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="s">
+		<description>
+			Update range
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

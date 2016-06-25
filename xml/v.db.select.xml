@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.db.select">
+	<description>
+		Prints vector map attributes.
+	</description>
+	<keywords>
+		vector, attribute table, database, SQL
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<description>
+			Name of attribute column(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="vertical_separator" type="string" required="no" multiple="no">
+		<label>
+			Output vertical record separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Name for output file (if omitted or "-" output to stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="r">
+		<description>
+			Print minimal region extent of selected vector features instead of attributes
+		</description>
+ 		<guisection>
+			Region
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Do not include column names in output
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Vertical output (instead of horizontal)
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Exclude attributes not linked to features
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

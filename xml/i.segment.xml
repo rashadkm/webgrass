@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.segment">
+	<description>
+		Identifies segments (objects) from imagery data.
+	</description>
+	<keywords>
+		imagery, segmentation, classification, object recognition
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="threshold" type="float" required="yes" multiple="no">
+		<label>
+			Difference threshold between 0 and 1
+		</label>
+		<description>
+			Threshold = 0 merges only identical segments; threshold = 1 merges all
+		</description>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Segmentation method
+		</description>
+		<default>
+			region_growing
+		</default>
+		<values>
+			<value>
+				<name>region_growing</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="similarity" type="string" required="no" multiple="no">
+		<description>
+			Similarity calculation method
+		</description>
+		<default>
+			euclidean
+		</default>
+		<values>
+			<value>
+				<name>euclidean</name>
+			</value>
+			<value>
+				<name>manhattan</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="minsize" type="integer" required="no" multiple="no">
+		<label>
+			Minimum number of cells in a segment
+		</label>
+		<description>
+			The final step will merge small segments with their best neighbor
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>1-100000</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Memory in MB
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="iterations" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of iterations
+		</description>
+		<default>
+			20
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="seeds" type="string" required="no" multiple="no">
+		<description>
+			Name for input raster map with starting seeds
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="bounds" type="string" required="no" multiple="no">
+		<label>
+			Name of input bounding/constraining raster map
+		</label>
+		<description>
+			Must be integer values, each area will be segmented independent of the others
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="goodness" type="string" required="no" multiple="no">
+		<description>
+			Name for output goodness of fit estimate map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="d">
+		<description>
+			Use 8 neighbors (3x3 neighborhood) instead of the default 4 neighbors for each pixel
+		</description>
+ 		<guisection>
+			Settings
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Weighted input, do not perform the default scaling of input raster maps
+		</description>
+ 		<guisection>
+			Settings
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

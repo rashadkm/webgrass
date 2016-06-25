@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.login">
+	<description>
+		Sets user/password for DB driver/database.
+	</description>
+	<keywords>
+		database, connection settings
+	</keywords>
+	<parameter name="driver" type="string" required="yes" multiple="no">
+		<description>
+			Name of database driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="database" type="string" required="yes" multiple="no">
+		<description>
+			Name of database
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+	</parameter>
+	<parameter name="user" type="string" required="no" multiple="no">
+		<description>
+			Username
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="password" type="string" required="no" multiple="no">
+		<description>
+			Password
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="host" type="string" required="no" multiple="no">
+		<label>
+			Hostname
+		</label>
+		<description>
+			Relevant only for pg and mysql driver
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="port" type="string" required="no" multiple="no">
+		<label>
+			Port
+		</label>
+		<description>
+			Relevant only for pg and mysql driver
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print connection settings and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

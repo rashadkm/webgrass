@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.to.vect">
+	<description>
+		Converts a raster map into a vector map.
+	</description>
+	<keywords>
+		raster, conversion, geometry, vectorization
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="yes" multiple="no">
+		<description>
+			Output feature type
+		</description>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute column to store value
+		</label>
+		<description>
+			Name must be SQL compliant
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<default>
+			value
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			Smooth corners of area features
+		</description>
+	</flag>
+	<flag name="v">
+		<description>
+			Use raster values as categories instead of unique sequence (CELL only)
+		</description>
+ 		<guisection>
+			Attributes
+		</guisection>
+	</flag>
+	<flag name="z">
+		<label>
+			Write raster values as z coordinate
+		</label>
+		<description>
+			Table is not created. Currently supported only for points.
+		</description>
+ 		<guisection>
+			Attributes
+		</guisection>
+	</flag>
+	<flag name="b">
+		<label>
+			Do not build vector topology
+		</label>
+		<description>
+			Recommended for massive point conversion
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not create attribute table
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

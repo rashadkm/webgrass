@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.distance">
+	<description>
+		Locates the closest points between objects in two raster maps.
+	</description>
+	<keywords>
+		raster, distance
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="yes">
+		<description>
+			Name of two input raster maps for computing inter-class distances
+		</description>
+		<keydesc>
+			<item order="1">name1</item>
+			<item order="2">name2</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			:
+		</default>
+	</parameter>
+	<parameter name="sort" type="string" required="no" multiple="no">
+		<label>
+			Sort output by distance
+		</label>
+		<description>
+			Default: sorted by categories
+		</description>
+		<values>
+			<value>
+				<name>asc</name>
+				<description>Sort by distance in ascending order</description>
+			</value>
+			<value>
+				<name>desc</name>
+				<description>Sort by distance in descending order</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="l">
+		<description>
+			Include category labels in the output
+		</description>
+	</flag>
+	<flag name="o">
+		<description>
+			Report zero distance if rasters are overlapping
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Report null objects as *
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.stats.zonal">
+	<description>
+		Calculates category or object oriented statistics (accumulator-based statistics).
+	</description>
+	<keywords>
+		raster, statistics, zonal statistics
+	</keywords>
+	<parameter name="base" type="string" required="yes" multiple="no">
+		<description>
+			Name of base raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cover" type="string" required="yes" multiple="no">
+		<description>
+			Name of cover raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Method of object-based statistic
+		</description>
+		<values>
+			<value>
+				<name>count</name>
+				<description>Count of values in specified objects</description>
+			</value>
+			<value>
+				<name>sum</name>
+				<description>Sum of values in specified objects</description>
+			</value>
+			<value>
+				<name>min</name>
+				<description>Minimum of values in specified objects</description>
+			</value>
+			<value>
+				<name>max</name>
+				<description>Maximum of values in specified objects</description>
+			</value>
+			<value>
+				<name>range</name>
+				<description>Range of values (max - min) in specified objects</description>
+			</value>
+			<value>
+				<name>average</name>
+				<description>Average of values in specified objects</description>
+			</value>
+			<value>
+				<name>avedev</name>
+				<description>Average deviation of values in specified objects</description>
+			</value>
+			<value>
+				<name>variance</name>
+				<description>Variance of values in specified objects</description>
+			</value>
+			<value>
+				<name>stddev</name>
+				<description>Standard deviation of values in specified objects</description>
+			</value>
+			<value>
+				<name>skewness</name>
+				<description>Skewness of values in specified objects</description>
+			</value>
+			<value>
+				<name>kurtosis</name>
+				<description>Kurtosis of values in specified objects</description>
+			</value>
+			<value>
+				<name>variance2</name>
+				<description>(2-pass) Variance of values in specified objects</description>
+			</value>
+			<value>
+				<name>stddev2</name>
+				<description>(2-pass) Standard deviation of values in specified objects</description>
+			</value>
+			<value>
+				<name>skewness2</name>
+				<description>(2-pass) Skewness of values in specified objects</description>
+			</value>
+			<value>
+				<name>kurtosis2</name>
+				<description>(2-pass) Kurtosis of values in specified objects</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Resultant raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Cover values extracted from the category labels of the cover map
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Create reclass map with statistics as category labels
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

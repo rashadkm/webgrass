@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.watershed">
+	<description>
+		Calculates hydrological parameters and RUSLE factors.
+	</description>
+	<keywords>
+		raster, hydrology, watershed
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="depression" type="string" required="no" multiple="no">
+		<label>
+			Name of input depressions raster map
+		</label>
+		<description>
+			All non-NULL and non-zero cells are considered as real depressions
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="flow" type="string" required="no" multiple="no">
+		<description>
+			Name of input raster representing amount of overland flow per cell
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="disturbed_land" type="string" required="no" multiple="no">
+		<label>
+			Name of input raster map percent of disturbed land
+		</label>
+		<description>
+			For USLE
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="blocking" type="string" required="no" multiple="no">
+		<label>
+			Name of input raster map blocking overland surface flow
+		</label>
+		<description>
+			For USLE. All non-NULL and non-zero cells are considered as blocking terrain.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="threshold" type="integer" required="no" multiple="no">
+		<description>
+			Minimum size of exterior watershed basin
+		</description>
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="max_slope_length" type="float" required="no" multiple="no">
+		<label>
+			Maximum length of surface flow in map units
+		</label>
+		<description>
+			For USLE
+		</description>
+		<guisection>
+			Inputs
+		</guisection>
+	</parameter>
+	<parameter name="accumulation" type="string" required="no" multiple="no">
+		<label>
+			Name for output accumulation raster map
+		</label>
+		<description>
+			Number of cells that drain through each cell
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="tci" type="string" required="no" multiple="no">
+		<description>
+			Name for output topographic index ln(a / tan(b)) map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="drainage" type="string" required="no" multiple="no">
+		<description>
+			Name for output drainage direction raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="basin" type="string" required="no" multiple="no">
+		<description>
+			Name for output basins raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="stream" type="string" required="no" multiple="no">
+		<description>
+			Name for output stream segments raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="half_basin" type="string" required="no" multiple="no">
+		<label>
+			Name for output half basins raster map
+		</label>
+		<description>
+			Each half-basin is given a unique value
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="length_slope" type="string" required="no" multiple="no">
+		<label>
+			Name for output slope length raster map
+		</label>
+		<description>
+			Slope length and steepness (LS) factor for USLE
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="slope_steepness" type="string" required="no" multiple="no">
+		<label>
+			Name for output slope steepness raster map
+		</label>
+		<description>
+			Slope steepness (S) factor for USLE
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="convergence" type="integer" required="no" multiple="no">
+		<label>
+			Convergence factor for MFD (1-10)
+		</label>
+		<description>
+			1 = most diverging flow, 10 = most converging flow. Recommended: 5
+		</description>
+		<default>
+			5
+		</default>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Maximum memory to be used with -m flag (in MB)
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<flag name="s">
+		<label>
+			SFD (D8) flow (default is MFD)
+		</label>
+		<description>
+			SFD: single flow direction, MFD: multiple flow direction
+		</description>
+	</flag>
+	<flag name="4">
+		<description>
+			Allow only horizontal and vertical flow of water
+		</description>
+	</flag>
+	<flag name="m">
+		<label>
+			Enable disk swap memory option: Operation is slow
+		</label>
+		<description>
+			Only needed if memory requirements exceed available RAM; see manual on how to calculate memory requirements
+		</description>
+	</flag>
+	<flag name="a">
+		<label>
+			Use positive flow accumulation even for likely underestimates
+		</label>
+		<description>
+			See manual for a detailed description of flow accumulation output
+		</description>
+	</flag>
+	<flag name="b">
+		<label>
+			Beautify flat areas
+		</label>
+		<description>
+			Flow direction in flat areas is modified to look prettier
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

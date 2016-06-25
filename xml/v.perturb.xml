@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.perturb">
+	<description>
+		Random location perturbations of vector points.
+	</description>
+	<keywords>
+		vector, geometry, statistics, random, point pattern
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer_all" prompt="layer" />
+		<default>
+			-1
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="distribution" type="string" required="no" multiple="no">
+		<description>
+			Distribution of perturbation
+		</description>
+		<default>
+			uniform
+		</default>
+		<values>
+			<value>
+				<name>uniform</name>
+			</value>
+			<value>
+				<name>normal</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="parameters" type="float" required="yes" multiple="yes">
+		<label>
+			Parameter(s) of distribution
+		</label>
+		<description>
+			If the distribution is uniform, only one parameter, the maximum, is needed. For a normal distribution, two parameters, the mean and standard deviation, are required.
+		</description>
+	</parameter>
+	<parameter name="minimum" type="float" required="no" multiple="no">
+		<description>
+			Minimum deviation in map units
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="seed" type="integer" required="no" multiple="no">
+		<description>
+			Seed for random number generation
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

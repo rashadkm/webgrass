@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.compress">
+	<description>
+		Compresses and decompresses raster maps.
+	</description>
+	<keywords>
+		raster, map management, compression
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="yes">
+		<description>
+			Name of existing raster map(s)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="u">
+		<description>
+			Uncompress the map
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Print compression information and data type of input map(s)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

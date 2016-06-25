@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findetc">
+	<description>
+		Searches for GRASS support files.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an file or directory
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findetc">
+	<description>
+		Searches for GRASS support files.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an file or directory
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findetc">
+	<description>
+		Searches for GRASS support files.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an file or directory
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.findetc">
+	<description>
+		Searches for GRASS support files.
+	</description>
+	<keywords>
+		general, map management, scripts
+	</keywords>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Name of an file or directory
+		</description>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mkfontcap">
+	<description>
+		Generates the font configuration file by scanning various directories for fonts.
+	</description>
+	<keywords>
+		general
+	</keywords>
+	<parameter name="extradirs" type="string" required="no" multiple="no">
+		<label>
+			List of extra directories to scan
+		</label>
+		<description>
+			Comma-separated list of extra directories to scan for Freetype-compatible fonts as well as the defaults (see documentation)
+		</description>
+	</parameter>
+	<flag name="o">
+		<description>
+			Overwrite font configuration file if already existing
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Write font configuration file to standard output instead of $GISBASE/etc
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mkfontcap">
+	<description>
+		Generates the font configuration file by scanning various directories for fonts.
+	</description>
+	<keywords>
+		general
+	</keywords>
+	<parameter name="extradirs" type="string" required="no" multiple="no">
+		<label>
+			List of extra directories to scan
+		</label>
+		<description>
+			Comma-separated list of extra directories to scan for Freetype-compatible fonts as well as the defaults (see documentation)
+		</description>
+	</parameter>
+	<flag name="o">
+		<description>
+			Overwrite font configuration file if already existing
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Write font configuration file to standard output instead of $GISBASE/etc
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mkfontcap">
+	<description>
+		Generates the font configuration file by scanning various directories for fonts.
+	</description>
+	<keywords>
+		general
+	</keywords>
+	<parameter name="extradirs" type="string" required="no" multiple="no">
+		<label>
+			List of extra directories to scan
+		</label>
+		<description>
+			Comma-separated list of extra directories to scan for Freetype-compatible fonts as well as the defaults (see documentation)
+		</description>
+	</parameter>
+	<flag name="o">
+		<description>
+			Overwrite font configuration file if already existing
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Write font configuration file to standard output instead of $GISBASE/etc
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mkfontcap">
+	<description>
+		Generates the font configuration file by scanning various directories for fonts.
+	</description>
+	<keywords>
+		general
+	</keywords>
+	<parameter name="extradirs" type="string" required="no" multiple="no">
+		<label>
+			List of extra directories to scan
+		</label>
+		<description>
+			Comma-separated list of extra directories to scan for Freetype-compatible fonts as well as the defaults (see documentation)
+		</description>
+	</parameter>
+	<flag name="o">
+		<description>
+			Overwrite font configuration file if already existing
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Write font configuration file to standard output instead of $GISBASE/etc
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

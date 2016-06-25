@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.proj">
+	<description>
+		Re-projects a raster map from given location to the current location.
+	</description>
+	<keywords>
+		raster, projection, transformation
+	</keywords>
+	<parameter name="location" type="string" required="yes" multiple="no">
+		<label>
+			Location containing input raster map
+		</label>
+		<description>
+			Location name (not location path)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="location" prompt="location" />
+		<guisection>
+			Source
+		</guisection>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Mapset containing input raster map
+		</label>
+		<description>
+			Default: name of current mapset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+		<guisection>
+			Source
+		</guisection>
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Name of input raster map to re-project
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Source
+		</guisection>
+	</parameter>
+	<parameter name="dbase" type="string" required="no" multiple="no">
+		<label>
+			Path to GRASS database of input location
+		</label>
+		<description>
+			Default: path to the current GRASS GIS database
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<gisprompt age="old" element="dbase" prompt="dbase" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output raster map (default: same as 'input')
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Target
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Interpolation method to use
+		</description>
+		<default>
+			nearest
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+				<description>nearest neighbor</description>
+			</value>
+			<value>
+				<name>bilinear</name>
+				<description>bilinear interpolation</description>
+			</value>
+			<value>
+				<name>bicubic</name>
+				<description>bicubic interpolation</description>
+			</value>
+			<value>
+				<name>lanczos</name>
+				<description>lanczos filter</description>
+			</value>
+			<value>
+				<name>bilinear_f</name>
+				<description>bilinear interpolation with fallback</description>
+			</value>
+			<value>
+				<name>bicubic_f</name>
+				<description>bicubic interpolation with fallback</description>
+			</value>
+			<value>
+				<name>lanczos_f</name>
+				<description>lanczos filter with fallback</description>
+			</value>
+		</values>
+		<guisection>
+			Target
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<label>
+			Maximum memory to be used (in MB)
+		</label>
+		<description>
+			Cache size for raster rows
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="resolution" type="float" required="no" multiple="no">
+		<description>
+			Resolution of output raster map
+		</description>
+		<guisection>
+			Target
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<description>
+			List raster maps in input mapset and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not perform region cropping optimization
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Print input map's bounds in the current projection and exit
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print input map's bounds in the current projection and exit (shell style)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

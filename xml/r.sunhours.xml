@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sunhours">
+	<label>
+		Calculates solar elevation, solar azimuth, and sun hours.
+	</label>
+	<description>
+		Solar elevation: the angle between the direction of the geometric center of the sun's apparent disk and the (idealized) horizon. Solar azimuth: the angle from due north in clockwise direction.
+	</description>
+	<keywords>
+		raster, solar, sun energy, sun position
+	</keywords>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<label>
+			Output raster map with solar elevation angle
+		</label>
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="azimuth" type="string" required="no" multiple="no">
+		<label>
+			Output raster map with solar azimuth angle
+		</label>
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="sunhour" type="string" required="no" multiple="no">
+		<label>
+			Output raster map with sunshine hours
+		</label>
+		<description>
+			Sunshine hours require SOLPOS use and Greenwich standard time
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="year" type="integer" required="yes" multiple="no">
+		<description>
+			Year
+		</description>
+		<values>
+			<value>
+				<name>1950-2050</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="month" type="integer" required="no" multiple="no">
+		<label>
+			Month
+		</label>
+		<description>
+			If not given, day is interpreted as day of the year
+		</description>
+		<values>
+			<value>
+				<name>1-12</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="day" type="integer" required="yes" multiple="no">
+		<description>
+			Day
+		</description>
+		<values>
+			<value>
+				<name>1-366</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="hour" type="integer" required="no" multiple="no">
+		<description>
+			Hour
+		</description>
+		<default>
+			12
+		</default>
+		<values>
+			<value>
+				<name>0-24</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="minute" type="integer" required="no" multiple="no">
+		<description>
+			Minutes
+		</description>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>0-60</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="second" type="integer" required="no" multiple="no">
+		<description>
+			Seconds
+		</description>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>0-60</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<flag name="t">
+		<description>
+			Time is local sidereal time, not Greenwich standard time
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Do not use SOLPOS algorithm of NREL
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

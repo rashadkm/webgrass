@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.topo.corr">
+	<description>
+		Computes topographic correction of reflectance.
+	</description>
+	<keywords>
+		imagery, terrain, topographic correction
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Name of reflectance raster maps to be corrected topographically
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name (flag -i) or prefix for output raster maps
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="basemap" type="string" required="yes" multiple="no">
+		<description>
+			Name of input base raster map (elevation or illumination)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="zenith" type="float" required="yes" multiple="no">
+		<description>
+			Solar zenith in degrees
+		</description>
+	</parameter>
+	<parameter name="azimuth" type="float" required="no" multiple="no">
+		<description>
+			Solar azimuth in degrees (only if flag -i)
+		</description>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Topographic correction method
+		</description>
+		<default>
+			c-factor
+		</default>
+		<values>
+			<value>
+				<name>cosine</name>
+			</value>
+			<value>
+				<name>minnaert</name>
+			</value>
+			<value>
+				<name>c-factor</name>
+			</value>
+			<value>
+				<name>percent</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="i">
+		<description>
+			Output sun illumination terrain model
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Scale output to input and copy color rules
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -2,12 +2,12 @@
 <!DOCTYPE task SYSTEM "grass-interface.dtd">
 <task name="v.in.ogr">
 	<description>
-		Converts vector data into a GRASS vector map using OGR library.
+		Imports vector data into a GRASS vector map using OGR library.
 	</description>
 	<keywords>
-		vector, import
+		vector, import, OGR
 	</keywords>
-	<parameter name="dsn" type="string" required="yes" multiple="no">
+	<parameter name="input" type="string" required="yes" multiple="no">
 		<label>
 			OGR datasource name
 		</label>
@@ -75,7 +75,7 @@
 	</parameter>
 	<parameter name="min_area" type="float" required="no" multiple="no">
 		<label>
-			Minimum size of area to be imported (square units)
+			Minimum size of area to be imported (square meters)
 		</label>
 		<description>
 			Smaller areas and islands are ignored. Should be greater than snap^2
@@ -118,7 +118,7 @@
 	</parameter>
 	<parameter name="snap" type="float" required="no" multiple="no">
 		<label>
-			Snapping threshold for boundaries
+			Snapping threshold for boundaries (map units)
 		</label>
 		<description>
 			'-1' for no snap
@@ -135,27 +135,68 @@
 			<item order="1">name</item>
 		</keydesc>
 	</parameter>
-	<parameter name="cnames" type="string" required="no" multiple="yes">
+	<parameter name="columns" type="string" required="no" multiple="yes">
 		<description>
 			List of column names to be used instead of original names, first is used for category column
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<parameter name="encoding" type="string" required="no" multiple="no">
+		<label>
+			Encoding value for attribute data
+		</label>
+		<description>
+			Overrides encoding interpretation, useful when importing ESRI Shapefile
 		</description>
 		<guisection>
 			Attributes
 		</guisection>
 	</parameter>
-	<flag name="l">
+	<parameter name="key" type="string" required="no" multiple="no">
+		<label>
+			Name of column used for categories
+		</label>
+		<description>
+			If not given, categories are generated as unique values and stored in 'cat' column
+		</description>
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<parameter name="geometry" type="string" required="no" multiple="no">
+		<label>
+			Name of geometry column
+		</label>
+		<description>
+			If not given, all geometry columns from the input are used
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<flag name="f">
 		<suppress_required/>
 		<description>
-			List available layers in data source and exit
+			List supported OGR formats and exit
 		</description>
  		<guisection>
 			Print
 		</guisection>
 	</flag>
-	<flag name="f">
+	<flag name="l">
 		<suppress_required/>
 		<description>
-			List supported formats and exit
+			List available OGR layers in data source and exit
 		</description>
  		<guisection>
 			Print
@@ -169,9 +210,12 @@
 			Output
 		</guisection>
 	</flag>
-	<flag name="z">
+	<flag name="2">
+		<label>
+			Force 2D output even if input is 3D
+		</label>
 		<description>
-			Create 3D output
+			Useful if input is 3D but all z coordinates are identical
 		</description>
  		<guisection>
 			Output
@@ -190,6 +234,12 @@
 			Override dataset projection (use location's projection)
 		</description>
 	</flag>
+	<flag name="j">
+		<suppress_required/>
+		<description>
+			Perform projection check only and exit
+		</description>
+	</flag>
 	<flag name="r">
 		<description>
 			Limit import to the current region
@@ -199,8 +249,11 @@
 		</guisection>
 	</flag>
 	<flag name="e">
+		<label>
+			Extend region extents based on new dataset
+		</label>
 		<description>
-			Extend location extents based on new dataset
+			Also updates the default region if in the PERMANENT mapset
 		</description>
 	</flag>
 	<flag name="w">
@@ -221,6 +274,11 @@
 			Allow output files to overwrite existing files
 		</description>
 	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
 	<flag name="verbose">
 		<description>
 			Verbose module output
@@ -231,4 +289,10 @@
 			Quiet module output
 		</description>
 	</flag>
+	<rules>
+		<rule type="requires">
+			<rule-flag key="j"/>
+			<rule-option key="input"/>
+		</rule>
+	</rules>
 </task>

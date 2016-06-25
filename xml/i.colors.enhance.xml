@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.colors.enhance">
+	<description>
+		Performs auto-balancing of colors for RGB images.
+	</description>
+	<keywords>
+		imagery, RGB, satellite, colors
+	</keywords>
+	<parameter name="red" type="string" required="yes" multiple="no">
+		<description>
+			Name of red channel
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="green" type="string" required="yes" multiple="no">
+		<description>
+			Name of green channel
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="blue" type="string" required="yes" multiple="no">
+		<description>
+			Name of blue channel
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="strength" type="float" required="no" multiple="no">
+		<description>
+			Cropping intensity (upper brightness level)
+		</description>
+		<default>
+			98
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="f">
+		<description>
+			Extend colors to full range of data on each channel
+		</description>
+ 		<guisection>
+			Colors
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Preserve relative colors, adjust brightness only
+		</description>
+ 		<guisection>
+			Colors
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Reset to standard color range
+		</description>
+ 		<guisection>
+			Colors
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Process bands serially (default: run in parallel)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

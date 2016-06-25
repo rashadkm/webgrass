@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.out.vtk">
+	<description>
+		Converts 3D raster maps into the VTK-ASCII format.
+	</description>
+	<keywords>
+		raster3d, export, voxel, VTK
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			3D raster map(s) to be converted to VTK-ASCII data format
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for VTK-ASCII output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Float value to represent no data cell/points
+		</description>
+		<default>
+			-99999.99
+		</default>
+	</parameter>
+	<parameter name="top" type="string" required="no" multiple="no">
+		<description>
+			Top surface 2D raster map
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Surface options
+		</guisection>
+	</parameter>
+	<parameter name="bottom" type="string" required="no" multiple="no">
+		<description>
+			Bottom surface 2D raster map
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Surface options
+		</guisection>
+	</parameter>
+	<parameter name="rgbmaps" type="string" required="no" multiple="yes">
+		<description>
+			Three (R,G,B) 3D raster maps to create RGB values [redmap,greenmap,bluemap]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="vectormaps" type="string" required="no" multiple="yes">
+		<description>
+			Three (x,y,z) 3D raster maps to create vector values [xmap,ymap,zmap]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for elevation
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="precision" type="integer" required="no" multiple="no">
+		<description>
+			Number of significant digits (floating point only)
+		</description>
+		<default>
+			12
+		</default>
+		<values>
+			<value>
+				<name>0-20</name>
+			</value>
+		</values>
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Create VTK pointdata instead of VTK celldata (celldata is default)
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Create 3D elevation output with a top and a bottom surface, both raster maps are required.
+		</description>
+ 		<guisection>
+			Surface options
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Use 3D raster mask (if exists) with input maps
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Scale factor affects the origin
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Correct the coordinates to match the VTK-OpenGL precision
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Do not convert the top-bottom resolution in case of lat long projection to meters
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension">
+	<label>
+		Maintains GRASS Addons extensions in local GRASS installation.
+	</label>
+	<description>
+		Downloads, installs extensions from GRASS Addons SVN repository into local GRASS installation or removes installed extensions.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="extension" type="string" required="yes" multiple="no">
+		<label>
+			Name of extension to install or remove
+		</label>
+		<description>
+			Name of toolbox (set of extensions) when -t flag is given
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="svnurl" type="string" required="no" multiple="no">
+		<description>
+			SVN Addons repository URL
+		</description>
+		<keydesc>
+			<item order="1">url</item>
+		</keydesc>
+		<default>
+			http://svn.osgeo.org/grass/grass-addons/grass7
+		</default>
+	</parameter>
+	<parameter name="prefix" type="string" required="no" multiple="no">
+		<description>
+			Prefix where to install extension (ignored when flag -s is given)
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<default>
+			$GRASS_ADDON_BASE
+		</default>
+	</parameter>
+	<parameter name="proxy" type="string" required="no" multiple="yes">
+		<description>
+			Set the proxy with: "http=&lt;value&gt;,ftp=&lt;value&gt;"
+		</description>
+		<keydesc>
+			<item order="1">proxy</item>
+		</keydesc>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository including module description
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository (shell script style)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<suppress_required/>
+		<description>
+			List locally installed extensions
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Install system-wide (may need system administrator rights)
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Download source code and exit
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Do not install new extension, just compile it
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal when uninstalling extension (operation=remove)
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Operate on toolboxes instead of single modules (experimental)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension">
+	<label>
+		Maintains GRASS Addons extensions in local GRASS installation.
+	</label>
+	<description>
+		Downloads, installs extensions from GRASS Addons SVN repository into local GRASS installation or removes installed extensions.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="extension" type="string" required="yes" multiple="no">
+		<label>
+			Name of extension to install or remove
+		</label>
+		<description>
+			Name of toolbox (set of extensions) when -t flag is given
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="svnurl" type="string" required="no" multiple="no">
+		<description>
+			SVN Addons repository URL
+		</description>
+		<keydesc>
+			<item order="1">url</item>
+		</keydesc>
+		<default>
+			http://svn.osgeo.org/grass/grass-addons/grass7
+		</default>
+	</parameter>
+	<parameter name="prefix" type="string" required="no" multiple="no">
+		<description>
+			Prefix where to install extension (ignored when flag -s is given)
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<default>
+			$GRASS_ADDON_BASE
+		</default>
+	</parameter>
+	<parameter name="proxy" type="string" required="no" multiple="yes">
+		<description>
+			Set the proxy with: "http=&lt;value&gt;,ftp=&lt;value&gt;"
+		</description>
+		<keydesc>
+			<item order="1">proxy</item>
+		</keydesc>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository including module description
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository (shell script style)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<suppress_required/>
+		<description>
+			List locally installed extensions
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Install system-wide (may need system administrator rights)
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Download source code and exit
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Do not install new extension, just compile it
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal when uninstalling extension (operation=remove)
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Operate on toolboxes instead of single modules (experimental)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension">
+	<label>
+		Maintains GRASS Addons extensions in local GRASS installation.
+	</label>
+	<description>
+		Downloads, installs extensions from GRASS Addons SVN repository into local GRASS installation or removes installed extensions.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="extension" type="string" required="yes" multiple="no">
+		<label>
+			Name of extension to install or remove
+		</label>
+		<description>
+			Name of toolbox (set of extensions) when -t flag is given
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="svnurl" type="string" required="no" multiple="no">
+		<description>
+			SVN Addons repository URL
+		</description>
+		<keydesc>
+			<item order="1">url</item>
+		</keydesc>
+		<default>
+			http://svn.osgeo.org/grass/grass-addons/grass7
+		</default>
+	</parameter>
+	<parameter name="prefix" type="string" required="no" multiple="no">
+		<description>
+			Prefix where to install extension (ignored when flag -s is given)
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<default>
+			$GRASS_ADDON_BASE
+		</default>
+	</parameter>
+	<parameter name="proxy" type="string" required="no" multiple="yes">
+		<description>
+			Set the proxy with: "http=&lt;value&gt;,ftp=&lt;value&gt;"
+		</description>
+		<keydesc>
+			<item order="1">proxy</item>
+		</keydesc>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository including module description
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository (shell script style)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<suppress_required/>
+		<description>
+			List locally installed extensions
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Install system-wide (may need system administrator rights)
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Download source code and exit
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Do not install new extension, just compile it
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal when uninstalling extension (operation=remove)
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Operate on toolboxes instead of single modules (experimental)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension">
+	<label>
+		Maintains GRASS Addons extensions in local GRASS installation.
+	</label>
+	<description>
+		Downloads, installs extensions from GRASS Addons SVN repository into local GRASS installation or removes installed extensions.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="extension" type="string" required="yes" multiple="no">
+		<label>
+			Name of extension to install or remove
+		</label>
+		<description>
+			Name of toolbox (set of extensions) when -t flag is given
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="svnurl" type="string" required="no" multiple="no">
+		<description>
+			SVN Addons repository URL
+		</description>
+		<keydesc>
+			<item order="1">url</item>
+		</keydesc>
+		<default>
+			http://svn.osgeo.org/grass/grass-addons/grass7
+		</default>
+	</parameter>
+	<parameter name="prefix" type="string" required="no" multiple="no">
+		<description>
+			Prefix where to install extension (ignored when flag -s is given)
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<default>
+			$GRASS_ADDON_BASE
+		</default>
+	</parameter>
+	<parameter name="proxy" type="string" required="no" multiple="yes">
+		<description>
+			Set the proxy with: "http=&lt;value&gt;,ftp=&lt;value&gt;"
+		</description>
+		<keydesc>
+			<item order="1">proxy</item>
+		</keydesc>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="c">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository including module description
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<suppress_required/>
+		<description>
+			List available extensions in the GRASS Addons SVN repository (shell script style)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<suppress_required/>
+		<description>
+			List locally installed extensions
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Install system-wide (may need system administrator rights)
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Download source code and exit
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Do not install new extension, just compile it
+		</description>
+ 		<guisection>
+			Install
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal when uninstalling extension (operation=remove)
+		</description>
+ 		<guisection>
+			Remove
+		</guisection>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Operate on toolboxes instead of single modules (experimental)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="required">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="extension"/>
+			<rule-flag key="l"/>
+			<rule-flag key="c"/>
+			<rule-flag key="g"/>
+			<rule-flag key="a"/>
+		</rule>
+	</rules>
+</task>

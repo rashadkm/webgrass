@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension.all">
+	<label>
+		Rebuilds or removes all locally installed GRASS Addons extensions.
+	</label>
+	<description>
+		By default only extensions built against different GIS Library are rebuilt.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="operation" type="string" required="no" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			rebuild
+		</default>
+		<values>
+			<value>
+				<name>rebuild</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="f">
+		<label>
+			Force operation (required for removal)
+		</label>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension.all">
+	<label>
+		Rebuilds or removes all locally installed GRASS Addons extensions.
+	</label>
+	<description>
+		By default only extensions built against different GIS Library are rebuilt.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="operation" type="string" required="no" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			rebuild
+		</default>
+		<values>
+			<value>
+				<name>rebuild</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="f">
+		<label>
+			Force operation (required for removal)
+		</label>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension.all">
+	<label>
+		Rebuilds or removes all locally installed GRASS Addons extensions.
+	</label>
+	<description>
+		By default only extensions built against different GIS Library are rebuilt.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="operation" type="string" required="no" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			rebuild
+		</default>
+		<values>
+			<value>
+				<name>rebuild</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="f">
+		<label>
+			Force operation (required for removal)
+		</label>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.extension.all">
+	<label>
+		Rebuilds or removes all locally installed GRASS Addons extensions.
+	</label>
+	<description>
+		By default only extensions built against different GIS Library are rebuilt.
+	</description>
+	<keywords>
+		general, installation, extensions
+	</keywords>
+	<parameter name="operation" type="string" required="no" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			rebuild
+		</default>
+		<values>
+			<value>
+				<name>rebuild</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="f">
+		<label>
+			Force operation (required for removal)
+		</label>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

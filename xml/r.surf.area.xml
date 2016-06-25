@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.surf.area">
+	<description>
+		Prints estimation of surface area for raster map.
+	</description>
+	<keywords>
+		raster, surface, statistics, area estimation
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="vscale" type="float" required="no" multiple="no">
+		<description>
+			Vertical scale
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<label>
+			Output units
+		</label>
+		<description>
+			Default: square map units
+		</description>
+		<values>
+			<value>
+				<name>miles</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>acres</name>
+			</value>
+			<value>
+				<name>hectares</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

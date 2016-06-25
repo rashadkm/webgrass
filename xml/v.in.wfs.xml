@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.wfs">
+	<description>
+		Imports GetFeature from a WFS server.
+	</description>
+	<keywords>
+		vector, import, OGC web services
+	</keywords>
+	<parameter name="url" type="string" required="yes" multiple="no">
+		<description>
+			Base URL starting with 'http' and ending in '?'
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="name" type="string" required="no" multiple="yes">
+		<description>
+			Comma separated names of data layers to download
+		</description>
+	</parameter>
+	<parameter name="srs" type="string" required="no" multiple="no">
+		<label>
+			Specify alternate spatial reference system (example: EPSG:4326)
+		</label>
+		<description>
+			The given code must be supported by the server, consult the capabilities file
+		</description>
+	</parameter>
+	<parameter name="maximum_features" type="integer" required="no" multiple="no">
+		<label>
+			Maximum number of features to download
+		</label>
+		<description>
+			(default: unlimited)
+		</description>
+	</parameter>
+	<parameter name="start_index" type="integer" required="no" multiple="no">
+		<label>
+			Skip earlier feature IDs and start downloading at this one
+		</label>
+		<description>
+			(default: start with the first feature)
+		</description>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			Download server capabilities to 'wms_capabilities.xml' in the current directory and exit
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Restrict fetch to features which touch the current region
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

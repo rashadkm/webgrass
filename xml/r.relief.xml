@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.relief">
+	<label>
+		Creates shaded relief map from an elevation map (DEM).
+	</label>
+	<keywords>
+		raster, elevation, relief, terrain, hillshade
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Name for output shaded relief map
+		</label>
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="altitude" type="float" required="no" multiple="no">
+		<description>
+			Altitude of the sun in degrees above the horizon
+		</description>
+		<default>
+			30
+		</default>
+		<values>
+			<value>
+				<name>0-90</name>
+			</value>
+		</values>
+		<guisection>
+			Sun position
+		</guisection>
+	</parameter>
+	<parameter name="azimuth" type="float" required="no" multiple="no">
+		<description>
+			Azimuth of the sun in degrees to the east of north
+		</description>
+		<default>
+			270
+		</default>
+		<values>
+			<value>
+				<name>0-360</name>
+			</value>
+		</values>
+		<guisection>
+			Sun position
+		</guisection>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Factor for exaggerating relief
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for converting meters to elevation units
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<description>
+			Elevation units (overrides scale factor)
+		</description>
+		<values>
+			<value>
+				<name>intl</name>
+				<description>international feet</description>
+			</value>
+			<value>
+				<name>survey</name>
+				<description>survey feet</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.kernel">
+	<label>
+		Generates a raster density map from vector points map.
+	</label>
+	<description>
+		Density is computed using a moving kernel. Optionally generates a vector density map on a vector network.
+	</description>
+	<keywords>
+		vector, kernel density, point density, heatmap, hotspot
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map with training points
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="net" type="string" required="no" multiple="no">
+		<label>
+			Name of input network vector map
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Network
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Name for output raster/vector map
+		</label>
+		<description>
+			Outputs vector map if network map is given, otherwise raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="radius" type="float" required="yes" multiple="no">
+		<description>
+			Kernel radius in map units
+		</description>
+	</parameter>
+	<parameter name="dsize" type="float" required="no" multiple="no">
+		<description>
+			Discretization error in map units
+		</description>
+		<default>
+			0.
+		</default>
+	</parameter>
+	<parameter name="segmax" type="float" required="no" multiple="no">
+		<description>
+			Maximum length of segment on network
+		</description>
+		<default>
+			100.
+		</default>
+		<guisection>
+			Network
+		</guisection>
+	</parameter>
+	<parameter name="distmax" type="float" required="no" multiple="no">
+		<description>
+			Maximum distance from point to network
+		</description>
+		<default>
+			100.
+		</default>
+		<guisection>
+			Network
+		</guisection>
+	</parameter>
+	<parameter name="multiplier" type="float" required="no" multiple="no">
+		<description>
+			Multiply the density result by this number
+		</description>
+		<default>
+			1.
+		</default>
+	</parameter>
+	<parameter name="node" type="string" required="no" multiple="no">
+		<description>
+			Node method
+		</description>
+		<default>
+			none
+		</default>
+		<values>
+			<value>
+				<name>none</name>
+				<description>No method applied at nodes with more than 2 arcs</description>
+			</value>
+			<value>
+				<name>split</name>
+				<description>Equal split (Okabe 2009) applied at nodes</description>
+			</value>
+		</values>
+		<guisection>
+			Network
+		</guisection>
+	</parameter>
+	<parameter name="kernel" type="string" required="no" multiple="no">
+		<description>
+			Kernel function
+		</description>
+		<default>
+			gaussian
+		</default>
+		<values>
+			<value>
+				<name>uniform</name>
+			</value>
+			<value>
+				<name>triangular</name>
+			</value>
+			<value>
+				<name>epanechnikov</name>
+			</value>
+			<value>
+				<name>quartic</name>
+			</value>
+			<value>
+				<name>triweight</name>
+			</value>
+			<value>
+				<name>gaussian</name>
+			</value>
+			<value>
+				<name>cosine</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="o">
+		<description>
+			Try to calculate an optimal radius with given 'radius' taken as maximum (experimental)
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Only calculate optimal radius and exit (no map is written)
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			In network mode, normalize values by sum of density multiplied by length of each segment. Integral over the output map then gives 1.0 * mult
+		</description>
+ 		<guisection>
+			Network
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			In network mode, multiply the result by number of input points
+		</description>
+ 		<guisection>
+			Network
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.timeline">
+	<description>
+		Allows comparing temporal datasets by displaying their temporal extents in a plot.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="inputs" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<flag name="3">
+		<description>
+			Show also 3D plot of spatio-temporal extents
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.timeline">
+	<description>
+		Allows comparing temporal datasets by displaying their temporal extents in a plot.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="inputs" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<flag name="3">
+		<description>
+			Show also 3D plot of spatio-temporal extents
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.timeline">
+	<description>
+		Allows comparing temporal datasets by displaying their temporal extents in a plot.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="inputs" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<flag name="3">
+		<description>
+			Show also 3D plot of spatio-temporal extents
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.timeline">
+	<description>
+		Allows comparing temporal datasets by displaying their temporal extents in a plot.
+	</description>
+	<keywords>
+		general, GUI, temporal
+	</keywords>
+	<parameter name="inputs" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input space time datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<flag name="3">
+		<description>
+			Show also 3D plot of spatio-temporal extents
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.series.interp">
+	<description>
+		Interpolates raster maps located (temporal or spatial) in between input raster maps at specific sampling positions.
+	</description>
+	<keywords>
+		raster, series, interpolation
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="datapos" type="float" required="no" multiple="yes">
+		<description>
+			Data point position for each input map
+		</description>
+	</parameter>
+	<parameter name="infile" type="string" required="no" multiple="no">
+		<description>
+			Input file with one input raster map name and data point position per line, field separator between name and sample point is |
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="yes">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="samplingpos" type="float" required="no" multiple="yes">
+		<description>
+			Sampling point position for each output map
+		</description>
+	</parameter>
+	<parameter name="outfile" type="string" required="no" multiple="no">
+		<description>
+			Input file with one output raster map name and sample point position per line, field separator between name and sample point is |
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Interpolation method, currently only linear interpolation is supported
+		</description>
+		<default>
+			linear
+		</default>
+		<values>
+			<value>
+				<name>linear</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

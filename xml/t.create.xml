@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.create">
+	<description>
+		Creates a space time dataset.
+	</description>
+	<keywords>
+		temporal, map management, create, time
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the output space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="temporaltype" type="string" required="no" multiple="no">
+		<description>
+			The temporal type of the space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			absolute
+		</default>
+		<values>
+			<value>
+				<name>absolute</name>
+			</value>
+			<value>
+				<name>relative</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="semantictype" type="string" required="yes" multiple="no">
+		<description>
+			Semantic type of the space time dataset
+		</description>
+		<default>
+			mean
+		</default>
+		<values>
+			<value>
+				<name>min</name>
+			</value>
+			<value>
+				<name>max</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>mean</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="title" type="string" required="yes" multiple="no">
+		<description>
+			Title of the new space time dataset
+		</description>
+	</parameter>
+	<parameter name="description" type="string" required="yes" multiple="no">
+		<description>
+			Description of the new space time dataset
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

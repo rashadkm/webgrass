@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.albedo">
+	<description>
+		Computes broad band albedo from surface reflectance.
+	</description>
+	<keywords>
+		imagery, albedo, reflectance
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="m">
+		<description>
+			MODIS (7 input bands:1,2,3,4,5,6,7)
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			NOAA AVHRR (2 input bands:1,2)
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			Landsat 5+7 (6 input bands:1,2,3,4,5,7)
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			ASTER (6 input bands:1,3,5,6,8,9)
+		</description>
+	</flag>
+	<flag name="c">
+		<label>
+			Aggressive mode (Landsat)
+		</label>
+		<description>
+			Albedo dry run to calculate some water to beach/sand/desert stretching, a kind of simple atmospheric correction
+		</description>
+	</flag>
+	<flag name="d">
+		<label>
+			Soft mode (MODIS)
+		</label>
+		<description>
+			Albedo dry run to calculate some water to beach/sand/desert stretching, a kind of simple atmospheric correction
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

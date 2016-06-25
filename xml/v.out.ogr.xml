@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.ogr">
+	<label>
+		Exports a vector map layer to any of the supported OGR vector formats.
+	</label>
+	<description>
+		By default a vector map layer is exported to Esri Shapefile format.
+	</description>
+	<keywords>
+		vector, export, OGR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map to export
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<label>
+			Feature type(s)
+		</label>
+		<description>
+			Combination of types is not supported by all output formats. Default is to use first type found in input vector map.
+		</description>
+		<default>
+			auto
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+			<value>
+				<name>auto</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Name of output OGR datasource
+		</label>
+		<description>
+			For example: ESRI Shapefile: filename or directory for storage
+			PostGIS database: connection string
+		</description>
+	</parameter>
+	<parameter name="format" type="string" required="yes" multiple="no">
+		<description>
+			Data format to write
+		</description>
+		<default>
+			ESRI_Shapefile
+		</default>
+		<values>
+			<value>
+				<name>BNA</name>
+			</value>
+			<value>
+				<name>CSV</name>
+			</value>
+			<value>
+				<name>CouchDB</name>
+			</value>
+			<value>
+				<name>DGN</name>
+			</value>
+			<value>
+				<name>DXF</name>
+			</value>
+			<value>
+				<name>ESRI_Shapefile</name>
+			</value>
+			<value>
+				<name>ElasticSearch</name>
+			</value>
+			<value>
+				<name>GFT</name>
+			</value>
+			<value>
+				<name>GME</name>
+			</value>
+			<value>
+				<name>GML</name>
+			</value>
+			<value>
+				<name>GMT</name>
+			</value>
+			<value>
+				<name>GPKG</name>
+			</value>
+			<value>
+				<name>GPSBabel</name>
+			</value>
+			<value>
+				<name>GPSTrackMaker</name>
+			</value>
+			<value>
+				<name>GPX</name>
+			</value>
+			<value>
+				<name>GeoJSON</name>
+			</value>
+			<value>
+				<name>GeoRSS</name>
+			</value>
+			<value>
+				<name>Geoconcept</name>
+			</value>
+			<value>
+				<name>Interlis_1</name>
+			</value>
+			<value>
+				<name>Interlis_2</name>
+			</value>
+			<value>
+				<name>KML</name>
+			</value>
+			<value>
+				<name>LIBKML</name>
+			</value>
+			<value>
+				<name>MSSQLSpatial</name>
+			</value>
+			<value>
+				<name>MapInfo_File</name>
+			</value>
+			<value>
+				<name>Memory</name>
+			</value>
+			<value>
+				<name>MySQL</name>
+			</value>
+			<value>
+				<name>ODBC</name>
+			</value>
+			<value>
+				<name>ODS</name>
+			</value>
+			<value>
+				<name>PCIDSK</name>
+			</value>
+			<value>
+				<name>PDF</name>
+			</value>
+			<value>
+				<name>PGDump</name>
+			</value>
+			<value>
+				<name>PostgreSQL</name>
+			</value>
+			<value>
+				<name>S57</name>
+			</value>
+			<value>
+				<name>SQLite</name>
+			</value>
+			<value>
+				<name>TIGER</name>
+			</value>
+			<value>
+				<name>WAsP</name>
+			</value>
+			<value>
+				<name>XLSX</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output_layer" type="string" required="no" multiple="no">
+		<label>
+			Name for output OGR layer. If not specified, input name is used
+		</label>
+		<description>
+			For example: ESRI Shapefile: shapefile name
+			PostGIS database: table name
+		</description>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="output_type" type="string" required="no" multiple="yes">
+		<description>
+			Optionally change default output type
+		</description>
+		<default>
+			
+		</default>
+		<values>
+			<value>
+				<name>line</name>
+				<description>export area boundaries as linestrings</description>
+			</value>
+			<value>
+				<name>boundary</name>
+				<description>export lines as polygons</description>
+			</value>
+		</values>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="dsco" type="string" required="no" multiple="yes">
+		<description>
+			OGR dataset creation option (format specific, NAME=VALUE)
+		</description>
+		<default>
+			
+		</default>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="lco" type="string" required="no" multiple="yes">
+		<description>
+			OGR layer creation option (format specific, NAME=VALUE)
+		</description>
+		<default>
+			
+		</default>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<flag name="u">
+		<description>
+			Open an existing OGR datasource for update
+		</description>
+	</flag>
+	<flag name="a">
+		<label>
+			Append to existing layer
+		</label>
+		<description>
+			A new OGR layer is created if it does not exist
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Skip export of GRASS category ID ('cat') attribute
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Also export features without category (not labeled). Otherwise only features with category are exported.
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use ESRI-style .prj file format (applies to Shapefile output only)
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="2">
+		<label>
+			Force 2D output even if input is 3D (applies to Shapefile output only)
+		</label>
+		<description>
+			Useful if input is 3D but all z coordinates are identical
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Export vector data as multi-features
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Create a new empty layer in defined OGR datasource and exit. Nothing is read from input.
+		</description>
+ 		<guisection>
+			Creation
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

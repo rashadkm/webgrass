@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.krige">
+	<description>
+		Performs ordinary or block kriging for vector maps.
+	</description>
+	<keywords>
+		vector, interpolation, raster, kriging
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Name of point vector map containing sample data
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Name of attribute column with numerical value to be interpolated
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output raster map
+		</label>
+		<description>
+			If omitted, will be &lt;input name&gt;_kriging
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="package" type="string" required="no" multiple="no">
+		<description>
+			R package to use
+		</description>
+		<default>
+			gstat
+		</default>
+		<values>
+			<value>
+				<name>gstat</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="model" type="string" required="no" multiple="yes">
+		<label>
+			Variogram model(s)
+		</label>
+		<description>
+			Leave empty to test all models (requires automap)
+		</description>
+		<values>
+			<value>
+				<name>Nug</name>
+			</value>
+			<value>
+				<name>Exp</name>
+			</value>
+			<value>
+				<name>Sph</name>
+			</value>
+			<value>
+				<name>Gau</name>
+			</value>
+			<value>
+				<name>Exc</name>
+			</value>
+			<value>
+				<name>Mat</name>
+			</value>
+			<value>
+				<name>Ste</name>
+			</value>
+			<value>
+				<name>Cir</name>
+			</value>
+			<value>
+				<name>Lin</name>
+			</value>
+			<value>
+				<name>Bes</name>
+			</value>
+			<value>
+				<name>Pen</name>
+			</value>
+			<value>
+				<name>Per</name>
+			</value>
+			<value>
+				<name>Hol</name>
+			</value>
+			<value>
+				<name>Log</name>
+			</value>
+			<value>
+				<name>Pow</name>
+			</value>
+			<value>
+				<name>Spl</name>
+			</value>
+			<value>
+				<name>Leg</name>
+			</value>
+			<value>
+				<name>Err</name>
+			</value>
+			<value>
+				<name>Int</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="block" type="integer" required="no" multiple="no">
+		<label>
+			Block size (square block)
+		</label>
+		<description>
+			Block size. Used by block kriging.
+		</description>
+	</parameter>
+	<parameter name="range" type="integer" required="no" multiple="no">
+		<label>
+			Range value
+		</label>
+		<description>
+			Automatically fixed if not set
+		</description>
+	</parameter>
+	<parameter name="nugget" type="integer" required="no" multiple="no">
+		<label>
+			Nugget value
+		</label>
+		<description>
+			Automatically fixed if not set
+		</description>
+	</parameter>
+	<parameter name="sill" type="integer" required="no" multiple="no">
+		<label>
+			Sill value
+		</label>
+		<description>
+			Automatically fixed if not set
+		</description>
+	</parameter>
+	<parameter name="output_var" type="string" required="no" multiple="no">
+		<label>
+			Name for output variance raster map
+		</label>
+		<description>
+			If omitted, will be &lt;input name&gt;_kriging.var
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

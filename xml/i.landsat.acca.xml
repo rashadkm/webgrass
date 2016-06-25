@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.landsat.acca">
+	<description>
+		Performs Landsat TM/ETM+ Automatic Cloud Cover Assessment (ACCA).
+	</description>
+	<keywords>
+		imagery, Landsat, ACCA, cloud detection
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Base name of input raster bands
+		</label>
+		<description>
+			Example: 'B.' for B.1, B.2, ...
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="b56composite" type="float" required="no" multiple="no">
+		<description>
+			B56composite (step 6)
+		</description>
+		<default>
+			225.
+		</default>
+	</parameter>
+	<parameter name="b45ratio" type="float" required="no" multiple="no">
+		<description>
+			B45ratio: Desert detection (step 10)
+		</description>
+		<default>
+			1.
+		</default>
+	</parameter>
+	<parameter name="histogram" type="integer" required="no" multiple="no">
+		<description>
+			Number of classes in the cloud temperature histogram
+		</description>
+		<default>
+			100
+		</default>
+		<guisection>
+			Cloud settings
+		</guisection>
+	</parameter>
+	<flag name="5">
+		<label>
+			Data is Landsat-5 TM
+		</label>
+		<description>
+			I.e. Thermal band is '.6' not '.61')
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Apply post-processing filter to remove small holes
+		</description>
+	</flag>
+	<flag name="x">
+		<description>
+			Always use cloud signature (step 14)
+		</description>
+ 		<guisection>
+			Cloud settings
+		</guisection>
+	</flag>
+	<flag name="2">
+		<description>
+			Bypass second-pass processing, and merge warm (not ambiguous) and cold clouds
+		</description>
+ 		<guisection>
+			Cloud settings
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Include a category for cloud shadows
+		</description>
+ 		<guisection>
+			Cloud settings
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

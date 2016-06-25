@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast3d.extract">
+	<description>
+		Extracts a subset of a space time 3D raster dataset.
+	</description>
+	<keywords>
+		temporal, extract, raster3d, voxel, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster3d dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="str3ds" prompt="str3ds" />
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="expression" type="string" required="no" multiple="no">
+		<description>
+			The r3.mapcalc expression assigned to all extracted 3D raster maps
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time raster3d dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="str3ds" prompt="str3ds" />
+	</parameter>
+	<parameter name="basename" type="string" required="no" multiple="no">
+		<description>
+			Basename of the new generated 3D raster maps
+		</description>
+	</parameter>
+	<parameter name="nprocs" type="integer" required="no" multiple="no">
+		<description>
+			Number of r3.mapcalc processes to run in parallel
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register Null maps
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

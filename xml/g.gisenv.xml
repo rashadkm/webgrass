@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gisenv">
+	<label>
+		Outputs and modifies the user's current GRASS variable settings.
+	</label>
+	<description>
+		Prints all defined GRASS variables if no option is given.
+	</description>
+	<keywords>
+		general, settings, variables, scripts
+	</keywords>
+	<parameter name="get" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to get
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Get
+		</guisection>
+	</parameter>
+	<parameter name="set" type="string" required="no" multiple="no">
+		<description>
+			GRASS variable to set
+		</description>
+		<keydesc>
+			<item order="1">"variable=value"</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="unset" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to unset
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="store" type="string" required="no" multiple="no">
+		<description>
+			Where GRASS variable is stored
+		</description>
+		<default>
+			gisrc
+		</default>
+		<values>
+			<value>
+				<name>gisrc</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+		</values>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Separator for multiple GRASS variables
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			newline
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			Use shell syntax (for "eval")
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not use shell syntax
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="s"/>
+			<rule-flag key="n"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="get"/>
+			<rule-option key="set"/>
+			<rule-option key="unset"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gisenv">
+	<label>
+		Outputs and modifies the user's current GRASS variable settings.
+	</label>
+	<description>
+		Prints all defined GRASS variables if no option is given.
+	</description>
+	<keywords>
+		general, settings, variables, scripts
+	</keywords>
+	<parameter name="get" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to get
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Get
+		</guisection>
+	</parameter>
+	<parameter name="set" type="string" required="no" multiple="no">
+		<description>
+			GRASS variable to set
+		</description>
+		<keydesc>
+			<item order="1">"variable=value"</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="unset" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to unset
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="store" type="string" required="no" multiple="no">
+		<description>
+			Where GRASS variable is stored
+		</description>
+		<default>
+			gisrc
+		</default>
+		<values>
+			<value>
+				<name>gisrc</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+		</values>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Separator for multiple GRASS variables
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			newline
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			Use shell syntax (for "eval")
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not use shell syntax
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="s"/>
+			<rule-flag key="n"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="get"/>
+			<rule-option key="set"/>
+			<rule-option key="unset"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gisenv">
+	<label>
+		Outputs and modifies the user's current GRASS variable settings.
+	</label>
+	<description>
+		Prints all defined GRASS variables if no option is given.
+	</description>
+	<keywords>
+		general, settings, variables, scripts
+	</keywords>
+	<parameter name="get" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to get
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Get
+		</guisection>
+	</parameter>
+	<parameter name="set" type="string" required="no" multiple="no">
+		<description>
+			GRASS variable to set
+		</description>
+		<keydesc>
+			<item order="1">"variable=value"</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="unset" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to unset
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="store" type="string" required="no" multiple="no">
+		<description>
+			Where GRASS variable is stored
+		</description>
+		<default>
+			gisrc
+		</default>
+		<values>
+			<value>
+				<name>gisrc</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+		</values>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Separator for multiple GRASS variables
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			newline
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			Use shell syntax (for "eval")
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not use shell syntax
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="s"/>
+			<rule-flag key="n"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="get"/>
+			<rule-option key="set"/>
+			<rule-option key="unset"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gisenv">
+	<label>
+		Outputs and modifies the user's current GRASS variable settings.
+	</label>
+	<description>
+		Prints all defined GRASS variables if no option is given.
+	</description>
+	<keywords>
+		general, settings, variables, scripts
+	</keywords>
+	<parameter name="get" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to get
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Get
+		</guisection>
+	</parameter>
+	<parameter name="set" type="string" required="no" multiple="no">
+		<description>
+			GRASS variable to set
+		</description>
+		<keydesc>
+			<item order="1">"variable=value"</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="unset" type="string" required="no" multiple="yes">
+		<description>
+			GRASS variable to unset
+		</description>
+		<keydesc>
+			<item order="1">variable</item>
+		</keydesc>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="store" type="string" required="no" multiple="no">
+		<description>
+			Where GRASS variable is stored
+		</description>
+		<default>
+			gisrc
+		</default>
+		<values>
+			<value>
+				<name>gisrc</name>
+			</value>
+			<value>
+				<name>mapset</name>
+			</value>
+		</values>
+		<guisection>
+			Set
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Separator for multiple GRASS variables
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			newline
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			Use shell syntax (for "eval")
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not use shell syntax
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="s"/>
+			<rule-flag key="n"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="get"/>
+			<rule-option key="set"/>
+			<rule-option key="unset"/>
+		</rule>
+	</rules>
+</task>

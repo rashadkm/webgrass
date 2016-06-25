@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.copy">
+	<label>
+		Copy a table.
+	</label>
+	<description>
+		Either 'from_table' (optionally with 'where') can be used or 'select' option, but not 'from_table' and 'select' at the same time.
+	</description>
+	<keywords>
+		database, attribute table, SQL
+	</keywords>
+	<parameter name="from_driver" type="string" required="no" multiple="no">
+		<description>
+			Input driver name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="from_database" type="string" required="no" multiple="no">
+		<description>
+			Input database name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+	</parameter>
+	<parameter name="from_table" type="string" required="no" multiple="no">
+		<description>
+			Input table name (only, if 'select' is not used)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbtable" prompt="dbtable" />
+	</parameter>
+	<parameter name="to_driver" type="string" required="no" multiple="no">
+		<description>
+			Output driver name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="to_database" type="string" required="no" multiple="no">
+		<description>
+			Output database name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+	</parameter>
+	<parameter name="to_table" type="string" required="yes" multiple="no">
+		<description>
+			Output table name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="dbtable" prompt="dbtable" />
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="select" type="string" required="no" multiple="no">
+		<label>
+			Full select statement (only, if 'from_table' and 'where' is not used)
+		</label>
+		<description>
+			E.g.: SELECT dedek FROM starobince WHERE obec = 'Frimburg'
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

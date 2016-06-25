@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.dxf">
+	<description>
+		Converts file in DXF format to GRASS vector map.
+	</description>
+	<keywords>
+		vector, import, DXF
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Path to input DXF file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layers" type="string" required="no" multiple="yes">
+		<description>
+			List of DXF layers to import (default: all)
+		</description>
+		<guisection>
+			DXF layers
+		</guisection>
+	</parameter>
+	<flag name="e">
+		<description>
+			Ignore the map extent of DXF file
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not create attribute table
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Import polyface meshes as 3D wire frame
+		</description>
+	</flag>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List available DXF layers and exit
+		</description>
+ 		<guisection>
+			DXF layers
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Invert selection by DXF layers (don't import layers in list)
+		</description>
+ 		<guisection>
+			DXF layers
+		</guisection>
+	</flag>
+	<flag name="1">
+		<description>
+			Import all objects into one layer
+		</description>
+ 		<guisection>
+			DXF layers
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

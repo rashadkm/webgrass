@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.univar">
+	<label>
+		Calculates univariate statistics from the non-null cells of a 3D raster map.
+	</label>
+	<description>
+		Statistics include number of cells counted, minimum and maximum cell values, range, arithmetic mean, population variance, standard deviation, coefficient of variation, and sum.
+	</description>
+	<keywords>
+		raster3d, statistics, univariate statistics
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="zones" type="string" required="no" multiple="no">
+		<description>
+			3D Raster map used for zoning, must be of type CELL
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file (if omitted or "-" output to stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="percentile" type="float" required="no" multiple="yes">
+		<description>
+			Percentile to calculate (requires extended statistics flag)
+		</description>
+		<default>
+			90
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+	</parameter>
+	<flag name="g">
+		<description>
+			Print the stats in shell script style
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Calculate extended statistics
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Table output format instead of standard output format
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

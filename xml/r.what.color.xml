@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.what.color">
+	<description>
+		Queries colors for a raster map layer.
+	</description>
+	<keywords>
+		raster, querying, color table
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of existing raster map to query colors
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="value" type="float" required="no" multiple="yes">
+		<description>
+			Values to query colors for
+		</description>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Output format (printf-style)
+		</description>
+		<default>
+			%d:%d:%d
+		</default>
+	</parameter>
+	<flag name="i">
+		<description>
+			Read values from stdin
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

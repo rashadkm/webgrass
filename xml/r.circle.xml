@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.circle">
+	<description>
+		Creates a raster map containing concentric rings around a given point.
+	</description>
+	<keywords>
+		raster, buffer, geometry, circle
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="yes" multiple="no">
+		<description>
+			The coordinate of the center (east,north)
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="min" type="float" required="no" multiple="no">
+		<description>
+			Minimum radius for ring/circle map (in meters)
+		</description>
+	</parameter>
+	<parameter name="max" type="float" required="no" multiple="no">
+		<description>
+			Maximum radius for ring/circle map (in meters)
+		</description>
+	</parameter>
+	<parameter name="multiplier" type="float" required="no" multiple="no">
+		<description>
+			Data value multiplier
+		</description>
+	</parameter>
+	<flag name="b">
+		<description>
+			Generate binary raster map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
