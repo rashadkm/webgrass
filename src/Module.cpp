@@ -6,7 +6,6 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
   :WContainerWidget(parent) {
 
   pugi::xml_document doc;
-
  
   const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/xml/"+ moduleName +".xml";
   pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
@@ -78,10 +77,6 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
     flag_node = flag_node.next_sibling("flag");
   }
   
-
- 
-
-
   Wt::WContainerWidget *container = new Wt::WContainerWidget();
 
   Wt::WText *text1 = new Wt::WText(taskdescription_node.child_value(), container);
@@ -99,11 +94,6 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
     new Wt::WText(str1[1], container1);
   Wt::WComboBox *cb1 = new Wt::WComboBox(container1);
 
-  // container1->setId("kmk"); /*for setting id*/
-
-
-
-
   Wt::WTabWidget *tabW = new Wt::WTabWidget(container);
 
 
@@ -118,10 +108,6 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 				     " the browser to ensure swift switching."),
 		   *h, Wt::WTabWidget::PreLoading);
     }
-
-
-
-
 
   Wt::WMenuItem *tab 
     = tabW->addTab(new Wt::WTextArea("You can close this tab"
