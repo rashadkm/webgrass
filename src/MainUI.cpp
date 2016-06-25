@@ -62,20 +62,13 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
              /* iteration over internal occurance of menuitem */
              pugi::xml_node menu_items_menu_items_menuitem_node = menu_items_menu_items_node.child("menuitem");
              while( menu_items_menu_items_menuitem_node ) {
-              void *vague_pointer;
-              string j=menu_items_menu_items_menuitem_node.child_value("command");
-              char *ptr=new char (j.length()+1);
-              strcpy(ptr,j.c_str()); 
-              vague_pointer= static_cast<void*>(ptr);
 
-
-
-              Wt::WMenuItem *item = nextLevel->addItem(menu_items_menu_items_menuitem_node.child_value("label"));
-              item->setData(vague_pointer);
-              item->triggered().connect(this, &MainUI::click);
-              
-
-                menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
+	       Wt::WMenuItem *nextLevelMenuItem = new Wt::WMenuItem(menu_items_menu_items_menuitem_node.child_value("label"));
+	       nextLevelMenuItem->setId(menu_items_menu_items_menuitem_node.child_value("command"));
+	       nextLevelMenuItem-triggered().connect(this, &MainUI::openModuleUI);
+	       nextLevel->addItem(nextLevelMenuItem);
+	       
+	       menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
              }
              menu_items_menu_items_node = menu_items_menu_items_node.next_sibling("items");
           }
@@ -85,25 +78,19 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
        /* iteration over outer occurance of menuitem */
        pugi::xml_node menu_items_menuitem_node = menu_items_node.child("menuitem");
        while ( menu_items_menuitem_node ) {
-          void *vague_pointer2;
-              string j2=menu_items_menuitem_node.child_value("command");
-              char *ptr2=new char (j2.length()+1);
-              strcpy(ptr2,j2.c_str()); 
-              vague_pointer2= static_cast<void*>(ptr2);
-
-              Wt::WMenuItem *item2 = firstLevel->addItem(menu_items_menuitem_node.child_value("label"));
-              item2->setData(vague_pointer2);
-              item2->triggered().connect(this, &MainUI::click);
-          //firstLevel->addItem(menu_items_menuitem_node.child_value("label"));
-          menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
+	 Wt::WMenuItem *firstLevelMenuItem = new Wt::WMenuItem(menu_items_menuitem_node.child_value("label"));
+	 firstLevelMenuItem->setId(menu_items_menuitem_node.child_value("command"));
+	 firstLevelMenuItem-triggered().connect(this, &MainUI::openModuleUI);
+	 firstLevel->addItem(nextLevelMenuItem);
+	 menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
        }
-
+       
        menu_items_node = menu_items_node.next_sibling("items");
-
+       
        menu_node = menu_node.next_sibling("menu");
     }
   }
-
+  
 
   Wt::WNavigationBar *naivgationbar = new Wt::WNavigationBar();
   naivgationbar->setResponsive(true);
@@ -117,16 +104,16 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 
   //addWidget(new WBreak());
   Wt::WContainerWidget *textContainer1 = new Wt::WContainerWidget();
-  textContainer1->setStyleClass("text");
+  textContainer1->setStyleClass("wgrass-text-label");
   Wt::WHBoxLayout *hbox2 = new Wt::WHBoxLayout();
   textContainer1->setLayout(hbox2);
 
   Wt::WText *item = new Wt::WText("Layertree");
-  item->setStyleClass("text");
+  item->setStyleClass("wgrass-text-label");
   hbox2->addWidget(item);
   
   item = new Wt::WText("Display");
-  item->setStyleClass("text");
+  item->setStyleClass("wgrass-text-label");
   hbox2->addWidget(item);
   textContainer1->setMargin(-30, Wt::Bottom);
   addWidget(textContainer1);
@@ -149,31 +136,12 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   addWidget(textContainer);
 }
 
-void MainUI::click(Wt::WMenuItem* dd) {
-
-  char *item1 = static_cast<char*>(dd->data());
-   int i=0;  
-   string s="";
-   s.clear();
-   while(*(item1+i)!='\0')
-              {
-                s.push_back(*(item1+i));
-                i++;
-              }
-  cout<<s<<endl;
-  cout<<dd->data();
-  showDialog(s);
-
-}
-void MainUI::showDialog(std::string module)
-{
-  Wt::WDialog *dialog = new Wt::WDialog(module);
-  cout<<module<<endl;
+void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
+  const std::string gmodule = gitem->id();
+  Wt::WDialog *dialog = new Wt::WDialog(gmodule);
   Wt::WLabel *label = new Wt::WLabel("Cell location (A1..Z999)");
-
   Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
-  Module* mod = new Module(module, mo);
+  Module* mod = new Module(gmodule, mo);
   dialog->rejectWhenEscapePressed();
   dialog->show();
-
 }

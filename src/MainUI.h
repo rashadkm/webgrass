@@ -12,8 +12,7 @@ public:
   MainUI(Wt::WContainerWidget *parent=0);
   virtual ~MainUI();
   void createUI(Wt::WContainerWidget *parent);
-  void click(Wt::WMenuItem* tt);
-  void showDialog(std::string module);
+  void openModuleUI(Wt::WMenuItem* gitem);
 
 };
 
