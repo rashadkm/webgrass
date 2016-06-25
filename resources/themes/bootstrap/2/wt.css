@@ -230,7 +230,7 @@
   background: #eeeeee;
 }
 .Wt-cal tr:first-child th select {
-  width: 105px;
+  width: 125px;
   margin: 0px;
 }
 .Wt-cal tr:first-child th input {
@@ -557,7 +557,7 @@
 .dropdown-menu.typeahead {
   cursor: pointer;
 }
-.dropdown-menu.typeahead li > a:hover {
+.dropdown-menu.typeahead li:not(.active) > a:hover {
   color: inherit;
   background: inherit;
 }
@@ -607,6 +607,7 @@
   /* needed for IE only */
 
   white-space: nowrap;
+  height: 100%;
 }
 .Wt-itemview .Wt-header .Wt-wwrap .Wt-label {
   overflow: visible;
@@ -668,6 +669,9 @@ body.Wt-rtl .Wt-itemview .Wt-tv-no-rh {
 
   /* borders */
 
+}
+.Wt-tableview select {
+  width: 100%;
 }
 .Wt-tableview .Wt-header .Wt-tv-c {
   padding-left: 6px;

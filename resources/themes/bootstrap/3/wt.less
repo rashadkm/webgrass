@@ -42,10 +42,11 @@
 
     .Wt-chkbox {
 	margin-left: 1px;
-	margin-right: 7px;
-	display: inline-block;
-	width: 12px;
-	vertical-align: text-top;
+	margin-right: 6px;
+    }
+
+    label.checkbox-inline {
+        padding-left: 0px;
     }
 
     .Wt-padded {
@@ -64,28 +65,16 @@
      display: inline;
 }
 
-/*
- * Custom collapse nav support
- */
-.navbar .nav-collapse {
-    display: block !important; 
+@media (min-width: 768px) {
+     .navbar .navbar-collapse {
+           display: block !important;
+     }
 }
 
-@media (max-width: 979px) {
-    .nav-collapse .dropdown-menu {
-       display: block !important;
-       position: static !important;
-    }
-
-    .nav-collapse .dropdown-menu li > a:hover {
-       color: @navbarLinkColorActive;
-       background: #f2f2f2;
-    }
-
-    .nav-collapse .dropdown-menu .active >a {
-       color: inherit;
-       background: inherit;
-    }
+@media (max-width: 768px) {
+     .navbar-nav .open .dropdown-menu {
+           position: static !important;
+     }
 }
 
 .navbar .navbar-inner .container {
@@ -98,9 +87,9 @@
  */
 .navbar .nav > li.submenu > a:hover,
 .navbar .nav > li.submenu > a.active {
-    color: @navbarLinkColorActive;
+    color: @navbar-default-link-active-color;
     text-decoration: none;
-    background-color: @navbarLinkBackgroundActive;
+    background-color: @navbar-default-link-active-bg;
     .box-shadow(inset 0 3px 8px rgba(0,0,0,.125));
 }
 
@@ -134,29 +123,35 @@
 /*
  * Dialog extensions
  */
-.modal {
+
+.modal-dialog {
+    display: block;
+
     .modal-header {
 	cursor: move;
+ 
+	h3 {
+	    font-size: 18px;	
+	}
     }
 
-    .modal-body .modal-footer {
-       margin: 0px -15px -15px;
+    .modal-body {
+        .modal-footer {
+       	    margin: 0px -15px -15px;
+        }
+
+	.Wt-msgbox-icon {
+	    display: block;
+	    float: left;
+	    margin: -5px 15px 0px 0px;
+	    width: 25px;
+	    height: 35px;
+	}
+
+	.Wt-msgbox-text {
+	    overflow: auto;
+	}
     }
-}
-
-/*
- * Message box
- */
-.modal .Wt-msgbox-icon {
-    display: block;
-    float: left;
-    margin: -5px 15px 0px 0px;
-    width: 25px;
-    height: 35px;
-}
-
-.modal .Wt-msgbox-text {
-    overflow: auto;
 }
 
 /*
@@ -184,7 +179,7 @@
 
 .Wt-hsh2, .Wt-vsh2, 
 .Wt-vrh2:hover, .Wt-hrh2:hover {
-    background-color: @grayLight;
+    background-color: @gray-light;
 }
 
 /*
@@ -198,7 +193,7 @@
 	}
 
 	&.d3 {
-	    width: 255px;
+	    width: 277px;
 	}
 
 	&.dlong {
@@ -211,7 +206,7 @@
     }
 
     .Wt-cal-now {
-	background-color: lightgray;
+         background-color: lightgray;
     }
 
     .days.d1 td {
@@ -228,8 +223,8 @@
 
     td, th, td > div {
 	text-align: center;
-	height: 20px;
-	.border-radius(4px);
+	height: 28px;
+	border-radius: @border-radius-base;
     }
 
     th, td > div {
@@ -239,41 +234,74 @@
     tr:first-child th {
 	cursor: pointer;
 	&:hover{
-	    background: @grayLighter;
+	    background: @gray-lighter;
 	}
 
 	select {
-	    width: 105px;
+	    width: 125px;
 	    margin: 0px;
 	}
 
 	input {
-	    width: 35px;
+	    width: 60px;
 	    margin: 0px;
 	}
     }
 
     .days td {
 	&:hover {
-	    background: @grayLighter;
+	    background: @gray-lighter;
 	    cursor: pointer;
 	}
 
 	.Wt-cal-oom {
-	    color: @grayLight;
+	    color: @gray-light;
 	}
 
 	.Wt-cal-oor {
-	    color: @grayLight;
+	    color: @gray-light;
 	}
 
 	.Wt-cal-sel, .Wt-cal-sel:hover {
-	    .buttonBackground(@btnPrimaryBackground,
-			      @btnPrimaryBackgroundHighlight);
+	    background-color: #006dcc;
 	    color: #fff;
 	    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+	    background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+	    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+	    background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	    background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	    background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+	    background-repeat: repeat-x;
+	    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+	    border-color: #0044cc #0044cc #002a80;
+	    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 	}
     }
+}
+
+/*
+ * WDateEdit
+ */
+.Wt-dateedit {
+    background-image: url('date-edit-button.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    padding-right: 40px;
+
+    &:hover {
+        cursor: default;
+        background-position: right -34px;
+    }
+
+    &:active {
+        cursor: default;
+        background-position: right -68px;
+    }
+}
+
+.Wt-dateedit::-ms-clear {
+    display:none
 }
 
 /*
@@ -301,36 +329,10 @@
 }
 
 /*
- * WDateEdit
- */
-.Wt-dateedit {
-    background-image: url('date-edit-button.png');
-    background-repeat: no-repeat;
-    background-position: right top;
-    padding-right: 40px;
-
-    &:hover {
-        cursor: default;
-        background-position: right -30px;
-    }
-
-    &:active {
-        cursor: default;
-        background-position: right -60px;
-    }
-}
-
-.Wt-dateedit::-ms-clear {
-    display:none
-}
-
-/*
  * WDatePicker
  */
-.Wt-datepicker {
-   display: block;
-   top: auto;
-   left: auto;
+.Wt-datepicker input {
+    display: inline;
 }
 
 /*
@@ -376,11 +378,11 @@
     padding-right: 16px;
 
     &.up {
-        background-position: right -30px;
+        background-position: right -34px;
     }
 
     &.dn {
-        background-position: right -60px;
+        background-position: right -68px;
     }
 }
 
@@ -403,37 +405,36 @@
 	left: -1px;
         margin-top: -5px;
 	height: 8px;
-        border: 1px solid @tableBorder;
-        background: @grayLighter;
- 	.border-radius(@baseBorderRadius);
+        border: 1px solid @table-border-color;
+        background: @gray-lighter;
+ 	border-radius: @border-radius-base;
     }
 
     .fill {
 	top: 50%;
         margin-top: -5px;
 	height: 8px;
-        border: 1px solid @btnPrimaryBackground;
-        background: @btnPrimaryBackground;
- 	.border-radius(@baseBorderRadius);
+        border: 1px solid @btn-primary-bg;
+        background: @btn-primary-bg;
+ 	border-radius: @border-radius-base;
     }
 
     .handle {
         top: 50% !important;
         margin-top: -10px;
 	height: 18px !important;
-        border: 1px solid @btnBorder;
-	.buttonBackground(@btnBackground, @btnBackgroundHighlight,
-			  @grayDark, 0 1px 1px rgba(255,255,255,.75));
-	.border-radius(@baseBorderRadius);
+        border: 1px solid @btn-default-border;
+	border-radius: @border-radius-base;
+	.button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 
 	&:hover {
-	    background-color: darken(@white, 10%);
+	    background-color: darken(white, 10%);
 	    background-position: 0 -15px;
 	}
 
 	&:active {
-	    background-color: darken(@white, 10%);
-	    background-color: darken(@white, 15%) e("\9");
+	    background-color: darken(white, 10%);
+	    background-color: darken(white, 15%) e("\9");
 	    background-image: none;
 	    outline: 0;
 	}
@@ -451,38 +452,37 @@
 	left: 50%;
         margin-left: -5px;
 	width: 8px;
-        border: 1px solid @tableBorder;
-        background: @grayLighter;
- 	.border-radius(@baseBorderRadius);
+        border: 1px solid @table-border-color;
+        background: @gray-lighter;
+ 	border-radius: @border-radius-base;
     }
 
     .fill {
 	left: 50%;
         margin-left: -5px;
-	bottom: -1px;
+	bottom: 0px;
 	width: 8px;
-        border: 1px solid @btnPrimaryBackground;
-        background: @btnPrimaryBackground;
- 	.border-radius(@baseBorderRadius);
+        border: 1px solid @btn-primary-bg;
+        background: @btn-primary-bg;
+ 	border-radius: @border-radius-base;
     }
 
     .handle {
         left: 50% !important;
         margin-left: -10px;
 	width: 18px !important;
-        border: 1px solid @btnBorder;
-	.buttonBackground(@btnBackground, @btnBackgroundHighlight,
-			  @grayDark, 0 1px 1px rgba(255,255,255,.75));
-	.border-radius(@baseBorderRadius);
+        border: 1px solid @btn-default-border;
+	border-radius: @border-radius-base;
+	.button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 
 	&:hover {
-	    background-color: darken(@white, 10%);
+	    background-color: darken(white, 10%);
 	    background-position: 0 -15px;
 	}
 
 	&:active {
-	    background-color: darken(@white, 10%);
-	    background-color: darken(@white, 15%) e("\9");
+	    background-color: darken(white, 10%);
+	    background-color: darken(white, 15%) e("\9");
 	    background-image: none;
 	    outline: 0;
 	}
@@ -500,22 +500,23 @@
 
     &:hover {
         cursor: default;
-        background-position: right -30px;
+        background-position: right -34px;
     }
 
     &:active {
         cursor: default;
-        background-position: right -60px;
+        background-position: right -68px;
     }
+}
+
+.dropdown-submenu > a{
+    background-image: url(../../../right-arrow.gif);
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .dropdown-menu.typeahead {
     cursor: pointer;
-
-    li > a:hover {
-       color: inherit;
-       background: inherit;
-    }
 }
 
 /*
@@ -525,7 +526,7 @@
     cursor: default;
     white-space: nowrap;
     background: white;
-    border: 1px solid @tableBorder;
+    border: 1px solid @table-border-color;
 
     &.Wt-itemview-paged {
        overflow: auto;
@@ -561,6 +562,7 @@
 	    text-overflow: ellipsis;
 	    overflow: hidden; /* needed for IE only */
 	    white-space: nowrap;
+		height: 100%;
 	}
 
 	.Wt-wwrap .Wt-label {
@@ -568,7 +570,6 @@
 	    white-space: normal;
 	}
     }
-
 
     /* resize handles */
     .Wt-tv-rh {
@@ -593,7 +594,7 @@
     }
 
     .Wt-tv-rh:hover {
-	background-color: @grayLight; // LESS
+	background-color: @gray-light; // LESS
     }
 
     .Wt-tv-sh-none {
@@ -609,9 +610,9 @@
     }
 
     .active {
-	color: @white;
+	color: @component-active-color;
 	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-	background-color: @linkColor;
+	background-color: @link-color;
 	cursor: default;
     }
 
@@ -643,18 +644,19 @@ body.Wt-rtl {
 
     .Wt-header .Wt-tv-c {
 	padding-left: 6px;
+	margin-left: 6px; /*bootstrap 3 border box*/
     }
 
     .Wt-tv-contents {
-	background-color: @white;
+	background-color: #fff;
     }
 
     .Wt-tv-contents.Wt-striped div.Wt-tv-c:nth-child(odd) {
-	background-color: @tableBackgroundAccent;
+	background-color: @table-bg-accent;
     }
 
     .Wt-tv-contents.Wt-striped div.active:nth-child(odd) {
-	background-color: @linkColor;
+	background-color: @link-color;
     }
 
     .Wt-tv-contents .Wt-tv-c, .Wt-plaintable td, .Wt-plaintable th {
@@ -687,25 +689,20 @@ body.Wt-rtl {
 
     /* borders */
     .Wt-tv-br {
-	border-right: 1px solid @tableBorder;
+	border-right: 1px solid @table-border-color;
     }
 
     .Wt-plaintable .Wt-tv-br {
         border-right: 0;
-    }  
-
-    .Wt-tv-contents .Wt-tv-c, .Wt-plaintable td, .Wt-plaintable th {
-	border-right: 1px solid @tableBorder;
-	border-top: 1px solid @tableBorder;
-	margin-top: -1px;
     }
 
-    .Wt-spacer {
-	border-bottom: 1px solid @tableBorder;
+    .Wt-tv-contents .Wt-tv-c, .Wt-plaintable td, .Wt-plaintable th {
+	border-right: 1px solid @table-border-color;
+	border-bottom: 1px solid @table-border-color;
     }
 
     .Wt-header {
-	border-bottom: 1px solid @tableBorder;
+        border-bottom: 1px solid @table-border-color;
     }
 }
 
@@ -713,29 +710,19 @@ body.Wt-rtl {
     .Wt-tableview {
 	.Wt-header .Wt-tv-c {
 	    padding-left: 0px;
+	    margin-left: 0px;
 	    padding-right: 6px;
+	    margin-right: 6px;
 	}
 
-	.Wt-tv-contents img.icon,
-	.Wt-plaintable img.icon,
-	.Wt-tv-contents input.icon,
-	.Wt-plaintable input.icon {
-	    margin: 0px 0px 2px 3px;
-	}
-
-	table {
-	    background-position: right bottom;
-	}
-
-	/* borders */
 	.Wt-tv-br {
-	    border-right: 0;
-	    border-left: 1px solid @tableBorder;
+	    border-right: 0px;
+	    border-left: 1px solid @table-border-color;
 	}
 
 	.Wt-tv-contents .Wt-tv-c, .Wt-plaintable tbody .Wt-tv-c {
-	    border-right: 0;
-	    border-left: 1px solid @tableBorder;
+	    border-right: 0px;
+	    border-left: 1px solid @table-border-color;
 	}
     }
 }
@@ -773,12 +760,13 @@ body.Wt-rtl {
     .Wt-item.Wt-end {
 	background-image: url(../../../line-last.gif);
 	background-repeat: no-repeat;
+	background-position: 0 0;
     }
 
     .active {
-	color: @white;
+	color: @component-active-color;
 	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-	background-color: @linkColor;
+	background-color: @link-color;
 	cursor: default;
     }
 
@@ -789,8 +777,7 @@ body.Wt-rtl {
 	height: 19px;
 
 	&.Wt-noexpand {
-	    background-image: url(../../../line-middle.gif);
-	    background-repeat: no-repeat;
+	    background: url(../../../line-middle.gif) no-repeat 0 0;
 	}
 
 	img {
@@ -850,7 +837,7 @@ body.Wt-rtl {
 
     .Wt-header {
 	font-weight: bold;
-        border-bottom: 1px solid @tableBorder;
+        border-bottom: 1px solid @table-bg;
 	line-height: 28px;
     }
 }
@@ -889,7 +876,7 @@ body.Wt-rtl .Wt-sbspacer {
     }
 
     .Wt-header {
-	border-bottom: 1px solid @tableBorder;
+	border-bottom: 1px solid @table-border-color;
 
 	.Wt-tv-c {
 	    padding: 0px;
@@ -900,7 +887,7 @@ body.Wt-rtl .Wt-sbspacer {
     .Wt-tv-br,    /* header */
     ul .Wt-tv-c { /* data */
 	margin-right: 0px;
-	border-right: 1px solid @tableBorder;
+	border-right: 1px solid @table-border-color;
     }
 
     button.Wt-tv-c {
@@ -909,6 +896,7 @@ body.Wt-rtl .Wt-sbspacer {
 
     .Wt-tv-c {
 	padding: 0px 3px;
+	.box-sizing(content-box);
     }
 
     .Wt-tv-row {
@@ -958,21 +946,16 @@ body.Wt-rtl .Wt-sbspacer {
 	width: 19px;
 
 	&.expand {
-	    background-image: url(../nav-plus.gif);
-	    background-repeat: no-repeat;
-	    background-position: 0 center;
+	    background: url(../nav-plus.gif) no-repeat 0 center;
 	}
 
 	&.collapse {
-	    background: url(../nav-minus.gif);
-	    background-repeat: no-repeat;
-	    background-position: 0 center;
+	    background: url(../nav-minus.gif) no-repeat 0 center;
+	    display: block;
 	}
 
 	&.noexpand {
-	    background: url(../../../line-middle.gif);
-	    background-repeat: no-repeat;
-	    background-position: 0 center;
+	    background: url(../../../line-middle.gif) no-repeat 0 center;
 	}
     }
 }
@@ -1003,7 +986,7 @@ body.Wt-rtl {
 	ul .Wt-tv-c { /* data */
 	    border-right: 0px;
 	    margin-left: 0px;
-	    border-left: 1px solid @tableBorder;
+	    border-left: 1px solid @table-border-color;
 	}
 
 	.Wt-tv-row {
@@ -1061,8 +1044,8 @@ body.Wt-rtl {
 
 .Wt-in-place-edit {
     span:hover {
-        color: @white;
-        background-color: @linkColor;
+        color: @component-active-color;
+        background-color: @link-color;
     } 
 }
 
@@ -1075,11 +1058,30 @@ body.Wt-rtl {
 }
 
 /*
+ * WToolBar
+ */
+.btn-toolbar * {
+  font-size: 14px;
+}
+
+/*
+ * WCalendar
+ */
+.Wt-calendar .form-control {
+  display: initial;
+}
+
+/*
  * WResizable
  */
-.Wt-resizable, .Wt-resizable.modal .modal-footer {
+.modal-dialog.Wt-resizable .modal-content {
     background-image: url(../../../resizable.png);
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: right bottom;
+}
+
+.close {
+  z-index : 1050;
+  position: relative;
 }
