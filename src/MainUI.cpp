@@ -65,7 +65,7 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 
 	       Wt::WMenuItem *nextLevelMenuItem = new Wt::WMenuItem(menu_items_menu_items_menuitem_node.child_value("label"));
 	       nextLevelMenuItem->setId(menu_items_menu_items_menuitem_node.child_value("command"));
-	       nextLevelMenuItem-triggered().connect(this, &MainUI::openModuleUI);
+	       nextLevelMenuItem->triggered().connect(this, &MainUI::openModuleUI);
 	       nextLevel->addItem(nextLevelMenuItem);
 	       
 	       menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
@@ -80,7 +80,7 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
        while ( menu_items_menuitem_node ) {
 	 Wt::WMenuItem *firstLevelMenuItem = new Wt::WMenuItem(menu_items_menuitem_node.child_value("label"));
 	 firstLevelMenuItem->setId(menu_items_menuitem_node.child_value("command"));
-	 firstLevelMenuItem-triggered().connect(this, &MainUI::openModuleUI);
+	 firstLevelMenuItem->triggered().connect(this, &MainUI::openModuleUI);
 	 firstLevel->addItem(nextLevelMenuItem);
 	 menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
        }
