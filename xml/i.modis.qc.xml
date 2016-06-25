@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.modis.qc">
+	<description>
+		Extracts quality control parameters from MODIS QC layers.
+	</description>
+	<keywords>
+		imagery, imagery quality assessment, reflectance, land surface temperature, vegetation, MODIS
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input surface reflectance QC layer [bit array]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output QC type classification layer
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="productname" type="string" required="yes" multiple="no">
+		<description>
+			Name of MODIS product type
+		</description>
+		<default>
+			mod13A2
+		</default>
+		<values>
+			<value>
+				<name>mod09Q1</name>
+				<description>surf. refl. 250m 8-days</description>
+			</value>
+			<value>
+				<name>mod09A1</name>
+				<description>surf. refl. 500m 8-days</description>
+			</value>
+			<value>
+				<name>mod09A1s</name>
+				<description>surf. refl. 500m 8-days, State QA</description>
+			</value>
+			<value>
+				<name>mod09CMG</name>
+				<description>surf. refl. 5000m daily</description>
+			</value>
+			<value>
+				<name>mod09CMGs</name>
+				<description>surf. refl. 5000m daily, State QA</description>
+			</value>
+			<value>
+				<name>mod09CMGi</name>
+				<description>surf. refl. 5000m daily, Internal Climatology</description>
+			</value>
+			<value>
+				<name>mod11A1</name>
+				<description>LST 1km daily (Day/Night)</description>
+			</value>
+			<value>
+				<name>mod11A2</name>
+				<description>LST 1km 8-days (Day/Night)</description>
+			</value>
+			<value>
+				<name>mod13A2</name>
+				<description>VI 1km 16-days</description>
+			</value>
+			<value>
+				<name>mcd43B2</name>
+				<description>Brdf-Albedo Quality (Ancillary SDS) 1km 8-days</description>
+			</value>
+			<value>
+				<name>mcd43B2q</name>
+				<description>Brdf-Albedo Quality (BRDF SDS) 1km 8-days</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="qcname" type="string" required="yes" multiple="no">
+		<description>
+			Name of QC type to extract
+		</description>
+		<default>
+			modland_qa
+		</default>
+		<values>
+			<value>
+				<name>adjcorr</name>
+				<description>mod09: Adjacency Correction</description>
+			</value>
+			<value>
+				<name>atcorr</name>
+				<description>mod09: Atmospheric Correction</description>
+			</value>
+			<value>
+				<name>cloud</name>
+				<description>mod09: Cloud State</description>
+			</value>
+			<value>
+				<name>data_quality</name>
+				<description>mod09: Band-Wise Data Quality Flag</description>
+			</value>
+			<value>
+				<name>diff_orbit_from_500m</name>
+				<description>mod09: 250m Band is at Different Orbit than 500m</description>
+			</value>
+			<value>
+				<name>modland_qa</name>
+				<description>mod13A2: MODIS Land General Quality Assessment</description>
+			</value>
+			<value>
+				<name>mandatory_qa_11A1</name>
+				<description>mod11A1: MODIS Land General Quality Assessment</description>
+			</value>
+			<value>
+				<name>data_quality_flag_11A1</name>
+				<description>mod11A1: Detailed Quality Indications</description>
+			</value>
+			<value>
+				<name>emis_error_11A1</name>
+				<description>mod11A1: Average Emissivity Error Classes</description>
+			</value>
+			<value>
+				<name>lst_error_11A1</name>
+				<description>mod11A1: Average LST Error Classes</description>
+			</value>
+			<value>
+				<name>data_quality_flag_11A2</name>
+				<description>mod11A2: Detailed Quality Indications</description>
+			</value>
+			<value>
+				<name>emis_error_11A2</name>
+				<description>mod11A2: Average Emissivity Error Classes</description>
+			</value>
+			<value>
+				<name>mandatory_qa_11A2</name>
+				<description>mod11A2: MODIS Land General Quality Assessment</description>
+			</value>
+			<value>
+				<name>lst_error_11A2</name>
+				<description>mod11A2: Average LST Error Classes</description>
+			</value>
+			<value>
+				<name>aerosol_quantity</name>
+				<description>mod13A2: Quantity range of Aerosol</description>
+			</value>
+			<value>
+				<name>brdf_correction_performed</name>
+				<description>mcd43B2q: Quality of BRDF correction performed</description>
+			</value>
+			<value>
+				<name>cirrus_detected</name>
+				<description>mod09*s: StateQA Cirrus Detected</description>
+			</value>
+			<value>
+				<name>cloud_shadow</name>
+				<description>mod09*s: StateQA Cloud Shadow</description>
+			</value>
+			<value>
+				<name>cloud_state</name>
+				<description>mod09*s: StateQA Cloud State</description>
+			</value>
+			<value>
+				<name>internal_cloud_algorithm</name>
+				<description>mod09*s: StateQA Internal Cloud Algorithm</description>
+			</value>
+			<value>
+				<name>internal_fire_algorithm</name>
+				<description>mod09*s: StateQA Internal Fire Algorithm</description>
+			</value>
+			<value>
+				<name>internal_snow_mask</name>
+				<description>mod09*s: StateQA Internal Snow Mask</description>
+			</value>
+			<value>
+				<name>land_water</name>
+				<description>mcd43B2: Quality of BRDF correction performed</description>
+			</value>
+			<value>
+				<name>mod35_snow_ice</name>
+				<description>mod09*s: StateQA mod35 Snow Ice</description>
+			</value>
+			<value>
+				<name>pixel_adjacent_to_cloud</name>
+				<description>mod13A2: if pixel is a cloud neighbour</description>
+			</value>
+			<value>
+				<name>icm_cloudy</name>
+				<description>mod09*i: Internal CM: Cloudy</description>
+			</value>
+			<value>
+				<name>icm_clear</name>
+				<description>mod09*i: Internal CM: Clear</description>
+			</value>
+			<value>
+				<name>icm_high_clouds</name>
+				<description>mod09*i: Internal CM: High Clouds</description>
+			</value>
+			<value>
+				<name>icm_low_clouds</name>
+				<description>mod09*i: Internal CM: Low Clouds</description>
+			</value>
+			<value>
+				<name>icm_snow</name>
+				<description>mod09*i: Internal CM: Snow</description>
+			</value>
+			<value>
+				<name>icm_fire</name>
+				<description>mod09*i: Internal CM: Fire</description>
+			</value>
+			<value>
+				<name>icm_sun_glint</name>
+				<description>mod09*i: Internal CM: Sun Glint</description>
+			</value>
+			<value>
+				<name>icm_dust</name>
+				<description>mod09*i: Internal CM: Dust</description>
+			</value>
+			<value>
+				<name>icm_cloud_shadow</name>
+				<description>mod09*i: Internal CM: Cloud Shadow</description>
+			</value>
+			<value>
+				<name>icm_pixel_is_adjacent_to_cloud</name>
+				<description>mod09*i: Internal CM: Pixel is Adjacent to Cloud</description>
+			</value>
+			<value>
+				<name>icm_cirrus</name>
+				<description>mod09*i: Internal CM: Cirrus</description>
+			</value>
+			<value>
+				<name>icm_pan_flag</name>
+				<description>mod09*i: Internal CM: Pan Flag</description>
+			</value>
+			<value>
+				<name>icm_criteria_for_aerosol_retrieval</name>
+				<description>mod09*i: Internal CM: Criteria for Aerosol Retrieval</description>
+			</value>
+			<value>
+				<name>icm_aot_has_clim_val</name>
+				<description>mod09*i: Internal CM: AOT (aerosol optical depth) has clim. val.</description>
+			</value>
+			<value>
+				<name>modland_qa</name>
+			</value>
+			<value>
+				<name>vi_usefulness</name>
+				<description>mod13A2: Quality estimation of the pixel</description>
+			</value>
+			<value>
+				<name>aerosol_quantity</name>
+			</value>
+			<value>
+				<name>pixel_adjacent_to_cloud</name>
+			</value>
+			<value>
+				<name>brdf_correction_performed</name>
+			</value>
+			<value>
+				<name>mixed_clouds</name>
+				<description>mod13A2: if pixel mixed with clouds</description>
+			</value>
+			<value>
+				<name>land_water</name>
+			</value>
+			<value>
+				<name>possible_snow_ice</name>
+				<description>mod13A2: if snow/ice present in pixel</description>
+			</value>
+			<value>
+				<name>possible_shadow</name>
+				<description>mod13A2: if shadow is present in pixel</description>
+			</value>
+			<value>
+				<name>platform</name>
+				<description>mcd43B2: Quality of BRDF correction performed</description>
+			</value>
+			<value>
+				<name>land_water</name>
+			</value>
+			<value>
+				<name>sun_z_angle_at_local_noon</name>
+				<description>mcd43B2: Quality of BRDF correction performed</description>
+			</value>
+			<value>
+				<name>brdf_correction_performed</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="band" type="string" required="no" multiple="no">
+		<description>
+			Band number of MODIS product (mod09Q1=[1,2],mod09A1=[1-7],m[o/y]d09CMG=[1-7], mcd43B2q=[1-7])
+		</description>
+		<values>
+			<value>
+				<name>1</name>
+				<description>Band 1: Red</description>
+			</value>
+			<value>
+				<name>2</name>
+				<description>Band 2: NIR</description>
+			</value>
+			<value>
+				<name>3</name>
+				<description>Band 3: Blue</description>
+			</value>
+			<value>
+				<name>4</name>
+				<description>Band 4: Green</description>
+			</value>
+			<value>
+				<name>5</name>
+				<description>Band 5: SWIR 1</description>
+			</value>
+			<value>
+				<name>6</name>
+				<description>Band 6: SWIR 2</description>
+			</value>
+			<value>
+				<name>7</name>
+				<description>Band 7: SWIR 3</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

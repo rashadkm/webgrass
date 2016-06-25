@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.spread">
+	<label>
+		Simulates elliptically anisotropic spread.
+	</label>
+	<description>
+		Generates a raster map of the cumulative time of spread, given raster maps containing the rates of spread (ROS), the ROS directions and the spread origins. It optionally produces raster maps to contain backlink UTM coordinates for tracing spread paths. Usable for fire spread simulations.
+	</description>
+	<keywords>
+		raster, fire, spread, hazard, model
+	</keywords>
+	<parameter name="base_ros" type="string" required="yes" multiple="no">
+		<label>
+			Raster map containing base ROS (cm/min)
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing the ROS values in the directions perpendicular to maximum ROSes' (cm/minute). These ROSes are also the ones without the effect of directional factors.
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="max_ros" type="string" required="yes" multiple="no">
+		<label>
+			Raster map containing maximal ROS (cm/min)
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing the maximum ROS values (cm/minute).
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="direction_ros" type="string" required="yes" multiple="no">
+		<label>
+			Raster map containing directions of maximal ROS (degree)
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing directions of the maximum ROSes, clockwise from north (degree).
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="start" type="string" required="yes" multiple="no">
+		<label>
+			Raster map containing starting sources
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing starting locations of the spread phenomenon. Any positive integers in this map are recognized as starting sources (seeds).
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="spotting_distance" type="string" required="no" multiple="no">
+		<label>
+			Raster map containing maximal spotting distance (m, required with -s)
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing the maximum potential spotting distances (meters).
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="wind_speed" type="string" required="no" multiple="no">
+		<label>
+			Raster map containing midflame wind speed (ft/min, required with -s)
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing wind velocities at half of the average flame height (feet/minute).
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="fuel_moisture" type="string" required="no" multiple="no">
+		<label>
+			Raster map containing fine fuel moisture of the cell receiving a spotting firebrand (%, required with -s)
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path containing the 1-hour (&lt;.25") fuel moisture (percentage content multiplied by 100).
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="least_size" type="string" required="no" multiple="no">
+		<label>
+			Basic sampling window size needed to meet certain accuracy (3)
+		</label>
+		<description>
+			An odd integer ranging 3 - 15 indicating the basic sampling window size within which all cells will be considered to see whether they will be reached by the current spread cell. The default number is 3 which means a 3x3 window.
+		</description>
+		<keydesc>
+			<item order="1">odd int</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>3</name>
+			</value>
+			<value>
+				<name>5</name>
+			</value>
+			<value>
+				<name>7</name>
+			</value>
+			<value>
+				<name>9</name>
+			</value>
+			<value>
+				<name>11</name>
+			</value>
+			<value>
+				<name>13</name>
+			</value>
+			<value>
+				<name>15</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="comp_dens" type="string" required="no" multiple="no">
+		<label>
+			Sampling density for additional computing (range: 0.0 - 1.0 (0.5))
+		</label>
+		<description>
+			A decimal number ranging 0.0 - 1.0 indicating additional sampling cells will be considered to see whether they will be reached by the current spread cell. The closer to 1.0 the decimal number is, the longer the program will run and the higher the simulation accuracy will be. The default number is 0.5.
+		</description>
+		<keydesc>
+			<item order="1">decimal</item>
+		</keydesc>
+	</parameter>
+	<parameter name="init_time" type="string" required="no" multiple="no">
+		<label>
+			Initial time for current simulation (0) (min)
+		</label>
+		<description>
+			A non-negative number specifying the initial time for the current spread simulation (minutes). This is useful when multiple phase simulation is conducted. The default time is 0.
+		</description>
+		<keydesc>
+			<item order="1">int (&gt;= 0)</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="lag" type="string" required="no" multiple="no">
+		<label>
+			Simulating time duration LAG (fill the region) (min)
+		</label>
+		<description>
+			A non-negative integer specifying the simulating duration time lag (minutes). The default is infinite, but the program will terminate when the current geographic region/mask has been filled. It also controls the computational time, the shorter the time lag, the faster the program will run.
+		</description>
+		<keydesc>
+			<item order="1">int (&gt;= 0)</item>
+		</keydesc>
+	</parameter>
+	<parameter name="backdrop" type="string" required="no" multiple="no">
+		<label>
+			Name of raster map as a display backdrop
+		</label>
+		<description>
+			Name of an existing raster map layer in the user's current mapset search path to be used as the background on which the "live" movement will be shown.
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Raster map to contain output spread time (min)
+		</label>
+		<description>
+			Name of the new raster map layer to contain the results of the cumulative spread time needed for a phenomenon to reach each cell from the starting sources (minutes).
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="x_output" type="string" required="no" multiple="no">
+		<label>
+			Name of raster map to contain X back coordinates
+		</label>
+		<description>
+			Name of the new raster map layer to contain the results of backlink information in UTM easting coordinates for each cell.
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="y_output" type="string" required="no" multiple="no">
+		<label>
+			Name of raster map to contain Y back coordinates
+		</label>
+		<description>
+			Name of the new raster map layer to contain the results of backlink information in UTM northing coordinates for each cell.
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<flag name="s">
+		<description>
+			Consider spotting effect (for wildfires)
+		</description>
+	</flag>
+	<flag name="i">
+		<label>
+			Use start raster map values in output spread time raster map
+		</label>
+		<description>
+			Designed to be used with output of previous run of r.spread when computing spread iteratively. The values in start raster map are considered as time. Allowed values in raster map are from zero to the value of init_time option. If not enabled, init_time is used in the area of start raster map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

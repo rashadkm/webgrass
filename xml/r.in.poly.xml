@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.poly">
+	<description>
+		Creates raster maps from ASCII polygon/line/point data files.
+	</description>
+	<keywords>
+		raster, import
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input file; or "-" to read from stdin
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title for resultant raster map
+		</description>
+		<keydesc>
+			<item order="1">phrase</item>
+		</keydesc>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Output raster type
+		</description>
+		<default>
+			CELL
+		</default>
+		<values>
+			<value>
+				<name>CELL</name>
+			</value>
+			<value>
+				<name>FCELL</name>
+			</value>
+			<value>
+				<name>DCELL</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="null" type="integer" required="no" multiple="no">
+		<description>
+			Integer representing NULL value data cell
+		</description>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Number of rows to hold in memory
+		</description>
+		<default>
+			4096
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

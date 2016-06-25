@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.remove">
+	<description>
+		Removes data base element files from the user's current mapset using the search pattern.
+	</description>
+	<keywords>
+		general, map management, remove
+	</keywords>
+	<parameter name="type" type="string" required="yes" multiple="yes">
+		<description>
+			Data type(s)
+		</description>
+		<keydesc>
+			<item order="1">datatype</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>raster</name>
+				<description>raster map(s)</description>
+			</value>
+			<value>
+				<name>raster_3d</name>
+				<description>3D raster map(s)</description>
+			</value>
+			<value>
+				<name>vector</name>
+				<description>vector map(s)</description>
+			</value>
+			<value>
+				<name>label</name>
+				<description>paint label file(s)</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>region definition(s)</description>
+			</value>
+			<value>
+				<name>group</name>
+				<description>imagery group(s)</description>
+			</value>
+			<value>
+				<name>all</name>
+				<description>all types</description>
+			</value>
+		</values>
+		<guisection>
+			Basic
+		</guisection>
+		<guidependency>
+			pattern,exclude,name,ignore
+		</guidependency>
+	</parameter>
+	<parameter name="name" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to remove
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Basic
+		</guisection>
+	</parameter>
+	<parameter name="ignore" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to ignore (default: none)
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="pattern" type="string" required="no" multiple="no">
+		<description>
+			File name search pattern
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="exclude" type="string" required="no" multiple="no">
+		<description>
+			File name exclusion pattern (default: none)
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Ignore case
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Use basic regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use extended regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal (required for actual deletion of files)
+		</description>
+ 		<guisection>
+			Basic
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Remove base raster maps
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="r"/>
+			<rule-flag key="e"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="exclude"/>
+			<rule-option key="ignore"/>
+		</rule>
+		<rule type="required">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.remove">
+	<description>
+		Removes data base element files from the user's current mapset using the search pattern.
+	</description>
+	<keywords>
+		general, map management, remove
+	</keywords>
+	<parameter name="type" type="string" required="yes" multiple="yes">
+		<description>
+			Data type(s)
+		</description>
+		<keydesc>
+			<item order="1">datatype</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>raster</name>
+				<description>raster map(s)</description>
+			</value>
+			<value>
+				<name>raster_3d</name>
+				<description>3D raster map(s)</description>
+			</value>
+			<value>
+				<name>vector</name>
+				<description>vector map(s)</description>
+			</value>
+			<value>
+				<name>label</name>
+				<description>paint label file(s)</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>region definition(s)</description>
+			</value>
+			<value>
+				<name>group</name>
+				<description>imagery group(s)</description>
+			</value>
+			<value>
+				<name>all</name>
+				<description>all types</description>
+			</value>
+		</values>
+		<guisection>
+			Basic
+		</guisection>
+		<guidependency>
+			pattern,exclude,name,ignore
+		</guidependency>
+	</parameter>
+	<parameter name="name" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to remove
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Basic
+		</guisection>
+	</parameter>
+	<parameter name="ignore" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to ignore (default: none)
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="pattern" type="string" required="no" multiple="no">
+		<description>
+			File name search pattern
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="exclude" type="string" required="no" multiple="no">
+		<description>
+			File name exclusion pattern (default: none)
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Ignore case
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Use basic regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use extended regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal (required for actual deletion of files)
+		</description>
+ 		<guisection>
+			Basic
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Remove base raster maps
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="r"/>
+			<rule-flag key="e"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="exclude"/>
+			<rule-option key="ignore"/>
+		</rule>
+		<rule type="required">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.remove">
+	<description>
+		Removes data base element files from the user's current mapset using the search pattern.
+	</description>
+	<keywords>
+		general, map management, remove
+	</keywords>
+	<parameter name="type" type="string" required="yes" multiple="yes">
+		<description>
+			Data type(s)
+		</description>
+		<keydesc>
+			<item order="1">datatype</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>raster</name>
+				<description>raster map(s)</description>
+			</value>
+			<value>
+				<name>raster_3d</name>
+				<description>3D raster map(s)</description>
+			</value>
+			<value>
+				<name>vector</name>
+				<description>vector map(s)</description>
+			</value>
+			<value>
+				<name>label</name>
+				<description>paint label file(s)</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>region definition(s)</description>
+			</value>
+			<value>
+				<name>group</name>
+				<description>imagery group(s)</description>
+			</value>
+			<value>
+				<name>all</name>
+				<description>all types</description>
+			</value>
+		</values>
+		<guisection>
+			Basic
+		</guisection>
+		<guidependency>
+			pattern,exclude,name,ignore
+		</guidependency>
+	</parameter>
+	<parameter name="name" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to remove
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Basic
+		</guisection>
+	</parameter>
+	<parameter name="ignore" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to ignore (default: none)
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="pattern" type="string" required="no" multiple="no">
+		<description>
+			File name search pattern
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="exclude" type="string" required="no" multiple="no">
+		<description>
+			File name exclusion pattern (default: none)
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Ignore case
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Use basic regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use extended regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal (required for actual deletion of files)
+		</description>
+ 		<guisection>
+			Basic
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Remove base raster maps
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="r"/>
+			<rule-flag key="e"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="exclude"/>
+			<rule-option key="ignore"/>
+		</rule>
+		<rule type="required">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+	</rules>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.remove">
+	<description>
+		Removes data base element files from the user's current mapset using the search pattern.
+	</description>
+	<keywords>
+		general, map management, remove
+	</keywords>
+	<parameter name="type" type="string" required="yes" multiple="yes">
+		<description>
+			Data type(s)
+		</description>
+		<keydesc>
+			<item order="1">datatype</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>raster</name>
+				<description>raster map(s)</description>
+			</value>
+			<value>
+				<name>raster_3d</name>
+				<description>3D raster map(s)</description>
+			</value>
+			<value>
+				<name>vector</name>
+				<description>vector map(s)</description>
+			</value>
+			<value>
+				<name>label</name>
+				<description>paint label file(s)</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>region definition(s)</description>
+			</value>
+			<value>
+				<name>group</name>
+				<description>imagery group(s)</description>
+			</value>
+			<value>
+				<name>all</name>
+				<description>all types</description>
+			</value>
+		</values>
+		<guisection>
+			Basic
+		</guisection>
+		<guidependency>
+			pattern,exclude,name,ignore
+		</guidependency>
+	</parameter>
+	<parameter name="name" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to remove
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Basic
+		</guisection>
+	</parameter>
+	<parameter name="ignore" type="string" required="no" multiple="yes">
+		<description>
+			Name of file(s) to ignore (default: none)
+		</description>
+		<gisprompt age="old" element="element" prompt="element" />
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="pattern" type="string" required="no" multiple="no">
+		<description>
+			File name search pattern
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<parameter name="exclude" type="string" required="no" multiple="no">
+		<description>
+			File name exclusion pattern (default: none)
+		</description>
+		<guisection>
+			Pattern
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Ignore case
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Use basic regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use extended regular expressions instead of wildcards
+		</description>
+ 		<guisection>
+			Pattern
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Force removal (required for actual deletion of files)
+		</description>
+ 		<guisection>
+			Basic
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Remove base raster maps
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-flag key="r"/>
+			<rule-flag key="e"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+		<rule type="exclusive">
+			<rule-option key="exclude"/>
+			<rule-option key="ignore"/>
+		</rule>
+		<rule type="required">
+			<rule-option key="pattern"/>
+			<rule-option key="name"/>
+		</rule>
+	</rules>
+</task>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.eb.netrad">
+	<description>
+		Net radiation approximation (Bastiaanssen, 1995).
+	</description>
+	<keywords>
+		imagery, energy balance, net radiation, SEBAL
+	</keywords>
+	<parameter name="albedo" type="string" required="yes" multiple="no">
+		<description>
+			Name of albedo raster map [0.0;1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="ndvi" type="string" required="yes" multiple="no">
+		<description>
+			Name of NDVI raster map [-1.0;+1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="temperature" type="string" required="yes" multiple="no">
+		<description>
+			Name of surface temperature raster map [K]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="localutctime" type="string" required="yes" multiple="no">
+		<description>
+			Name of time of satellite overpass raster map [local time in UTC]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="temperaturedifference2m" type="string" required="yes" multiple="no">
+		<description>
+			Name of the difference map of temperature from surface skin to about 2 m height [K]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="emissivity" type="string" required="yes" multiple="no">
+		<description>
+			Name of the emissivity map [-]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="transmissivity_singleway" type="string" required="yes" multiple="no">
+		<description>
+			Name of the single-way atmospheric transmissivitymap [-]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dayofyear" type="string" required="yes" multiple="no">
+		<description>
+			Name of the Day Of Year (DOY) map [-]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="sunzenithangle" type="string" required="yes" multiple="no">
+		<description>
+			Name of the sun zenith angle map [degrees]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output net radiation layer
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

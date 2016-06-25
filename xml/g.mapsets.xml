@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapsets">
+	<label>
+		Modifies/prints the user's current mapset search path.
+	</label>
+	<description>
+		Affects the user's access to data existing under the other mapsets in the current location.
+	</description>
+	<keywords>
+		general, settings, search path
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="yes">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name(s) of existing mapset(s) to add/remove or set
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>set</name>
+			</value>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator for printing (-l and -p flags)
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			space
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List all available mapsets in alphabetical order
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print mapsets in current search path
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<suppress_required/>
+		<description>
+			Launch mapset selection GUI dialog
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapsets">
+	<label>
+		Modifies/prints the user's current mapset search path.
+	</label>
+	<description>
+		Affects the user's access to data existing under the other mapsets in the current location.
+	</description>
+	<keywords>
+		general, settings, search path
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="yes">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name(s) of existing mapset(s) to add/remove or set
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>set</name>
+			</value>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator for printing (-l and -p flags)
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			space
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List all available mapsets in alphabetical order
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print mapsets in current search path
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<suppress_required/>
+		<description>
+			Launch mapset selection GUI dialog
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapsets">
+	<label>
+		Modifies/prints the user's current mapset search path.
+	</label>
+	<description>
+		Affects the user's access to data existing under the other mapsets in the current location.
+	</description>
+	<keywords>
+		general, settings, search path
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="yes">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name(s) of existing mapset(s) to add/remove or set
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>set</name>
+			</value>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator for printing (-l and -p flags)
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			space
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List all available mapsets in alphabetical order
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print mapsets in current search path
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<suppress_required/>
+		<description>
+			Launch mapset selection GUI dialog
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.mapsets">
+	<label>
+		Modifies/prints the user's current mapset search path.
+	</label>
+	<description>
+		Affects the user's access to data existing under the other mapsets in the current location.
+	</description>
+	<keywords>
+		general, settings, search path
+	</keywords>
+	<parameter name="mapset" type="string" required="yes" multiple="yes">
+		<label>
+			Name of mapset (default: current search path)
+		</label>
+		<description>
+			Name(s) of existing mapset(s) to add/remove or set
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+	</parameter>
+	<parameter name="operation" type="string" required="yes" multiple="no">
+		<description>
+			Operation to be performed
+		</description>
+		<default>
+			add
+		</default>
+		<values>
+			<value>
+				<name>set</name>
+			</value>
+			<value>
+				<name>add</name>
+			</value>
+			<value>
+				<name>remove</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator for printing (-l and -p flags)
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			space
+		</default>
+		<guisection>
+			Print
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<suppress_required/>
+		<description>
+			List all available mapsets in alphabetical order
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print mapsets in current search path
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<suppress_required/>
+		<description>
+			Launch mapset selection GUI dialog
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

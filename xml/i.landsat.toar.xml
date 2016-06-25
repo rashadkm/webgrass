@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.landsat.toar">
+	<description>
+		Calculates top-of-atmosphere radiance or reflectance and temperature for Landsat MSS/TM/ETM+/OLI
+	</description>
+	<keywords>
+		imagery, radiometric conversion, radiance, reflectance, brightness temperature, Landsat, atmospheric correction
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Base name of input raster bands
+		</label>
+		<description>
+			Example: 'B.' for B.1, B.2, ...
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<label>
+			Prefix for output raster maps
+		</label>
+		<description>
+			Example: 'B.toar.' generates B.toar.1, B.toar.2, ...
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="metfile" type="string" required="no" multiple="no">
+		<description>
+			Name of Landsat metadata file (.met or MTL.txt)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="sensor" type="string" required="no" multiple="no">
+		<label>
+			Spacecraft sensor
+		</label>
+		<description>
+			Required only if 'metfile' not given (recommended for sanity)
+		</description>
+		<values>
+			<value>
+				<name>mss1</name>
+				<description>Landsat-1 MSS</description>
+			</value>
+			<value>
+				<name>mss2</name>
+				<description>Landsat-2 MSS</description>
+			</value>
+			<value>
+				<name>mss3</name>
+				<description>Landsat-3 MSS</description>
+			</value>
+			<value>
+				<name>mss4</name>
+				<description>Landsat-4 MSS</description>
+			</value>
+			<value>
+				<name>mss5</name>
+				<description>Landsat-5 MSS</description>
+			</value>
+			<value>
+				<name>tm4</name>
+				<description>Landsat-4 TM</description>
+			</value>
+			<value>
+				<name>tm5</name>
+				<description>Landsat-5 TM</description>
+			</value>
+			<value>
+				<name>tm7</name>
+				<description>Landsat-7 ETM+</description>
+			</value>
+			<value>
+				<name>oli8</name>
+				<description>Landsat_8 OLI/TIRS</description>
+			</value>
+		</values>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<label>
+			Atmospheric correction method
+		</label>
+		<description>
+			Atmospheric correction method
+		</description>
+		<default>
+			uncorrected
+		</default>
+		<values>
+			<value>
+				<name>uncorrected</name>
+			</value>
+			<value>
+				<name>dos1</name>
+			</value>
+			<value>
+				<name>dos2</name>
+			</value>
+			<value>
+				<name>dos2b</name>
+			</value>
+			<value>
+				<name>dos3</name>
+			</value>
+			<value>
+				<name>dos4</name>
+			</value>
+		</values>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="date" type="string" required="no" multiple="no">
+		<label>
+			Image acquisition date (yyyy-mm-dd)
+		</label>
+		<description>
+			Required only if 'metfile' not given
+		</description>
+		<keydesc>
+			<item order="1">yyyy-mm-dd</item>
+		</keydesc>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="sun_elevation" type="float" required="no" multiple="no">
+		<label>
+			Sun elevation in degrees
+		</label>
+		<description>
+			Required only if 'metfile' not given
+		</description>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="product_date" type="string" required="no" multiple="no">
+		<label>
+			Image creation date (yyyy-mm-dd)
+		</label>
+		<description>
+			Required only if 'metfile' not given
+		</description>
+		<keydesc>
+			<item order="1">yyyy-mm-dd</item>
+		</keydesc>
+		<guisection>
+			Metadata
+		</guisection>
+	</parameter>
+	<parameter name="gain" type="string" required="no" multiple="no">
+		<label>
+			Gain (H/L) of all Landsat ETM+ bands (1-5,61,62,7,8)
+		</label>
+		<description>
+			Required only if 'metfile' not given
+		</description>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="percent" type="float" required="no" multiple="no">
+		<label>
+			Percent of solar radiance in path radiance
+		</label>
+		<description>
+			Required only if 'method' is any DOS
+		</description>
+		<default>
+			0.01
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="pixel" type="integer" required="no" multiple="no">
+		<label>
+			Minimum pixels to consider digital number as dark object
+		</label>
+		<description>
+			Required only if 'method' is any DOS
+		</description>
+		<default>
+			1000
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="rayleigh" type="float" required="no" multiple="no">
+		<label>
+			Rayleigh atmosphere (diffuse sky irradiance)
+		</label>
+		<description>
+			Required only if 'method' is DOS3
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="lsatmet" type="string" required="no" multiple="yes">
+		<label>
+			return value stored for a given metadata
+		</label>
+		<description>
+			Required only if 'metfile' and -p given
+		</description>
+		<values>
+			<value>
+				<name>number</name>
+				<description>Landsat Number</description>
+			</value>
+			<value>
+				<name>creation</name>
+				<description>Creation timestamp</description>
+			</value>
+			<value>
+				<name>date</name>
+				<description>Date</description>
+			</value>
+			<value>
+				<name>sun_elev</name>
+				<description>Sun Elevation</description>
+			</value>
+			<value>
+				<name>sensor</name>
+				<description>Sensor</description>
+			</value>
+			<value>
+				<name>bands</name>
+				<description>Bands count</description>
+			</value>
+			<value>
+				<name>sunaz</name>
+				<description>Sun Azimuth Angle</description>
+			</value>
+			<value>
+				<name>time</name>
+				<description>Time</description>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for output
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<flag name="r">
+		<description>
+			Output at-sensor radiance instead of reflectance for all bands
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Input raster maps use as extension the number of the band instead the code
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Print output metadata info
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

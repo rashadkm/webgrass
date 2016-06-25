@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sun">
+	<label>
+		Solar irradiance and irradiation model.
+	</label>
+	<description>
+		Computes direct (beam), diffuse and reflected solar irradiation raster maps for given day, latitude, surface and atmospheric conditions. Solar parameters (e.g. sunrise, sunset times, declination, extraterrestrial irradiance, daylight length) are saved in the map history file. Alternatively, a local time can be specified to compute solar incidence angle and/or irradiance raster maps. The shadowing effect of the topography is optionally incorporated.
+	</description>
+	<keywords>
+		raster, solar, sun energy, shadow
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input elevation raster map [meters]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Name of the input aspect map (terrain aspect or azimuth of the solar panel) [decimal degrees]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="aspect_value" type="float" required="no" multiple="no">
+		<description>
+			A single value of the orientation (aspect), 270 is south
+		</description>
+		<default>
+			270
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="slope" type="string" required="no" multiple="no">
+		<description>
+			Name of the input slope raster map (terrain slope or solar panel inclination) [decimal degrees]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="slope_value" type="float" required="no" multiple="no">
+		<description>
+			A single value of inclination (slope)
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="linke" type="string" required="no" multiple="no">
+		<description>
+			Name of the Linke atmospheric turbidity coefficient input raster map [-]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="linke_value" type="float" required="no" multiple="no">
+		<description>
+			A single value of the Linke atmospheric turbidity coefficient [-]
+		</description>
+		<default>
+			3.0
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="albedo" type="string" required="no" multiple="no">
+		<description>
+			Name of the ground albedo coefficient input raster map [-]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="albedo_value" type="float" required="no" multiple="no">
+		<description>
+			A single value of the ground albedo coefficient [-]
+		</description>
+		<default>
+			0.2
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="lat" type="string" required="no" multiple="no">
+		<description>
+			Name of input raster map containing latitudes [decimal degrees]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="long" type="string" required="no" multiple="no">
+		<description>
+			Name of input raster map containing longitudes [decimal degrees]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="coeff_bh" type="string" required="no" multiple="no">
+		<description>
+			Name of real-sky beam radiation coefficient (thick cloud) input raster map [0-1]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="coeff_dh" type="string" required="no" multiple="no">
+		<description>
+			Name of real-sky diffuse radiation coefficient (haze) input raster map [0-1]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="horizon_basename" type="string" required="no" multiple="no">
+		<description>
+			The horizon information input map basename
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="horizon_step" type="float" required="no" multiple="no">
+		<description>
+			Angle step size for multidirectional horizon [degrees]
+		</description>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="incidout" type="string" required="no" multiple="no">
+		<description>
+			Output incidence angle raster map (mode 1 only)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="beam_rad" type="string" required="no" multiple="no">
+		<description>
+			Output beam irradiance [W.m-2] (mode 1) or irradiation raster map [Wh.m-2.day-1] (mode 2)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="diff_rad" type="string" required="no" multiple="no">
+		<description>
+			Output diffuse irradiance [W.m-2] (mode 1) or irradiation raster map [Wh.m-2.day-1] (mode 2)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="refl_rad" type="string" required="no" multiple="no">
+		<description>
+			Output ground reflected irradiance [W.m-2] (mode 1) or irradiation raster map [Wh.m-2.day-1] (mode 2)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="glob_rad" type="string" required="no" multiple="no">
+		<description>
+			Output global (total) irradiance/irradiation [W.m-2] (mode 1) or irradiance/irradiation raster map [Wh.m-2.day-1] (mode 2)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="insol_time" type="string" required="no" multiple="no">
+		<description>
+			Output insolation time raster map [h] (mode 2 only)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="day" type="integer" required="yes" multiple="no">
+		<description>
+			No. of day of the year (1-365)
+		</description>
+		<values>
+			<value>
+				<name>1-365</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="step" type="float" required="no" multiple="no">
+		<description>
+			Time step when computing all-day radiation sums [decimal hours]
+		</description>
+		<default>
+			0.5
+		</default>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="declination" type="float" required="no" multiple="no">
+		<description>
+			Declination value (overriding the internally computed value) [radians]
+		</description>
+	</parameter>
+	<parameter name="time" type="float" required="no" multiple="no">
+		<description>
+			Local (solar) time (to be set for mode 1 only) [decimal hours]
+		</description>
+		<values>
+			<value>
+				<name>0-24</name>
+			</value>
+		</values>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<parameter name="distance_step" type="float" required="no" multiple="no">
+		<description>
+			Sampling distance step coefficient (0.5-1.5)
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="npartitions" type="integer" required="no" multiple="no">
+		<description>
+			Read the input files in this number of chunks
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="civil_time" type="float" required="no" multiple="no">
+		<description>
+			Civil time zone value, if none, the time will be local solar time
+		</description>
+		<guisection>
+			Time
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Do not incorporate the shadowing effect of terrain
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Use the low-memory version of the program
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.tempfile">
+	<description>
+		Creates a temporary file and prints it's file name.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="pid" type="integer" required="yes" multiple="no">
+		<description>
+			Process id to use when naming the tempfile
+		</description>
+	</parameter>
+	<flag name="d">
+		<description>
+			Dry run - don't create a file, just prints it's file name
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.tempfile">
+	<description>
+		Creates a temporary file and prints it's file name.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="pid" type="integer" required="yes" multiple="no">
+		<description>
+			Process id to use when naming the tempfile
+		</description>
+	</parameter>
+	<flag name="d">
+		<description>
+			Dry run - don't create a file, just prints it's file name
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.tempfile">
+	<description>
+		Creates a temporary file and prints it's file name.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="pid" type="integer" required="yes" multiple="no">
+		<description>
+			Process id to use when naming the tempfile
+		</description>
+	</parameter>
+	<flag name="d">
+		<description>
+			Dry run - don't create a file, just prints it's file name
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.tempfile">
+	<description>
+		Creates a temporary file and prints it's file name.
+	</description>
+	<keywords>
+		general, support, scripts
+	</keywords>
+	<parameter name="pid" type="integer" required="yes" multiple="no">
+		<description>
+			Process id to use when naming the tempfile
+		</description>
+	</parameter>
+	<flag name="d">
+		<description>
+			Dry run - don't create a file, just prints it's file name
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

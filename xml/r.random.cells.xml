@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.random.cells">
+	<description>
+		Generates random cell values with spatial dependence.
+	</description>
+	<keywords>
+		raster, sampling, random, autocorrelation
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="distance" type="float" required="yes" multiple="no">
+		<description>
+			Maximum distance of spatial correlation (value &gt;= 0.0)
+		</description>
+	</parameter>
+	<parameter name="seed" type="integer" required="no" multiple="no">
+		<description>
+			Random seed (SEED_MIN &gt;= value &gt;= SEED_MAX) (default [random])
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

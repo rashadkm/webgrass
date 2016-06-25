@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.lidar.correction">
+	<description>
+		Corrects the v.lidar.growing output. It is the last of the three algorithms for LIDAR filtering.
+	</description>
+	<keywords>
+		vector, LIDAR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Input observation vector map name (v.lidar.growing output)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Output classified vector map name
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="terrain" type="string" required="yes" multiple="no">
+		<description>
+			Only 'terrain' points output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="ew_step" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the east-west direction
+		</description>
+		<default>
+			25
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="ns_step" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the north-south direction
+		</description>
+		<default>
+			25
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="lambda_c" type="float" required="no" multiple="no">
+		<description>
+			Regularization weight in reclassification evaluation
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="tch" type="float" required="no" multiple="no">
+		<description>
+			High threshold for object to terrain reclassification
+		</description>
+		<default>
+			2
+		</default>
+	</parameter>
+	<parameter name="tcl" type="float" required="no" multiple="no">
+		<description>
+			Low threshold for terrain to object reclassification
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

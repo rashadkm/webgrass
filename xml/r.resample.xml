@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.resample">
+	<description>
+		GRASS raster map layer data resampling capability.
+	</description>
+	<keywords>
+		raster, resample
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of an input layer
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of an output layer
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

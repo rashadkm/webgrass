@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.series.accumulate">
+	<description>
+		Makes each output cell value a accumulationfunction of the values assigned to the corresponding cells in the input raster map layers.
+	</description>
+	<keywords>
+		raster, series, accumulation
+	</keywords>
+	<parameter name="basemap" type="string" required="no" multiple="no">
+		<description>
+			Existing map to be added to output
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Input file with raster map names, one per line
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for input
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="shift" type="float" required="no" multiple="no">
+		<description>
+			Shift factor for input
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="lower" type="string" required="no" multiple="no">
+		<description>
+			The raster map specifying the lower accumulation limit, also called baseline
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="upper" type="string" required="no" multiple="no">
+		<description>
+			The raster map specifying the upper accumulation limit, also called cutoff. Only applied to BEDD computation.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="range" type="float" required="no" multiple="no">
+		<description>
+			Ignore values outside this range
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="limits" type="float" required="no" multiple="no">
+		<description>
+			Use these limits in case lower and/or upper input maps are not defined
+		</description>
+		<keydesc>
+			<item order="1">lower</item>
+			<item order="2">upper</item>
+		</keydesc>
+		<default>
+			10,30
+		</default>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<label>
+			This method will be applied to compute the accumulative values from the input maps
+		</label>
+		<default>
+			gdd
+		</default>
+		<values>
+			<value>
+				<name>gdd</name>
+				<description>Growing Degree Days or Winkler indices</description>
+			</value>
+			<value>
+				<name>bedd</name>
+				<description>Biologically Effective Degree Days</description>
+			</value>
+			<value>
+				<name>huglin</name>
+				<description>Huglin Heliothermal index</description>
+			</value>
+			<value>
+				<name>mean</name>
+				<description>Mean: sum(input maps)/(number of input maps)</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="n">
+		<description>
+			Propagate NULLs
+		</description>
+	</flag>
+	<flag name="z">
+		<description>
+			Do not keep files open
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Create a FCELL map (floating point single precision) as output
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

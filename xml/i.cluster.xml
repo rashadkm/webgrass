@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.cluster">
+	<label>
+		Generates spectral signatures for land cover types in an image using a clustering algorithm.
+	</label>
+	<description>
+		The resulting signature file is used as input for i.maxlik, to generate an unsupervised image classification.
+	</description>
+	<keywords>
+		imagery, classification, signatures
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="signaturefile" type="string" required="yes" multiple="no">
+		<description>
+			Name for output file containing result signatures
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="sig" prompt="sigfile" />
+	</parameter>
+	<parameter name="classes" type="integer" required="yes" multiple="no">
+		<description>
+			Initial number of classes
+		</description>
+		<values>
+			<value>
+				<name>1-255</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="seed" type="string" required="no" multiple="no">
+		<description>
+			Name of file containing initial signatures
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="sig" prompt="sigfile" />
+	</parameter>
+	<parameter name="sample" type="integer" required="no" multiple="no">
+		<description>
+			Sampling intervals (by row and col); default: ~10,000 pixels
+		</description>
+		<keydesc>
+			<item order="1">row_interval</item>
+			<item order="2">col_interval</item>
+		</keydesc>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="iterations" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of iterations
+		</description>
+		<default>
+			30
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="convergence" type="float" required="no" multiple="no">
+		<description>
+			Percent convergence
+		</description>
+		<default>
+			98.0
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="separation" type="float" required="no" multiple="no">
+		<description>
+			Cluster separation
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="min_size" type="integer" required="no" multiple="no">
+		<description>
+			Minimum number of pixels in a class
+		</description>
+		<default>
+			17
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="reportfile" type="string" required="no" multiple="no">
+		<description>
+			Name for output file containing final report
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

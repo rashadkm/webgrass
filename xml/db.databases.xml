@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.databases">
+	<description>
+		Lists all databases for a given driver and location.
+	</description>
+	<keywords>
+		database, attribute table, SQL
+	</keywords>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<description>
+			Name of database driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<label>
+			Location
+		</label>
+		<description>
+			Path for SQLite driver, or connection string for PostgreSQL driver
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

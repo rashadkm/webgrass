@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.wms">
+	<description>
+		Downloads and imports data from WMS/WMTS/NASA OnEarth server.
+	</description>
+	<keywords>
+		raster, import, OGC web services
+	</keywords>
+	<parameter name="url" type="string" required="yes" multiple="no">
+		<description>
+			Typically starts with "http://"
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="layers" type="string" required="yes" multiple="yes">
+		<description>
+			Layer(s) to request from the map server
+		</description>
+	</parameter>
+	<parameter name="styles" type="string" required="no" multiple="yes">
+		<description>
+			Layer style(s) to request from the map server
+		</description>
+		<guisection>
+			Map style
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Image format requested from the server
+		</description>
+		<default>
+			png
+		</default>
+		<values>
+			<value>
+				<name>geotiff</name>
+			</value>
+			<value>
+				<name>tiff</name>
+			</value>
+			<value>
+				<name>jpeg</name>
+			</value>
+			<value>
+				<name>gif</name>
+			</value>
+			<value>
+				<name>png</name>
+			</value>
+			<value>
+				<name>png8</name>
+			</value>
+		</values>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="srs" type="integer" required="no" multiple="no">
+		<description>
+			EPSG code of requested source projection
+		</description>
+		<default>
+			4326
+		</default>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<description>
+			Driver used to communication with server
+		</description>
+		<default>
+			WMS_GRASS
+		</default>
+		<values>
+			<value>
+				<name>WMS_GDAL</name>
+				<description>Download data using GDAL WMS driver</description>
+			</value>
+			<value>
+				<name>WMS_GRASS</name>
+				<description>Download data using native GRASS-WMS driver</description>
+			</value>
+			<value>
+				<name>WMTS_GRASS</name>
+				<description>Download data using native GRASS-WMTS driver</description>
+			</value>
+			<value>
+				<name>OnEarth_GRASS</name>
+				<description>Download data using native GRASS-OnEarth driver</description>
+			</value>
+		</values>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="wms_version" type="string" required="no" multiple="no">
+		<description>
+			WMS standard version
+		</description>
+		<default>
+			1.1.1
+		</default>
+		<values>
+			<value>
+				<name>1.1.1</name>
+			</value>
+			<value>
+				<name>1.3.0</name>
+			</value>
+		</values>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="maxcols" type="integer" required="no" multiple="no">
+		<description>
+			Maximum columns to request at a time
+		</description>
+		<default>
+			512
+		</default>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="maxrows" type="integer" required="no" multiple="no">
+		<description>
+			Maximum rows to request at a time
+		</description>
+		<default>
+			512
+		</default>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="urlparams" type="string" required="no" multiple="no">
+		<description>
+			Additional query parameters to pass to the server
+		</description>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="username" type="string" required="no" multiple="no">
+		<description>
+			Username for server connection
+		</description>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="password" type="string" required="no" multiple="no">
+		<description>
+			Password for server connection
+		</description>
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Interpolation method to use in reprojection
+		</description>
+		<default>
+			nearest
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+			</value>
+			<value>
+				<name>linear</name>
+			</value>
+			<value>
+				<name>cubic</name>
+			</value>
+			<value>
+				<name>cubicspline</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Request data for this named region instead of the current region bounds
+		</description>
+		<guisection>
+			Request
+		</guisection>
+	</parameter>
+	<parameter name="bgcolor" type="string" required="no" multiple="no">
+		<label>
+			Background color
+		</label>
+		<description>
+			Format: 0xRRGGBB
+		</description>
+		<guisection>
+			Map style
+		</guisection>
+	</parameter>
+	<parameter name="capfile" type="string" required="no" multiple="no">
+		<description>
+			Capabilities file to parse (input). It is relevant for WMTS_GRASS and OnEarth_GRASS drivers
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="bin" prompt="file" />
+	</parameter>
+	<parameter name="capfile_output" type="string" required="no" multiple="no">
+		<description>
+			File where the server capabilities will be saved ('c' flag)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="c">
+		<suppress_required/>
+		<description>
+			Get the server capabilities then exit
+		</description>
+ 		<guisection>
+			Request
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Do not request transparent data
+		</description>
+ 		<guisection>
+			Map style
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+	<rules>
+		<rule type="exclusive">
+			<rule-option key="capfile_output"/>
+			<rule-option key="capfile"/>
+		</rule>
+	</rules>
+</task>

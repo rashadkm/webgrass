@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.transect">
+	<description>
+		Outputs raster map layer values lying along user defined transect line(s).
+	</description>
+	<keywords>
+		raster, transect
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Raster map to be queried
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="line" type="string" required="yes" multiple="yes">
+		<description>
+			Transect definition
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+			<item order="3">azimuth</item>
+			<item order="4">distance</item>
+		</keydesc>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+	</parameter>
+	<flag name="g">
+		<description>
+			Output easting and northing in first two columns of four column output
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

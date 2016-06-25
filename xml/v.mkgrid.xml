@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.mkgrid">
+	<description>
+		Creates a vector map of a user-defined grid.
+	</description>
+	<keywords>
+		vector, geometry, grid, point pattern
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="grid" type="integer" required="no" multiple="no">
+		<description>
+			Number of rows and columns in grid
+		</description>
+		<keydesc>
+			<item order="1">rows</item>
+			<item order="2">columns</item>
+		</keydesc>
+	</parameter>
+	<parameter name="position" type="string" required="no" multiple="no">
+		<description>
+			Where to place the grid
+		</description>
+		<default>
+			region
+		</default>
+		<values>
+			<value>
+				<name>region</name>
+				<description>current region</description>
+			</value>
+			<value>
+				<name>coor</name>
+				<description>use 'coor' and 'box' options</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Lower left easting and northing coordinates of map
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="box" type="float" required="no" multiple="no">
+		<description>
+			Width and height of boxes in grid
+		</description>
+		<keydesc>
+			<item order="1">width</item>
+			<item order="2">height</item>
+		</keydesc>
+	</parameter>
+	<parameter name="angle" type="float" required="no" multiple="no">
+		<description>
+			Angle of rotation (in degrees counter-clockwise)
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="breaks" type="integer" required="no" multiple="no">
+		<description>
+			Number of vertex points per grid cell
+		</description>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>0-60</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Output feature type
+		</description>
+		<default>
+			area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="h">
+		<description>
+			Create hexagons (default: rectangles)
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Allow asymmetric hexagons
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

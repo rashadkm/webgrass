@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.png">
+	<description>
+		Imports non-georeferenced PNG format image.
+	</description>
+	<keywords>
+		raster, import, PNG
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="bin" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title for created raster map
+		</description>
+	</parameter>
+	<parameter name="gamma" type="float" required="no" multiple="no">
+		<description>
+			Display gamma
+		</description>
+	</parameter>
+	<parameter name="alpha" type="float" required="no" multiple="no">
+		<description>
+			Alpha threshold
+		</description>
+	</parameter>
+	<flag name="f">
+		<description>
+			Create floating-point map (0.0 - 1.0)
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Output image file header only and exit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

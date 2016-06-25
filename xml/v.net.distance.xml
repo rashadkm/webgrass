@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.net.distance">
+	<label>
+		Computes shortest distance via the network between the given sets of features.
+	</label>
+	<description>
+		Finds the shortest paths from each 'from' point to the nearest 'to' feature and various information about this relation are uploaded to the attribute table.
+	</description>
+	<keywords>
+		vector, network, shortest path
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="arc_layer" type="string" required="no" multiple="no">
+		<label>
+			Arc layer
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Cost
+		</guisection>
+	</parameter>
+	<parameter name="arc_type" type="string" required="no" multiple="yes">
+		<label>
+			Arc type
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			line,boundary
+		</default>
+		<values>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+		</values>
+		<guisection>
+			Cost
+		</guisection>
+	</parameter>
+	<parameter name="node_layer" type="string" required="no" multiple="no">
+		<label>
+			Node layer
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			2
+		</default>
+		<guisection>
+			Cost
+		</guisection>
+	</parameter>
+	<parameter name="from_layer" type="string" required="no" multiple="no">
+		<label>
+			From layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			From
+		</guisection>
+	</parameter>
+	<parameter name="from_cats" type="string" required="no" multiple="no">
+		<label>
+			From category values
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			From
+		</guisection>
+	</parameter>
+	<parameter name="from_where" type="string" required="no" multiple="no">
+		<label>
+			From WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			From
+		</guisection>
+	</parameter>
+	<parameter name="to_layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			To layer number or name
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="to_type" type="string" required="no" multiple="yes">
+		<description>
+			To feature type
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+		</values>
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="to_cats" type="string" required="no" multiple="no">
+		<label>
+			To category values
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="to_where" type="string" required="no" multiple="no">
+		<label>
+			To WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="arc_column" type="string" required="no" multiple="no">
+		<description>
+			Arc forward/both direction(s) cost column (number)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Cost
+		</guisection>
+	</parameter>
+	<parameter name="arc_backward_column" type="string" required="no" multiple="no">
+		<description>
+			Arc backward direction cost column (number)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Cost
+		</guisection>
+	</parameter>
+	<parameter name="node_column" type="string" required="no" multiple="no">
+		<description>
+			Node cost column (number)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Cost
+		</guisection>
+	</parameter>
+	<flag name="g">
+		<description>
+			Use geodesic calculation for longitude-latitude locations
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			Write each output path as one line, not as original input segments.
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.db.univar">
+	<description>
+		Calculates univariate statistics on selected table column for a GRASS vector map.
+	</description>
+	<keywords>
+		vector, statistics, attribute table
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Name of attribute column on which to calculate statistics (must be numeric)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="percentile" type="float" required="no" multiple="yes">
+		<description>
+			Percentile to calculate (requires extended statistics flag)
+		</description>
+		<default>
+			90
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="e">
+		<description>
+			Extended statistics (quartiles and 90th percentile)
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Print stats in shell script style
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

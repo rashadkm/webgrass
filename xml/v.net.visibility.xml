@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.net.visibility">
+	<description>
+		Performs visibility graph construction.
+	</description>
+	<keywords>
+		vector, network, shortest path, visibility
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="coordinates" type="float" required="no" multiple="no">
+		<description>
+			Coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="visibility" type="string" required="no" multiple="no">
+		<label>
+			Name of input vector map containing visable points
+		</label>
+		<description>
+			Add points after computing the visibility graph
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

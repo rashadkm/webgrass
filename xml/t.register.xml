@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.register">
+	<description>
+		Registers raster, vector and raster3d maps in a space time datasets.
+	</description>
+	<keywords>
+		temporal, map management, register, time
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Name of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="maps" type="string" required="no" multiple="yes">
+		<description>
+			Name of the input maps
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="map" prompt="map" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the input map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			raster
+		</default>
+		<values>
+			<value>
+				<name>raster</name>
+			</value>
+			<value>
+				<name>vector</name>
+			</value>
+			<value>
+				<name>raster_3d</name>
+			</value>
+		</values>
+		<guisection>
+			Input
+		</guisection>
+		<guidependency>
+			input,maps
+		</guidependency>
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<label>
+			Input file with map names, one per line
+		</label>
+		<description>
+			Additionally the start time and the end time can be specified per line
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="start" type="string" required="no" multiple="no">
+		<label>
+			Valid start date and time of the first map
+		</label>
+		<description>
+			Format absolute time: "yyyy-mm-dd HH:MM:SS +HHMM", relative time is of type integer).
+		</description>
+		<guisection>
+			Time &amp; Date
+		</guisection>
+	</parameter>
+	<parameter name="end" type="string" required="no" multiple="no">
+		<label>
+			Valid end date and time of all map
+		</label>
+		<description>
+			Format absolute time: "yyyy-mm-dd HH:MM:SS +HHMM", relative time is of type integer).
+		</description>
+		<guisection>
+			Time &amp; Date
+		</guisection>
+	</parameter>
+	<parameter name="unit" type="string" required="no" multiple="no">
+		<label>
+			Time stamp unit
+		</label>
+		<description>
+			Unit must be set in case of relative time stamps
+		</description>
+		<values>
+			<value>
+				<name>years</name>
+			</value>
+			<value>
+				<name>months</name>
+			</value>
+			<value>
+				<name>days</name>
+			</value>
+			<value>
+				<name>hours</name>
+			</value>
+			<value>
+				<name>minutes</name>
+			</value>
+			<value>
+				<name>seconds</name>
+			</value>
+		</values>
+		<guisection>
+			Time &amp; Date
+		</guisection>
+	</parameter>
+	<parameter name="increment" type="string" required="no" multiple="no">
+		<label>
+			Time increment, works only in conjunction with start option
+		</label>
+		<description>
+			Time increment between maps for valid time interval creation (format absolute: NNN seconds, minutes, hours, days, weeks, months, years; format relative is integer: 5)
+		</description>
+		<guisection>
+			Time &amp; Date
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator character of the input file
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<flag name="i">
+		<description>
+			Create an interval (start and end time) in case an increment and the start time are provided
+		</description>
+ 		<guisection>
+			Time &amp; Date
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

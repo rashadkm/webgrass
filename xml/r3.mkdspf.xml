@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.mkdspf">
+	<description>
+		Creates a display file from an existing 3D raster map according to specified threshold levels.
+	</description>
+	<keywords>
+		raster3d, display, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of an existing 3D raster map
+		</description>
+		<gisprompt age="old" element="grid3" prompt="3d-raster" />
+	</parameter>
+	<parameter name="dspf" type="string" required="yes" multiple="no">
+		<description>
+			Name for output display file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="levels" type="float" required="no" multiple="yes">
+		<description>
+			List of thresholds for isosurfaces
+		</description>
+	</parameter>
+	<parameter name="min" type="float" required="no" multiple="no">
+		<description>
+			Minimum isosurface level
+		</description>
+	</parameter>
+	<parameter name="max" type="float" required="no" multiple="no">
+		<description>
+			Maximum isosurface level
+		</description>
+	</parameter>
+	<parameter name="step" type="float" required="no" multiple="no">
+		<description>
+			Positive increment between isosurface levels
+		</description>
+	</parameter>
+	<parameter name="tnum" type="integer" required="no" multiple="no">
+		<description>
+			Number of isosurface threshold levels
+		</description>
+		<default>
+			7
+		</default>
+	</parameter>
+	<flag name="q">
+		<description>
+			Suppress progress report &amp; min/max information
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Use flat shading rather than gradient
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.ortho.rectify">
+	<description>
+		Orthorectifies an image by using the image to photo coordinate transformation matrix.
+	</description>
+	<keywords>
+		imagery, orthorectify
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of input imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Name of input raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="extension" type="string" required="yes" multiple="no">
+		<description>
+			Output raster map(s) suffix
+		</description>
+	</parameter>
+	<parameter name="resolution" type="float" required="no" multiple="no">
+		<description>
+			Target resolution (ignored if -c flag used)
+		</description>
+	</parameter>
+	<parameter name="memory" type="float" required="no" multiple="no">
+		<description>
+			Amount of memory to use in MB
+		</description>
+		<keydesc>
+			<item order="1">memory in MB</item>
+		</keydesc>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Interpolation method to use
+		</description>
+		<default>
+			nearest
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+			</value>
+			<value>
+				<name>linear</name>
+			</value>
+			<value>
+				<name>cubic</name>
+			</value>
+			<value>
+				<name>lanczos</name>
+			</value>
+			<value>
+				<name>linear_f</name>
+			</value>
+			<value>
+				<name>cubic_f</name>
+			</value>
+			<value>
+				<name>lanczos_f</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="angle" type="string" required="no" multiple="no">
+		<description>
+			Raster map with camera angle relative to ground surface
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Use current region settings in target location (def.=calculate smallest area)
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Rectify all raster maps in group
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

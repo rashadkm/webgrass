@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.stats">
+	<description>
+		Generates area statistics for raster map.
+	</description>
+	<keywords>
+		raster, statistics
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Name of raster map(s) to report on
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file (if omitted or "-" output to stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			space
+		</default>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<parameter name="nsteps" type="integer" required="no" multiple="no">
+		<description>
+			Number of floating-point subranges to collect stats from
+		</description>
+		<default>
+			255
+		</default>
+		<guisection>
+			Floating point
+		</guisection>
+	</parameter>
+	<parameter name="sort" type="string" required="no" multiple="no">
+		<label>
+			Sort output statistics by cell counts
+		</label>
+		<description>
+			Default: sorted by categories or intervals
+		</description>
+		<values>
+			<value>
+				<name>asc</name>
+				<description>Sort by cell counts in ascending order</description>
+			</value>
+			<value>
+				<name>desc</name>
+				<description>Sort by cell counts in descending order</description>
+			</value>
+		</values>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<flag name="a">
+		<description>
+			Print area totals in square meters
+		</description>
+ 		<guisection>
+			Statistics
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Print cell counts (sortable)
+		</description>
+ 		<guisection>
+			Statistics
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Print approximate (total percent may not be 100%) percents
+		</description>
+ 		<guisection>
+			Statistics
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Print category labels
+		</description>
+	</flag>
+	<flag name="1">
+		<description>
+			One cell (range) per line
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Print grid coordinates (east and north)
+		</description>
+ 		<guisection>
+			Coordinates
+		</guisection>
+	</flag>
+	<flag name="x">
+		<description>
+			Print x and y (column and row)
+		</description>
+ 		<guisection>
+			Coordinates
+		</guisection>
+	</flag>
+	<flag name="A">
+		<description>
+			Print averaged values instead of intervals (floating-point maps only)
+		</description>
+ 		<guisection>
+			Floating point
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Print raw indexes of floating-point ranges (floating-point maps only)
+		</description>
+ 		<guisection>
+			Floating point
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not report no data value
+		</description>
+ 		<guisection>
+			No data
+		</guisection>
+	</flag>
+	<flag name="N">
+		<description>
+			Do not report cells where all maps have no data
+		</description>
+ 		<guisection>
+			No data
+		</guisection>
+	</flag>
+	<flag name="C">
+		<description>
+			Report for cats floating-point ranges (floating-point maps only)
+		</description>
+ 		<guisection>
+			Floating point
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Read floating-point map as integer (use map's quant rules)
+		</description>
+ 		<guisection>
+			Floating point
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

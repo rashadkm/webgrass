@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.topology">
+	<description>
+		Lists temporal topology of a space time dataset.
+	</description>
+	<keywords>
+		temporal, topology, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+		<guisection>
+			Required
+		</guisection>
+		<guidependency>
+			input
+		</guidependency>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<flag name="m">
+		<description>
+			Print temporal relationships and exit
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Print spatio-temporal relationships and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.mapcalc">
+	<description>
+		Performs spatio-temporal mapcalc expressions on temporally sampled maps of space time raster datasets.
+	</description>
+	<keywords>
+		temporal, algebra, raster, time
+	</keywords>
+	<parameter name="inputs" type="string" required="yes" multiple="yes">
+		<description>
+			Name of the input space time raster datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="expression" type="string" required="yes" multiple="no">
+		<description>
+			Spatio-temporal mapcalc expression
+		</description>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="yes">
+		<description>
+			The method to be used for sampling the input dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			equal
+		</default>
+		<values>
+			<value>
+				<name>start</name>
+			</value>
+			<value>
+				<name>during</name>
+			</value>
+			<value>
+				<name>overlap</name>
+			</value>
+			<value>
+				<name>contain</name>
+			</value>
+			<value>
+				<name>equal</name>
+			</value>
+			<value>
+				<name>follows</name>
+			</value>
+			<value>
+				<name>precedes</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="basename" type="string" required="yes" multiple="no">
+		<label>
+			Basename for output raster maps
+		</label>
+		<description>
+			A numerical suffix separated by an underscore will be attached to create a unique identifier
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="nprocs" type="integer" required="no" multiple="no">
+		<description>
+			Number of r.mapcalc processes to run in parallel
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register Null maps
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Check spatial overlap
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

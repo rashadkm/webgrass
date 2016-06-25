@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.info">
+	<description>
+		Outputs basic information about a raster map.
+	</description>
+	<keywords>
+		raster, metadata, extent, history
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="g">
+		<description>
+			Print raster array information in shell script style
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Print range in shell script style
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Print extended metadata information in shell script style
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Print raster history instead of info
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

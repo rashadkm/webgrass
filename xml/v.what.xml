@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.what">
+	<description>
+		Queries a vector map at given locations.
+	</description>
+	<keywords>
+		vector, querying, position
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="yes">
+		<description>
+			Name of vector map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="yes">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer_all" prompt="layer" />
+		<default>
+			-1
+		</default>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point,line,area,face
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="coordinates" type="float" required="yes" multiple="no">
+		<label>
+			Coordinates for query
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<gisprompt age="old" element="coords" prompt="coords" />
+	</parameter>
+	<parameter name="distance" type="float" required="no" multiple="no">
+		<description>
+			Query threshold distance
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Threshold
+		</guisection>
+	</parameter>
+	<flag name="d">
+		<description>
+			Print topological information (debugging)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Print attribute information
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print the stats in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			Print the stats in JSON
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

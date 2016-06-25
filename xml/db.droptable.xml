@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.droptable">
+	<description>
+		Drops an attribute table.
+	</description>
+	<keywords>
+		database, attribute table
+	</keywords>
+	<parameter name="driver" type="string" required="no" multiple="no">
+		<label>
+			Name of database driver
+		</label>
+		<description>
+			If not given then default driver is used
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbdriver" prompt="dbdriver" />
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="database" type="string" required="no" multiple="no">
+		<label>
+			Name of database
+		</label>
+		<description>
+			If not given then default database is used
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbname" prompt="dbname" />
+		<guisection>
+			Connection
+		</guisection>
+	</parameter>
+	<parameter name="table" type="string" required="yes" multiple="no">
+		<description>
+			Name of table to drop
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbtable" prompt="dbtable" />
+	</parameter>
+	<flag name="f">
+		<description>
+			Force removal (required for actual deletion of files)
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

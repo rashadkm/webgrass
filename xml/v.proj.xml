@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.proj">
+	<description>
+		Re-projects a vector map from one location to the current location.
+	</description>
+	<keywords>
+		vector, projection, transformation, import
+	</keywords>
+	<parameter name="location" type="string" required="yes" multiple="no">
+		<label>
+			Location containing input vector map
+		</label>
+		<description>
+			Location name (not location path)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="location" prompt="location" />
+		<guisection>
+			Source
+		</guisection>
+	</parameter>
+	<parameter name="mapset" type="string" required="no" multiple="no">
+		<label>
+			Mapset containing input vector map
+		</label>
+		<description>
+			Default: name of current mapset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="mapset" prompt="mapset" />
+		<guisection>
+			Source
+		</guisection>
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<label>
+			Name of input vector map to re-project
+		</label>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Source
+		</guisection>
+	</parameter>
+	<parameter name="dbase" type="string" required="no" multiple="no">
+		<label>
+			Path to GRASS database of input location
+		</label>
+		<description>
+			Default: path to the current GRASS GIS database
+		</description>
+		<keydesc>
+			<item order="1">path</item>
+		</keydesc>
+		<gisprompt age="old" element="dbase" prompt="dbase" />
+	</parameter>
+	<parameter name="smax" type="float" required="no" multiple="no">
+		<label>
+			Maximum segment length in meters in output vector map
+		</label>
+		<description>
+			Increases accuracy of reprojected shapes, disable with smax=0
+		</description>
+		<default>
+			10000
+		</default>
+		<guisection>
+			Target
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector map (default: input)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Target
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<description>
+			List vector maps in input mapset and exit
+		</description>
+	</flag>
+	<flag name="z">
+		<label>
+			Assume z coordinate is ellipsoidal height and transform if possible
+		</label>
+		<description>
+			3D vector maps only
+		</description>
+ 		<guisection>
+			Target
+		</guisection>
+	</flag>
+	<flag name="w">
+		<label>
+			Disable wrapping to -180,180 for latlon output
+		</label>
+		<description>
+			Latlon output only, default is -180,180
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

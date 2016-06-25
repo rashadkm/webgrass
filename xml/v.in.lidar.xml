@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.lidar">
+	<description>
+		Converts LAS LiDAR point clouds to a GRASS vector map with libLAS.
+	</description>
+	<keywords>
+		vector, import, LIDAR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			LAS input file
+		</label>
+		<description>
+			LiDAR input files in LAS format (*.las or *.laz)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="spatial" type="float" required="no" multiple="yes">
+		<label>
+			Import subregion only
+		</label>
+		<description>
+			Format: xmin,ymin,xmax,ymax - usually W,S,E,N
+		</description>
+		<keydesc>
+			<item order="1">xmin</item>
+			<item order="2">ymin</item>
+			<item order="3">xmax</item>
+			<item order="4">ymax</item>
+		</keydesc>
+		<guisection>
+			Subregion
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name for new location to create
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="return_filter" type="string" required="no" multiple="no">
+		<label>
+			Only import points of selected return type
+		</label>
+		<description>
+			If not specified, all points are imported
+		</description>
+		<values>
+			<value>
+				<name>first</name>
+			</value>
+			<value>
+				<name>last</name>
+			</value>
+			<value>
+				<name>mid</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="class_filter" type="integer" required="no" multiple="yes">
+		<label>
+			Only import points of selected class(es)
+		</label>
+		<description>
+			Input is comma separated integers. If not specified, all points are imported.
+		</description>
+	</parameter>
+	<flag name="p">
+		<suppress_required/>
+		<description>
+			Print LAS file info and exit
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not create attribute table
+		</description>
+ 		<guisection>
+			Attributes
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Override dataset projection (use location's projection)
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Limit import to the current region
+		</description>
+ 		<guisection>
+			Subregion
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Extend region extents based on new dataset
+		</description>
+	</flag>
+	<flag name="i">
+		<suppress_required/>
+		<description>
+			Create the location specified by the "location" parameter and exit. Do not import the vector data.
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

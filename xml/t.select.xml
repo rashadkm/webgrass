@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.select">
+	<description>
+		Select maps from space time datasets by topological relationships to other space time datasets using temporal algebra.
+	</description>
+	<keywords>
+		temporal, metadata, time
+	</keywords>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+		<guisection>
+			Required
+		</guisection>
+		<guidependency>
+			input
+		</guidependency>
+	</parameter>
+	<parameter name="expression" type="string" required="yes" multiple="no">
+		<description>
+			The temporal mapcalc expression
+		</description>
+		<keydesc>
+			<item order="1">expression</item>
+		</keydesc>
+	</parameter>
+	<flag name="s">
+		<description>
+			Activate spatial topology
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

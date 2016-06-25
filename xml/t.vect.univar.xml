@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.vect.univar">
+	<description>
+		Calculates univariate statistics of attributes for each registered vector map of a space time vector dataset
+	</description>
+	<keywords>
+		temporal, statistics, vector, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time vector dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Name of attribute column
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="twhere" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator character between the output columns
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Formatting
+		</guisection>
+	</parameter>
+	<flag name="e">
+		<description>
+			Calculate extended statistics
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Suppress printing of column names
+		</description>
+ 		<guisection>
+			Formatting
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

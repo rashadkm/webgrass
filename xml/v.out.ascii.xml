@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.ascii">
+	<label>
+		Exports a vector map to a GRASS ASCII vector representation.
+	</label>
+	<description>
+		By default only features with category are exported. To export all features use 'layer=-1'.
+	</description>
+	<keywords>
+		vector, export, ASCII
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer_all" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point,line,boundary,centroid,area,face,kernel
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output ASCII file or ASCII vector name if '-o' is defined
+		</label>
+		<description>
+			If not given or '-' then standard output
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<label>
+			Name of attribute column(s) to be exported (point mode)
+		</label>
+		<description>
+			"*" for all columns
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Category values
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="yes" multiple="no">
+		<description>
+			Output format
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+				<description>Simple point format (point per row)</description>
+			</value>
+			<value>
+				<name>standard</name>
+				<description>GRASS ASCII vector format</description>
+			</value>
+			<value>
+				<name>wkt</name>
+				<description>OGC well-known text</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Field separator (points mode)
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="precision" type="integer" required="no" multiple="no">
+		<description>
+			Number of significant digits (floating point only)
+		</description>
+		<default>
+			8
+		</default>
+		<values>
+			<value>
+				<name>0-32</name>
+			</value>
+		</values>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<flag name="o">
+		<description>
+			Create old (version 4) ASCII file
+		</description>
+ 		<guisection>
+			Output
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Include column names in output (points mode)
+		</description>
+ 		<guisection>
+			Points
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Only export points falling within current 3D region (points mode)
+		</description>
+ 		<guisection>
+			Points
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

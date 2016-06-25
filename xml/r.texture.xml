@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.texture">
+	<description>
+		Generate images with textural features from a raster map.
+	</description>
+	<keywords>
+		raster, algebra, statistics, texture
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output basename raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">basename</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="size" type="integer" required="no" multiple="no">
+		<description>
+			The size of moving window (odd and &gt;= 3)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			3
+		</default>
+	</parameter>
+	<parameter name="distance" type="integer" required="no" multiple="no">
+		<description>
+			The distance between two samples (&gt;= 1)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="yes">
+		<description>
+			Textural measurement method
+		</description>
+		<values>
+			<value>
+				<name>asm</name>
+			</value>
+			<value>
+				<name>contrast</name>
+			</value>
+			<value>
+				<name>corr</name>
+			</value>
+			<value>
+				<name>var</name>
+			</value>
+			<value>
+				<name>idm</name>
+			</value>
+			<value>
+				<name>sa</name>
+			</value>
+			<value>
+				<name>se</name>
+			</value>
+			<value>
+				<name>sv</name>
+			</value>
+			<value>
+				<name>entr</name>
+			</value>
+			<value>
+				<name>dv</name>
+			</value>
+			<value>
+				<name>de</name>
+			</value>
+			<value>
+				<name>moc1</name>
+			</value>
+			<value>
+				<name>moc2</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="s">
+		<description>
+			Separate output for each angle (0, 45, 90, 135)
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Calculate all textural measurements
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

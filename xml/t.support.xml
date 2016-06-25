@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.support">
+	<description>
+		Modifies the metadata of a space time dataset.
+	</description>
+	<keywords>
+		temporal, metadata, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="semantictype" type="string" required="no" multiple="no">
+		<description>
+			Semantic type of the space time dataset
+		</description>
+		<default>
+			mean
+		</default>
+		<values>
+			<value>
+				<name>min</name>
+			</value>
+			<value>
+				<name>max</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>mean</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+		<guisection>
+			Required
+		</guisection>
+		<guidependency>
+			input
+		</guidependency>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Title of the space time dataset
+		</description>
+	</parameter>
+	<parameter name="description" type="string" required="no" multiple="no">
+		<description>
+			Description of the space time dataset
+		</description>
+	</parameter>
+	<flag name="m">
+		<label>
+			Update the metadata information and spatial extent of registered maps from the GRASS spatial database
+		</label>
+		<description>
+			Check for removed maps and delete them from the temporal database and all effected space time datasets
+		</description>
+	</flag>
+	<flag name="u">
+		<description>
+			Update metadata information, temporal and spatial extent from registered maps
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.out.ascii">
+	<description>
+		Converts a 3D raster map layer into a ASCII text file.
+	</description>
+	<keywords>
+		raster3d, export, voxel, conversion, ASCII
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			3D raster map to be converted to ASCII
+		</description>
+		<gisprompt age="old" element="grid3" prompt="3d-raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for ASCII output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="precision" type="integer" required="no" multiple="no">
+		<description>
+			Number of decimal places for floats
+		</description>
+		<default>
+			8
+		</default>
+		<values>
+			<value>
+				<name>0-20</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String representing NULL value
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+	</parameter>
+	<flag name="h">
+		<description>
+			Suppress printing of header information
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Switch the row order in output from north-&gt;south to south-&gt;north
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Switch the depth order in output from bottom-&gt;top to top-&gt;bottom
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Print grass6 compatible format. Flags -d and -r are ignored.
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Use 3D raster mask (if exists) with input map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

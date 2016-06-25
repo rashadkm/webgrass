@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.net.steiner">
+	<label>
+		Creates Steiner tree for the network and given terminals.
+	</label>
+	<description>
+		Note that 'Minimum Steiner Tree' problem is NP-hard and heuristic algorithm is used in this module so the result may be sub optimal.
+	</description>
+	<keywords>
+		vector, network, steiner tree
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="arc_type" type="string" required="no" multiple="yes">
+		<label>
+			Arc type
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			line,boundary
+		</default>
+		<values>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="arc_layer" type="string" required="no" multiple="no">
+		<label>
+			Arc layer
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="node_layer" type="string" required="no" multiple="no">
+		<label>
+			Node layer (used for terminals)
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			2
+		</default>
+	</parameter>
+	<parameter name="acolumn" type="string" required="no" multiple="no">
+		<description>
+			Arcs' cost column (for both directions)
+		</description>
+	</parameter>
+	<parameter name="terminal_cats" type="string" required="yes" multiple="no">
+		<label>
+			Category values
+		</label>
+		<description>
+			Categories of points on terminals (layer is specified by nlayer)
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+	</parameter>
+	<parameter name="npoints" type="integer" required="no" multiple="no">
+		<description>
+			Number of Steiner points (-1 for all possible)
+		</description>
+		<default>
+			-1
+		</default>
+	</parameter>
+	<flag name="g">
+		<description>
+			Use geodesic calculation for longitude-latitude locations
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

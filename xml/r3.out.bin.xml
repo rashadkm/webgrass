@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.out.bin">
+	<description>
+		Exports a GRASS 3D raster map to a binary array.
+	</description>
+	<keywords>
+		raster3d, export, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Value to write out for null
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="bytes" type="integer" required="yes" multiple="no">
+		<description>
+			Number of bytes per cell in binary file
+		</description>
+		<values>
+			<value>
+				<name>1</name>
+			</value>
+			<value>
+				<name>2</name>
+			</value>
+			<value>
+				<name>4</name>
+			</value>
+			<value>
+				<name>8</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="order" type="string" required="no" multiple="no">
+		<description>
+			Output byte order
+		</description>
+		<default>
+			native
+		</default>
+		<values>
+			<value>
+				<name>big</name>
+			</value>
+			<value>
+				<name>little</name>
+			</value>
+			<value>
+				<name>native</name>
+			</value>
+			<value>
+				<name>swap</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="r">
+		<description>
+			Switch the row order in output from north-&gt;south to south-&gt;north
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Switch the depth order in output from bottom-&gt;top to top-&gt;bottom
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Write data as integer
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

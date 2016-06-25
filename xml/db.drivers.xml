@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="db.drivers">
+	<description>
+		Lists all database drivers.
+	</description>
+	<keywords>
+		database, connection settings
+	</keywords>
+	<flag name="f">
+		<description>
+			Full output
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Print drivers and exit
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.uslek">
+	<description>
+		Computes USLE Soil Erodibility Factor (K).
+	</description>
+	<keywords>
+		raster, hydrology, soil, erosion
+	</keywords>
+	<parameter name="psand" type="string" required="yes" multiple="no">
+		<description>
+			Name of soil sand fraction raster map [0.0-1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="pclay" type="string" required="yes" multiple="no">
+		<description>
+			Name of soil clay fraction raster map [0.0-1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="psilt" type="string" required="yes" multiple="no">
+		<description>
+			Name of soil silt fraction raster map [0.0-1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="pomat" type="string" required="yes" multiple="no">
+		<description>
+			Name of soil organic matter raster map [0.0-1.0]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output USLE K factor raster map [t.ha.hr/ha.MJ.mm]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

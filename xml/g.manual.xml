@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.manual">
+	<description>
+		Displays the manual pages of GRASS modules.
+	</description>
+	<keywords>
+		general, manual, help
+	</keywords>
+	<parameter name="entry" type="string" required="yes" multiple="no">
+		<description>
+			Manual entry to be displayed
+		</description>
+	</parameter>
+	<flag name="i">
+		<suppress_required/>
+		<description>
+			Display index
+		</description>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Display topics
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Display as MAN text page instead of HTML page in browser
+		</description>
+	</flag>
+	<flag name="o">
+		<label>
+			Display online manuals instead of locally installed
+		</label>
+		<description>
+			Use online manuals available at http://grass.osgeo.org website. This flag has no effect when displaying MAN text pages.
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.manual">
+	<description>
+		Displays the manual pages of GRASS modules.
+	</description>
+	<keywords>
+		general, manual, help
+	</keywords>
+	<parameter name="entry" type="string" required="yes" multiple="no">
+		<description>
+			Manual entry to be displayed
+		</description>
+	</parameter>
+	<flag name="i">
+		<suppress_required/>
+		<description>
+			Display index
+		</description>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Display topics
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Display as MAN text page instead of HTML page in browser
+		</description>
+	</flag>
+	<flag name="o">
+		<label>
+			Display online manuals instead of locally installed
+		</label>
+		<description>
+			Use online manuals available at http://grass.osgeo.org website. This flag has no effect when displaying MAN text pages.
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.manual">
+	<description>
+		Displays the manual pages of GRASS modules.
+	</description>
+	<keywords>
+		general, manual, help
+	</keywords>
+	<parameter name="entry" type="string" required="yes" multiple="no">
+		<description>
+			Manual entry to be displayed
+		</description>
+	</parameter>
+	<flag name="i">
+		<suppress_required/>
+		<description>
+			Display index
+		</description>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Display topics
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Display as MAN text page instead of HTML page in browser
+		</description>
+	</flag>
+	<flag name="o">
+		<label>
+			Display online manuals instead of locally installed
+		</label>
+		<description>
+			Use online manuals available at http://grass.osgeo.org website. This flag has no effect when displaying MAN text pages.
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.manual">
+	<description>
+		Displays the manual pages of GRASS modules.
+	</description>
+	<keywords>
+		general, manual, help
+	</keywords>
+	<parameter name="entry" type="string" required="yes" multiple="no">
+		<description>
+			Manual entry to be displayed
+		</description>
+	</parameter>
+	<flag name="i">
+		<suppress_required/>
+		<description>
+			Display index
+		</description>
+	</flag>
+	<flag name="t">
+		<suppress_required/>
+		<description>
+			Display topics
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Display as MAN text page instead of HTML page in browser
+		</description>
+	</flag>
+	<flag name="o">
+		<label>
+			Display online manuals instead of locally installed
+		</label>
+		<description>
+			Use online manuals available at http://grass.osgeo.org website. This flag has no effect when displaying MAN text pages.
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.colors.out">
+	<description>
+		Exports the color table associated with a vector map.
+	</description>
+	<keywords>
+		vector, color table, export
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="rules" type="string" required="no" multiple="no">
+		<label>
+			Path to output rules file
+		</label>
+		<description>
+			If not given write to standard output
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute (numeric) column to which refer color rules
+		</label>
+		<description>
+			If not given, color rules refer to categories
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Output values as percentages
+		</description>
+ 		<guisection>
+			Settings
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

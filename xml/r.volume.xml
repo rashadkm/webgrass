@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.volume">
+	<label>
+		Calculates the volume of data "clumps".
+	</label>
+	<description>
+		Optionally produces a GRASS vector points map containing the calculated centroids of these clumps.
+	</description>
+	<keywords>
+		raster, volume, clumps
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map representing data that will be summed within clumps
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="clump" type="string" required="no" multiple="no">
+		<label>
+			Name of input clump raster map
+		</label>
+		<description>
+			Preferably the output of r.clump. If no clump map is given than MASK is used.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="centroids" type="string" required="no" multiple="no">
+		<description>
+			Name for output vector points map to contain clump centroids
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<label>
+			Name for output file to hold the report
+		</label>
+		<description>
+			If no output file given report is printed to standard output
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<flag name="f">
+		<description>
+			Generate unformatted report (items separated by colon)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.random">
+	<description>
+		Generates random 2D/3D vector points.
+	</description>
+	<keywords>
+		vector, sampling, statistics, random, point pattern
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="npoints" type="integer" required="yes" multiple="no">
+		<description>
+			Number of points to be created
+		</description>
+	</parameter>
+	<parameter name="restrict" type="string" required="no" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Restrict points to areas in input vector
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name ('-1' for all layers)
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer_all" prompt="layer" />
+		<default>
+			-1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Category values
+		</label>
+		<description>
+			Example: 1,3,7-9,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="zmin" type="float" required="no" multiple="no">
+		<description>
+			Minimum z height (needs -z flag or column name)
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			3D output
+		</guisection>
+	</parameter>
+	<parameter name="zmax" type="float" required="no" multiple="no">
+		<description>
+			Maximum z height (needs -z flag or column name)
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			3D output
+		</guisection>
+	</parameter>
+	<parameter name="seed" type="integer" required="no" multiple="no">
+		<description>
+			The seed to initialize the random generator. If not set the process ID is used
+		</description>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of column for z values
+		</label>
+		<description>
+			Writes z values to column
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			3D output
+		</guisection>
+	</parameter>
+	<parameter name="column_type" type="string" required="no" multiple="no">
+		<description>
+			Type of column for z values
+		</description>
+		<default>
+			double precision
+		</default>
+		<values>
+			<value>
+				<name>integer</name>
+			</value>
+			<value>
+				<name>double precision</name>
+			</value>
+		</values>
+		<guisection>
+			3D output
+		</guisection>
+	</parameter>
+	<flag name="z">
+		<description>
+			Create 3D output
+		</description>
+ 		<guisection>
+			3D output
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Generate n points for each individual area
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

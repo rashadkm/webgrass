@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.rename">
+	<description>
+		Renames data base element files in the user's current mapset.
+	</description>
+	<keywords>
+		general, map management, rename
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			3D raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="3D raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="no">
+		<description>
+			vector map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="label" type="string" required="no" multiple="no">
+		<description>
+			paint label file(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="paint/labels" prompt="label" />
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			region definition(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region definition" />
+		<guisection>
+			Region
+		</guisection>
+	</parameter>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			imagery group(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="imagery group" />
+		<guisection>
+			Group
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.rename">
+	<description>
+		Renames data base element files in the user's current mapset.
+	</description>
+	<keywords>
+		general, map management, rename
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			3D raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="3D raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="no">
+		<description>
+			vector map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="label" type="string" required="no" multiple="no">
+		<description>
+			paint label file(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="paint/labels" prompt="label" />
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			region definition(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region definition" />
+		<guisection>
+			Region
+		</guisection>
+	</parameter>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			imagery group(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="imagery group" />
+		<guisection>
+			Group
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.rename">
+	<description>
+		Renames data base element files in the user's current mapset.
+	</description>
+	<keywords>
+		general, map management, rename
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			3D raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="3D raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="no">
+		<description>
+			vector map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="label" type="string" required="no" multiple="no">
+		<description>
+			paint label file(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="paint/labels" prompt="label" />
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			region definition(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region definition" />
+		<guisection>
+			Region
+		</guisection>
+	</parameter>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			imagery group(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="imagery group" />
+		<guisection>
+			Group
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.rename">
+	<description>
+		Renames data base element files in the user's current mapset.
+	</description>
+	<keywords>
+		general, map management, rename
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="raster_3d" type="string" required="no" multiple="no">
+		<description>
+			3D raster map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="3D raster" />
+		<guisection>
+			Raster
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="no">
+		<description>
+			vector map(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Vector
+		</guisection>
+	</parameter>
+	<parameter name="label" type="string" required="no" multiple="no">
+		<description>
+			paint label file(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="paint/labels" prompt="label" />
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			region definition(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="windows" prompt="region definition" />
+		<guisection>
+			Region
+		</guisection>
+	</parameter>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			imagery group(s) to be renamed
+		</description>
+		<keydesc>
+			<item order="1">from</item>
+			<item order="2">to</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="imagery group" />
+		<guisection>
+			Group
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

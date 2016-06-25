@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.unregister">
+	<description>
+		Unregisters raster, vector and raster3d maps from the temporal database or a specific space time dataset.
+	</description>
+	<keywords>
+		temporal, map management, unregister, time
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Name of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			Input file with map names, one per line
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Type of the input map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			raster
+		</default>
+		<values>
+			<value>
+				<name>raster</name>
+			</value>
+			<value>
+				<name>vector</name>
+			</value>
+			<value>
+				<name>raster_3d</name>
+			</value>
+		</values>
+		<guidependency>
+			input,maps
+		</guidependency>
+	</parameter>
+	<parameter name="maps" type="string" required="no" multiple="yes">
+		<description>
+			Name(s) of existing raster, vector or raster3d map(s) to unregister
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="map" prompt="map" />
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

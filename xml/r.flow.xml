@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.flow">
+	<label>
+		Constructs flowlines.
+	</label>
+	<description>
+		Computes flowlines, flowpath lengths, and flowaccumulation (contributing areas) from a elevation raster map.
+	</description>
+	<keywords>
+		raster, hydrology
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Name of input aspect raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input maps
+		</guisection>
+	</parameter>
+	<parameter name="barrier" type="string" required="no" multiple="no">
+		<description>
+			Name of input barrier raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input maps
+		</guisection>
+	</parameter>
+	<parameter name="skip" type="integer" required="no" multiple="no">
+		<description>
+			Number of cells between flowlines
+		</description>
+	</parameter>
+	<parameter name="bound" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of segments per flowline
+		</description>
+	</parameter>
+	<parameter name="flowline" type="string" required="no" multiple="no">
+		<description>
+			Name for output flow line vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Output maps
+		</guisection>
+	</parameter>
+	<parameter name="flowlength" type="string" required="no" multiple="no">
+		<description>
+			Name for output flow path length raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output maps
+		</guisection>
+	</parameter>
+	<parameter name="flowaccumulation" type="string" required="no" multiple="no">
+		<description>
+			Name for output flow accumulation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output maps
+		</guisection>
+	</parameter>
+	<flag name="u">
+		<description>
+			Compute upslope flowlines instead of default downhill flowlines
+		</description>
+	</flag>
+	<flag name="3">
+		<description>
+			3D lengths instead of 2D
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Use less memory, at a performance penalty
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

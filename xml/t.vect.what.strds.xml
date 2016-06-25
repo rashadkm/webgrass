@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.vect.what.strds">
+	<description>
+		Stores raster map values at spatial and temporal positions of vector points as vector attributes.
+	</description>
+	<keywords>
+		temporal, sampling, vector, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time vector dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+	</parameter>
+	<parameter name="strds" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of the vector column to be created and to store sampled raster values
+		</label>
+		<description>
+			The use of a column name forces t.vect.what.rast to sample only values from the first map found in an interval. Otherwise the raster map names are used as column names
+		</description>
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Aggregate operation to be performed on the raster maps
+		</description>
+		<default>
+			disabled
+		</default>
+		<values>
+			<value>
+				<name>disabled</name>
+			</value>
+			<value>
+				<name>average</name>
+			</value>
+			<value>
+				<name>count</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>mode</name>
+			</value>
+			<value>
+				<name>minimum</name>
+			</value>
+			<value>
+				<name>min_raster</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>max_raster</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+			<value>
+				<name>range</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>diversity</name>
+			</value>
+			<value>
+				<name>slope</name>
+			</value>
+			<value>
+				<name>offset</name>
+			</value>
+			<value>
+				<name>detcoeff</name>
+			</value>
+			<value>
+				<name>quart1</name>
+			</value>
+			<value>
+				<name>quart3</name>
+			</value>
+			<value>
+				<name>perc90</name>
+			</value>
+			<value>
+				<name>quantile</name>
+			</value>
+			<value>
+				<name>skewness</name>
+			</value>
+			<value>
+				<name>kurtosis</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="t_where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="sampling" type="string" required="no" multiple="yes">
+		<description>
+			The method to be used for sampling the input dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			start
+		</default>
+		<values>
+			<value>
+				<name>start</name>
+			</value>
+			<value>
+				<name>during</name>
+			</value>
+			<value>
+				<name>overlap</name>
+			</value>
+			<value>
+				<name>contain</name>
+			</value>
+			<value>
+				<name>equal</name>
+			</value>
+			<value>
+				<name>follows</name>
+			</value>
+			<value>
+				<name>precedes</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.quant">
+	<description>
+		Produces the quantization file for a floating-point map.
+	</description>
+	<keywords>
+		raster, statistics, quantization
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Raster map(s) to be quantized
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="rules" type="string" required="no" multiple="no">
+		<description>
+			Path to rules file ("-" to read from stdin)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="basemap" type="string" required="no" multiple="no">
+		<description>
+			Base map to take quant rules from
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="fprange" type="string" required="no" multiple="no">
+		<description>
+			Floating point range: dmin,dmax
+		</description>
+		<keydesc>
+			<item order="1">dmin</item>
+			<item order="2">dmax</item>
+		</keydesc>
+	</parameter>
+	<parameter name="range" type="string" required="no" multiple="no">
+		<description>
+			Integer range: min,max
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<flag name="t">
+		<description>
+			Truncate floating point data
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Round floating point data
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

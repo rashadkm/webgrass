@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.access">
+	<label>
+		Controls access to the current mapset for other users on the system.
+	</label>
+	<description>
+		If no option given, prints current status.
+	</description>
+	<keywords>
+		general, map management, permission
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Access for group
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="other" type="string" required="no" multiple="no">
+		<description>
+			Access for others
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.access">
+	<label>
+		Controls access to the current mapset for other users on the system.
+	</label>
+	<description>
+		If no option given, prints current status.
+	</description>
+	<keywords>
+		general, map management, permission
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Access for group
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="other" type="string" required="no" multiple="no">
+		<description>
+			Access for others
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.access">
+	<label>
+		Controls access to the current mapset for other users on the system.
+	</label>
+	<description>
+		If no option given, prints current status.
+	</description>
+	<keywords>
+		general, map management, permission
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Access for group
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="other" type="string" required="no" multiple="no">
+		<description>
+			Access for others
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.access">
+	<label>
+		Controls access to the current mapset for other users on the system.
+	</label>
+	<description>
+		If no option given, prints current status.
+	</description>
+	<keywords>
+		general, map management, permission
+	</keywords>
+	<parameter name="group" type="string" required="no" multiple="no">
+		<description>
+			Access for group
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="other" type="string" required="no" multiple="no">
+		<description>
+			Access for others
+		</description>
+		<values>
+			<value>
+				<name>grant</name>
+			</value>
+			<value>
+				<name>revoke</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

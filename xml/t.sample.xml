@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.sample">
+	<description>
+		Samples the input space time dataset(s) with a sample space time dataset and print the result to stdout.
+	</description>
+	<keywords>
+		temporal, sampling, time
+	</keywords>
+	<parameter name="inputs" type="string" required="yes" multiple="yes">
+		<description>
+			Name of the input space time datasets
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="sample" type="string" required="yes" multiple="no">
+		<description>
+			Name of the sample space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stds" prompt="stds" />
+	</parameter>
+	<parameter name="intype" type="string" required="no" multiple="no">
+		<description>
+			Type of the input space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+		<guisection>
+			Required
+		</guisection>
+	</parameter>
+	<parameter name="samtype" type="string" required="no" multiple="no">
+		<description>
+			Type of the sample space time dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			strds
+		</default>
+		<values>
+			<value>
+				<name>strds</name>
+			</value>
+			<value>
+				<name>stvds</name>
+			</value>
+			<value>
+				<name>str3ds</name>
+			</value>
+		</values>
+		<guisection>
+			Required
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="yes">
+		<description>
+			The method to be used for sampling the input dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			during,overlap,contain,equal
+		</default>
+		<values>
+			<value>
+				<name>start</name>
+			</value>
+			<value>
+				<name>during</name>
+			</value>
+			<value>
+				<name>overlap</name>
+			</value>
+			<value>
+				<name>contain</name>
+			</value>
+			<value>
+				<name>equal</name>
+			</value>
+			<value>
+				<name>follows</name>
+			</value>
+			<value>
+				<name>precedes</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Do not use "," as this char is reserved to list several map ids in a sample granule
+		</label>
+		<description>
+			Field separator between output columns, default is tabular " | "
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+	</parameter>
+	<flag name="c">
+		<description>
+			Print the column names as first row
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Check spatial overlap
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.lrs.where">
+	<description>
+		Finds line id and real km+offset for given points in vector map using linear reference system.
+	</description>
+	<keywords>
+		vector, linear reference system, network
+	</keywords>
+	<parameter name="lines" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Input vector map containing lines
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="points" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map
+		</label>
+		<description>
+			Input vector map containing points
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="llayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Line layer
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="player" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Point layer
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="rsdriver" type="string" required="no" multiple="no">
+		<description>
+			Driver name for reference system table
+		</description>
+		<default>
+			sqlite
+		</default>
+		<values>
+			<value>
+				<name>odbc</name>
+			</value>
+			<value>
+				<name>pg</name>
+			</value>
+			<value>
+				<name>sqlite</name>
+			</value>
+			<value>
+				<name>mysql</name>
+			</value>
+			<value>
+				<name>dbf</name>
+			</value>
+			<value>
+				<name>ogr</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="rsdatabase" type="string" required="no" multiple="no">
+		<description>
+			Database name for reference system table
+		</description>
+		<default>
+			$GISDBASE/$LOCATION_NAME/$MAPSET/sqlite/sqlite.db
+		</default>
+	</parameter>
+	<parameter name="rstable" type="string" required="yes" multiple="no">
+		<description>
+			Name of the reference system table
+		</description>
+	</parameter>
+	<parameter name="threshold" type="float" required="no" multiple="no">
+		<description>
+			Maximum distance to nearest line
+		</description>
+		<default>
+			1000
+		</default>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.ascii">
+	<description>
+		Converts a raster map layer into a GRASS ASCII text file.
+	</description>
+	<keywords>
+		raster, export, ASCII
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Name for output ASCII grid map (use out=- for stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="precision" type="integer" required="no" multiple="no">
+		<description>
+			Number of significant digits (floating point only)
+		</description>
+	</parameter>
+	<parameter name="width" type="integer" required="no" multiple="no">
+		<description>
+			Number of values printed before wrapping a line (only SURFER or MODFLOW format)
+		</description>
+	</parameter>
+	<parameter name="null_value" type="string" required="no" multiple="no">
+		<description>
+			String to represent null cell (GRASS grid only)
+		</description>
+		<keydesc>
+			<item order="1">string</item>
+		</keydesc>
+		<default>
+			*
+		</default>
+	</parameter>
+	<flag name="h">
+		<description>
+			Suppress printing of header information
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Write SURFER (Golden Software) ASCII grid
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Write MODFLOW (USGS) ASCII array
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Force output of integer values
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

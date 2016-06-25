@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.statistics">
+	<description>
+		Calculates category or object oriented statistics.
+	</description>
+	<keywords>
+		raster, statistics, zonal statistics
+	</keywords>
+	<parameter name="base" type="string" required="yes" multiple="no">
+		<description>
+			Name of base raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cover" type="string" required="yes" multiple="no">
+		<description>
+			Name of cover raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Method of object-based statistic
+		</description>
+		<values>
+			<value>
+				<name>diversity</name>
+				<description>Diversity of values in specified objects in %%</description>
+			</value>
+			<value>
+				<name>average</name>
+				<description>Average of values in specified objects</description>
+			</value>
+			<value>
+				<name>mode</name>
+				<description>Mode of values in specified objects</description>
+			</value>
+			<value>
+				<name>median</name>
+				<description>Median of values in specified objects</description>
+			</value>
+			<value>
+				<name>avedev</name>
+				<description>Average deviation of values in specified objects</description>
+			</value>
+			<value>
+				<name>stddev</name>
+				<description>Standard deviation of values in specified objects</description>
+			</value>
+			<value>
+				<name>variance</name>
+				<description>Variance of values in specified objects</description>
+			</value>
+			<value>
+				<name>skewness</name>
+				<description>Skewnes of values in specified objects</description>
+			</value>
+			<value>
+				<name>kurtosis</name>
+				<description>Kurtosis of values in specified objects</description>
+			</value>
+			<value>
+				<name>min</name>
+				<description>Minimum of values in specified objects</description>
+			</value>
+			<value>
+				<name>max</name>
+				<description>Maximum of values in specified objects</description>
+			</value>
+			<value>
+				<name>sum</name>
+				<description>Sum of values in specified objects</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Resultant raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Cover values extracted from the category labels of the cover map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

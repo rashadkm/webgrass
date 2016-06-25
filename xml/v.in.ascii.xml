@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.ascii">
+	<description>
+		Creates a vector map from an ASCII points file or ASCII vector file.
+	</description>
+	<keywords>
+		vector, import, ASCII
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<label>
+			Name of input file to be imported
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Input file format
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+				<description>simple x,y[,z] list</description>
+			</value>
+			<value>
+				<name>standard</name>
+				<description>GRASS vector ASCII format</description>
+			</value>
+		</values>
+		<guisection>
+			Input format
+		</guisection>
+	</parameter>
+	<parameter name="separator" type="string" required="no" multiple="no">
+		<label>
+			Field separator
+		</label>
+		<description>
+			Special characters: pipe, comma, space, tab, newline
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			pipe
+		</default>
+		<guisection>
+			Input format
+		</guisection>
+	</parameter>
+	<parameter name="text" type="string" required="no" multiple="no">
+		<label>
+			Text delimiter
+		</label>
+		<description>
+			Special characters: doublequote, singlequote
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<gisprompt age="old" element="separator" prompt="separator" />
+		<default>
+			doublequote
+		</default>
+		<guisection>
+			Input format
+		</guisection>
+	</parameter>
+	<parameter name="skip" type="integer" required="no" multiple="no">
+		<description>
+			Number of header lines to skip at top of input file (points mode)
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="no">
+		<label>
+			Column definition in SQL style (points mode)
+		</label>
+		<description>
+			For example: 'x double precision, y double precision, cat int, name varchar(10)'
+		</description>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="x" type="integer" required="no" multiple="no">
+		<label>
+			Number of column used as x coordinate (points mode)
+		</label>
+		<description>
+			First column is 1
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="y" type="integer" required="no" multiple="no">
+		<label>
+			Number of column used as y coordinate (points mode)
+		</label>
+		<description>
+			First column is 1
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="z" type="integer" required="no" multiple="no">
+		<label>
+			Number of column used as z coordinate (points mode)
+		</label>
+		<description>
+			First column is 1. If 0, z coordinate is not used
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<parameter name="cat" type="integer" required="no" multiple="no">
+		<label>
+			Number of column used as category (points mode)
+		</label>
+		<description>
+			First column is 1. If 0, unique category is assigned to each row and written to new column 'cat'
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Points
+		</guisection>
+	</parameter>
+	<flag name="z">
+		<description>
+			Create 3D vector map
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Create a new empty vector map and exit. Nothing is read from input.
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not expect a header when reading in standard format
+		</description>
+ 		<guisection>
+			Input format
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not create table in points mode
+		</description>
+ 		<guisection>
+			Points
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Do not build topology in points mode
+		</description>
+ 		<guisection>
+			Points
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Only import points falling within current region (points mode)
+		</description>
+ 		<guisection>
+			Points
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Ignore broken line(s) in points mode
+		</description>
+ 		<guisection>
+			Points
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

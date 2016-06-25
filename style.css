@@ -10,31 +10,60 @@
     height: 100vh; 
 }
 
-.startup-selectionbox {
+.wgrass-startup-selectionbox {
 /*    background-color: #65dae8; */
 /*    height: 60vh; */
     text-align: left;
     padding-bottom: 0px;    
 }
 
-.banner {
-    margin:0 auto; 
-    margin-left: 2.6%;
-    margin-right: 0.1%;
-/*   padding-left: 3%;
-   padding-right: 2%;*/
-    max-width: 100%;
+.wgrass-startup-banner {
+  margin:0 auto;
+  margin-left: 2.6%;
+  margin-right: 0.1%;
+  max-width: 100%;
   height: auto;
   width: auto\9; /* IE8 */
+}
 
+.wgrass-data-dir {
+  margin:0 auto; 
+  max-width: 100%;
+  height: auto;
+  width: auto\9; 
+}
+.wgrass-text-label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.wgrass-start-button {
+  width:200px;
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+  margin-right: 10px;  
+  float: right;
+  max-width: 100%;
+  height: auto;
+  width: auto\9; 
+}
+
+.wgrass-module-tab {
+    margin:0 auto; /* this will center the page */
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 70vh; 
 }
 
 .wgrass-toolbar-icons {
-    text-indent:-999px;
-    background-repeat: no-repeat;
-    margin-right: 3px;
+     text-indent:-999px;
+     background-repeat: no-repeat;
+     margin-right: 3px;
 }
 
 .wgrass-toolbar-icons:hover{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

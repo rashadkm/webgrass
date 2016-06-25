@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.out.netcdf">
+	<description>
+		Export a 3D raster map as netCDF file.
+	</description>
+	<keywords>
+		raster3d, export, netCDF, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for netCDF output file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			The value to be used for null values, default is the netCDF standard
+		</description>
+	</parameter>
+	<flag name="p">
+		<description>
+			Export projection information as wkt and proj4 parameter
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Use 3D raster mask (if exists) with input map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

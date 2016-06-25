@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.export">
+	<description>
+		Exports space time raster dataset.
+	</description>
+	<keywords>
+		temporal, export, raster, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of a space time raster dataset archive
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="file" prompt="file" />
+	</parameter>
+	<parameter name="directory" type="string" required="no" multiple="no">
+		<description>
+			Path to the work directory, default is /tmp
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dir" prompt="dir" />
+		<default>
+			/tmp
+		</default>
+	</parameter>
+	<parameter name="compression" type="string" required="no" multiple="no">
+		<description>
+			Compression method of the tar archive
+		</description>
+		<default>
+			bzip2
+		</default>
+		<values>
+			<value>
+				<name>no</name>
+			</value>
+			<value>
+				<name>gzip</name>
+			</value>
+			<value>
+				<name>bzip2</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<label>
+			The export format of a single raster map
+		</label>
+		<description>
+			Supported are GTiff, AAIGrid via r.out.gdal and the GRASS package format of r.pack
+		</description>
+		<default>
+			GTiff
+		</default>
+		<values>
+			<value>
+				<name>GTiff</name>
+			</value>
+			<value>
+				<name>AAIGrid</name>
+			</value>
+			<value>
+				<name>pack</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework
+		</label>
+		<description>
+			Example: start_time &gt; '2001-01-01 12:30:00'
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

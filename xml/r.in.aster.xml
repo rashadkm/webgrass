@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.aster">
+	<description>
+		Georeference, rectify, and import Terra-ASTER imagery and relative DEMs using gdalwarp.
+	</description>
+	<keywords>
+		raster, import, imagery, Terra-ASTER
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input ASTER image
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+	</parameter>
+	<parameter name="proctype" type="string" required="yes" multiple="no">
+		<description>
+			ASTER imagery processing type (Level 1A, Level 1B, or relative DEM)
+		</description>
+		<default>
+			L1B
+		</default>
+		<values>
+			<value>
+				<name>L1A</name>
+			</value>
+			<value>
+				<name>L1B</name>
+			</value>
+			<value>
+				<name>DEM</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="band" type="string" required="yes" multiple="no">
+		<description>
+			List L1A or L1B band to translate (1,2,3n,...), or enter 'all' to translate all bands
+		</description>
+		<default>
+			all
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Base name for output raster map (band number will be appended to base name)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.proj">
+	<label>
+		Prints or modifies GRASS projection information files (in various co-ordinate system descriptions).
+	</label>
+	<description>
+		Can also be used to create new GRASS locations.
+	</description>
+	<keywords>
+		general, projection, create location
+	</keywords>
+	<parameter name="georef" type="string" required="no" multiple="no">
+		<description>
+			Name of georeferenced data file to read projection information from
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="wkt" type="string" required="no" multiple="no">
+		<label>
+			Name of ASCII file containing a WKT projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="proj4" type="string" required="no" multiple="no">
+		<label>
+			PROJ.4 projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">params</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="epsg" type="integer" required="no" multiple="no">
+		<description>
+			EPSG projection code
+		</description>
+		<keydesc>
+			<item order="1">code</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>1-1000000</name>
+			</value>
+		</values>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="datum" type="string" required="no" multiple="no">
+		<label>
+			Datum (overrides any datum specified in input co-ordinate system)
+		</label>
+		<description>
+			Accepts standard GRASS datum codes, or "list" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="datum_trans" type="integer" required="no" multiple="no">
+		<label>
+			Index number of datum transform parameters
+		</label>
+		<description>
+			"0" for unspecified or "-1" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">index</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>-1-100</name>
+			</value>
+		</values>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name of new location to create
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Create
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print projection information in conventional GRASS format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print projection information in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Verify datum information and print transformation parameters
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			Print projection information in PROJ.4 format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Print 'flat' output with no linebreaks (applies to WKT and PROJ.4 output)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print projection information in WKT format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use ESRI-style format (applies to WKT output only)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Force override of datum transformation information in input co-ordinate system
+		</description>
+ 		<guisection>
+			Datum
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Modify current location projection files
+		</description>
+ 		<guisection>
+			Modify
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.proj">
+	<label>
+		Prints or modifies GRASS projection information files (in various co-ordinate system descriptions).
+	</label>
+	<description>
+		Can also be used to create new GRASS locations.
+	</description>
+	<keywords>
+		general, projection, create location
+	</keywords>
+	<parameter name="georef" type="string" required="no" multiple="no">
+		<description>
+			Name of georeferenced data file to read projection information from
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="wkt" type="string" required="no" multiple="no">
+		<label>
+			Name of ASCII file containing a WKT projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="proj4" type="string" required="no" multiple="no">
+		<label>
+			PROJ.4 projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">params</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="epsg" type="integer" required="no" multiple="no">
+		<description>
+			EPSG projection code
+		</description>
+		<keydesc>
+			<item order="1">code</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>1-1000000</name>
+			</value>
+		</values>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="datum" type="string" required="no" multiple="no">
+		<label>
+			Datum (overrides any datum specified in input co-ordinate system)
+		</label>
+		<description>
+			Accepts standard GRASS datum codes, or "list" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="datum_trans" type="integer" required="no" multiple="no">
+		<label>
+			Index number of datum transform parameters
+		</label>
+		<description>
+			"0" for unspecified or "-1" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">index</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>-1-100</name>
+			</value>
+		</values>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name of new location to create
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Create
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print projection information in conventional GRASS format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print projection information in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Verify datum information and print transformation parameters
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			Print projection information in PROJ.4 format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Print 'flat' output with no linebreaks (applies to WKT and PROJ.4 output)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print projection information in WKT format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use ESRI-style format (applies to WKT output only)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Force override of datum transformation information in input co-ordinate system
+		</description>
+ 		<guisection>
+			Datum
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Modify current location projection files
+		</description>
+ 		<guisection>
+			Modify
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.proj">
+	<label>
+		Prints or modifies GRASS projection information files (in various co-ordinate system descriptions).
+	</label>
+	<description>
+		Can also be used to create new GRASS locations.
+	</description>
+	<keywords>
+		general, projection, create location
+	</keywords>
+	<parameter name="georef" type="string" required="no" multiple="no">
+		<description>
+			Name of georeferenced data file to read projection information from
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="wkt" type="string" required="no" multiple="no">
+		<label>
+			Name of ASCII file containing a WKT projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="proj4" type="string" required="no" multiple="no">
+		<label>
+			PROJ.4 projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">params</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="epsg" type="integer" required="no" multiple="no">
+		<description>
+			EPSG projection code
+		</description>
+		<keydesc>
+			<item order="1">code</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>1-1000000</name>
+			</value>
+		</values>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="datum" type="string" required="no" multiple="no">
+		<label>
+			Datum (overrides any datum specified in input co-ordinate system)
+		</label>
+		<description>
+			Accepts standard GRASS datum codes, or "list" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="datum_trans" type="integer" required="no" multiple="no">
+		<label>
+			Index number of datum transform parameters
+		</label>
+		<description>
+			"0" for unspecified or "-1" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">index</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>-1-100</name>
+			</value>
+		</values>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name of new location to create
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Create
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print projection information in conventional GRASS format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print projection information in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Verify datum information and print transformation parameters
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			Print projection information in PROJ.4 format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Print 'flat' output with no linebreaks (applies to WKT and PROJ.4 output)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print projection information in WKT format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use ESRI-style format (applies to WKT output only)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Force override of datum transformation information in input co-ordinate system
+		</description>
+ 		<guisection>
+			Datum
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Modify current location projection files
+		</description>
+ 		<guisection>
+			Modify
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.proj">
+	<label>
+		Prints or modifies GRASS projection information files (in various co-ordinate system descriptions).
+	</label>
+	<description>
+		Can also be used to create new GRASS locations.
+	</description>
+	<keywords>
+		general, projection, create location
+	</keywords>
+	<parameter name="georef" type="string" required="no" multiple="no">
+		<description>
+			Name of georeferenced data file to read projection information from
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="wkt" type="string" required="no" multiple="no">
+		<label>
+			Name of ASCII file containing a WKT projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">file</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="proj4" type="string" required="no" multiple="no">
+		<label>
+			PROJ.4 projection description
+		</label>
+		<description>
+			'-' for standard input
+		</description>
+		<keydesc>
+			<item order="1">params</item>
+		</keydesc>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="epsg" type="integer" required="no" multiple="no">
+		<description>
+			EPSG projection code
+		</description>
+		<keydesc>
+			<item order="1">code</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>1-1000000</name>
+			</value>
+		</values>
+		<guisection>
+			Specification
+		</guisection>
+	</parameter>
+	<parameter name="datum" type="string" required="no" multiple="no">
+		<label>
+			Datum (overrides any datum specified in input co-ordinate system)
+		</label>
+		<description>
+			Accepts standard GRASS datum codes, or "list" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="datum_trans" type="integer" required="no" multiple="no">
+		<label>
+			Index number of datum transform parameters
+		</label>
+		<description>
+			"0" for unspecified or "-1" to list and exit
+		</description>
+		<keydesc>
+			<item order="1">index</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>-1-100</name>
+			</value>
+		</values>
+		<guisection>
+			Datum
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Name of new location to create
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Create
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Print projection information in conventional GRASS format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print projection information in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Verify datum information and print transformation parameters
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="j">
+		<description>
+			Print projection information in PROJ.4 format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Print 'flat' output with no linebreaks (applies to WKT and PROJ.4 output)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Print projection information in WKT format
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Use ESRI-style format (applies to WKT output only)
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Force override of datum transformation information in input co-ordinate system
+		</description>
+ 		<guisection>
+			Datum
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Modify current location projection files
+		</description>
+ 		<guisection>
+			Modify
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

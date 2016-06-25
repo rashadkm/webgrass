@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.animation">
+	<description>
+		Tool for animating a series of raster and vector maps or a space time raster or vector dataset.
+	</description>
+	<keywords>
+		general, GUI, display, animation
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Raster maps to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Vector maps to animate
+		</label>
+		<description>
+			Or data source(s) for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="no">
+		<description>
+			Space time raster dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="stvds" type="string" required="no" multiple="no">
+		<description>
+			Space time vector dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.animation">
+	<description>
+		Tool for animating a series of raster and vector maps or a space time raster or vector dataset.
+	</description>
+	<keywords>
+		general, GUI, display, animation
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Raster maps to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Vector maps to animate
+		</label>
+		<description>
+			Or data source(s) for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="no">
+		<description>
+			Space time raster dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="stvds" type="string" required="no" multiple="no">
+		<description>
+			Space time vector dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.animation">
+	<description>
+		Tool for animating a series of raster and vector maps or a space time raster or vector dataset.
+	</description>
+	<keywords>
+		general, GUI, display, animation
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Raster maps to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Vector maps to animate
+		</label>
+		<description>
+			Or data source(s) for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="no">
+		<description>
+			Space time raster dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="stvds" type="string" required="no" multiple="no">
+		<description>
+			Space time vector dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="g.gui.animation">
+	<description>
+		Tool for animating a series of raster and vector maps or a space time raster or vector dataset.
+	</description>
+	<keywords>
+		general, GUI, display, animation
+	</keywords>
+	<parameter name="raster" type="string" required="no" multiple="yes">
+		<description>
+			Raster maps to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="vector" type="string" required="no" multiple="yes">
+		<label>
+			Vector maps to animate
+		</label>
+		<description>
+			Or data source(s) for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="strds" type="string" required="no" multiple="no">
+		<description>
+			Space time raster dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="stvds" type="string" required="no" multiple="no">
+		<description>
+			Space time vector dataset to animate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="stvds" prompt="stvds" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

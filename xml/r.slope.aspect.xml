@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.slope.aspect">
+	<label>
+		Generates raster maps of slope, aspect, curvatures and partial derivatives from an elevation raster map.
+	</label>
+	<description>
+		Aspect is calculated counterclockwise from east.
+	</description>
+	<keywords>
+		raster, terrain, aspect, slope, curvature
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Name of input elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="slope" type="string" required="no" multiple="no">
+		<description>
+			Name for output slope raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Name for output aspect raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Format for reporting the slope
+		</description>
+		<default>
+			degrees
+		</default>
+		<values>
+			<value>
+				<name>degrees</name>
+			</value>
+			<value>
+				<name>percent</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="precision" type="string" required="no" multiple="no">
+		<description>
+			Type of output aspect and slope maps
+		</description>
+		<default>
+			FCELL
+		</default>
+		<values>
+			<value>
+				<name>CELL</name>
+			</value>
+			<value>
+				<name>FCELL</name>
+			</value>
+			<value>
+				<name>DCELL</name>
+			</value>
+		</values>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="pcurvature" type="string" required="no" multiple="no">
+		<description>
+			Name for output profile curvature raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="tcurvature" type="string" required="no" multiple="no">
+		<description>
+			Name for output tangential curvature raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="dx" type="string" required="no" multiple="no">
+		<description>
+			Name for output first order partial derivative dx (E-W slope) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="dy" type="string" required="no" multiple="no">
+		<description>
+			Name for output first order partial derivative dy (N-S slope) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="dxx" type="string" required="no" multiple="no">
+		<description>
+			Name for output second order partial derivative dxx raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="dyy" type="string" required="no" multiple="no">
+		<description>
+			Name for output second order partial derivative dyy raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="dxy" type="string" required="no" multiple="no">
+		<description>
+			Name for output second order partial derivative dxy raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Multiplicative factor to convert elevation units to horizontal units
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<parameter name="min_slope" type="float" required="no" multiple="no">
+		<description>
+			Minimum slope value (in percent) for which aspect is computed
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Settings
+		</guisection>
+	</parameter>
+	<flag name="a">
+		<description>
+			Do not align the current region to the raster elevation map
+		</description>
+ 		<guisection>
+			Settings
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r3.in.bin">
+	<description>
+		Imports a binary raster file into a GRASS 3D raster map.
+	</description>
+	<keywords>
+		raster3d, import, voxel
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of binary 3D raster file to be imported
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="bin" prompt="file" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output 3D raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="grid3" prompt="raster_3d" />
+	</parameter>
+	<parameter name="bytes" type="integer" required="yes" multiple="no">
+		<description>
+			Number of bytes per cell in binary file
+		</description>
+		<values>
+			<value>
+				<name>1</name>
+			</value>
+			<value>
+				<name>2</name>
+			</value>
+			<value>
+				<name>4</name>
+			</value>
+			<value>
+				<name>8</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="order" type="string" required="no" multiple="no">
+		<description>
+			Byte order in binary file
+		</description>
+		<default>
+			native
+		</default>
+		<values>
+			<value>
+				<name>big</name>
+			</value>
+			<value>
+				<name>little</name>
+			</value>
+			<value>
+				<name>native</name>
+			</value>
+			<value>
+				<name>swap</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="north" type="float" required="yes" multiple="no">
+		<description>
+			Northern limit of geographic region (outer edge)
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="south" type="float" required="yes" multiple="no">
+		<description>
+			Southern limit of geographic region (outer edge)
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="east" type="float" required="yes" multiple="no">
+		<description>
+			Eastern limit of geographic region (outer edge)
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="west" type="float" required="yes" multiple="no">
+		<description>
+			Western limit of geographic region (outer edge)
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="bottom" type="float" required="yes" multiple="no">
+		<description>
+			Bottom limit of geographic region (outer edge)
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="top" type="float" required="yes" multiple="no">
+		<description>
+			Top limit of geographic region (outer edge)
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="rows" type="integer" required="yes" multiple="no">
+		<description>
+			Number of rows
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="cols" type="integer" required="yes" multiple="no">
+		<description>
+			Number of columns
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="depths" type="integer" required="yes" multiple="no">
+		<description>
+			Number of depths
+		</description>
+		<guisection>
+			Bounds
+		</guisection>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Set Value to NULL
+		</description>
+	</parameter>
+	<flag name="r">
+		<description>
+			Switch the row order in output from north-&gt;south to south-&gt;north
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Switch the depth order in output from bottom-&gt;top to top-&gt;bottom
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Binary data is of type integer
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Signed data (two's complement)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

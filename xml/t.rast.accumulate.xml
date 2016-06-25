@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="t.rast.accumulate">
+	<description>
+		Computes cyclic accumulations of a space time raster dataset.
+	</description>
+	<keywords>
+		temporal, accumulation, raster, time
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of the input space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of the output space time raster dataset
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="lower" type="string" required="no" multiple="no">
+		<description>
+			Input space time raster dataset that defines the lower threshold, values lower this threshold are excluded from accumulation
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="upper" type="string" required="no" multiple="no">
+		<description>
+			Input space time raster dataset that defines the upper threshold, values upper this threshold are excluded from accumulation
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="strds" prompt="strds" />
+	</parameter>
+	<parameter name="start" type="string" required="yes" multiple="no">
+		<description>
+			The temporal starting point to begin the accumulation, eg '2001-01-01'
+		</description>
+	</parameter>
+	<parameter name="stop" type="string" required="no" multiple="no">
+		<description>
+			The temporal date to stop the accumulation, eg '2009-01-01'
+		</description>
+	</parameter>
+	<parameter name="cycle" type="string" required="yes" multiple="no">
+		<description>
+			The temporal cycle to restart the accumulation, eg '12 months'
+		</description>
+	</parameter>
+	<parameter name="offset" type="string" required="no" multiple="no">
+		<description>
+			The temporal offset to the begin of the next cycle, eg '6 months'
+		</description>
+	</parameter>
+	<parameter name="granularity" type="string" required="no" multiple="no">
+		<description>
+			The granularity for accumulation '1 day'
+		</description>
+		<default>
+			1 day
+		</default>
+	</parameter>
+	<parameter name="basename" type="string" required="yes" multiple="no">
+		<label>
+			Basename of the new generated output maps
+		</label>
+		<description>
+			A numerical suffix separated by an underscore will be attached to create a unique identifier
+		</description>
+		<gisprompt />
+	</parameter>
+	<parameter name="limits" type="float" required="no" multiple="no">
+		<description>
+			Use these limits in case lower and/or upper input  space time raster datasets are not defined
+		</description>
+		<keydesc>
+			<item order="1">lower</item>
+			<item order="2">upper</item>
+		</keydesc>
+	</parameter>
+	<parameter name="shift" type="float" required="no" multiple="no">
+		<description>
+			Scale factor for input space time raster dataset
+		</description>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Shift factor for input space time raster dataset
+		</description>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<label>
+			This method will be applied to compute the accumulative values from the input maps in a single granule
+		</label>
+		<description>
+			Growing Degree Days or Winkler indices; Mean: sum(input maps)/(number of input maps); Biologically Effective Degree Days; Huglin Heliothermal index
+		</description>
+		<default>
+			mean
+		</default>
+		<values>
+			<value>
+				<name>mean</name>
+			</value>
+			<value>
+				<name>gdd</name>
+			</value>
+			<value>
+				<name>bedd</name>
+			</value>
+			<value>
+				<name>huglin</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="n">
+		<description>
+			Register empty maps in the output space time raster dataset, otherwise they will be deleted
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Reverse time direction in cyclic accumulation
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="i.group">
+	<description>
+		Creates, edits, and lists groups of imagery data.
+	</description>
+	<keywords>
+		imagery, map management
+	</keywords>
+	<parameter name="group" type="string" required="yes" multiple="no">
+		<description>
+			Name of imagery group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="group" prompt="group" />
+	</parameter>
+	<parameter name="subgroup" type="string" required="no" multiple="no">
+		<description>
+			Name of imagery subgroup
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="subgroup" prompt="subgroup" />
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="yes">
+		<description>
+			Name of raster map(s) to include in group
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Maps
+		</guisection>
+	</parameter>
+	<flag name="r">
+		<description>
+			Remove selected files from specified group or subgroup
+		</description>
+ 		<guisection>
+			Maps
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			List files from specified (sub)group
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			List subgroups from specified group
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Print in shell script style
+		</description>
+ 		<guisection>
+			Print
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

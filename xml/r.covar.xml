@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.covar">
+	<description>
+		Outputs a covariance/correlation matrix for user-specified raster map layer(s).
+	</description>
+	<keywords>
+		raster, statistics
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="yes">
+		<description>
+			Name of raster map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="r">
+		<description>
+			Print correlation matrix
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

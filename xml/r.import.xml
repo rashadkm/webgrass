@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.import">
+	<description>
+		Imports raster data into a GRASS raster map using GDAL library and reprojects on the fly.
+	</description>
+	<keywords>
+		raster, import, projection
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of GDAL dataset to be imported
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="bin" prompt="file" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="band" type="integer" required="no" multiple="yes">
+		<description>
+			Input band(s) to select (default is all bands)
+		</description>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<label>
+			Maximum memory to be used (in MB)
+		</label>
+		<description>
+			Cache size for raster rows
+		</description>
+		<default>
+			300
+		</default>
+		<values>
+			<value>
+				<name>0-2047</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="resample" type="string" required="no" multiple="no">
+		<description>
+			Resampling method to use for reprojection
+		</description>
+		<default>
+			nearest
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+				<description>nearest neighbor</description>
+			</value>
+			<value>
+				<name>bilinear</name>
+				<description>bilinear interpolation</description>
+			</value>
+			<value>
+				<name>bicubic</name>
+				<description>bicubic interpolation</description>
+			</value>
+			<value>
+				<name>lanczos</name>
+				<description>lanczos filter</description>
+			</value>
+			<value>
+				<name>bilinear_f</name>
+				<description>bilinear interpolation with fallback</description>
+			</value>
+			<value>
+				<name>bicubic_f</name>
+				<description>bicubic interpolation with fallback</description>
+			</value>
+			<value>
+				<name>lanczos_f</name>
+				<description>lanczos filter with fallback</description>
+			</value>
+		</values>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="extent" type="string" required="no" multiple="no">
+		<description>
+			Output raster map extent
+		</description>
+		<default>
+			input
+		</default>
+		<values>
+			<value>
+				<name>input</name>
+				<description>extent of input map</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>extent of current region</description>
+			</value>
+		</values>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="resolution" type="string" required="no" multiple="no">
+		<description>
+			Resolution of output raster map (default: estimated)
+		</description>
+		<default>
+			estimated
+		</default>
+		<values>
+			<value>
+				<name>estimated</name>
+				<description>estimated resolution</description>
+			</value>
+			<value>
+				<name>value</name>
+				<description>user-specified resolution</description>
+			</value>
+			<value>
+				<name>region</name>
+				<description>current region resolution</description>
+			</value>
+		</values>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<parameter name="resolution_value" type="float" required="no" multiple="no">
+		<description>
+			Resolution of output raster map (use with option resolution=value)
+		</description>
+		<guisection>
+			Output
+		</guisection>
+	</parameter>
+	<flag name="e">
+		<description>
+			Estimate resolution only
+		</description>
+ 		<guisection>
+			Optional
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Do not perform region cropping optimization
+		</description>
+ 		<guisection>
+			Optional
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Force Lat/Lon maps to fit into geographic coordinates (90N,S; 180E,W)
+		</description>
+	</flag>
+	<flag name="o">
+		<label>
+			Override projection check (use current location's projection)
+		</label>
+		<description>
+			Assume that the dataset has same projection as the current location
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

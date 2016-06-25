@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.solute.transport">
+	<description>
+		Numerical calculation program for transient, confined and unconfined solute transport in two dimensions
+	</description>
+	<keywords>
+		raster, hydrology, solute transport
+	</keywords>
+	<parameter name="c" type="string" required="yes" multiple="no">
+		<description>
+			The initial concentration in [kg/m^3]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="phead" type="string" required="yes" multiple="no">
+		<description>
+			The piezometric head in [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="hc_x" type="string" required="yes" multiple="no">
+		<description>
+			The x-part of the hydraulic conductivity tensor in [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="hc_y" type="string" required="yes" multiple="no">
+		<description>
+			The y-part of the hydraulic conductivity tensor in [m/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="status" type="string" required="yes" multiple="no">
+		<description>
+			The status for each cell, = 0 - inactive cell, 1 - active cell, 2 - dirichlet- and 3 - transfer boundary condition
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="diff_x" type="string" required="yes" multiple="no">
+		<description>
+			The x-part of the diffusion tensor in [m^2/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="diff_y" type="string" required="yes" multiple="no">
+		<description>
+			The y-part of the diffusion tensor in [m^2/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="q" type="string" required="no" multiple="no">
+		<description>
+			Groundwater sources and sinks in [m^3/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Water flow
+		</guisection>
+	</parameter>
+	<parameter name="cin" type="string" required="no" multiple="no">
+		<description>
+			Concentration sources and sinks bounded to a water source or sink in [kg/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="raster" prompt="raster" />
+		<guisection>
+			Water flow
+		</guisection>
+	</parameter>
+	<parameter name="cs" type="string" required="yes" multiple="no">
+		<description>
+			Concentration of inner sources and inner sinks in [kg/s] (i.e. a chemical reaction)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="rd" type="string" required="yes" multiple="no">
+		<description>
+			Retardation factor [-]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="nf" type="string" required="yes" multiple="no">
+		<description>
+			Effective porosity [-]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="top" type="string" required="yes" multiple="no">
+		<description>
+			Top surface of the aquifer in [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="bottom" type="string" required="yes" multiple="no">
+		<description>
+			Bottom surface of the aquifer in [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			The resulting concentration of the numerical solute transport calculation will be written to this map. [kg/m^3]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="vx" type="string" required="no" multiple="no">
+		<description>
+			Calculate and store the groundwater filter velocity vector part in x direction [m/s]
+
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Water flow
+		</guisection>
+	</parameter>
+	<parameter name="vy" type="string" required="no" multiple="no">
+		<description>
+			Calculate and store the groundwater filter velocity vector part in y direction [m/s]
+
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Water flow
+		</guisection>
+	</parameter>
+	<parameter name="dtime" type="float" required="yes" multiple="no">
+		<description>
+			The calculation time in seconds
+		</description>
+		<default>
+			86400
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="maxit" type="integer" required="no" multiple="no">
+		<description>
+			Maximum number of iteration used to solve the linear equation system
+		</description>
+		<default>
+			10000
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="error" type="float" required="no" multiple="no">
+		<description>
+			Error break criteria for iterative solver
+		</description>
+		<default>
+			0.000001
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="solver" type="string" required="no" multiple="no">
+		<description>
+			The type of solver which should solve the linear equation system
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			bicgstab
+		</default>
+		<values>
+			<value>
+				<name>gauss</name>
+			</value>
+			<value>
+				<name>lu</name>
+			</value>
+			<value>
+				<name>jacobi</name>
+			</value>
+			<value>
+				<name>sor</name>
+			</value>
+			<value>
+				<name>bicgstab</name>
+			</value>
+		</values>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="relax" type="float" required="no" multiple="no">
+		<description>
+			The relaxation parameter used by the jacobi and sor solver for speedup or stabilizing
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Solver
+		</guisection>
+	</parameter>
+	<parameter name="al" type="float" required="no" multiple="no">
+		<description>
+			The longditudinal dispersivity length. [m]
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="at" type="float" required="no" multiple="no">
+		<description>
+			The transversal dispersivity length. [m]
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="loops" type="float" required="no" multiple="no">
+		<description>
+			Use this number of time loops if the CFL flag is off. The timestep will become dt/loops.
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="stab" type="string" required="no" multiple="no">
+		<description>
+			Set the flow stabilizing scheme (full or exponential upwinding).
+		</description>
+		<default>
+			full
+		</default>
+		<values>
+			<value>
+				<name>full</name>
+			</value>
+			<value>
+				<name>exp</name>
+			</value>
+		</values>
+		<guisection>
+			Stabelization
+		</guisection>
+	</parameter>
+	<flag name="f">
+		<description>
+			Use a full filled quadratic linear equation system, default is a sparse linear equation system.
+		</description>
+ 		<guisection>
+			Solver
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Use the Courant-Friedrichs-Lewy criteria for time step calculation
+		</description>
+ 		<guisection>
+			Stabelization
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.overlay">
+	<description>
+		Overlays two vector maps.
+	</description>
+	<keywords>
+		vector, geometry, spatial query, intersection, union, clip
+	</keywords>
+	<parameter name="ainput" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map (A)
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="alayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name (vector map A)
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="atype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map A)
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			auto
+		</default>
+		<values>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>auto</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="binput" type="string" required="yes" multiple="no">
+		<label>
+			Name of input vector map (B)
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="blayer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name (vector map B)
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="btype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map B)
+		</label>
+		<description>
+			Input feature type
+		</description>
+		<default>
+			area
+		</default>
+		<values>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="operator" type="string" required="yes" multiple="no">
+		<label>
+			Operator defines features written to output vector map
+		</label>
+		<description>
+			Feature is written to output if the result of operation 'ainput operator binput' is true. Input feature is considered to be true, if category of given layer is defined.
+		</description>
+		<values>
+			<value>
+				<name>and</name>
+				<description>also known as 'intersection' in GIS</description>
+			</value>
+			<value>
+				<name>or</name>
+				<description>also known as 'union' in GIS (only for atype=area)</description>
+			</value>
+			<value>
+				<name>not</name>
+				<description>features from ainput not overlayed by features from binput</description>
+			</value>
+			<value>
+				<name>xor</name>
+				<description>features from either ainput or binput but not those from ainput overlayed by binput (only for atype=area)</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="olayer" type="string" required="no" multiple="yes">
+		<label>
+			Output layer for new category, ainput and binput
+		</label>
+		<description>
+			If 0 or not given, the category is not written
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1,0,0
+		</default>
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<parameter name="snap" type="float" required="no" multiple="no">
+		<label>
+			Snapping threshold for boundaries
+		</label>
+		<description>
+			Disable snapping with snap &lt;= 0
+		</description>
+		<default>
+			1e-8
+		</default>
+	</parameter>
+	<flag name="t">
+		<description>
+			Do not create attribute table
+		</description>
+ 		<guisection>
+			Attributes
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

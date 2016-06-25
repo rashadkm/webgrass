@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.mapcalc">
+	<description>
+		Raster map calculator.
+	</description>
+	<keywords>
+		raster, algebra
+	</keywords>
+	<parameter name="expression" type="string" required="no" multiple="no">
+		<description>
+			Expression to evaluate
+		</description>
+		<guisection>
+			Expression
+		</guisection>
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<description>
+			File containing expression(s) to evaluate
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="file" prompt="file" />
+		<guisection>
+			Expression
+		</guisection>
+	</parameter>
+	<parameter name="seed" type="integer" required="no" multiple="no">
+		<description>
+			Seed for rand() function
+		</description>
+	</parameter>
+	<flag name="s">
+		<description>
+			Generate random seed (result is non-deterministic)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

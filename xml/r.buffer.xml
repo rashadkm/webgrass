@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.buffer">
+	<description>
+		Creates a raster map showing buffer zones surrounding cells that contain non-NULL category values.
+	</description>
+	<keywords>
+		raster, buffer
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name for output raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="distances" type="float" required="yes" multiple="yes">
+		<description>
+			Distance zone(s)
+		</description>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<description>
+			Units of distance
+		</description>
+		<default>
+			meters
+		</default>
+		<values>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>miles</name>
+			</value>
+			<value>
+				<name>nautmiles</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="z">
+		<description>
+			Ignore zero (0) data cells instead of NULL cells
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Allow output files to overwrite existing files
+		</description>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

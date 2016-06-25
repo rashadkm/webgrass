@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.report">
+	<description>
+		Reports geometry statistics for vector maps.
+	</description>
+	<keywords>
+		vector, geometry, statistics
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="option" type="string" required="yes" multiple="no">
+		<description>
+			Value to calculate
+		</description>
+		<values>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>length</name>
+			</value>
+			<value>
+				<name>coor</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<description>
+			Units
+		</description>
+		<values>
+			<value>
+				<name>miles</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>acres</name>
+			</value>
+			<value>
+				<name>hectares</name>
+			</value>
+			<value>
+				<name>percent</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="sort" type="string" required="no" multiple="no">
+		<description>
+			Sort the result
+		</description>
+		<values>
+			<value>
+				<name>asc</name>
+				<description>Sort in ascending order</description>
+			</value>
+			<value>
+				<name>desc</name>
+				<description>Sort in descending order</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>

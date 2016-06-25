@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.label">
+	<description>
+		Creates paint labels for a vector map from attached attributes.
+	</description>
+	<keywords>
+		vector, paint labels
+	</keywords>
+	<parameter name="labels" type="string" required="no" multiple="no">
+		<label>
+			Name for new paint-label file
+		</label>
+		<description>
+			If not given the name of the input map is used
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+	</parameter>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<label>
+			Name of vector map
+		</label>
+		<description>
+			Or data source for direct OGR access
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Name of attribute column to be used for labels
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Input feature type
+		</description>
+		<default>
+			point,line,boundary,centroid
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="no">
+		<label>
+			Layer number or name
+		</label>
+		<description>
+			Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.
+		</description>
+		<gisprompt age="old" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			WHERE conditions of SQL statement without 'where' keyword
+		</label>
+		<description>
+			Example: income &lt; 1000 and inhab &gt;= 10000
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="xoffset" type="float" required="no" multiple="no">
+		<description>
+			Offset label in x-direction
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Placement
+		</guisection>
+	</parameter>
+	<parameter name="yoffset" type="float" required="no" multiple="no">
+		<description>
+			Offset label in y-direction
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Placement
+		</guisection>
+	</parameter>
+	<parameter name="reference" type="string" required="no" multiple="yes">
+		<description>
+			Reference position
+		</description>
+		<default>
+			center
+		</default>
+		<values>
+			<value>
+				<name>center</name>
+			</value>
+			<value>
+				<name>left</name>
+			</value>
+			<value>
+				<name>right</name>
+			</value>
+			<value>
+				<name>upper</name>
+			</value>
+			<value>
+				<name>lower</name>
+			</value>
+		</values>
+		<guisection>
+			Placement
+		</guisection>
+	</parameter>
+	<parameter name="font" type="string" required="no" multiple="no">
+		<description>
+			Font name
+		</description>
+		<default>
+			standard
+		</default>
+		<guisection>
+			Font
+		</guisection>
+	</parameter>
+	<parameter name="size" type="float" required="no" multiple="no">
+		<description>
+			Label size (in map-units)
+		</description>
+		<default>
+			100
+		</default>
+		<guisection>
+			Font
+		</guisection>
+	</parameter>
+	<parameter name="space" type="float" required="no" multiple="no">
+		<description>
+			Space between letters for curled labels (in map-units)
+		</description>
+		<guisection>
+			Font
+		</guisection>
+	</parameter>
+	<parameter name="fontsize" type="integer" required="no" multiple="no">
+		<description>
+			Label size (in points)
+		</description>
+		<values>
+			<value>
+				<name>1-1000</name>
+			</value>
+		</values>
+		<guisection>
+			Font
+		</guisection>
+	</parameter>
+	<parameter name="color" type="string" required="no" multiple="no">
+		<label>
+			Text color
+		</label>
+		<description>
+			Either a standard color name or R:G:B triplet
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color" prompt="color" />
+		<default>
+			black
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="rotation" type="float" required="no" multiple="no">
+		<description>
+			Rotation angle in degrees (counter-clockwise)
+		</description>
+		<keydesc>
+			<item order="1">angle</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+		<values>
+			<value>
+				<name>0-360</name>
+			</value>
+		</values>
+		<guisection>
+			Placement
+		</guisection>
+	</parameter>
+	<parameter name="width" type="float" required="no" multiple="no">
+		<description>
+			Border width
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>0-25</name>
+			</value>
+		</values>
+		<guisection>
+			Effects
+		</guisection>
+	</parameter>
+	<parameter name="highlight_color" type="string" required="no" multiple="no">
+		<label>
+			Highlight color for text
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+		<default>
+			none
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="highlight_width" type="float" required="no" multiple="no">
+		<description>
+			Width of highlight coloring
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Effects
+		</guisection>
+	</parameter>
+	<parameter name="bgcolor" type="string" required="no" multiple="no">
+		<label>
+			Background color
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+		<default>
+			none
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="border" type="string" required="no" multiple="no">
+		<label>
+			Border color
+		</label>
+		<description>
+			Either a standard color name, R:G:B triplet, or "none"
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="color_none" prompt="color" />
+		<default>
+			none
+		</default>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<parameter name="opaque" type="string" required="no" multiple="no">
+		<description>
+			Opaque to vector (only relevant if background color is selected)
+		</description>
+		<keydesc>
+			<item order="1">yes|no</item>
+		</keydesc>
+		<default>
+			yes
+		</default>
+		<values>
+			<value>
+				<name>yes</name>
+			</value>
+			<value>
+				<name>no</name>
+			</value>
+		</values>
+		<guisection>
+			Colors
+		</guisection>
+	</parameter>
+	<flag name="a">
+		<description>
+			Rotate labels to align with lines
+		</description>
+ 		<guisection>
+			Effects
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Curl labels along lines
+		</description>
+ 		<guisection>
+			Effects
+		</guisection>
+	</flag>
+	<flag name="help">
+		<description>
+			Print usage summary
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Verbose module output
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Quiet module output
+		</description>
+	</flag>
+</task>
