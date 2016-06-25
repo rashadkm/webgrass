@@ -72,9 +72,12 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
               strcpy(ptr,j.c_str()); 
               vague_pointer= static_cast<void*>(ptr);
 
+
+
               Wt::WMenuItem *item = nextLevel->addItem(menu_items_menu_items_menuitem_node.child_value("label"));
               item->setData(vague_pointer);
               item->triggered().connect(this, &MainUI::click);
+              
 
                 menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
              }
