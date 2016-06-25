@@ -28,8 +28,7 @@ private:
 
 
   WSelectionBox *WtSelectionBoxDisplay;
-  WContainerWidget *unameWidget;
-  Wt::WToolBar *d_ToolBar;
+  Wt::WToolBar *m_ToolBar;
 
   void addDisplayToolButton(std::string id,
         std::string tip);

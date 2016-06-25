@@ -11,7 +11,7 @@ Display::addDisplayToolButton(const std::string id, const std::string tip)  {
   toolButton->setMargin(3, Wt::Right);
   toolButton->setId("wgrass-tool-" + id);
   toolButton->resize(20, 30); //can we put this in css?
-  d_ToolBar->addButton(toolButton);
+  m_ToolBar->addButton(toolButton);
   
 }
 
@@ -31,7 +31,7 @@ Display::Display(WContainerWidget *parent=0)
   WtSelectionBoxDisplay->resize(5000,500);
 
 
-  d_ToolBar = new Wt::WToolBar();
+  m_ToolBar = new Wt::WToolBar();
 
   addDisplayToolButton("show", "Display map");
   addDisplayToolButton("layer-redraw", "layer redraw");
@@ -49,7 +49,7 @@ Display::Display(WContainerWidget *parent=0)
   addDisplayToolButton("map-export", "save display to file");
   addDisplayToolButton("print", "print");
 
-  selectionBoxContainer->addWidget(d_ToolBar);
+  selectionBoxContainer->addWidget(m_ToolBar);
   selectionBoxContainer->addWidget(WtSelectionBoxDisplay);
   addWidget(selectionBoxContainer);
 
