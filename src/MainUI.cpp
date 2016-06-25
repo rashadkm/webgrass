@@ -81,7 +81,7 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 	 Wt::WMenuItem *firstLevelMenuItem = new Wt::WMenuItem(menu_items_menuitem_node.child_value("label"));
 	 firstLevelMenuItem->setId(menu_items_menuitem_node.child_value("command"));
 	 firstLevelMenuItem->triggered().connect(this, &MainUI::openModuleUI);
-	 firstLevel->addItem(nextLevelMenuItem);
+	 firstLevel->addItem(firstLevelMenuItem);
 	 menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
        }
        
