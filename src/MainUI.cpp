@@ -134,12 +134,23 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   hbox1->addWidget(displaymanager,1);
   textContainer->setMargin(-10, Wt::Left);
   addWidget(textContainer);
+
+  Wt::WNavigationBar *footer = new Wt::WNavigationBar();
+  footer->setStyleClass("wgrass-footer");
+  footer->setHeight(-30);
+  // footer->setResponsive(true);
+  // footer->setPositionScheme(Relative);
+  // footer->setOffsets(0,Wt::Bottom);
+  addWidget(footer);
 }
 
 void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
   const std::string gmodule = gitem->id();
   Wt::WDialog *dialog = new Wt::WDialog(gmodule);
-  Wt::WLabel *label = new Wt::WLabel("Cell location (A1..Z999)");
+  Wt::WPushButton *run = new Wt::WPushButton("RUN", dialog->footer());
+  run->setDefault(true);
+  Wt::WPushButton *cancel = new Wt::WPushButton("Cancel", dialog->footer());
+  cancel->clicked().connect(dialog, &Wt::WDialog::reject);
   Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
   Module* mod = new Module(gmodule, mo);
   dialog->rejectWhenEscapePressed();

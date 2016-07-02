@@ -27,9 +27,9 @@ Display::Display(WContainerWidget *parent=0)
 
   selectionBoxContainer->setStyleClass("displayContainer");
   WtSelectionBoxDisplay = new Wt::WSelectionBox();
-  WtSelectionBoxDisplay->setStyleClass("layertree");
-  WtSelectionBoxDisplay->resize(5000,500);
-
+  // WtSelectionBoxDisplay->setStyleClass("layertree");
+   WtSelectionBoxDisplay->resize(1100,500);
+  // WtSelectionBoxDisplay->setStyleClass("display");
 
   m_ToolBar = new Wt::WToolBar();
 

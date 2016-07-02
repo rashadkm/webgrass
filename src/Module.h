@@ -12,6 +12,7 @@
 #include <Wt/WMenuItem>
 #include <Wt/WComboBox>
 #include <Wt/WText>
+#include <Wt/WCheckBox>
 
 #include "wgrassconfig.h"
 

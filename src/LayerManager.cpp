@@ -46,7 +46,7 @@ LayerManager::LayerManager(WContainerWidget *parent=0)
 
 
   WtSelectionBoxMap = new Wt::WSelectionBox();
-  WtSelectionBoxMap->setStyleClass("layertree");
+  // WtSelectionBoxMap->setStyleClass("layertree");
   WtSelectionBoxMap->resize(200,510);
   // WtSelectionBoxMap->addItem(cb1);
   // WtSelectionBoxMap->addItem(cb2);
