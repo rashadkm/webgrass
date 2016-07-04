@@ -5,8 +5,7 @@
 #include "Module.h"
 #include <iostream>   // std::cout
 #include <string>     // std::string, std::to_string
-#include "JavascriptExample.h"
-#include "Popup.h"
+
 
 
 Module::Module(std::string moduleName, WContainerWidget *parent)
@@ -21,12 +20,11 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
   std::string check= tos.description();
   if(check=="File was not found")
    {
-      // JavascriptExample::setTitle("Javascript example");
-      // promptAmount_ = Popup::createPrompt("How much do you want to pay?", "",this);
 
-      Wt::WContainerWidget *error = new Wt::WContainerWidget();
-      Wt::WText *text1 = new Wt::WText("File was not found", error);
-      addWidget(error);
+      WApplication::instance()->doJavaScript("alert('Module not implemented')");
+      // Wt::WContainerWidget *error = new Wt::WContainerWidget();
+      // Wt::WText *text1 = new Wt::WText("File was not found", error);
+      // addWidget(error);
    }
   else{
       pugi::xml_node task_node = doc.child("task");
