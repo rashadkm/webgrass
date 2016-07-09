@@ -1,6 +1,11 @@
 #include <stdlib.h>
 #include <fstream>
 #include <iostream>
+#include <pugixml.hpp>
+#include <boost/algorithm/string.hpp>
+#include <map>
+#include <boost/lexical_cast.hpp>
+#include <string>
 
 #include <Wt/WContainerWidget>
 #include <Wt/WPushButton>
@@ -13,6 +18,10 @@
 #include <Wt/WComboBox>
 #include <Wt/WText>
 #include <Wt/WCheckBox>
+#include <Wt/WLineEdit>
+#include <Wt/WString>
+
+#include "Text_Gui.h"
 
 #include "wgrassconfig.h"
 
@@ -22,6 +31,6 @@ class Module : public WContainerWidget {
 
 public:
   Module( std::string mod, WContainerWidget *parent = 0 );
- 
+  std::map<std::string,std::vector<Text_Gui *> > map;
 
 };
