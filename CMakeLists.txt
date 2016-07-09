@@ -12,6 +12,7 @@ src/Toolbar.cpp
 src/Startup.cpp
 src/Module.cpp
 src/Text_Gui.cpp
+src/Overall.cpp
 
 )
 # src/WGrassLayerManager.cpp

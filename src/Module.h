@@ -21,7 +21,7 @@
 #include <Wt/WLineEdit>
 #include <Wt/WString>
 
-#include "Text_Gui.h"
+#include "Overall.h"
 
 #include "wgrassconfig.h"
 
@@ -31,6 +31,8 @@ class Module : public WContainerWidget {
 
 public:
   Module( std::string mod, WContainerWidget *parent = 0 );
-  std::map<std::string,std::vector<Text_Gui *> > map;
+  
 
+
+  std::map<std::string,std::vector<Overall *> > map;
 };

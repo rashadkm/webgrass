@@ -16,7 +16,7 @@
 #include "LayerManager.h"
 #include "Display.h"
 #include "Toolbar.h"
-#include "pstream.h"
+#include "../thirdparty/pstream.h"
 
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
@@ -146,7 +146,7 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 }
 
 void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
-  const std::string gmodule = gitem->id();
+  gmodule = gitem->id();
   int flag = 0;
   dialog = new Wt::WDialog(gmodule);
   Wt::WPushButton *run = new Wt::WPushButton("RUN", dialog->footer());
@@ -164,35 +164,28 @@ void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
 
 void MainUI::runModule(Wt::WDialog::DialogCode code){
 std::cout<<(mod->findById("Main"))->objectName()<<"check"<<endl;
-std::map<std::string,std::vector<Text_Gui *> >mop = mod->map;
-for (std::map<std::string,std::vector<Text_Gui *> >::iterator it=mop.begin(); it != mop.end(); ++it) /*creation of widgets*/
+std::map<std::string,std::vector<Overall *> > mop = mod->map;
+
+std::string command = gmodule+" ";
+for (std::map<std::string,std::vector<Overall *> >::iterator it=mop.begin(); it != mop.end(); ++it) /*creation of widgets*/
          {   
             
             for(int i=0; i < it->second.size(); i++)
             { 
-              std::cout<<"got it"<<std::endl;
-              std::cout<<(it->second[i])->text()<<std::endl;
-              std::string stre = ((it->second[i]))->objectName();
-              std::cout<<((it->second[i]))->Name()<<std::endl;
-              std::cout<<((it->second[i]))->Type()<<std::endl;
-              // if(stre=="flag")         /*if flag is present then creation of checkboxes*/
-              // {
-              //   std::string f = ((it->second[i]))->id();
-              //   int num = boost::lexical_cast<int>(f);
-              //   // std::cout<<num<<std::endl;
-              //   std::vector<std::string> flag_iterat = flags_l[num];
-              //   for (std::vector<std::string>::iterator i = flag_iterat.begin(); i != flag_iterat.end(); ++i)
-              //     {
-              //       // std::cout << *i << ' ';
-              //       Wt::WCheckBox *flag = new Wt::WCheckBox(*i, container1);
-              //       flag->setInline(true); 
+              // std::cout<<"got it"<<std::endl;
+              // std::cout<<((it->second[i])->Name_op)->text()<<std::endl;
+              // std::string stre = ((it->second[i])->Name_op)->objectName();
+               std::cout<<((it->second[i])->Name_op)->Name()<<std::endl;
+              std::string object = ((it->second[i])->Name_op)->Name();
+              // std::cout<<((it->second[i])->Name_op)->Type()<<std::endl;
+              std::cout<<((it->second[i])->container_op)->text()<<std::endl;
+              std::string value = (((it->second[i])->container_op)->text()).toUTF8();
+              command = command + object+"="+value + " ";
 
-              //     }
-              // }             
-              // container1->addWidget(new WBreak());
             }
 
          }
+std::cout<<command<<std::endl;
     // redi::ipstream proc("grass70 $HOME/grassdata/newLocation/PERMANENT", redi::pstreams::pstdout | redi::pstreams::pstdin );
     //   std::string line;
     //   std::cout.flush();

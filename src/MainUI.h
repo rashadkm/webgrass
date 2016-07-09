@@ -24,7 +24,7 @@ public:
 private:
   Wt::WDialog *dialog;
   Module* mod;
-
+  std::string gmodule;
 };
 
 #endif
