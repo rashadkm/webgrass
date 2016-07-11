@@ -11,6 +11,8 @@ src/Display.cpp
 src/Toolbar.cpp
 src/Startup.cpp
 src/Module.cpp
+src/Text_Gui.cpp
+src/Overall.cpp
 
 )
 # src/WGrassLayerManager.cpp
@@ -54,6 +56,7 @@ configure_file(
   )
 
 include_directories( ${CMAKE_BINARY_DIR} )
+include_directories(${CMAKE_SOURCE_DIRECTORY}/thirdparty/pstream.h)
 
 message(STATUS "GRASS_DATA_DIR=${GRASS_DATA_DIR}")
 #aptitude install libwt-dev libwthttp-dev libwtdbo-dev libwtdbosqlite-dev

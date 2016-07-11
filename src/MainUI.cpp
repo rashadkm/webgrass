@@ -16,7 +16,8 @@
 #include "LayerManager.h"
 #include "Display.h"
 #include "Toolbar.h"
-#include "Module.h"
+#include "../thirdparty/pstream.h"
+
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
   createUI(parent);
@@ -145,14 +146,68 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 }
 
 void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
-  const std::string gmodule = gitem->id();
-  Wt::WDialog *dialog = new Wt::WDialog(gmodule);
+  gmodule = gitem->id();
+  int flag = 0;
+  dialog = new Wt::WDialog(gmodule);
   Wt::WPushButton *run = new Wt::WPushButton("RUN", dialog->footer());
   run->setDefault(true);
+  run->clicked().connect(dialog, &Wt::WDialog::accept);
+
   Wt::WPushButton *cancel = new Wt::WPushButton("Cancel", dialog->footer());
   cancel->clicked().connect(dialog, &Wt::WDialog::reject);
   Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
-  Module* mod = new Module(gmodule, mo);
+  mod = new Module(gmodule, mo);
   dialog->rejectWhenEscapePressed();
+  dialog->finished().connect(this, &MainUI::runModule);
   dialog->show();
+}
+
+void MainUI::runModule(Wt::WDialog::DialogCode code){
+std::cout<<(mod->findById("Main"))->objectName()<<"check"<<endl;
+std::map<std::string,std::vector<Overall *> > mop = mod->map;
+
+std::string command = gmodule+" ";
+for (std::map<std::string,std::vector<Overall *> >::iterator it=mop.begin(); it != mop.end(); ++it) /*creation of widgets*/
+         {   
+            
+            for(int i=0; i < it->second.size(); i++)
+            { 
+              // std::cout<<"got it"<<std::endl;
+              // std::cout<<((it->second[i])->Name_op)->text()<<std::endl;
+              // std::string stre = ((it->second[i])->Name_op)->objectName();
+               std::cout<<((it->second[i])->Name_op)->Name()<<std::endl;
+              std::string object = ((it->second[i])->Name_op)->Name();
+              // std::cout<<((it->second[i])->Name_op)->Type()<<std::endl;
+              std::cout<<((it->second[i])->container_op)->text()<<std::endl;
+              std::string value = (((it->second[i])->container_op)->text()).toUTF8();
+              command = command + object+"="+value + " ";
+
+            }
+
+         }
+std::cout<<command<<std::endl;
+    // redi::ipstream proc("grass70 $HOME/grassdata/newLocation/PERMANENT", redi::pstreams::pstdout | redi::pstreams::pstdin );
+    //   std::string line;
+    //   std::cout.flush();
+    //   while (std::getline(proc.out(), line)){
+    //     std::cout << "stdout: " << line << '\n';
+    // }
+    redi::ipstream proc("export GRASS_PNG_AUTO_WRITE=TRUE; export GRASS_PNG_COMPRESSION=9; export GRASS_TRANSPARENT=TRUE; export GRASS_TRUECOLOR=TRUE; export LD_LIBRARY_PATH=/usr/lib/grass70/lib; export GISBASE=/usr/lib/grass70/; export GISDBASE=/home/mayank/grassdata1; export GISRC=/home/mayank/.grass7/rc; export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH; g.gisenv");
+    // redi::ipstream proc("export GRASS_PNG_AUTO_WRITE=TRUE; export GRASS_PNG_COMPRESSION=9; export GRASS_TRANSPARENT=TRUE; export GRASS_TRUECOLOR=TRUE; export LD_LIBRARY_PATH=/usr/lib/grass70/lib; export GISBASE=/usr/lib/grass70/; export GISDBASE=/home/mayank/grassdata1; export GISRC=/home/mayank/.grass7/rc; export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH; g.guienv");
+    // redi::ipstream proc("g.guienv");      
+      std::string line;
+      std::cout.flush();
+//       while (proc >> line) {
+//     std::cout << line << std::endl;
+// }
+      while (std::getline(proc.out(), line)){
+        std::cout << "stdout: " << line << '\n';
+      }
+
+      // redi::ipstream proc1("ls");  
+      // std::string line1;
+      // std::cout.flush();
+      // while (std::getline(proc1.out(), line1)){
+      //   std::cout << "stdout: " << line1 << '\n';
+      // }
 }
