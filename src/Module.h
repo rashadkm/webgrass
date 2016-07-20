@@ -21,7 +21,7 @@
 #include <Wt/WLineEdit>
 #include <Wt/WString>
 
-#include "Overall.h"
+#include "Parameter.h"
 
 #include "wgrassconfig.h"
 
@@ -34,5 +34,6 @@ public:
   
 
 
-  std::map<std::string,std::vector<Overall *> > map;
+  std::map<std::string,std::vector<Parameter *> > map;
+  std::vector<std::string>container_IDs;
 };

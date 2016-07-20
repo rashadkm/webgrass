@@ -1,11 +1,23 @@
 #ifndef MAINUI_H
 #define MAINUI_H
 
+#include <iostream>
+#include <pugixml.hpp>
+#include <cstring>
+
+
+#include <Wt/WPushButton>
+#include <Wt/WText>
+#include <Wt/WToolBar>
+#include <Wt/WApplication>
+#include <Wt/WLabel>
+
 #include <Wt/WContainerWidget>
 #include <Wt/WNavigationBar>
 #include <Wt/WMenuItem>
 #include <Wt/WPopupMenu>
 #include <Wt/WDialog>
+
 #include "Module.h"
 
 

@@ -31,21 +31,31 @@ using namespace std;
 
 namespace fs = boost::filesystem;
 
-class Text_Gui : public WText {
+class Parameter_text {
 
 public:
-  Text_Gui();
+  Parameter_text();
+  void setText(std::string text);
   void setName(std::string name);
   void setType(std::string attribute);
   void setMult(std::string multiple);
+  void isFlag(std::string flag="No");
+  void setFlag_no(int n);
+  void setTabname(std::string tab);
+  string Text();
   string Name();
   string Type();
   string Mult();
-  
+  string Flag();
+  int Flag_no();
+  string Tab();
 private:
 
-  string t_name;
-  string t_type;
-  string t_mul;
-
+  string p_text;
+  string p_name;
+  string p_type;
+  string p_mul;
+  string p_flag;
+  int p_flag_no;
+  string p_tab;
 };

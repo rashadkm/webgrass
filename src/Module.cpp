@@ -28,10 +28,10 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
       pugi::xml_node para_node = task_node.child("parameter");
       // std::map<std::string,std::vector<Text_Gui *> > map;
       // std::vector<Wt::WText *> Text;
-      std::cout<<"check 1"<<std::endl;
+      // std::cout<<"check 1"<<std::endl;
       std::vector<std::vector<std::string> > flags_l;  /*flags will be stored here*/
-      std::map<std::string,std::vector<Overall *> >::iterator iterate; /*tab name and elements under it*/
-      std::cout<<"check 2"<<std::endl;
+      std::map<std::string,std::vector<Parameter *> >::iterator iterate; /*tab name and elements under it*/
+      // std::cout<<"check 2"<<std::endl;
       int i=0;
       int j=0;
       while(para_node){
@@ -56,7 +56,7 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
               boost::algorithm::trim_left(someName);
           }
 
-          std::cout<<"check 3"<<std::endl;
+          // std::cout<<"check 3"<<std::endl;
           pugi::xml_node values_node = para_node.child("values"); /*iteration over the values if present*/
           iterate = map.find(someName);   /*if tab with the name is already present*/
            if (iterate != map.end())
@@ -73,14 +73,15 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
               boost::algorithm::trim_right(Name);
               boost::algorithm::trim_left(Name);
         
-              std::cout<<"check 4"<<std::endl;
-              Overall *Over = new Overall();
-              Over->Name_op->setText(Name);
+              // std::cout<<"check 4"<<std::endl;
+              Parameter *parameter = new Parameter();
+              (parameter->Name_op)->setText(Name);
               std::string attribute_name = para_node.attribute("name").value();
-              Over->Name_op->setName(attribute_name);
+              (parameter->Name_op)->setName(attribute_name);
               std::string attribute_type = para_node.attribute("type").value();
-              Over->Name_op->setType(attribute_type);
-              std::cout<<"check 5"<<std::endl;
+              (parameter->Name_op)->setType(attribute_type);
+              (parameter->Name_op)->setTabname(someName);
+              // std::cout<<"check 5"<<std::endl;
                if(values_node)
                {
                 pugi::xml_node value_node = values_node.child("value");
@@ -93,17 +94,17 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
                  value_node = value_node.next_sibling("value");
                }
                flags_l.push_back(flags);
-               std::string flot = boost::lexical_cast<std::string>(i); /*setId only takes string*/
-                Over->Name_op->setId(flot);
-                Over->Name_op->setObjectName("flag"); /*if flag is present*/
+               // std::string flot = boost::lexical_cast<std::string>(i); /*setId only takes string*/
+                parameter->Name_op->setFlag_no(i);
+                parameter->Name_op->isFlag("flag"); /*if flag is present*/
                 i++;
                }
          
-              iterate->second.push_back(Over); /*tab name as first and elements in second of the map*/
+              iterate->second.push_back(parameter); /*tab name as first and elements in second of the map*/
             }
           else
             {
-              std::vector<Overall *> s;
+              std::vector<Parameter *> s;
               pugi::xml_node para_label_node = para_node.child("label");
                 std::string Name=para_label_node.child_value();
                
@@ -118,17 +119,18 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
                 pugi::xml_node values_node = para_node.child("values");
 
-                std::cout<<"check 6"<<std::endl;
-                Overall *Over = new Overall();
-                std::cout<<"check 61"<<std::endl;
-                (Over->Name_op)->setText(Name);
-                std::cout<<"check 62"<<std::endl;
+                // std::cout<<"check 6"<<std::endl;
+                Parameter *parameter = new Parameter();
+                // std::cout<<"check 61"<<std::endl;
+                (parameter->Name_op)->setText(Name);
+                // std::cout<<"check 62"<<std::endl;
                 std::string attribute_name = para_node.attribute("name").value();
-                (Over->Name_op)->setName(attribute_name);
-                std::cout<<"check 63"<<std::endl;
+                (parameter->Name_op)->setName(attribute_name);
+                // std::cout<<"check 63"<<std::endl;
                 std::string attribute_type = para_node.attribute("type").value();
-                (Over->Name_op)->setType(attribute_type);
-                std::cout<<"check 7"<<std::endl;
+                (parameter->Name_op)->setType(attribute_type);
+                parameter->Name_op->setTabname(someName);
+                // std::cout<<"check 7"<<std::endl;
                 if(values_node)
                {
                 pugi::xml_node value_node = values_node.child("value");
@@ -141,14 +143,14 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
                  value_node = value_node.next_sibling("value");
                }
                flags_l.push_back(flags);
-               std::string flot = boost::lexical_cast<std::string>(i);
-                Over->Name_op->setId(flot);
-                Over->Name_op->setObjectName("flag");
+               // std::string flot = boost::lexical_cast<std::string>(i);
+                parameter->Name_op->setFlag_no(i);
+                parameter->Name_op->isFlag("flag");
                 i++;
                }
 
-               std::cout<<"check 8"<<std::endl;
-                s.push_back(Over);
+               // std::cout<<"check 8"<<std::endl;
+                s.push_back(parameter);
               map[someName]=s;
             }
           
@@ -184,22 +186,29 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
       std::vector<WContainerWidget *> Container_list;
 
-      for (std::map<std::string,std::vector<Overall *> >::iterator it=map.begin(); it != map.end(); ++it) /*creation of widgets*/
+      for (std::map<std::string,std::vector<Parameter *> >::iterator it=map.begin(); it != map.end(); ++it) /*creation of widgets*/
          {   
+
+            // std::cout<<"tab creation"<<std::endl;
             Wt::WContainerWidget *container1 = new Wt::WContainerWidget();
             for(int i=0; i < it->second.size(); i++)
             { 
-              container1->addWidget((it->second[i])->Name_op);
+              Wt::WText *text1 = new Wt::WText(((it->second[i])->Name_op)->Text());
+              container1->addWidget(text1);
               Wt::WLineEdit *cb = new Wt::WLineEdit(container1);
+              std::string con_ID = ((it->second[i])->Name_op)->Name();
+              cb->setId(con_ID);
+              // std::cout<<"bibibi"<<cb<<std::endl;
+              container_IDs.push_back(con_ID);
               (it->second[i])->container_op=cb;
               container1->addWidget(new WBreak());
-              std::string stre = ((it->second[i])->Name_op)->objectName();
-              std::cout<<((it->second[i])->Name_op)->Name()<<std::endl;
-              std::cout<<((it->second[i])->Name_op)->Type()<<std::endl;
+              std::string stre = ((it->second[i])->Name_op)->Flag();
+              // std::cout<<((it->second[i])->Name_op)->Name()<<std::endl;
+              // std::cout<<((it->second[i])->Name_op)->Type()<<std::endl;
               if(stre=="flag")         /*if flag is present then creation of checkboxes*/
               {
-                std::string f = ((it->second[i])->Name_op)->id();
-                int num = boost::lexical_cast<int>(f);
+                int num = ((it->second[i])->Name_op)->Flag_no();
+                // int num = boost::lexical_cast<int>(f);
                 // std::cout<<num<<std::endl;
                 std::vector<std::string> flag_iterat = flags_l[num];
                 for (std::vector<std::string>::iterator i = flag_iterat.begin(); i != flag_iterat.end(); ++i)
@@ -219,7 +228,7 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
       Wt::WContainerWidget *flag_widget = new Wt::WContainerWidget();
 
-      for(std::vector<std::string>::const_iterator h = flag_list.begin(); h != flag_list.end(); ++h)
+      for(std::vector<std::string>::iterator h = flag_list.begin(); h != flag_list.end(); ++h)
       {
          Wt::WCheckBox *flag = new Wt::WCheckBox(*h, flag_widget);
          flag->setInline(false); 
@@ -230,39 +239,22 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
         // container1->setId("kmk"); /*for setting id*/
 
-      int t;
+      
       for (std::vector<WContainerWidget *>::iterator it=Container_list.begin(); it != Container_list.end(); ++it)
       {
       tabW->addTab(*it,(*it)->id(), Wt::WTabWidget::PreLoading);
-              // std::string j = (*it)->id();
-              // std::cout<<j<<std::endl;
-              // if(j=="Selection")
-              // {
-              //   t = indexOf(*it);
-              //   std::cout<<t<<"okok"<<std::endl;
-              // }
+
       }
       // tabW->setCurrentIndex(3);
 
       tabW->addTab(flag_widget,"Check Options", Wt::WTabWidget::PreLoading);
 
-      Wt::WMenuItem *tab 
-        = tabW->addTab(new Wt::WTextArea("You can close this tab"
-                 " by clicking on the close icon."),
-           "Attribute");
+      Wt::WMenuItem *tab = tabW->addTab(new Wt::WTextArea("You can close this tabby clicking on the close icon."),"Attribute");
       tab->setCloseable(true);
 
       tabW->setStyleClass("wgrass-module-tab");
       addWidget(container);
-        // std::cout<<container->findById("kmk"); /*calling with id*/
 
-      // redi::ipstream proc("grass70 $HOME/grassdata/newLocation/PERMANENT", redi::pstreams::pstdout | redi::pstreams::pstdin );
-      // // redi::ipstream in("ls");
-      // std::string line;
-      // std::cout.flush();
-      // while (std::getline(proc.out(), line)){
-      //   std::cout << "stdout: " << line << '\n';
-    // }
 
     }
 }

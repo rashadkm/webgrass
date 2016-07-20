@@ -17,13 +17,12 @@
 #include <Wt/WHBoxLayout>
 #include <Wt/WImage>
 #include <Wt/WCheckBox>
-#include <Wt/WLineEdit>
 #include <Wt/WText>
 #include <Wt/WLabel>
 #include <Wt/WSelectionBox>
 
 
-#include "Text_Gui.h"
+#include "Parameter_text.h"
 #include "wgrassconfig.h"
 
 using namespace Wt;
@@ -32,11 +31,11 @@ using namespace std;
 
 namespace fs = boost::filesystem;
 
-class Overall {
+class Parameter {
 
 public:
-  Overall();
-  Text_Gui *Name_op;
+  Parameter();
+  Parameter_text *Name_op;
   WLineEdit *container_op;
 
 };
