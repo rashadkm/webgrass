@@ -32,6 +32,7 @@ using namespace Wt;
 #include <Wt/WLabel>
 #include <Wt/WRandom>
 #include <Wt/WComboBox>
+#include <postgresql/libpq-fe.h>
 
 using namespace std;
 
@@ -85,8 +86,8 @@ WLabel *prjlabel = new WLabel(" Project:");
 ulayout->addWidget(prjlabel,3,0);
 cmbProject = new WComboBox();
 
-
-PGconn *conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
+conninfo = "dbname = postgres";
+PGconn *conn =  PQconnectdb(conninfo);
 
 
 
@@ -188,7 +189,7 @@ new WText("<br/> <br/>",d->contents());
       //return;
     }
 
-conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
+conn =  PQconnectdb("/var/lib/postgresql/9.5/main/admin");
 
 
 string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() +  "'";
@@ -231,7 +232,7 @@ if (PQresultStatus(res) != PGRES_COMMAND_OK)
     {
 
         PQclear(res);
-        CloseConn(conn);
+        PQfinish(conn);
 //WApplication::instance()->doJavaScript("alert('Thank')");
     }
 else {WApplication::instance()->doJavaScript("alert('Thankyou for registering')");
@@ -267,7 +268,7 @@ WApplication::instance()->setCookie("wgrass_login", "", 0);
 
 void Login::checkLogin() {
 
-PGconn *conn =  ConnectDB("/var/lib/postgresql/9.5/main/admin");
+PGconn *conn =  PQconnectdb("/var/lib/postgresql/9.5/main/admin");
 
 
 string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() + "' AND passwd=md5('" + passwd->text().toUTF8() + "')";
@@ -285,7 +286,7 @@ string query =  "SELECT * FROM users WHERE uname='" + uname->text().narrow() + "
     // else {
 	      WApplication::instance()->setCookie("wgrass_login", uname->text().narrow(), 60*60*24*24);
 
-      WApplication::instance()->redirect("/");
+      WApplication::instance()->setInternalPath("/start",true);
 //}
 
 

@@ -13,6 +13,7 @@ src/Startup.cpp
 src/Module.cpp
 src/Parameter_text.cpp
 src/Parameter.cpp
+src/login.cpp
 
 )
 # src/WGrassLayerManager.cpp
