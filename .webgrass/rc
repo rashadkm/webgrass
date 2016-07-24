@@ -1,0 +1,4 @@
+MAPSET: PERMANENT
+GISDBASE: /home/mayank/Dropbox/Github/webgrass/grassdata
+LOCATION_NAME: lonlat
+GUI: text

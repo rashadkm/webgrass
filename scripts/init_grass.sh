@@ -1,10 +1,24 @@
 #!/bin/bash
+# export GRASS_PNG_AUTO_WRITE=TRUE; 
+# export GRASS_PNG_COMPRESSION=9; 
+# export GRASS_TRANSPARENT=TRUE; 
+# export GRASS_TRUECOLOR=TRUE; 
+# export LD_LIBRARY_PATH=/usr/lib/grass70/lib; 
+# export GISBASE=/usr/lib/grass70/; 
+# export GISDBASE=/home/mayank/grassdata1; 
+# export GISRC=/home/mayank/.grass7/rc; 
+# export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH;
+rm -rf $LOCATION/$MAPSET/.gislock;
 export GRASS_PNG_AUTO_WRITE=TRUE; 
 export GRASS_PNG_COMPRESSION=9; 
 export GRASS_TRANSPARENT=TRUE; 
 export GRASS_TRUECOLOR=TRUE; 
 export LD_LIBRARY_PATH=/usr/lib/grass70/lib; 
 export GISBASE=/usr/lib/grass70/; 
-export GISDBASE=/home/mayank/grassdata1; 
-export GISRC=/home/mayank/.grass7/rc; 
+export GISDBASE=/home/mayank/Dropbox/Github/webgrass/grassdata; 
+export GISRC=/home/mayank/Dropbox/Github/webgrass/.webgrass/rc; 
 export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH;
+export GIS_LOCK=77;
+g.gisenv;
+v.buffer --interface-description;
+echo $GISDBASE;
