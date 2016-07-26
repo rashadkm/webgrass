@@ -3,7 +3,7 @@
 #include "LayerManager.h"
 #include "Display.h"
 #include "Toolbar.h"
-#include "../thirdparty/pstream.h"
+#include "../thirdparty/pstream/pstream.h"
 
 MainUI::MainUI(WContainerWidget *parent)
 :WContainerWidget(parent) {
