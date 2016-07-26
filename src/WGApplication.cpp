@@ -13,7 +13,7 @@ License (>=v2). Read the file COPYING for details.
 #include "WGApplication.h"
 #include "MainUI.h"
 #include "Startup.h"
-#include "login.h"
+#include "Authentication.h"
 
 
 WGApplication::WGApplication(const Wt::WEnvironment& env)
@@ -25,7 +25,14 @@ WGApplication::WGApplication(const Wt::WEnvironment& env)
   
   internalPathChanged().connect(this, &WGApplication::handlePathChanged);
   
-  Wt::WApplication::instance()->setInternalPath("/login", true);
+  Wt::WApplication::instance()->setInternalPath("/Auth", true);
+
+
+
+//   root()->clear();
+// Authentication* auth = new Authentication( root());
+// setTitle("Authorization");
+
   
   WApplication::instance()->useStyleSheet("style.css");
 
@@ -56,13 +63,12 @@ root()->clear();
 Startup* startup = new Startup(uname, root());
 setTitle("Select Location and Mapset");
 }
-
-else
-{
-  root()->clear();
-Login* login = new Login(root());
-setTitle("Select Location and Mapset");
+else{
+    root()->clear();
+Authentication* auth = new Authentication( root());
+setTitle("Authorization");
 }
+
 
 }
 

@@ -1,8 +1,8 @@
 all: wgrass.wt
 
-wgrass.wt: src/main.o src/global.o src/WGApplication.o src/login.o src/MainUI.o src/LayerManager.o src/Display.o src/Toolbar.o src/Module.o src/Parameter.o src/Parameter_text.o src/WOpenLayers.o
-	g++ src/main.o src/global.o src/WGApplication.o src/login.o src/MainUI.o src/LayerManager.o src/Display.o src/Toolbar.o src/Module.o src/Parameter.o src/Parameter_text.o src/WOpenLayers.o -o wgrass.wt \
-		-L/usr/local/lib -lwt -lwthttp -lpugixml -lboost_system -lboost_signals -lpthread
+wgrass.wt: src/main.o src/global.o src/WGApplication.o src/Authentication.o src/MainUI.o src/LayerManager.o src/Display.o src/Toolbar.o src/Module.o src/Parameter.o src/Parameter_text.o src/WOpenLayers.o
+	g++ src/main.o src/global.o src/WGApplication.o src/Authentication.o src/MainUI.o src/LayerManager.o src/Display.o src/Toolbar.o src/Module.o src/Parameter.o src/Parameter_text.o src/WOpenLayers.o -o wgrass.wt \
+		-L/usr/local/lib -lwt -lwthttp -lpugixml -lboost_system -lboost_signals -lpthread -lpq
 
 main.o: main.cpp
 	g++ -c src/main.cpp
@@ -13,8 +13,8 @@ global.o: global.cpp
 WGApplication.o: WGApplication.cpp
 	g++ -c WGApplication.cpp
 
-login.o: login.cpp
-	g++ -c login.cpp
+Authentication.o: Authentication.cpp
+	g++ -c Authentication.cpp 
 
 MainUI.o: MainUI.cpp
 	g++ -c MainUI.cpp
