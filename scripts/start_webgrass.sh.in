@@ -1,0 +1,4 @@
+#!/bin/sh
+. @CMAKE_BINARY_DIR@/init_grass.sh
+./wgrass.wt --docroot @CMAKE_SOURCE_DIR@ --http-address $1 --http-port $2
+
