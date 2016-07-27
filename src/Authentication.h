@@ -3,12 +3,13 @@
 #include <Wt/WImage>
 #include <Wt/WServer>
 #include <Wt/WText>
+#include <Wt/WBreak>
 
 #include <Wt/Auth/AuthService>
 #include <Wt/Auth/GoogleService>
 #include "wgrassconfig.h"
 
-
+using namespace Wt;
 
 class Authentication : public Wt::WContainerWidget{
 public:

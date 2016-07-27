@@ -1,0 +1,18 @@
+<server>
+    <application-settings location="*">
+	<properties>
+
+	    <!-- You need to register at google for this to work, and enter
+                 there the same values as you do here. -->
+	    <property name="google-oauth2-redirect-endpoint">
+		http://localhost:8080/oauth2callback
+	    </property>
+	    <property name="google-oauth2-client-id">
+		200012893128-l5doehe2iu1mv05t8bn01bdj0h20konr.apps.googleusercontent.com
+	    </property>
+	    <property name="google-oauth2-client-secret">
+		Om3ToLMflRbA-XMTA7Ix0Whg
+	    </property>
+	</properties>
+    </application-settings>
+</server>

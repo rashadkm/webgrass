@@ -14,7 +14,7 @@ WGApplication.o: WGApplication.cpp
 	g++ -c WGApplication.cpp
 
 Authentication.o: Authentication.cpp
-	g++ -c Authentication.cpp 
+	g++ -c Authentication.cpp -c auth.xml
 
 MainUI.o: MainUI.cpp
 	g++ -c MainUI.cpp
