@@ -21,5 +21,7 @@ export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH;
 export GIS_LOCK=77;
 g.gisenv;
 echo "answer"
-$*
+#now=$($*);
+#echo $($*);
+$*;
 echo $GISDBASE;

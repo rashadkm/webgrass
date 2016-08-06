@@ -4,6 +4,7 @@
 #include <iostream>
 #include <pugixml.hpp>
 #include <cstring>
+#include <boost/filesystem.hpp>
 
 
 #include <Wt/WPushButton>
@@ -31,7 +32,8 @@ public:
   
   enum Wt::WDialog::DialogCode code;
 
-  void runModule(Wt::WDialog::DialogCode code);
+  void runModule();
+  void deleteModule(Wt::WDialog::DialogCode code);
 
 private:
   Wt::WDialog *dialog;

@@ -134,29 +134,67 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 
 void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
   gmodule = gitem->id();
+  std::string file = Wt::WApplication::instance()->docRoot() + "/xml/"+ gmodule +".xml";
+  std::ifstream my_file(file.c_str());
+  if (my_file.fail())
+  {
+    WApplication::instance()->doJavaScript("alert('Module not implemented')");
+  }
+
+  else{
+
+  
   dialog = new Wt::WDialog(gmodule);
   Wt::WPushButton *run = new Wt::WPushButton("RUN", dialog->footer());
   run->setDefault(true);
-  run->clicked().connect(dialog, &Wt::WDialog::accept);
+  run->clicked().connect(this, &MainUI::runModule);
+  // run->clicked().connect(dialog, &Wt::WDialog::accept);
 
   Wt::WPushButton *cancel = new Wt::WPushButton("Cancel", dialog->footer());
   cancel->clicked().connect(dialog, &Wt::WDialog::reject);
   Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
-  mod = new Module(gmodule, mo);
+
+    std::cout<<"alert check"<<std::endl;
+    mod = new Module(my_file, mo);
+  
+  
   std::cout<<"Module created"<<std::endl;
   dialog->rejectWhenEscapePressed();
-  dialog->finished().connect(this, &MainUI::runModule);
+  dialog->finished().connect(this, &MainUI::deleteModule);
   dialog->show();
 }
 
-void MainUI::runModule(Wt::WDialog::DialogCode code){
-  if (code == Wt::WDialog::Accepted)
+}
+
+void MainUI::deleteModule(Wt::WDialog::DialogCode code){
+  delete dialog;
+}
+void MainUI::runModule(){
+  // if (code == Wt::WDialog::Accepted)
   {
         std::cout<<(mod->findById("Main"))->objectName()<<"check"<<endl;
         std::map<std::string,std::vector<Parameter *> > mop = mod->map;
         std::vector<std::string>list= mod->container_IDs;
+        std::vector<std::string>flag_list= mod->flag_IDs;
 
-        std::string command = gmodule+" ";
+        std::string command = gmodule+" "+"[-";
+        for (std::vector<std::string>::iterator it=flag_list.begin(); it != flag_list.end(); ++it) /*creation of widgets*/
+                 {   
+                    
+
+                      std::string d = *it;
+                      // std::cout<<d<<endl;
+                      WCheckBox *cb = dynamic_cast<WCheckBox *>(((mod->findById("Main")))->findById(d));
+                      // std::cout<<cb->isChecked()<<"see here"<<std::endl;
+                      // std::string value = cb->checkState();
+                      if(cb->isChecked())
+                      {
+                      command = command + d;
+                    }
+                    
+
+                 }
+        command = command + "] ";
         for (std::vector<std::string>::iterator it=list.begin(); it != list.end(); ++it) /*creation of widgets*/
                  {   
                     
@@ -166,8 +204,10 @@ void MainUI::runModule(Wt::WDialog::DialogCode code){
                       WLineEdit *edit = dynamic_cast<WLineEdit *>(((mod->findById("Main")))->findById(d));
                       // std::cout<<(edit->text()).toUTF8()<<std::endl;
                       std::string value = (edit->text()).toUTF8();
+                      if(!value.empty())
+                      {
                       command = command + d+"="+value + " ";
-
+                    }
                     
 
                  }
@@ -189,10 +229,13 @@ void MainUI::runModule(Wt::WDialog::DialogCode code){
         //       while (proc >> line) {
         //     std::cout << line << std::endl;
         // }
+              std::string send_output="";
               while (std::getline(proc.out(), line)){
                 std::cout << "stdout: " << line << '\n';
+                send_output = send_output + line+'\n';
+                
               }
-
+              mod->updateOutput(send_output);
 
               // redi::ipstream proc1("ls");  
               // std::string line1;
@@ -201,5 +244,5 @@ void MainUI::runModule(Wt::WDialog::DialogCode code){
               //   std::cout << "stdout: " << line1 << '\n';
               // }
     }
-    delete dialog;
+    // delete dialog;
 }

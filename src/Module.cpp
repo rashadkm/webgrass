@@ -4,25 +4,25 @@
 
 
 
-Module::Module(std::string moduleName, WContainerWidget *parent)
+Module::Module(std::ifstream& moduleName, WContainerWidget *parent)
   :WContainerWidget(parent) {
 
   pugi::xml_document doc;
  
-  const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/xml/"+ moduleName +".xml";
-  pugi::xml_parse_result tos = doc.load_file(MENUDATA_XML_FILE.c_str());
+  // const std::string MENUDATA_XML_FILE = Wt::WApplication::instance()->docRoot() + "/xml/"+ moduleName +".xml";
+  pugi::xml_parse_result tos = doc.load(moduleName);
 
   std::cout << "Load result: " << tos.description() << std::endl;
-  std::string check= tos.description();
-  if(check=="File was not found")
-   {
+  // std::string check= tos.description();
+  // if(check=="File was not found")
+  //  {
 
-      WApplication::instance()->doJavaScript("alert('Module not implemented')");
-      // Wt::WContainerWidget *error = new Wt::WContainerWidget();
-      // Wt::WText *text1 = new Wt::WText("File was not found", error);
-      // addWidget(error);
-   }
-  else{
+  //     WApplication::instance()->doJavaScript("alert('Module not implemented')");
+  //     // Wt::WContainerWidget *error = new Wt::WContainerWidget();
+  //     // Wt::WText *text1 = new Wt::WText("File was not found", error);
+  //     // addWidget(error);
+  //  }
+  {
       pugi::xml_node task_node = doc.child("task");
       pugi::xml_node taskdescription_node = task_node.child("description");
       pugi::xml_node para_node = task_node.child("parameter");
@@ -159,14 +159,16 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
       pugi::xml_node flag_node = task_node.child("flag");
 
-      std::vector<std::string> flag_list;  /*flag list without any heading*/
+      std::vector<Wt::WText *> flag_list;  /*flag list without any heading*/
       while(flag_node){
                         pugi::xml_node option_node = flag_node.child("description");
                         std::string Name=option_node.child_value();
                         boost::algorithm::trim_right(Name);
                         boost::algorithm::trim_left(Name);
-                        
-                        flag_list.push_back(Name);
+                        Wt::WText *check_box = new Wt::WText(Name);
+                        std::string check_id = flag_node.attribute("name").value();
+                        check_box->setId(check_id);
+                        flag_list.push_back(check_box);
                                          
                         flag_node = flag_node.next_sibling("flag");
                       }
@@ -178,7 +180,8 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
       //     std::cout << str << std::endl;
       // }
 
-      Wt::WContainerWidget *container = new Wt::WContainerWidget();
+      // Wt::WContainerWidget *container = new Wt::WContainerWidget();
+      container = new Wt::WContainerWidget();                
       container->setId("Main");
       container->setObjectName("yes");
 
@@ -228,15 +231,18 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
       Wt::WContainerWidget *flag_widget = new Wt::WContainerWidget();
 
-      for(std::vector<std::string>::iterator h = flag_list.begin(); h != flag_list.end(); ++h)
+      for(std::vector<Wt::WText *>::iterator h = flag_list.begin(); h != flag_list.end(); ++h)
       {
-         Wt::WCheckBox *flag = new Wt::WCheckBox(*h, flag_widget);
+         Wt::WCheckBox *flag = new Wt::WCheckBox((*h)->text(), flag_widget);
          flag->setInline(false); 
+         flag->setId((*h)->id());
+         flag_IDs.push_back((*h)->id());
       }
 
 
-      Wt::WTabWidget *tabW = new Wt::WTabWidget(container);
-
+      // Wt::WTabWidget *tabW = new Wt::WTabWidget(container);
+      tabW = new Wt::WTabWidget(container);
+      // container->addWidget(tabW);
         // container1->setId("kmk"); /*for setting id*/
 
       
@@ -246,11 +252,11 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
 
       }
       // tabW->setCurrentIndex(3);
-
+      ta = new Wt::WTextArea();
       tabW->addTab(flag_widget,"Check Options", Wt::WTabWidget::PreLoading);
-
-      Wt::WMenuItem *tab = tabW->addTab(new Wt::WTextArea("You can close this tabby clicking on the close icon."),"Attribute");
-      tab->setCloseable(true);
+      std::string output = out;
+      Wt::WMenuItem *tab = tabW->addTab(ta,"Output", Wt::WTabWidget::PreLoading);
+      // tab->setCloseable(true);
 
       tabW->setStyleClass("wgrass-module-tab");
       addWidget(container);
@@ -259,3 +265,10 @@ Module::Module(std::string moduleName, WContainerWidget *parent)
     }
 }
 
+void Module::updateOutput(std::string gg ) {
+    // tabW->removeTab(tab);
+    out=out+gg;
+    std::cout<<"terminal"<<gg<<std::endl;
+    ta->setText(out);
+    // Wt::WMenuItem *tab = tabW->addTab(new Wt::WTextArea(out),"Output");
+}
