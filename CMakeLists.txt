@@ -2,27 +2,6 @@ cmake_minimum_required (VERSION 2.8)
 
 project (WebGRASS)
 
-add_executable(wgrass.wt
-src/MainUI.cpp
-src/WGApplication.cpp
-src/main.cpp
-src/LayerManager.cpp
-src/Display.cpp
-src/Toolbar.cpp
-src/Startup.cpp
-src/Module.cpp
-src/Parameter_text.cpp
-src/Parameter.cpp
-src/Authentication.cpp
-
-)
-# src/WGrassLayerManager.cpp
-# src/WGrassMenuBar.cpp
-# src/GMenuItem.cpp
-# src/WGMenuForm.cpp
-#src/WOpenLayers.cpp
-#src/login.cpp
-#src/global.cpp
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
@@ -76,6 +55,7 @@ src/Startup.cpp
 src/Module.cpp
 src/Parameter_text.cpp
 src/Parameter.cpp
+src/Authentication.cpp
 )
 
 target_link_libraries(wgrass.wt
