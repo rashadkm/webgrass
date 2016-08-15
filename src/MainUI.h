@@ -4,6 +4,7 @@
 #include <iostream>
 #include <pugixml.hpp>
 #include <cstring>
+#include <boost/filesystem.hpp>
 
 
 #include <Wt/WPushButton>
@@ -19,6 +20,9 @@
 #include <Wt/WDialog>
 
 #include "Module.h"
+#include "LayerManager.h"
+#include "Display.h"
+#include "Toolbar.h"
 
 
 class MainUI : public Wt::WContainerWidget
@@ -31,12 +35,18 @@ public:
   
   enum Wt::WDialog::DialogCode code;
 
-  void runModule(Wt::WDialog::DialogCode code);
+  void runModule();
+  void Load();
+  void runCommand(std::string a);
+  void deleteModule(Wt::WDialog::DialogCode code);
+  Display* displaymanager;
+  Toolbar* toolbar;
 
 private:
   Wt::WDialog *dialog;
   Module* mod;
   std::string gmodule;
+ 
 };
 
 #endif

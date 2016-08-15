@@ -2,6 +2,7 @@ cmake_minimum_required (VERSION 2.8)
 
 project (WebGRASS)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 find_package( Wt REQUIRED )
 if (NOT Wt_FOUND)
   message (FATAL_ERROR "Wt dependency was not found!")
@@ -18,9 +19,10 @@ include_directories( ${Boost_INCLUDE_DIRS} )
 find_path(PUGIXML_INCLUDE_DIR NAMES pugixml.hpp)
 find_library(PUGIXML_LIBRARY NAMES pugixml)
 
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
 set( GRASS_DATA_DIR "$ENV{HOME}/grassdata" CACHE PATH "Location of grassdata directory. Default is $HOME/grassdata")
 
+SET(GCC_COVERAGE_LINK_FLAGS "-lgdal")
 #relpace GRASS_INSTALL_DIR with find_program(g.gisenv)
 set( GRASS_INSTALL_DIR "/usr/lib/grass70" CACHE PATH "Location of grass install directory. Default is /usr/lib/grass70")
 
@@ -38,6 +40,8 @@ configure_file(${CMAKE_SOURCE_DIR}/scripts/start_webgrass.sh.in
   ${CMAKE_BINARY_DIR}/start_webgrass.sh @ONLY
   )
 
+add_definitions(${GCC_COVERAGE_LINK_FLAGS})
+
 add_executable(wgrass.wt
 src/MainUI.cpp
 src/WGApplication.cpp
@@ -49,6 +53,7 @@ src/Startup.cpp
 src/Module.cpp
 src/Parameter_text.cpp
 src/Parameter.cpp
+src/WOpenLayers.cpp
 )
 
 target_link_libraries(wgrass.wt

@@ -30,10 +30,15 @@ using namespace Wt;
 class Module : public WContainerWidget {
 
 public:
-  Module( std::string mod, WContainerWidget *parent = 0 );
+  Module( std::ifstream& mod, WContainerWidget *parent = 0 );
   
-
-
   std::map<std::string,std::vector<Parameter *> > map;
   std::vector<std::string>container_IDs;
+  std::vector<std::string>flag_IDs;
+  void updateOutput(std::string gg);
+  std::string out;
+  WContainerWidget *container;
+  WTabWidget *tabW;
+  // Wt::WMenuItem *tab;
+  Wt::WTextArea *ta;
 };

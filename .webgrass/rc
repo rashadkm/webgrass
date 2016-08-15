@@ -1,0 +1,4 @@
+MAPSET: PERMANENT
+GISDBASE: /home/mayank/grassdata
+LOCATION_NAME: newLocation
+GUI: text
