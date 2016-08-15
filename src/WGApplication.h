@@ -12,6 +12,7 @@ class WGApplication: public Wt::WApplication {
  public:
   WGApplication(const Wt::WEnvironment& env);
   void handlePathChanged(std::string loc_string);
+ 
 
 };
 

@@ -13,6 +13,7 @@ License (>=v2). Read the file COPYING for details.
 #include "WGApplication.h"
 #include "MainUI.h"
 #include "Startup.h"
+#include "Authentication.h"
 
 
 WGApplication::WGApplication(const Wt::WEnvironment& env)
@@ -24,7 +25,14 @@ WGApplication::WGApplication(const Wt::WEnvironment& env)
   
   internalPathChanged().connect(this, &WGApplication::handlePathChanged);
   
-  Wt::WApplication::instance()->setInternalPath("/start", true);
+  Wt::WApplication::instance()->setInternalPath("/Auth", true);
+
+
+
+//   root()->clear();
+// Authentication* auth = new Authentication( root());
+// setTitle("Authorization");
+
   
   WApplication::instance()->useStyleSheet("style.css");
 
@@ -52,11 +60,17 @@ root()->clear();
              MainUI * page_entry = new MainUI(root());
 setTitle("GRASS GIS UI");
 }
-else {
+else if(current_path == "/start") {
 root()->clear();
 Startup* startup = new Startup(uname, root());
 setTitle("Select Location and Mapset");
 }
+else{
+    root()->clear();
+Authentication* auth = new Authentication( root());
+setTitle("Authorization");
+}
+
 
 }
 

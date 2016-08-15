@@ -34,6 +34,7 @@ WPushButton *login;
 WApplication *wapp;
 
 WContainerWidget *unameWidget;
+const char *conninfo;
 
 
 };

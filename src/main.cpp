@@ -12,7 +12,9 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-	
+	Wt::WServer server(argv[0]);
+    server.setServerConfiguration(argc, argv, WTHTTP_CONFIGURATION);
+
   return WRun(argc, argv, &createApplication);
 
 
