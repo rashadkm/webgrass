@@ -1,4 +1,3 @@
-
 #include "Display.h"
 
 void
@@ -26,11 +25,14 @@ Display::Display(WContainerWidget *parent=0)
 
 
   selectionBoxContainer->setStyleClass("displayContainer");
-  WtSelectionBoxDisplay = new Wt::WSelectionBox();
-  // WtSelectionBoxDisplay->setStyleClass("layertree");
-   WtSelectionBoxDisplay->resize(1100,500);
-  // WtSelectionBoxDisplay->setStyleClass("display");
+  // WtSelectionBoxDisplay = new Wt::WSelectionBox();
+  displayBox = new WContainerWidget();
+   // WtSelectionBoxDisplay->resize(1100,500);
+  displayBox->setStyleClass("wgrass-display");
 
+   // p = new Draw(640,480);
+  // addlayer();
+  
   m_ToolBar = new Wt::WToolBar();
 
   addDisplayToolButton("show", "Display map");
@@ -50,13 +52,22 @@ Display::Display(WContainerWidget *parent=0)
   addDisplayToolButton("print", "print");
 
   selectionBoxContainer->addWidget(m_ToolBar);
-  selectionBoxContainer->addWidget(WtSelectionBoxDisplay);
+  selectionBoxContainer->addWidget(new WBreak());
+  selectionBoxContainer->addWidget(displayBox);
   addWidget(selectionBoxContainer);
-
-
-  
 
 }
 
+void Display::addlayer(std::string a){
+  displayBox->clear();
+  if(a=="raster"){
+      Wt::WImage *image = new Wt::WImage(Wt::WLink("../temp/2.jpg"));
+  // image->setStyleClass("wgrass-startup-banner");
+  displayBox->addWidget(image);
+  displayBox->resize(700,500);
+  }
+  else if(a=="vector"){
+    WApplication::instance()->doJavaScript("map.addLayer('../temp/1.shp')");
+  }
 
-
+}

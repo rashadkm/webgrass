@@ -1,8 +1,6 @@
 
 #include "MainUI.h"
-#include "LayerManager.h"
-#include "Display.h"
-#include "Toolbar.h"
+
 #include "../thirdparty/pstream/pstream.h"
 
 MainUI::MainUI(WContainerWidget *parent)
@@ -85,11 +83,23 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   naivgationbar->addMenu(menu);
   addWidget(naivgationbar);
 
+  Wt::WContainerWidget *displaycontainer = new Wt::WContainerWidget();
+  displaymanager = new Display(displaycontainer);
   Wt::WContainerWidget *toolbarcontainer = new Wt::WContainerWidget();
-  Toolbar* toolbar = new Toolbar(toolbarcontainer);
+  toolbar = new Toolbar(toolbarcontainer);
+  Wt::WPushButton *ok = new Wt::WPushButton("Load");
+  ok->clicked().connect(this, &MainUI::Load);
+  // std::cout<<(toolbar->layEr)<<std::endl;
+  // std::string f = (toolbar->layEr);
+  // if(!f.empty())
+  // {
+  //   std::cout<<"hihi"<<std::endl;
+  //   displaymanager->addlayer();
+  // }
+  // Toolbar* toolbar = new Toolbar(toolbarcontainer);
 
   addWidget(toolbar);
-
+  addWidget(ok);
   //addWidget(new WBreak());
   Wt::WContainerWidget *textContainer1 = new Wt::WContainerWidget();
   textContainer1->setStyleClass("wgrass-text-label");
@@ -116,8 +126,8 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 
   LayerManager* layermanager = new LayerManager(layercontainer);
 
-  Wt::WContainerWidget *displaycontainer = new Wt::WContainerWidget();
-  Display* displaymanager = new Display(displaycontainer);
+  // Wt::WContainerWidget *displaycontainer = new Wt::WContainerWidget();
+  // displaymanager = new Display(displaycontainer);
   hbox1->addWidget(layermanager);
   hbox1->addWidget(displaymanager,1);
   textContainer->setMargin(-10, Wt::Left);
@@ -130,6 +140,49 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   // footer->setPositionScheme(Relative);
   // footer->setOffsets(0,Wt::Bottom);
   addWidget(footer);
+}
+
+void MainUI::Load(){
+  std::cout<<(toolbar->layEr)<<std::endl;
+  std::string b = toolbar->layEr;
+  std::string c = toolbar->type;
+  if(c=="vector"){
+        std::string a;
+        a = "g.region vect="+b+" -ap";
+        runCommand(a);
+        a = "v.out.ogr input="+b+" type=line output=../temp/1.shp format=GeoJSON --overwrite";
+        runCommand(a);
+      }
+  else if(c=="raster"){
+        std::string a;
+        a = "g.region rast="+b+" -ap";
+        runCommand(a);
+        a = "r.out.gdal input="+b+" output=../temp/dd.tif type=Byte --overwrite";
+        runCommand(a);
+        a = "r.colors.out map="+b+" rules=../temp/rules1.txt --overwrite";
+        runCommand(a);
+        a = "gdal_translate -of JPEG -scale -co worldfile=yes -expand rgb ../temp/dd.tif ../temp/2.jpg";
+        runCommand(a);
+  }
+
+
+  displaymanager->addlayer(c);
+}
+
+void MainUI::runCommand(std::string a){
+
+  std::string command = a;
+  redi::ipstream proc("../scripts/init_grass.sh "+ command);     
+  std::string line;
+  std::cout.flush();
+
+
+  while (std::getline(proc.out(), line)){
+    std::cout << "stdout: " << line << '\n';
+    
+  }
+
+  
 }
 
 void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
@@ -222,7 +275,7 @@ void MainUI::runModule(){
         //v.buffer --interface-description
             //redi::ipstream proc("export GRASS_PNG_AUTO_WRITE=TRUE;export GRASS_PNG_COMPRESSION=9;export GRASS_TRANSPARENT=TRUE;export GRASS_TRUECOLOR=TRUE;export LD_LIBRARY_PATH=/usr/lib/grass70/lib; export GISBASE=/usr/lib/grass70/; export GISDBASE=/home/mayank/Dropbox/Github/webgrass/grassdata; export GISRC=/home/mayank/Dropbox/Github/webgrass/.webgrass/rc; export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH;export GIS_LOCK=77;v.buffer --interface-description");
             // redi::ipstream proc("export GRASS_PNG_AUTO_WRITE=TRUE; export GRASS_PNG_COMPRESSION=9; export GRASS_TRANSPARENT=TRUE; export GRASS_TRUECOLOR=TRUE; export LD_LIBRARY_PATH=/usr/lib/grass70/lib; export GISBASE=/usr/lib/grass70/; export GISDBASE=/home/mayank/grassdata1; export GISRC=/home/mayank/.grass7/rc; export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH; g.guienv");
-             redi::ipstream proc("../scripts/init_grass.sh.in "+ command);     
+             redi::ipstream proc("../scripts/init_grass.sh "+ command);     
              //redi::ipstream proc("printenv"); 
               std::string line;
               std::cout.flush();

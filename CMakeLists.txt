@@ -22,6 +22,7 @@ find_library(PUGIXML_LIBRARY NAMES pugixml)
 
 set( GRASS_DATA_DIR "$ENV{HOME}/grassdata" CACHE PATH "Location of grassdata directory. Default is $HOME/grassdata")
 
+SET(GCC_COVERAGE_LINK_FLAGS "-lgdal")
 #relpace GRASS_INSTALL_DIR with find_program(g.gisenv)
 set( GRASS_INSTALL_DIR "/usr/lib/grass70" CACHE PATH "Location of grass install directory. Default is /usr/lib/grass70")
 
@@ -39,6 +40,8 @@ configure_file(${CMAKE_SOURCE_DIR}/scripts/start_webgrass.sh.in
   ${CMAKE_BINARY_DIR}/start_webgrass.sh @ONLY
   )
 
+add_definitions(${GCC_COVERAGE_LINK_FLAGS})
+
 add_executable(wgrass.wt
 src/MainUI.cpp
 src/WGApplication.cpp
@@ -50,6 +53,7 @@ src/Startup.cpp
 src/Module.cpp
 src/Parameter_text.cpp
 src/Parameter.cpp
+src/WOpenLayers.cpp
 )
 
 target_link_libraries(wgrass.wt
