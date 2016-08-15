@@ -1,3 +1,4 @@
+window.alert(5 + 6);
 var image = new ol.style.Circle({
         radius: 5,
         fill: null,
@@ -106,3 +107,6 @@ var image = new ol.style.Circle({
         rotation:0
         })
       });
+      window.alert(map);
+      console.log(map);
+      map.addLayer(vectorLayer);
