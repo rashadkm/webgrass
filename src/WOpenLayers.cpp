@@ -27,7 +27,8 @@ WOpenLayers::WOpenLayers(WContainerWidget *parent)
   setImplementation(new WContainerWidget());
 
 WApplication *app = WApplication::instance();
-const std::string oluri =  "OL/lib/OpenLayers.js";
+const std::string oluri =  "../scripts/ol.js";
+const std::string map =  "../scripts/map.js";
 app->require(oluri);
 
   if (parent)
@@ -39,21 +40,12 @@ app->require(oluri);
 
 
 strm <<
-"""function initialize() {"
-"""OpenLayers.ProxyHost = \"/cgi-bin/proxy.cgi?url=\";"
-"""map = new OpenLayers.Map('" + this->id()+ "', {"
-""" allOverlays: true,maxExtent: new OpenLayers.Bounds(-180,-90,90,180),"
-"""controls: [new OpenLayers.Control.PanZoom()]});"
-"""navigate = new OpenLayers.Control.Navigation({title:\"Pan Map\" });"
-"""map.addControl(new OpenLayers.Control.LayerSwitcher());"
-"""map.addControl(new OpenLayers.Control.MousePosition());"
-"""map.addControl(navigate);"
-"}initialize();";
+"";
 
 
 
 
-    WApplication::instance()->doJavaScript(strm.str());
+    WApplication::instance()->doJavaScript(map);
   
 
 }

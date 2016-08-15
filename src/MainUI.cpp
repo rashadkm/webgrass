@@ -89,14 +89,6 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   toolbar = new Toolbar(toolbarcontainer);
   Wt::WPushButton *ok = new Wt::WPushButton("Load");
   ok->clicked().connect(this, &MainUI::Load);
-  // std::cout<<(toolbar->layEr)<<std::endl;
-  // std::string f = (toolbar->layEr);
-  // if(!f.empty())
-  // {
-  //   std::cout<<"hihi"<<std::endl;
-  //   displaymanager->addlayer();
-  // }
-  // Toolbar* toolbar = new Toolbar(toolbarcontainer);
 
   addWidget(toolbar);
   addWidget(ok);
@@ -150,18 +142,18 @@ void MainUI::Load(){
         std::string a;
         a = "g.region vect="+b+" -ap";
         runCommand(a);
-        a = "v.out.ogr input="+b+" type=line output=../temp/1.shp format=GeoJSON --overwrite";
+        a = "v.out.ogr input="+b+" type=line output=../temp/1.geojson format=GeoJSON --overwrite";
         runCommand(a);
       }
   else if(c=="raster"){
         std::string a;
         a = "g.region rast="+b+" -ap";
         runCommand(a);
-        a = "r.out.gdal input="+b+" output=../temp/dd.tif type=Byte --overwrite";
+        a = "r.out.gdal input="+b+" output=../temp/dd.tif format=GTiff type=Float32 flags=f --overwrite";
         runCommand(a);
         a = "r.colors.out map="+b+" rules=../temp/rules1.txt --overwrite";
         runCommand(a);
-        a = "gdal_translate -of JPEG -scale -co worldfile=yes -expand rgb ../temp/dd.tif ../temp/2.jpg";
+        a = "gdaldem color-relief -of JPEG ../temp/dd.tif, ../temp/rules1.txt ../temp/2.jpg";
         runCommand(a);
   }
 
@@ -207,7 +199,7 @@ void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
   cancel->clicked().connect(dialog, &Wt::WDialog::reject);
   Wt::WContainerWidget *mo = new Wt::WContainerWidget(dialog->contents());
 
-    std::cout<<"alert check"<<std::endl;
+    // std::cout<<"alert check"<<std::endl;
     mod = new Module(my_file, mo);
   
   
@@ -265,23 +257,12 @@ void MainUI::runModule(){
 
                  }
         std::cout<<command<<std::endl;
-            // redi::ipstream proc("grass70 $HOME/grassdata/newLocation/PERMANENT", redi::pstreams::pstdout | redi::pstreams::pstdin );
-            //   std::string line;
-            //   std::cout.flush();
-            //   while (std::getline(proc.out(), line)){
-            //     std::cout << "stdout: " << line << '\n';
-            // }
-        // std::string t = "g.gisenv";
-        //v.buffer --interface-description
-            //redi::ipstream proc("export GRASS_PNG_AUTO_WRITE=TRUE;export GRASS_PNG_COMPRESSION=9;export GRASS_TRANSPARENT=TRUE;export GRASS_TRUECOLOR=TRUE;export LD_LIBRARY_PATH=/usr/lib/grass70/lib; export GISBASE=/usr/lib/grass70/; export GISDBASE=/home/mayank/Dropbox/Github/webgrass/grassdata; export GISRC=/home/mayank/Dropbox/Github/webgrass/.webgrass/rc; export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH;export GIS_LOCK=77;v.buffer --interface-description");
-            // redi::ipstream proc("export GRASS_PNG_AUTO_WRITE=TRUE; export GRASS_PNG_COMPRESSION=9; export GRASS_TRANSPARENT=TRUE; export GRASS_TRUECOLOR=TRUE; export LD_LIBRARY_PATH=/usr/lib/grass70/lib; export GISBASE=/usr/lib/grass70/; export GISDBASE=/home/mayank/grassdata1; export GISRC=/home/mayank/.grass7/rc; export PATH=/usr/lib/grass70/bin:/usr/lib/grass70/scripts:$PATH; g.guienv");
+            
              redi::ipstream proc("../scripts/init_grass.sh "+ command);     
-             //redi::ipstream proc("printenv"); 
+
               std::string line;
               std::cout.flush();
-        //       while (proc >> line) {
-        //     std::cout << line << std::endl;
-        // }
+
               std::string send_output="";
               while (std::getline(proc.out(), line)){
                 std::cout << "stdout: " << line << '\n';
@@ -290,12 +271,6 @@ void MainUI::runModule(){
               }
               mod->updateOutput(send_output);
 
-              // redi::ipstream proc1("ls");  
-              // std::string line1;
-              // std::cout.flush();
-              // while (std::getline(proc1.out(), line1)){
-              //   std::cout << "stdout: " << line1 << '\n';
-              // }
     }
     // delete dialog;
 }

@@ -102,17 +102,24 @@ void Startup::mapsetChanged( int index ) {
 void Startup::startWebGrass() {
 
   /* setting the cookies */
+  std::ofstream rcfile;
+rcfile.open("../.webgrass/rc");
+
+
+  if (rcfile.is_open())
+  {std::cout<<"file open"<<std::endl;
+
+    rcfile << "MAPSET: "+m_mapset+"\n";
+    std::string str(GRASS_DATA_DIR);
+    rcfile << "GISDBASE: "+str+"\n";
+    rcfile << "LOCATION_NAME: "+m_location+"\n";
+    rcfile << "GUI: text\n";
+    rcfile.close();
+  }
   WApplication::instance()->setCookie("wgrass_location", m_location, 60*60*24*24);
   WApplication::instance()->setCookie("wgrass_mapset", m_mapset , 60*60*24*24);
 
-  // std::ofstream grassrc;
-  //  grassrc.open ("./grassrc7");
-  //  grassrc << "GISDBASE: " + base_path << endl;
-  //  grassrc << "LOCATION_NAME: " + slocation << endl;
-  //  grassrc << "MAPSET: " + smapset << endl;
-  //  grassrc << "GRASS_GUI: text" << endl;
-  //  grassrc << "MONITOR: PNG" << endl;
-  //  grassrc.close();
+
   WApplication::instance()->setInternalPath("/grass", true);
 }
 

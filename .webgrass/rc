@@ -1,4 +1,4 @@
 MAPSET: PERMANENT
-GISDBASE: /home/mayank/Dropbox/Github/webgrass/grassdata
-LOCATION_NAME: nc_basic_spm_grass7
+GISDBASE: /home/mayank/grassdata
+LOCATION_NAME: newLocation
 GUI: text

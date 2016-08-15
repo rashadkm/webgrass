@@ -25,13 +25,14 @@ Display::Display(WContainerWidget *parent=0)
 
 
   selectionBoxContainer->setStyleClass("displayContainer");
-  // WtSelectionBoxDisplay = new Wt::WSelectionBox();
+
   displayBox = new WContainerWidget();
-   // WtSelectionBoxDisplay->resize(1100,500);
+
   displayBox->setStyleClass("wgrass-display");
 
-   // p = new Draw(640,480);
-  // addlayer();
+  // Wt::WContainerWidget *maplayer = new Wt::WContainerWidget();
+  // WOpenLayers* maprender = new WOpenLayers(maplayer);
+
   
   m_ToolBar = new Wt::WToolBar();
 
@@ -67,7 +68,7 @@ void Display::addlayer(std::string a){
   displayBox->resize(700,500);
   }
   else if(a=="vector"){
-    WApplication::instance()->doJavaScript("map.addLayer('../temp/1.shp')");
+    // WApplication::instance()->doJavaScript("map.addLayer('../temp/1.shp')");
   }
 
 }
