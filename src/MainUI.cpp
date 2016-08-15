@@ -139,6 +139,7 @@ void MainUI::Load(){
   std::string b = toolbar->layEr;
   std::string c = toolbar->type;
   if(c=="vector"){
+      std::remove("../temp/1.geojson");
         std::string a;
         a = "g.region vect="+b+" -ap";
         runCommand(a);

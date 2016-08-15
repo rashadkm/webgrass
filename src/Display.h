@@ -12,7 +12,7 @@
 #include <Wt/WImage>
 #include "Draw.h"
 #include "WOpenLayers.h"
-
+#include <Wt/WJavaScript>
 #include "wgrassconfig.h"
 
 using namespace Wt;

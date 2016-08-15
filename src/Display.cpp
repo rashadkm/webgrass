@@ -68,7 +68,41 @@ void Display::addlayer(std::string a){
   displayBox->resize(700,500);
   }
   else if(a=="vector"){
-    // WApplication::instance()->doJavaScript("map.addLayer('../temp/1.shp')");
+    
+//     const std::string ol =  "../scripts/ol.js";
+// const std::string map =  "../scripts/map.js";
+// std::stringstream strm;
+// strm<<
+// """var geojsonObject = {'type': 'FeatureCollection', 'crs': { 'type': 'name', 'properties': { 'name': 'urn:ogc:def:crs:OGC:1.3:CRS84' } }, 'features': [{ 'type': 'Feature', 'properties': { 'DN': 2 }, 'geometry': { 'type': 'Polygon', 'coordinates': [ [ [ 13.559093915055664, 52.545214330050563 ], [ 13.559633429050496, 52.545205649772548 ], [ 13.559633415380715, 52.545214636296755 ], [ 13.559093915055664, 52.545214330050563 ] ] ] } }]};"
+// """var vectorSource = new ol.source.Vector({"
+// """        features: (new ol.format.GeoJSON()).readFeatures(geojsonObject)"
+// """     });"
+// """   var vectorLayer = new ol.layer.Vector({"
+// """     source: vectorSource"
+// """      });"
+// """      var map = new ol.Map({"
+// """        layers: ["
+// """       new ol.layer.Tile({"
+// """         source: new ol.source.OSM()"
+// """       }),"
+// """       vectorLayer"
+// """    ],"
+// """ target: 'map',"
+// """     controls: ol.control.defaults({"
+//          """ attributionOptions:  ({"
+//            """ collapsible: false"
+//           """})"
+//         """}),"
+//         """view: new ol.View({"
+//           """center: ol.proj.transform([13.55936,52.54521], 'EPSG:4326', 'EPSG:3857'),"
+        
+//         """zoom: 19,"
+//         """rotation:0"
+//         """})"
+//       """});";
+// WApplication::instance()->require(ol);
+// WApplication::instance()->doJavaScript(strm.str());
+// WApplication::instance()->doJavaScript();
   }
 
 }

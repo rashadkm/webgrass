@@ -68,6 +68,7 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   WtSelectionBoxLocation->resize(200,300);
   makeSelectionBox(WtSelectionBoxLocation, "");
   selectionBoxContainerLayout->addWidget(WtSelectionBoxLocation);
+  WtSelectionBoxLocation->setCurrentIndex(-1);
   addWidget(selectionBoxContainer);
   WtSelectionBoxLocation->activated().connect(this, &Startup::locationChanged);
 
@@ -75,7 +76,7 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   WtSelectionBoxMapset = new Wt::WSelectionBox();
   WtSelectionBoxMapset->activated().connect(this, &Startup::mapsetChanged);
   selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset);
-  WtSelectionBoxLocation->setCurrentIndex(-1);
+  
 
   WPushButton *startWGrass = new WPushButton("Start webGRASS >>");
 
@@ -90,6 +91,7 @@ void Startup::locationChanged( int index ) {
   WtSelectionBoxMapset->clear();
   m_location = WtSelectionBoxLocation->itemText(index).narrow();
   makeSelectionBox(WtSelectionBoxMapset, m_location);
+  WtSelectionBoxMapset->setCurrentIndex(-1);
 
 }
 
