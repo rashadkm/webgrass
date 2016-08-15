@@ -51,7 +51,9 @@ mapset     = this->environment().getCookie("wgrass_mapset");
 catch (exception& e) {
 	   //           cout << "COOKIE EXCEPTION: " << e.what() << endl;
          }
-
+// location   = this->environment().getCookie("wgrass_location");
+// mapset     = this->environment().getCookie("wgrass_mapset");
+// std::cout<<location<<"and"<<mapset<<std::endl;
 if(current_path == "/grass")
            {
 root()->clear();

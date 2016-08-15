@@ -25,6 +25,7 @@ LayerManager.o: LayerManager.cpp
 Display.o: Display.cpp
 	g++ -c Display.cpp
 
+
 Toolbar.o: Toolbar.cpp
 	g++ -c Toolbar.cpp
 
