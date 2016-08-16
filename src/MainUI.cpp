@@ -150,11 +150,11 @@ void MainUI::Load(){
         std::string a;
         a = "g.region rast="+b+" -ap";
         runCommand(a);
-        a = "r.out.gdal input="+b+" output=../temp/dd.tif format=GTiff type=Float32 flags=f --overwrite";
+        a = "r.out.gdal input="+b+" output=dd.tif format=GTiff type=Float32 --overwrite";
         runCommand(a);
-        a = "r.colors.out map="+b+" rules=../temp/rules1.txt --overwrite";
+        a = "r.colors.out map="+b+" rules=rules1.txt --overwrite";
         runCommand(a);
-        a = "gdaldem color-relief -of JPEG ../temp/dd.tif, ../temp/rules1.txt ../temp/2.jpg";
+        a = "gdaldem color-relief -of JPEG dd.tif rules1.txt output.jpg";
         runCommand(a);
   }
 

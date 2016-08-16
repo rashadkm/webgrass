@@ -21,6 +21,7 @@ libwttest-dev - test connector library for Wt [development]
 libpugixml-dev
 
 
+GDAL-Grass plugin is also required - https://grasswiki.osgeo.org/wiki/Compile_and_install_GDAL-GRASS_plugin
 
 COMPILATION-
 
