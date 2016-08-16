@@ -9,8 +9,8 @@
 #include <Wt/WSelectionBox>
 #include <Wt/WApplication>
 #include <Wt/WToolBar>
+#include <Wt/WWidget>
 #include <Wt/WImage>
-#include "Draw.h"
 #include "WOpenLayers.h"
 #include <Wt/WJavaScript>
 #include "wgrassconfig.h"

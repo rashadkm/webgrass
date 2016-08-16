@@ -62,47 +62,40 @@ Display::Display(WContainerWidget *parent=0)
 void Display::addlayer(std::string a){
   displayBox->clear();
   if(a=="raster"){
-      Wt::WImage *image = new Wt::WImage(Wt::WLink("../temp/2.jpg"));
+    std::string file = Wt::WApplication::instance()->docRoot() + "/build/output.jpg";
+      Wt::WImage *image = new Wt::WImage(file);
   // image->setStyleClass("wgrass-startup-banner");
   displayBox->addWidget(image);
   displayBox->resize(700,500);
   }
   else if(a=="vector"){
     
-//     const std::string ol =  "../scripts/ol.js";
-// const std::string map =  "../scripts/map.js";
-// std::stringstream strm;
-// strm<<
-// """var geojsonObject = {'type': 'FeatureCollection', 'crs': { 'type': 'name', 'properties': { 'name': 'urn:ogc:def:crs:OGC:1.3:CRS84' } }, 'features': [{ 'type': 'Feature', 'properties': { 'DN': 2 }, 'geometry': { 'type': 'Polygon', 'coordinates': [ [ [ 13.559093915055664, 52.545214330050563 ], [ 13.559633429050496, 52.545205649772548 ], [ 13.559633415380715, 52.545214636296755 ], [ 13.559093915055664, 52.545214330050563 ] ] ] } }]};"
-// """var vectorSource = new ol.source.Vector({"
-// """        features: (new ol.format.GeoJSON()).readFeatures(geojsonObject)"
-// """     });"
-// """   var vectorLayer = new ol.layer.Vector({"
-// """     source: vectorSource"
-// """      });"
-// """      var map = new ol.Map({"
-// """        layers: ["
-// """       new ol.layer.Tile({"
-// """         source: new ol.source.OSM()"
-// """       }),"
-// """       vectorLayer"
-// """    ],"
-// """ target: 'map',"
-// """     controls: ol.control.defaults({"
-//          """ attributionOptions:  ({"
-//            """ collapsible: false"
-//           """})"
-//         """}),"
-//         """view: new ol.View({"
-//           """center: ol.proj.transform([13.55936,52.54521], 'EPSG:4326', 'EPSG:3857'),"
+    const std::string ol =  "../scripts/ol.js";
+const std::string map =  "../scripts/map.js";
+
+
+
+std::ifstream file( "../scripts/map.js" );
+std::stringstream buffer;
+
+    if ( file )
+    {
         
-//         """zoom: 19,"
-//         """rotation:0"
-//         """})"
-//       """});";
-// WApplication::instance()->require(ol);
-// WApplication::instance()->doJavaScript(strm.str());
-// WApplication::instance()->doJavaScript();
+
+        buffer << file.rdbuf();
+
+        file.close();
+
+        // operations on the buffer...
+    }
+
+
+WApplication::instance()->require(ol);
+WApplication::instance()->doJavaScript(buffer.str());
+// Wt::WWidget *h = new Wt::WWidget();
+// h->doJavaScript(buffer.str());
+// displayBox->addWidget(h);
+
   }
 
 }
