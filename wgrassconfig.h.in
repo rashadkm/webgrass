@@ -1,4 +1,6 @@
 #ifndef WGRASSCONFIG_H
 #define WGRASSCONFIG_H
 static const char * GRASS_DATA_DIR = "@GRASS_DATA_DIR@";
+
+#cmakedefine BUILD_WITH_OAUTH
 #endif //WGRASSCONFIG_H

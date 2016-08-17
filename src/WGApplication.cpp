@@ -13,8 +13,9 @@ License (>=v2). Read the file COPYING for details.
 #include "WGApplication.h"
 #include "MainUI.h"
 #include "Startup.h"
+#if defined(BUILD_WITH_OAUTH)
 #include "Authentication.h"
-
+#endif
 
 WGApplication::WGApplication(const Wt::WEnvironment& env)
 : Wt::WApplication(env) {
@@ -24,15 +25,11 @@ WGApplication::WGApplication(const Wt::WEnvironment& env)
   addMetaHeader("viewport", "width = device-width, initial-scale = 1");
   
   internalPathChanged().connect(this, &WGApplication::handlePathChanged);
-  
+#if defined(BUILD_WITH_OAUTH)  
   Wt::WApplication::instance()->setInternalPath("/Auth", true);
-
-
-
-//   root()->clear();
-// Authentication* auth = new Authentication( root());
-// setTitle("Authorization");
-
+#else
+  Wt::WApplication::instance()->setInternalPath("/start", true);  
+#endif
   
   WApplication::instance()->useStyleSheet("style.css");
 
@@ -67,8 +64,10 @@ setTitle("Select Location and Mapset");
 }
 else{
     root()->clear();
+#if defined(BUILD_WITH_OAUTH)    
 Authentication* auth = new Authentication( root());
 setTitle("Authorization");
+ #endif
 }
 
 

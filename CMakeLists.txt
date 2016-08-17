@@ -7,6 +7,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 set( GRASS_DATA_DIR "$ENV{HOME}/grassdata" CACHE PATH "Location of grassdata directory. Default is $HOME/grassdata")
 
+option(BUILD_WITH_OAUTH "build with oauth support" OFF)
+
 find_package( Wt REQUIRED )
 if (NOT Wt_FOUND)
   message (FATAL_ERROR "Wt dependency was not found!")
@@ -47,7 +49,7 @@ configure_file(${CMAKE_SOURCE_DIR}/scripts/start_webgrass.sh.in
 
 add_definitions(${GCC_COVERAGE_LINK_FLAGS})
 
-add_executable(wgrass.wt
+set(SRCS
 src/MainUI.cpp
 src/WGApplication.cpp
 src/main.cpp
@@ -58,8 +60,13 @@ src/Startup.cpp
 src/Module.cpp
 src/Parameter_text.cpp
 src/Parameter.cpp
-src/Authentication.cpp
 )
+
+if(BUILD_WITH_OAUTH)
+list(APPEND SRCS src/Authentication.cpp)
+endif()  
+
+add_executable(wgrass.wt ${SRCS})
 
 target_link_libraries(wgrass.wt
   ${Wt_LIBRARY} ${Wt_HTTP_LIBRARY}
