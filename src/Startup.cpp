@@ -75,6 +75,7 @@ Startup::Startup(std::string wgrass_login, WContainerWidget *parent=0)
   /* Mapset Selection box*/
   WtSelectionBoxMapset = new Wt::WSelectionBox();
   WtSelectionBoxMapset->activated().connect(this, &Startup::mapsetChanged);
+  WtSelectionBoxMapset->setVerticalSize(5);
   selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset);
   
 
@@ -149,6 +150,7 @@ bool Startup::checkExistance(std::string parent, std::string dir)  {
 void Startup::makeSelectionBox(WSelectionBox *box, std::string dir) {
   std::vector<string> dirlist;
   getFileList(dirlist, dir, false);
+  std::sort(dirlist.begin(), dirlist.end());
   for( vector<string>::iterator it = dirlist.begin(); it!=dirlist.end(); ++it ) {
   bool isValidLocation = checkExistance(dir, *it);
     if (isValidLocation) {

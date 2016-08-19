@@ -28,7 +28,7 @@ Toolbar::Toolbar(WContainerWidget *parent=0)
   
   
 
-  rasTER = new Wt::WPushButton("Add Rater");
+  rasTER = new Wt::WPushButton("Add Raster");
  
   command1 = "g.list type=vector";
   command2 = "g.list type=raster";
