@@ -222,7 +222,7 @@ void MainUI::runModule(){
         std::map<std::string,std::vector<Parameter *> > mop = mod->map;
         std::vector<std::string>list= mod->container_IDs;
         std::vector<std::string>flag_list= mod->flag_IDs;
-
+        std::string common_flags = "";
         std::string command = gmodule+" "+"[-";
         for (std::vector<std::string>::iterator it=flag_list.begin(); it != flag_list.end(); ++it) /*creation of widgets*/
                  {   
@@ -235,7 +235,31 @@ void MainUI::runModule(){
                       // std::string value = cb->checkState();
                       if(cb->isChecked())
                       {
-                      command = command + d;
+                        if(d == "help")
+                        {
+                          common_flags = common_flags + " [--help]";
+                        }
+                        else if(d == "overwrite")
+                        {
+                          common_flags = common_flags + " [--overwrite]";
+                        }
+                        else if(d == "verbose")
+                        {
+                          common_flags = common_flags + " [--verbose]";
+                        }
+                        else if(d == "quite")
+                        {
+                          common_flags = common_flags + " [--quite]";
+                        }
+                        else if(d == "ui")
+                        {
+                          common_flags = common_flags ;
+                        }
+                        else
+                        {
+                          command = command + d;
+                        }
+                      
                     }
                     
 
@@ -257,6 +281,7 @@ void MainUI::runModule(){
                     
 
                  }
+        command = command + common_flags;
         std::cout<<command<<std::endl;
             
              redi::ipstream proc("../scripts/init_grass.sh "+ command);     
