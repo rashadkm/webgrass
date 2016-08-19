@@ -253,7 +253,7 @@ void MainUI::runModule(){
                         }
                         else if(d == "ui")
                         {
-                          common_flags = common_flags + " [--ui]";
+                          common_flags = common_flags ;
                         }
                         else
                         {
