@@ -49,13 +49,20 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
              pugi::xml_node menu_items_menu_items_menuitem_node = menu_items_menu_items_node.child("menuitem");
              while( menu_items_menu_items_menuitem_node ) {
 
+	       const std::string handler = menu_items_menu_items_menuitem_node.child_value("handler");
+	       // <handler>OnMenuCmd</handler> 
+	       if ( handler == "OnMenuCmd")
+		 {
+
          Wt::WMenuItem *nextLevelMenuItem = new Wt::WMenuItem(menu_items_menu_items_menuitem_node.child_value("label"));
          nextLevelMenuItem->setId(menu_items_menu_items_menuitem_node.child_value("command"));
          nextLevelMenuItem->triggered().connect(this, &MainUI::openModuleUI);
          nextLevel->addItem(nextLevelMenuItem);
          
-         menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
+
              }
+	                menu_items_menu_items_menuitem_node = menu_items_menu_items_menuitem_node.next_sibling("menuitem");
+	     }
              menu_items_menu_items_node = menu_items_menu_items_node.next_sibling("items");
           }
           menu_items_menu_node = menu_items_menu_node.next_sibling("menu");
@@ -65,12 +72,18 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
        pugi::xml_node menu_items_menuitem_node = menu_items_node.child("menuitem");
        while ( menu_items_menuitem_node ) {
    Wt::WMenuItem *firstLevelMenuItem = new Wt::WMenuItem(menu_items_menuitem_node.child_value("label"));
+    const std::string handler = menu_items_menuitem_node.child_value("handler");
+	       // <handler>OnMenuCmd</handler> 
+	       if ( handler == "OnMenuCmd")
+		 {
+
    firstLevelMenuItem->setId(menu_items_menuitem_node.child_value("command"));
    firstLevelMenuItem->triggered().connect(this, &MainUI::openModuleUI);
    firstLevel->addItem(firstLevelMenuItem);
-   menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
+   
        }
-       
+	       menu_items_menuitem_node = menu_items_menuitem_node.next_sibling("menuitem");
+       }
        menu_items_node = menu_items_node.next_sibling("items");
        
        menu_node = menu_node.next_sibling("menu");
