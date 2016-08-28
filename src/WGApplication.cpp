@@ -23,6 +23,8 @@ WGApplication::WGApplication(const Wt::WEnvironment& env)
   setTheme(new Wt::WBootstrapTheme());
  
   addMetaHeader("viewport", "width = device-width, initial-scale = 1");
+
+  Wt::WApplication::instance()->setInternalPath("/", false);
   
   internalPathChanged().connect(this, &WGApplication::handlePathChanged);
 #if defined(BUILD_WITH_OAUTH)  
@@ -50,7 +52,7 @@ catch (exception& e) {
          }
 // location   = this->environment().getCookie("wgrass_location");
 // mapset     = this->environment().getCookie("wgrass_mapset");
-// std::cout<<location<<"and"<<mapset<<std::endl;
+
 if(current_path == "/grass")
            {
 root()->clear();
