@@ -1335,7 +1335,6 @@
 		    </menuitem>
 		  </items>
 		</menu>
-		<!-- RK
 		<menu>
 		  <label>Generate surfaces</label>
 		  <items>
@@ -1385,15 +1384,14 @@
 		      <command>r.random.surface</command>
 		    </menuitem>
 		  </items>
-		  </menu>
+		</menu>
 		<menuitem>
 		  <label>Generate contour lines</label>
 		  <help>Produces a vector map of specified contours from a raster map.</help>
 		  <keywords>raster,DEM,contours,vector</keywords>
 		  <handler>OnMenuCmd</handler>
 		  <command>r.contour</command>
-		  </menuitem>
-		 RK  -->		  
+		</menuitem>
 		<menu>
 		  <label>Interpolate surfaces</label>
 		  <items>
@@ -1465,7 +1463,7 @@
 		      <command>r.fillnulls</command>
 		    </menuitem>
 		  </items>
-		  </menu>
+		</menu>
 		<separator />
 		<menu>
 		  <label>Report and statistics</label>
@@ -2719,7 +2717,7 @@
 		</menu>
       </items>
     </menu>
-<!--
+
     <menu>
       <label>Help</label>
       <items>
@@ -2745,6 +2743,6 @@
 		</menuitem>
       </items>
     </menu>
--->    
+    
   </menubar>
 </menudata>
