@@ -33,7 +33,7 @@ public:
   void createUI(Wt::WContainerWidget *parent);
   void openModuleUI(Wt::WMenuItem* gitem);
   
-  enum Wt::WDialog::DialogCode code;
+
 
   void runModule();
   void Load();
@@ -41,12 +41,13 @@ public:
   void deleteModule(Wt::WDialog::DialogCode code);
   Display* displaymanager;
   Toolbar* toolbar;
-
+#if 0
+    enum Wt::WDialog::DialogCode code;
 private:
   Wt::WDialog *dialog;
   Module* mod;
   std::string gmodule;
- 
+#endif
 };
 
 #endif

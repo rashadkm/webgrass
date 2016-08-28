@@ -87,11 +87,13 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
   displaymanager = new Display(displaycontainer);
   Wt::WContainerWidget *toolbarcontainer = new Wt::WContainerWidget();
   toolbar = new Toolbar(toolbarcontainer);
+#if 0 
   Wt::WPushButton *ok = new Wt::WPushButton("Load");
   ok->clicked().connect(this, &MainUI::Load);
-
-  addWidget(toolbar);
   addWidget(ok);
+#endif  
+  addWidget(toolbar);
+
   //addWidget(new WBreak());
   Wt::WContainerWidget *textContainer1 = new Wt::WContainerWidget();
   textContainer1->setStyleClass("wgrass-text-label");
@@ -178,7 +180,22 @@ void MainUI::runCommand(std::string a){
   
 }
 
+#if 1
+void MainUI::openModuleUI(Wt::WMenuItem* item) {
+#else
 void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
+#endif
+
+#if 1
+  Module *grassModule = new Module(item->id());
+  if ( grassModule->createUI() )
+
+    {
+      grassModule->setWindowTitle(item->id());
+      grassModule->show();
+    }
+
+  #else
   gmodule = gitem->id();
   std::string file = Wt::WApplication::instance()->docRoot() + "/xml/"+ gmodule +".xml";
   std::ifstream my_file(file.c_str());
@@ -209,13 +226,16 @@ void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
   dialog->finished().connect(this, &MainUI::deleteModule);
   dialog->show();
 }
-
+#endif
 }
 
+#if 0
 void MainUI::deleteModule(Wt::WDialog::DialogCode code){
   delete dialog;
 }
+#endif 
 void MainUI::runModule(){
+  #if 0
   // if (code == Wt::WDialog::Accepted)
   {
         std::cout<<(mod->findById("Main"))->objectName()<<"check"<<endl;
@@ -274,4 +294,5 @@ void MainUI::runModule(){
 
     }
     // delete dialog;
+  #endif
 }
