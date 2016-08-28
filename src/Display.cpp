@@ -33,7 +33,7 @@ Display::Display(WContainerWidget *parent=0)
   // Wt::WContainerWidget *maplayer = new Wt::WContainerWidget();
   // WOpenLayers* maprender = new WOpenLayers(maplayer);
 
-  
+#if 0
   m_ToolBar = new Wt::WToolBar();
 
   addDisplayToolButton("show", "Display map");
@@ -57,6 +57,7 @@ Display::Display(WContainerWidget *parent=0)
   selectionBoxContainer->addWidget(displayBox);
   addWidget(selectionBoxContainer);
 
+#endif  
 }
 
 void Display::addlayer(std::string a){

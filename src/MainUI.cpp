@@ -85,15 +85,16 @@ void MainUI::createUI(Wt::WContainerWidget *parent) {
 
   Wt::WContainerWidget *displaycontainer = new Wt::WContainerWidget();
   displaymanager = new Display(displaycontainer);
+#if 0   
   Wt::WContainerWidget *toolbarcontainer = new Wt::WContainerWidget();
   toolbar = new Toolbar(toolbarcontainer);
-#if 0 
+
   Wt::WPushButton *ok = new Wt::WPushButton("Load");
   ok->clicked().connect(this, &MainUI::Load);
   addWidget(ok);
-#endif  
-  addWidget(toolbar);
 
+  addWidget(toolbar);
+#endif
   //addWidget(new WBreak());
   Wt::WContainerWidget *textContainer1 = new Wt::WContainerWidget();
   textContainer1->setStyleClass("wgrass-text-label");
