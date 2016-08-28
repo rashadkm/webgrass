@@ -2358,11 +2358,6 @@
 		  </items>
 		</menu>
 		<menuitem>
-		  <label>Histogram</label>
-		  <help>Generate histogram of image</help>
-		  <handler>DispHistogram</handler>
-		</menuitem>
-		<menuitem>
 		  <label>Spectral response</label>
 		  <help>Displays spectral response at user specified locations in group or images.</help>
 		  <keywords>imagery,raster,multispectral</keywords>
