@@ -50,6 +50,7 @@ configure_file(${CMAKE_SOURCE_DIR}/scripts/start_webgrass.sh.in
 add_definitions(${GCC_COVERAGE_LINK_FLAGS})
 
 set(SRCS
+src/Utils.cpp
 src/MainUI.cpp
 src/WGApplication.cpp
 src/main.cpp
@@ -60,6 +61,7 @@ src/Startup.cpp
 src/Module.cpp
 src/Parameter_text.cpp
 src/Parameter.cpp
+
 )
 
 if(BUILD_WITH_OAUTH)
