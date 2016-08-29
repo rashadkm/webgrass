@@ -272,7 +272,11 @@ void MainUI::runModule(){
                     
 
                  }
-        command = command + "] ";
+          if(!flag_list.empty())
+          {
+            command = command + "] ";
+          }
+        
         for (std::vector<std::string>::iterator it=list.begin(); it != list.end(); ++it) /*creation of widgets*/
                  {   
                     
