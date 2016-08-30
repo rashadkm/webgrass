@@ -4,7 +4,7 @@ see COPYING and GPL.txt
 more ReadMe soon
 
 
-Things needed are- boost and wt
+Things needed are- grass,boost and wt
 
 These are the dependencies which will be required beforehand. Install them one by one before compiling
 
@@ -20,8 +20,13 @@ libwthttp-dev - HTTP(S) connector library for Wt [development]
 libwttest-dev - test connector library for Wt [development]
 libpugixml-dev
 
+Update the init_grass.sh file according the installation folder of the grass.
+The data you want to use should be in folder "grassdata" in your "home".
 
 GDAL-Grass plugin is also required - https://grasswiki.osgeo.org/wiki/Compile_and_install_GDAL-GRASS_plugin
+
+Please check the screenshots here - https://trac.osgeo.org/grass/wiki/GSoC/2016/WebGrass   if it doesnot match with yours then please replace the resource folder with this one https://drive.google.com/file/d/0ByvUEyWRSot9UXN5b2s0NER5NHM/view
+
 
 COMPILATION-
 

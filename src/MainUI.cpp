@@ -223,7 +223,11 @@ void MainUI::runModule(){
         std::vector<std::string>list= mod->container_IDs;
         std::vector<std::string>flag_list= mod->flag_IDs;
         std::string common_flags = "";
-        std::string command = gmodule+" "+"[-";
+        std::string command = gmodule;
+          // if(!flag_list.empty())
+          // {
+          //   command = command+ " "+"[-";
+          // }
         for (std::vector<std::string>::iterator it=flag_list.begin(); it != flag_list.end(); ++it) /*creation of widgets*/
                  {   
                     
@@ -235,36 +239,48 @@ void MainUI::runModule(){
                       // std::string value = cb->checkState();
                       if(cb->isChecked())
                       {
+                        
+
                         if(d == "help")
                         {
-                          common_flags = common_flags + " [--help]";
+                          common_flags = common_flags + " --help";
                         }
                         else if(d == "overwrite")
                         {
-                          common_flags = common_flags + " [--overwrite]";
+                          common_flags = common_flags + " --overwrite";
                         }
                         else if(d == "verbose")
                         {
-                          common_flags = common_flags + " [--verbose]";
+                          common_flags = common_flags + " --verbose";
                         }
                         else if(d == "quite")
                         {
-                          common_flags = common_flags + " [--quite]";
+                          common_flags = common_flags + " --quite";
                         }
                         else if(d == "ui")
                         {
                           common_flags = common_flags ;
                         }
+                        else if(d == "p")
+                        {
+                          command=command ;
+                        }
                         else
                         {
-                          command = command + d;
+                          command = command+ " -"+d;
+                          // command = command + d;
                         }
                       
                     }
                     
 
                  }
-        command = command + "] ";
+          // if(!flag_list.empty())
+          // {
+          //   command = command + "] ";
+          // }
+        
+        command = command + " ";
         for (std::vector<std::string>::iterator it=list.begin(); it != list.end(); ++it) /*creation of widgets*/
                  {   
                     
