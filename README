@@ -25,6 +25,9 @@ The data you want to use should be in folder "grassdata" in your "home".
 
 GDAL-Grass plugin is also required - https://grasswiki.osgeo.org/wiki/Compile_and_install_GDAL-GRASS_plugin
 
+Please check the screenshots here - https://trac.osgeo.org/grass/wiki/GSoC/2016/WebGrass   if it doesnot match with yours then please replace the resource folder with this one https://drive.google.com/file/d/0ByvUEyWRSot9UXN5b2s0NER5NHM/view
+
+
 COMPILATION-
 
 in the webgrass folder https://github.com/rashadkm/webgrass
