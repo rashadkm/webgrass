@@ -224,10 +224,10 @@ void MainUI::runModule(){
         std::vector<std::string>flag_list= mod->flag_IDs;
         std::string common_flags = "";
         std::string command = gmodule;
-          if(!flag_list.empty())
-          {
-            command = command+ " "+"[-";
-          }
+          // if(!flag_list.empty())
+          // {
+          //   command = command+ " "+"[-";
+          // }
         for (std::vector<std::string>::iterator it=flag_list.begin(); it != flag_list.end(); ++it) /*creation of widgets*/
                  {   
                     
@@ -239,6 +239,8 @@ void MainUI::runModule(){
                       // std::string value = cb->checkState();
                       if(cb->isChecked())
                       {
+                        
+
                         if(d == "help")
                         {
                           common_flags = common_flags + " --help";
@@ -265,18 +267,20 @@ void MainUI::runModule(){
                         }
                         else
                         {
-                          command = command + d;
+                          command = command+ " -"+d;
+                          // command = command + d;
                         }
                       
                     }
                     
 
                  }
-          if(!flag_list.empty())
-          {
-            command = command + "] ";
-          }
+          // if(!flag_list.empty())
+          // {
+          //   command = command + "] ";
+          // }
         
+        command = command + " ";
         for (std::vector<std::string>::iterator it=list.begin(); it != list.end(); ++it) /*creation of widgets*/
                  {   
                     
