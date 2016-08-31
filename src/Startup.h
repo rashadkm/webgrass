@@ -24,33 +24,40 @@
 
 #include "wgrassconfig.h"
 
-using namespace Wt;
-
-using namespace std;
-
 namespace fs = boost::filesystem;
 
-class Startup : public WContainerWidget {
-
+class Startup : public Wt::WContainerWidget
+{
 public:
-  Startup(std::string wgrass_login, WContainerWidget *parent);
+  Startup( Wt::WContainerWidget *parent=0 );
+  
   void startWebGrass();
-  void getFileList( vector<string>& dirlist, std::string subdir, bool recurse_into_subdirs = false );
-  void showMapsets(WString location);
+  
+  
   void locationUploaded();
-  void updateLocationAndMapsets(string wgrass_login);
+  
+  void updateLocationAndMapsets(const std::string& wgrass_login);
+  
   void locationChanged(int index);
+  
   void mapsetChanged(int index);
-  void makeSelectionBox(WSelectionBox *box, std::string dir);
-  bool checkExistance(std::string parent, std::string dir);
 
 private:
 
-  WSelectionBox *WtSelectionBoxMapset;
-  WSelectionBox *WtSelectionBoxLocation;
-  WContainerWidget *unameWidget;
+    
+  void makeSelectionBox(Wt::WSelectionBox *box, const std::string& dir);
+  
+  bool checkExistance(const std::string& parent, const std::string& dir);
 
-  string m_location;
-  string m_mapset;
+  void getFileList( std::vector<std::string>& dirlist, const std::string& subdir, bool recurse_into_subdirs = false );
+  
+  void showMapsets(const Wt::WString& location);
+
+  Wt::WSelectionBox *WtSelectionBoxMapset;
+  Wt::WSelectionBox *WtSelectionBoxLocation;
+  Wt::WContainerWidget *unameWidget;
+
+  std::string location;
+  std::string mapset;
 
 };

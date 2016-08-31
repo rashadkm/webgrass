@@ -17,6 +17,8 @@ License (>=v2). Read the file COPYING for details.
 #include "Authentication.h"
 #endif
 
+#include "simple_login.h"
+
 WGApplication::WGApplication(const Wt::WEnvironment& env)
 : Wt::WApplication(env) {
 
@@ -26,53 +28,59 @@ WGApplication::WGApplication(const Wt::WEnvironment& env)
 
   Wt::WApplication::instance()->setInternalPath("/", false);
   
-  internalPathChanged().connect(this, &WGApplication::handlePathChanged);
-#if defined(BUILD_WITH_OAUTH)  
+  internalPathChanged().connect(this, &WGApplication::handle_path_changed);
+  
+  #if defined(BUILD_WITH_OAUTH)  
   Wt::WApplication::instance()->setInternalPath("/Auth", true);
-#else
+  #else
   Wt::WApplication::instance()->setInternalPath("/start", true);  
-#endif
+  #endif
   
   WApplication::instance()->useStyleSheet("style.css");
 
 }
 
-void WGApplication::handlePathChanged(std::string loc_string) {
+void WGApplication::handle_path_changed(std::string loc_string) {
 
- std::string current_path = internalPath();
- std::string uname, location, mapset;
+ const std::string current_path = internalPath();
 
-try {
-uname      = this->environment().getCookie("wgrass_login");
-location   = this->environment().getCookie("wgrass_location");
-mapset     = this->environment().getCookie("wgrass_mapset");
-         }
-catch (exception& e) {
-	   //           cout << "COOKIE EXCEPTION: " << e.what() << endl;
-         }
-// location   = this->environment().getCookie("wgrass_location");
-// mapset     = this->environment().getCookie("wgrass_mapset");
+ std::string uname;
+ try
+   {
+     uname = this->environment().getCookie("wg_login");
+   }
+ catch (std::exception& e)
+   {
 
-if(current_path == "/grass")
-           {
-root()->clear();
-             MainUI * page_entry = new MainUI(root());
-setTitle("GRASS GIS UI");
-}
-else if(current_path == "/start") {
-root()->clear();
-Startup* startup = new Startup(uname, root());
-setTitle("Select Location and Mapset");
-}
-else{
-    root()->clear();
-#if defined(BUILD_WITH_OAUTH)    
-Authentication* auth = new Authentication( root());
-setTitle("Authorization");
- #endif
-}
+   }
 
+ 
+#if 1
+     root()->clear();
+     simple_login * main_ui = new simple_login( root() );
+     this->setTitle("Login");
+ #else
+ if(current_path == "/grass")
+   {
+     root()->clear();
+     MainUI * main_ui = new MainUI( root() );
+     this->setTitle("GRASS GIS UI");
+   }
+ else if(current_path == "/start")
+   {
+     root()->clear();
+     Startup* startup = new Startup( root() );
+     this->setTitle("Select Location and Mapset");
+   }
+ else{
+   root()->clear();
+   #if defined(BUILD_WITH_OAUTH)    
+   Authentication* auth = new Authentication( root() );
+   this->setTitle("Authorization");
+   #endif
+ }
 
+#endif
 }
 
 

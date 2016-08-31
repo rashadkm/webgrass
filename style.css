@@ -76,28 +76,18 @@
 
 }
 
-.wgrass-loginpage {
-    /*padding-left: 200px;*/
-    margin:0 auto; 
-    text-align: center;
-    color: green;
-    font-size: 40px;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    height: 100vh; 
-    /*height: 0;*/
-
+.wgrass-lpage {
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 30%;
+    border: 2px green solid; 
 }
-.wgrass-login {
-    /*position: fixed;*/
-    margin:0 auto; 
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    /*height: 0;*/
+
+.wgrass-lpage-elements {
+    position: relative;
+    margin:5px auto;
+    float: right;
 
 }
 

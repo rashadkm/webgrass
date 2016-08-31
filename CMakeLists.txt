@@ -55,6 +55,7 @@ src/MainUI.cpp
 src/WGApplication.cpp
 src/main.cpp
 src/LayerManager.cpp
+src/simple_login.cpp
 src/Display.cpp
 src/Toolbar.cpp
 src/Startup.cpp
@@ -71,7 +72,7 @@ endif()
 add_executable(wgrass.wt ${SRCS})
 
 target_link_libraries(wgrass.wt
-  ${Wt_LIBRARY} ${Wt_HTTP_LIBRARY}
+  ${Wt_LIBRARIES}
   ${Boost_LIBRARIES}
   ${PUGIXML_LIBRARY}
  )

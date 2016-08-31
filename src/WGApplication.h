@@ -11,7 +11,7 @@ License (>=v2). Read the file COPYING for details.
 class WGApplication: public Wt::WApplication {
  public:
   WGApplication(const Wt::WEnvironment& env);
-  void handlePathChanged(std::string loc_string);
+  void handle_path_changed(std::string loc_string);
  
 
 };
