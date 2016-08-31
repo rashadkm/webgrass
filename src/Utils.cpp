@@ -12,7 +12,7 @@ namespace Utils {
 
   const std::string checkFileExists(const std::string& fname)
     {
-      std::ifstream stream(fname);     
+      std::ifstream stream(fname.c_str());     
       return std::string(std::istreambuf_iterator<char>(stream), {});
     }
 
