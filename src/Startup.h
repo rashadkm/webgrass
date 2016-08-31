@@ -32,8 +32,7 @@ public:
   Startup( Wt::WContainerWidget *parent=0 );
   
   void startWebGrass();
-  
-  
+    
   void locationUploaded();
   
   void updateLocationAndMapsets(const std::string& wgrass_login);
@@ -41,6 +40,8 @@ public:
   void locationChanged(int index);
   
   void mapsetChanged(int index);
+
+  void sign_out();
 
 private:
 

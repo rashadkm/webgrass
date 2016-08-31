@@ -101,6 +101,14 @@
     height: 100%;
 }
 
+.href_log_off {
+    position: relative;
+    margin:5px auto;
+    margin-right: 10px;
+    float: right;
+
+}
+
 .login_container_elements {
     min-height: 30px;
     text-align: left;

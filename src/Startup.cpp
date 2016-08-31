@@ -9,7 +9,13 @@ Startup::Startup(Wt::WContainerWidget *parent)
   setStyleClass("mainContainer");
 
   /* image of GRASS GIS */
-  Wt::WVBoxLayout *vbox = new Wt::WVBoxLayout();
+  //  Wt::WVBoxLayout *vbox = new Wt::WVBoxLayout();
+
+  
+  Wt::WText *txt_log_off = new Wt::WText("<a href=\"#\">Sign Out </a>");
+  txt_log_off->clicked().connect(this , &Startup::sign_out);
+  txt_log_off->setStyleClass("href_log_off");
+  addWidget(txt_log_off);
 
   Wt::WImage *image = new Wt::WImage(Wt::WLink("http://grassmac.wdfiles.com/local--files/start/startup_banner.png"));
   image->setStyleClass("wgrass-startup-banner");
@@ -23,12 +29,6 @@ Startup::Startup(Wt::WContainerWidget *parent)
   text->setMargin(10, Wt::Right);
   text->setStyleClass("text");
   addWidget(text);
-  
-  Wt::WText *user_name = new Wt::WText("GRASS GIS data directory");
-  text->setMargin(20, Wt::Bottom);
-  text->setMargin(10, Wt::Right);
-  text->setStyleClass("text");
-  addWidget(user_name);
 
   Wt::WSelectionBox *datadir = new Wt::WSelectionBox();
 
@@ -102,7 +102,12 @@ void Startup::mapsetChanged( int index )
 {
   this->mapset = WtSelectionBoxMapset->itemText(index).narrow();
 }
-
+void Startup::sign_out( )
+{
+  Wt::WApplication::instance()->setCookie("wg_login", "", 0);
+  Wt::WApplication::instance()->refresh();
+  Wt::WApplication::instance()->setInternalPath("/login", true);
+}
 void Startup::startWebGrass( )
 {
 
