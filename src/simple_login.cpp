@@ -19,39 +19,67 @@ simple_login::simple_login(Wt::WContainerWidget *parent)
 : Wt::WContainerWidget(parent)
 {
 
-  #if 1
-
-  Wt::WContainerWidget *w = new Wt::WContainerWidget();
-  Wt::WVBoxLayout * layout  = new Wt::WVBoxLayout(w);
-
+  Wt::WContainerWidget *container = new Wt::WContainerWidget(this);
+  container->setStyleClass("login_container");
   
-  uname = new Wt::WLineEdit();
-  uname->setEmptyText("user name");
-  layout->addWidget(uname);
+  Wt::WContainerWidget *container2 = new Wt::WContainerWidget();
+  Wt::WVBoxLayout *hbox = new Wt::WVBoxLayout(container2);
   
-  passwd = new Wt::WLineEdit();
-  layout->addWidget(passwd);
+  
+  href_register = new Wt::WText("<a href=\"#\">Create an account </a>");
+  hbox->addWidget(href_register);
+  href_register->setStyleClass("login_container_elements");
+  href_register->clicked().connect(this , &simple_login::show_register);
 
-  passwd->setEmptyText("password");
+  href_sign_in = new Wt::WText("<a href=\"#\">Sign In </a>");
+  hbox->addWidget(href_sign_in);
+  href_sign_in->setStyleClass("login_container_elements");
+  href_sign_in->clicked().connect(this , &simple_login::show_sign_in);
+  href_sign_in->setHidden(true);
+    
+ edt_full_name = new Wt::WLineEdit();
+ edt_full_name->setEmptyText("Name: provide your name here");
+ hbox->addWidget(edt_full_name);
+ edt_full_name->setHidden(true);
+ edt_full_name->setStyleClass("login_container_elements");
 
-  this->addWidget(w);
-  Wt::WPushButton *btn_login = new Wt::WPushButton("Login >>");
-  this->addWidget(btn_login);
-  btn_login->setStyleClass("wgrass-lpage-elements");
+  edt_name = new Wt::WLineEdit();
+  edt_name->setEmptyText("user id: a unique id without space or special characters");
+
+  hbox->addWidget(edt_name, 1);
+  edt_name->setStyleClass("login_container_elements");
+  edt_password = new Wt::WLineEdit();
+
+  edt_password->setEmptyText("password");
+  edt_password->setStyleClass("login_container_elements");
+  hbox->addWidget(edt_password);
+  
+  btn_login = new Wt::WPushButton("Login >>");
+  container->addWidget(container2);
+  container->addWidget(btn_login);
+  btn_login->setStyleClass("login_container_button");
   btn_login->clicked().connect(this , &simple_login::checkLogin);
+
+  this->setStyleClass("login_page");
   
-  this->setStyleClass("wgrass-lpage");
-  
- 
-#endif
 }
 
 
+void simple_login::show_sign_in() {
+  edt_full_name->setHidden(true);
+  href_sign_in->setHidden(true);
+  href_register->setHidden(false);
+  btn_login->setText( "Login >>" );
+}
+void simple_login::show_register() {
 
-void simple_login::doRegister() {
+  href_register->setHidden(true);
+  href_sign_in->setHidden(false);
+  edt_full_name->setHidden(false);
+  btn_login->setText( "Register >>" );
 
-  
-  #if 0
+
+#if 0
 
 
 dbo::Transaction transaction(session);
@@ -160,7 +188,7 @@ new WBreak(readme->contents());
 
 void simple_login::logOut() {
 
-WApplication::instance()->setCookie("wgrass_login", "", 0);
+  Wt::WApplication::instance()->setCookie("wgrass_login", "", 0);
 
 
 }

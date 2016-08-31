@@ -39,15 +39,25 @@ void checkLogin();
 
 void logOut();
 
-void doRegister();
+ void show_register();
+ 
+ void show_sign_in();
 
 void projectSelected();
 
 
 private:
-Wt::WLineEdit *user_name;
-Wt::WLineEdit *user_password;
+ 
+ Wt::WLineEdit *edt_name, *edt_password, *edt_full_name;
+ 
+ Wt::WPushButton *btn_login;
 
+ Wt::WText *href_register, *href_sign_in;
+
+
+
+
+ 
 Wt::WCheckBox *rememberMe;
 Wt::WLineEdit *fname  ;
 Wt::WLineEdit *UserName;
