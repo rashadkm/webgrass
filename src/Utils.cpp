@@ -3,6 +3,8 @@
 #include "Utils.h"
 #include <boost/algorithm/string.hpp>
 
+#include <Wt/WEnvironment>
+
 namespace Utils {
 
   const std::string moduleDocRoot()
@@ -68,4 +70,22 @@ namespace Utils {
     Wt::WApplication::instance()->doJavaScript( "alert('" + msg  + "');" );
   }
 
+  bool get_cookie( const std::string key, std::string& value )
+  {
+    bool ret = false;
+#if 0    
+    try
+      {
+	value = Wt::WApplication::instance()->environment().getCookie(key);
+	if( ! value.empty() )
+	  ret = true;
+      }
+    catch(std::exception e)
+      {
+	std::cerr << "Exception:" << e.what() << std::endl;
+	ret = false;
+      }
+#endif
+    return ret;
+  }
 }

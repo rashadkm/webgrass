@@ -1,43 +1,49 @@
 #include <Wt/WApplication>
+#include <Wt/WEnvironment>
+#include <Wt/WMenu>
+
+#include <Wt/WNavigationBar>
+#include <Wt/WMenuItem>
+#include <Wt/WPopupMenu>
 
 #include "Startup.h"
+#include "Utils.h"
 
-Startup::Startup(Wt::WContainerWidget *parent)
+Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   :Wt::WContainerWidget(parent)
 {
 
   setStyleClass("mainContainer");
 
-  /* image of GRASS GIS */
-  //  Wt::WVBoxLayout *vbox = new Wt::WVBoxLayout();
+  Wt::WPopupMenu *popup = new Wt::WPopupMenu( );
+  Wt::WMenuItem *mitem_sign_out = new Wt::WMenuItem( "Sign Out" );
+  mitem_sign_out->clicked().connect(this , &Startup::sign_out);
+  popup->addItem(mitem_sign_out);
+  //  popup->addItem("About");
 
-  
-  Wt::WText *txt_log_off = new Wt::WText("<a href=\"#\">Sign Out </a>");
-  txt_log_off->clicked().connect(this , &Startup::sign_out);
-  txt_log_off->setStyleClass("href_log_off");
-  addWidget(txt_log_off);
 
+
+  Wt::WPushButton *href_log_off = new Wt::WPushButton( user_id );
+  href_log_off->setMenu(popup);
+  href_log_off->setStyleClass("href_log_off");
+  addWidget(href_log_off);
+ 
+  addWidget(new Wt::WBreak());
+  addWidget(new Wt::WBreak());
+    
   Wt::WImage *image = new Wt::WImage(Wt::WLink("http://grassmac.wdfiles.com/local--files/start/startup_banner.png"));
   image->setStyleClass("wgrass-startup-banner");
 
   addWidget(image);
 
   addWidget(new Wt::WBreak());
-
-  Wt::WText *text = new Wt::WText("GRASS GIS data directory");
+  
+  const std::string data_dir_text = std::string("GRASS GIS data directory: ") + std::string(GRASS_DATA_DIR);
+  Wt::WLabel *text = new Wt::WLabel( data_dir_text );
   text->setMargin(20, Wt::Bottom);
   text->setMargin(10, Wt::Right);
   text->setStyleClass("text");
   addWidget(text);
-
-  Wt::WSelectionBox *datadir = new Wt::WSelectionBox();
-
-  datadir->resize(400, 30);
-  datadir->addItem(GRASS_DATA_DIR);
-  datadir->setStyleClass("wgrass-data-dir");
-  datadir->setMargin(20, Wt::Bottom);
-  addWidget(datadir);
-
 
   /* Name of boxes in hbox */
   Wt::WContainerWidget *textContainer = new Wt::WContainerWidget();
@@ -66,7 +72,7 @@ Startup::Startup(Wt::WContainerWidget *parent)
 
   /* Location Selection box */
   WtSelectionBoxLocation->setStyleClass("wgrass-startup-selectionbox");
-  WtSelectionBoxLocation->resize(200,300);
+  WtSelectionBoxLocation->resize(200,400);
   makeSelectionBox(WtSelectionBoxLocation, "");
   selectionBoxContainerLayout->addWidget(WtSelectionBoxLocation);
   WtSelectionBoxLocation->setCurrentIndex(-1);
@@ -105,8 +111,8 @@ void Startup::mapsetChanged( int index )
 void Startup::sign_out( )
 {
   Wt::WApplication::instance()->setCookie("wg_login", "", 0);
-  Wt::WApplication::instance()->refresh();
-  Wt::WApplication::instance()->setInternalPath("/login", true);
+  Wt::WApplication::instance()->setInternalPath("/login", false);
+  Wt::WApplication::instance()->redirect("/");
 }
 void Startup::startWebGrass( )
 {

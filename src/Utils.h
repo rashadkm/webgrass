@@ -19,7 +19,9 @@ namespace Utils {
   void getValueOfChildNode(const XmlNodeType &node, const char* child, std::string& value);
   void getValueOfChildNode(const XmlNodeType &node, const std::string child, std::string& value);
 
-  void alert( const std::string msg);
+  void alert( const std::string msg );
+
+  bool get_cookie( const std::string key, std::string& value );
 
 }
 

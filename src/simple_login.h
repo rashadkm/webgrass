@@ -3,6 +3,11 @@
 
 
 #include <Wt/Dbo/Dbo>
+
+#include <Wt/WContainerWidget>
+#include <Wt/WPushButton>
+#include <Wt/WLineEdit>
+
 #include <string>
 
 namespace dbo = Wt::Dbo;
@@ -30,40 +35,44 @@ public:
   }
 };
 
-class simple_login : public Wt::WContainerWidget {
+class simple_login : public Wt::WContainerWidget
+{
 
 public:
   simple_login(Wt::WContainerWidget *parent = 0);
 
-
-
-
+  std::string login_id;
 private:
 
- void show_sign_in()
- {
-   edt_full_name->setHidden(true);
-   href_sign_in->setHidden(true);
-   href_register->setHidden(false);
-   btn_login->setText( "Login >>" );
- }
+  void show_sign_in()
+  {
+    this->toggle(true);
+    btn_login->setText( "Login >>" );
+  }
+  
+  void show_register()
+  {
+    this->toggle(false);
+    btn_login->setText( "Register >>" );
+  }
+  
+  void toggle(bool t)
+  {
+    edt_full_name->setHidden(t);
+    href_sign_in->setHidden(t);
+    href_register->setHidden(!t);
+  }
+  
+  void create_ui();
  
- void show_register()
- {
-   href_register->setHidden(true);
-   href_sign_in->setHidden(false);
-   edt_full_name->setHidden(false);
-   btn_login->setText( "Register >>" );
- }
-
- void create_ui();
+  void check_login();
  
- void check_login();
-
- Wt::WLineEdit *edt_name, *edt_password, *edt_full_name;
+  
+  Wt::WLineEdit *edt_name, *edt_password, *edt_full_name;
  
- Wt::WPushButton *btn_login;
-
- Wt::WText *href_register, *href_sign_in;
+  Wt::WPushButton *btn_login;
+  
+  Wt::WText *href_register, *href_sign_in;
+  
 };
 #endif

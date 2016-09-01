@@ -19,13 +19,16 @@
 
 WGApplication::WGApplication(const Wt::WEnvironment& env)
   : Wt::WApplication(env)
+  , user_id("")
 {
+
   
   setTheme(new Wt::WBootstrapTheme());
- 
+   
   addMetaHeader("viewport", "width = device-width, initial-scale = 1");
 
-  Wt::WApplication::instance()->setInternalPath("/", false);
+  
+   Wt::WApplication::instance()->setInternalPath("/", false);
   
   internalPathChanged().connect(this, &WGApplication::handle_path_changed);
   
@@ -41,22 +44,36 @@ WGApplication::WGApplication(const Wt::WEnvironment& env)
 
 void WGApplication::handle_path_changed(std::string current_path)
 {
+  try {
+    user_id = this->environment().getCookie("wg_login");
+  }
+  catch(std::runtime_error e) {
+    std::cerr << e.what();
+  }
 
-  root()->clear();
-  
-  if(current_path == "/login")
+  if ( this->user_id.empty() )
     {
-      root()->addWidget(new simple_login());
-      this->setTitle("GRASS GIS - Login"); 
+      root()->clear();
+      simple_login *login_ui = new simple_login();
+      root()->addWidget( login_ui );
+      this->setTitle("GRASS GIS - Login");
     }
-  else if(current_path == "/grass")
+  else
     {
-      root()->addWidget(new MainUI());
+      root()->clear();
+      Wt::WApplication::instance()->setInternalPath("/start", true);
+    }
+
+  if(current_path == "/grass")
+    {
+      root()->addWidget( new MainUI( ) );
       this->setTitle("GRASS GIS - WebUI");
     }
   else if(current_path == "/start")
     {
-      root()->addWidget(new Startup());
+      root()->clear();
+      Startup *s = new Startup( user_id );
+      root()->addWidget( s );
       // Startup* startup = new Startup( root() );
       this->setTitle("GRASS GIS - Select location and mapset");
     } 

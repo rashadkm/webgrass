@@ -29,7 +29,7 @@ namespace fs = boost::filesystem;
 class Startup : public Wt::WContainerWidget
 {
 public:
-  Startup( Wt::WContainerWidget *parent=0 );
+  Startup( const std::string user, Wt::WContainerWidget *parent=0 );
   
   void startWebGrass();
     
