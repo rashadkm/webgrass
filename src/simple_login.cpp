@@ -18,7 +18,7 @@ void simple_login::check_login()
 
   const std::string user_id  = edt_name->text().narrow();
 
-  dbo::backend::Sqlite3 sqlite3("blog.db");
+  dbo::backend::Sqlite3 sqlite3( Wt::WApplication::instance()->docRoot() + "/simple.db");
   dbo::Session session;
   session.setConnection(sqlite3);
   session.mapClass<User>("user");
