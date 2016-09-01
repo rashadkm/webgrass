@@ -37,13 +37,12 @@ Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   addWidget(image);
 
   addWidget(new Wt::WBreak());
-  
+  #if 0  
   const std::string data_dir_text = std::string("GRASS GIS data directory: ") + std::string(GRASS_DATA_DIR);
   Wt::WLabel *text = new Wt::WLabel( data_dir_text );
-  text->setMargin(20, Wt::Bottom);
-  text->setMargin(10, Wt::Right);
-  text->setStyleClass("text");
+  text->setStyleClass("grass_data_dir_text");
   addWidget(text);
+  #endif
 
   /* Name of boxes in hbox */
   Wt::WContainerWidget *textContainer = new Wt::WContainerWidget();
@@ -51,7 +50,7 @@ Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   Wt::WHBoxLayout *hbox1 = new Wt::WHBoxLayout();
   textContainer->setLayout(hbox1);
 
-  Wt::WText *item = new Wt::WText("Project Location");
+  Wt::WText *item = new Wt::WText("Project Locations");
   item->setStyleClass("wgrass-text-label");
   hbox1->addWidget(item);
   
@@ -61,7 +60,6 @@ Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   textContainer->setMargin(-20, Wt::Bottom);
   addWidget(textContainer);
 
-
     /* Location Box and Selection Box in a hbox */
   WContainerWidget *selectionBoxContainer = new WContainerWidget();
   Wt::WHBoxLayout *selectionBoxContainerLayout = new Wt::WHBoxLayout();
@@ -69,20 +67,19 @@ Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout();
   WtSelectionBoxLocation = new Wt::WSelectionBox();
 
-
   /* Location Selection box */
   WtSelectionBoxLocation->setStyleClass("wgrass-startup-selectionbox");
-  WtSelectionBoxLocation->resize(200,400);
   makeSelectionBox(WtSelectionBoxLocation, "");
-  selectionBoxContainerLayout->addWidget(WtSelectionBoxLocation);
+  selectionBoxContainerLayout->addWidget(WtSelectionBoxLocation, 1);
   WtSelectionBoxLocation->setCurrentIndex(-1);
   addWidget(selectionBoxContainer);
   WtSelectionBoxLocation->activated().connect(this, &Startup::locationChanged);
 
   /* Mapset Selection box*/
   WtSelectionBoxMapset = new Wt::WSelectionBox();
+  WtSelectionBoxLocation->setStyleClass("wgrass-startup-selectionbox");
   WtSelectionBoxMapset->activated().connect(this, &Startup::mapsetChanged);
-  selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset);
+  selectionBoxContainerLayout->addWidget(WtSelectionBoxMapset, 1);
   
 
   Wt::WPushButton *startWGrass = new Wt::WPushButton("Start webGRASS >>");

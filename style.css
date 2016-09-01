@@ -10,11 +10,20 @@
     height: 99vh; 
 }
 
-.wgrass-startup-selectionbox {
-/*    background-color: #65dae8; */
-/*    height: 60vh; */
-    text-align: left;
+.grass_data_dir_text {
+    text-align: center;
+    margin-left: 10%;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid black;
     padding-bottom: 0px;    
+}
+
+.wgrass-startup-selectionbox {
+    text-align: left;
+    min-height: 300px;
+    width: 200px; 
+    padding-bottom: 0px;
 }
 
 .wgrass-startup-banner {

@@ -66,6 +66,7 @@ void WGApplication::handle_path_changed(std::string current_path)
 
   if(current_path == "/grass")
     {
+      root()->clear();
       root()->addWidget( new MainUI( ) );
       this->setTitle("GRASS GIS - WebUI");
     }
