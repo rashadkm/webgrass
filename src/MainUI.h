@@ -28,7 +28,7 @@
 class MainUI : public Wt::WContainerWidget
 {
 public:
-  MainUI(Wt::WContainerWidget *parent=0);
+  MainUI(const std::string s, Wt::WContainerWidget *parent=0);
   virtual ~MainUI();
   void createUI(Wt::WContainerWidget *parent);
   void openModuleUI(Wt::WMenuItem* gitem);
@@ -41,13 +41,9 @@ public:
   void deleteModule(Wt::WDialog::DialogCode code);
   Display* displaymanager;
   Toolbar* toolbar;
-#if 0
-    enum Wt::WDialog::DialogCode code;
-private:
-  Wt::WDialog *dialog;
-  Module* mod;
-  std::string gmodule;
-#endif
+
+ private:
+    std::string rc_file_name;
 };
 
 #endif

@@ -67,13 +67,16 @@ void WGApplication::handle_path_changed(std::string current_path)
   if(current_path == "/grass")
     {
       root()->clear();
-      root()->addWidget( new MainUI( ) );
+      const std::string fn = "/tmp/grassrc_" + user_id;
+      root()->addWidget( new MainUI( fn ) );
       this->setTitle("GRASS GIS - WebUI");
     }
   else if(current_path == "/start")
     {
       root()->clear();
       Startup *s = new Startup( user_id );
+      const std::string fn = "/tmp/grassrc_" + user_id;
+      s->set_rc_file_name( fn );
       root()->addWidget( s );
       // Startup* startup = new Startup( root() );
       this->setTitle("GRASS GIS - Select location and mapset");

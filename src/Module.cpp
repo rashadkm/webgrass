@@ -265,8 +265,9 @@ bool Module::createUI()
   return false;
 }
 
-Module::Module(std::string name)
+Module::Module(std::string name, const std::string rc_file_name)
   : theName(name)
+  , rc_file_name(rc_file_name)
   , minimumRequiredWidth(1)
   , theOutputTabIndex(-1)
   , estimatedHeight(0)
@@ -557,7 +558,9 @@ void Module::execute( )
 {
   std::stringstream command_sstream;
 
-  command_sstream << "GISRC=/tmp/grassrc ";
+  assert( !this->rc_file_name.empty() );
+    
+  command_sstream << "GISRC=" << this->rc_file_name << " ";
   command_sstream << theName << " ";
 
   /* Walk through list of ParameterStruct */

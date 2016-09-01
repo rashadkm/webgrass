@@ -10,7 +10,8 @@
 #include "Utils.h"
 
 Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
-  :Wt::WContainerWidget(parent)
+: Wt::WContainerWidget(parent)
+, user_id(user_id)  
 {
 
   setStyleClass("mainContainer");
@@ -20,8 +21,6 @@ Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   mitem_sign_out->clicked().connect(this , &Startup::sign_out);
   popup->addItem(mitem_sign_out);
   //  popup->addItem("About");
-
-
 
   Wt::WPushButton *href_log_off = new Wt::WPushButton( user_id );
   href_log_off->setMenu(popup);
@@ -37,12 +36,6 @@ Startup::Startup(const std::string user_id, Wt::WContainerWidget *parent)
   addWidget(image);
 
   addWidget(new Wt::WBreak());
-  #if 0  
-  const std::string data_dir_text = std::string("GRASS GIS data directory: ") + std::string(GRASS_DATA_DIR);
-  Wt::WLabel *text = new Wt::WLabel( data_dir_text );
-  text->setStyleClass("grass_data_dir_text");
-  addWidget(text);
-  #endif
 
   /* Name of boxes in hbox */
   Wt::WContainerWidget *textContainer = new Wt::WContainerWidget();
@@ -114,21 +107,16 @@ void Startup::sign_out( )
 void Startup::startWebGrass( )
 {
 
-  /* setting the cookies */
-  std::ofstream rcfile;
-  
-  rcfile.open("/tmp/grassrc");
-
-  if (rcfile.is_open())
+  std::ofstream rc_file;
+  rc_file.open( this->rc_file_name.c_str() );
+  if (rc_file.is_open())
   {
-    rcfile << "MAPSET: "+mapset+"\n";
-    std::string str(GRASS_DATA_DIR);
-    rcfile << "GISDBASE: "+str+"\n";
-    rcfile << "LOCATION_NAME: "+location+"\n";
-    rcfile << "GUI: text\n";
-    rcfile.close();
+    rc_file << "MAPSET: " << mapset << std::endl;
+    rc_file << "GISDBASE: " << get_data_dir() << std::endl;
+    rc_file << "LOCATION_NAME: " << location  << std::endl;
+    rc_file << "GUI: text" << std::endl;
+    rc_file.close();
   }
-  //  WApplication::instance()->setCookie("wgrass_user", user_name, 60*60*24*24);
 
   Wt::WApplication::instance()->setInternalPath("/grass", true);
 }
@@ -137,7 +125,7 @@ void Startup::startWebGrass( )
 /* for returning the files in a directory */
 void Startup::getFileList( std::vector<std::string>& dirlist, const std::string& subdir, bool recurse_into_subdirs )
 {
-  const fs::path basedir = std::string(GRASS_DATA_DIR) + "/" + subdir;
+  const fs::path basedir = this->get_data_dir() + "/" + subdir;
   if( fs::exists( basedir ) )
     {
       fs::directory_iterator end ;
@@ -154,7 +142,8 @@ void Startup::getFileList( std::vector<std::string>& dirlist, const std::string&
 /* checking whether given directory exists or not */
 bool Startup::checkExistance(const std::string& parent, const std::string& dir)
 {
-  const fs::path directory = std::string(GRASS_DATA_DIR) + "/" + parent + "/" + dir;
+  
+  const fs::path directory = get_data_dir() + "/" + parent + "/" + dir;
   return boost::filesystem::exists( directory );
 }
 

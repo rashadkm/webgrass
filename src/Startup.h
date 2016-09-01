@@ -43,9 +43,21 @@ public:
 
   void sign_out();
 
+  void set_rc_file_name(const std::string s) { this->rc_file_name = s; }
+    
 private:
 
-    
+  std::string user_id;
+
+  std::string rc_file_name;
+
+  const std::string get_data_dir( )
+  {
+    std::stringstream strm;
+    strm <<  "/home/" << this->user_id << "/grassdata";
+    return strm.str();
+  }
+  
   void makeSelectionBox(Wt::WSelectionBox *box, const std::string& dir);
   
   bool checkExistance(const std::string& parent, const std::string& dir);

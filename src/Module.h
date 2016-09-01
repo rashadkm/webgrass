@@ -33,7 +33,7 @@
 class Module : public Wt::WDialog {
 
 public:
-  Module( std::string mod);
+  Module(std::string module_name, const std::string rc_file_name);
 
   bool createUI();
 
@@ -59,9 +59,13 @@ public:
 
     void execute();
     //    const int getMinimumRequiredWidth() { return minimumRequiredWidth; }
+
+    void set_rc_file_name(const std::string s) { this->rc_file_name = s; }
     
  private:
 
+    std::string rc_file_name;
+    
     int minimumRequiredWidth;
     
   std::string theName;

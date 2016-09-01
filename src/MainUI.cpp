@@ -3,8 +3,10 @@
 
 #include "../thirdparty/pstream/pstream.h"
 
-MainUI::MainUI(WContainerWidget *parent)
-:WContainerWidget(parent) {
+MainUI::MainUI(const std::string s, WContainerWidget *parent)
+: WContainerWidget(parent)
+, rc_file_name(s)  
+{
   createUI(parent);
 }
 
@@ -201,7 +203,7 @@ void MainUI::openModuleUI(Wt::WMenuItem* gitem) {
 #endif
 
 #if 1
-  Module *grassModule = new Module(item->id());
+  Module *grassModule = new Module(item->id(), this->rc_file_name);
   if ( grassModule->createUI() )
 
     {
